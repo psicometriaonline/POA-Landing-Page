@@ -159,8 +159,8 @@ export function ToolModal({ toolIndex, onClose }: ToolModalProps) {
         className="max-w-4xl p-0 gap-0 overflow-hidden border-none rounded-2xl"
         data-testid="dialog-tool-modal"
       >
-        <div className="p-8 pb-0">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="p-8 pb-0 text-center">
+          <div className="flex items-center justify-center gap-3 mb-6">
             <img
               src={logoImg}
               alt="Psicometria Online Academy"
