@@ -22,7 +22,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-8 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               783 pesquisadores online agora
             </div>
@@ -32,10 +32,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-6"
+            className="text-display-sm md:text-display text-white font-heading text-balance mb-6"
           >
             A plataforma completa para{" "}
-            <span className="text-[#0065FF]">
+            <span className="text-white">
               pesquisadores em Psicometria
             </span>
           </motion.h1>

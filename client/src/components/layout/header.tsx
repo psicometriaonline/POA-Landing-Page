@@ -22,29 +22,29 @@ export function Header() {
   return (
     <header
       data-testid="header"
-      className="fixed top-0 left-0 right-0 z-50 bg-[hsl(213,80%,8%)] border-b border-white/10"
+      className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
     >
-      <div className="container-narrow">
+      <div className="w-full max-w-6xl bg-[hsl(213,80%,8%)]/95 backdrop-blur-md border border-[#0065FF]/30 rounded-full px-6 md:px-10 shadow-lg">
         <div className="flex items-center justify-between gap-4 h-16 md:h-[72px]">
           <Link href="/" data-testid="link-home">
             <div className="flex items-center gap-3 cursor-pointer">
               <img
                 src={logoPath}
                 alt="Psicometria Online Academy"
-                className="h-10 md:h-11 w-auto object-contain"
+                className="h-9 md:h-10 w-auto object-contain"
               />
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">
+          <nav className="hidden md:flex items-center gap-2" data-testid="nav-desktop">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   data-testid={`link-nav-${item.label.toLowerCase()}`}
-                  className={`px-4 py-2 rounded-md text-body-sm font-medium transition-colors cursor-pointer ${
+                  className={`px-4 py-2 rounded-md text-body-sm font-medium transition-all duration-200 cursor-pointer ${
                     location === item.href
                       ? "text-white"
-                      : "text-white/60"
+                      : "text-white/60 hover:text-[#0065FF]"
                   }`}
                 >
                   {item.label}
@@ -53,18 +53,18 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
             <Link href="/entrar">
               <span
                 data-testid="button-login"
-                className="px-4 py-2 rounded-md text-body-sm font-medium text-white/60 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-md text-body-sm font-medium text-white/60 transition-colors cursor-pointer hover:text-[#0065FF]"
               >
                 Entrar
               </span>
             </Link>
             <Button
               data-testid="button-signup"
-              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold"
+              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
             >
               Comece Agora
             </Button>
