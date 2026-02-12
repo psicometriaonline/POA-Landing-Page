@@ -646,8 +646,8 @@ export function HubSection() {
                   data-testid={`tab-block-${block.id}`}
                 >
                   <div className="flex items-center gap-3 mb-1">
-                    <block.icon className={`w-4 h-4 shrink-0 ${activeBlock === idx ? "text-white" : "text-[#0065FF]"}`} />
-                    <span className={`text-sm font-bold ${activeBlock === idx ? "text-white" : "text-[#0A2E76]"}`}>
+                    <block.icon className={`w-5 h-5 shrink-0 ${activeBlock === idx ? "text-white" : "text-[#0065FF]"}`} />
+                    <span className={`text-base font-bold ${activeBlock === idx ? "text-white" : "text-[#0A2E76]"}`}>
                       {block.name}
                     </span>
                     <span className={`text-xs px-1.5 py-0.5 rounded-full ml-auto shrink-0 ${
@@ -656,7 +656,7 @@ export function HubSection() {
                       {block.totalCourses}
                     </span>
                   </div>
-                  <p className={`text-xs leading-relaxed pl-7 ${activeBlock === idx ? "text-white/75" : "text-[hsl(215,15%,55%)]"}`}>
+                  <p className={`text-sm leading-relaxed pl-8 ${activeBlock === idx ? "text-white/75" : "text-[hsl(215,15%,55%)]"}`}>
                     {block.description}
                   </p>
                 </button>
