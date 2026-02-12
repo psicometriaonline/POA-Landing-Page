@@ -64,7 +64,7 @@ export function Header() {
             </Link>
             <Button
               data-testid="button-signup"
-              className="bg-[hsl(187,100%,42%)] text-[hsl(213,80%,8%)] border-[hsl(187,100%,42%)] font-semibold"
+              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold"
             >
               Comece Agora
             </Button>
@@ -115,7 +115,7 @@ export function Header() {
                   </span>
                 </Link>
                 <Button
-                  className="w-full bg-[hsl(187,100%,42%)] text-[hsl(213,80%,8%)] border-[hsl(187,100%,42%)] font-semibold"
+                  className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
                   data-testid="button-mobile-signup"
                 >
                   Comece Agora

@@ -22,7 +22,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[hsl(213,80%,25%)] text-body-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-8">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               783 pesquisadores online agora
             </div>
@@ -32,10 +32,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-display-sm md:text-display text-[hsl(213,80%,12%)] font-heading text-balance mb-6"
+            className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-6"
           >
             A plataforma completa para{" "}
-            <span className="text-[hsl(213,80%,35%)]">
+            <span className="text-[#0065FF]">
               pesquisadores em Psicometria
             </span>
           </motion.h1>
@@ -59,7 +59,7 @@ export function HeroSection() {
             <Button
               size="lg"
               data-testid="button-hero-cta"
-              className="bg-[hsl(187,100%,42%)] text-[hsl(213,80%,8%)] border-[hsl(187,100%,42%)] font-semibold"
+              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold"
             >
               Comece Sua Formacao
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -68,7 +68,7 @@ export function HeroSection() {
               variant="outline"
               size="lg"
               data-testid="button-hero-secondary"
-              className="border-[hsl(213,80%,25%)] text-[hsl(213,80%,25%)] bg-transparent"
+              className="border-[#0A2E76] text-[#0A2E76] bg-transparent"
             >
               Conheca a Plataforma
             </Button>
@@ -82,11 +82,11 @@ export function HeroSection() {
           >
             {stats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-3" data-testid={`stat-${stat.label.toLowerCase()}`}>
-                <div className="w-10 h-10 rounded-md bg-[hsl(213,80%,25%)] flex items-center justify-center">
-                  <stat.icon className="w-5 h-5 text-[hsl(187,100%,50%)]" />
+                <div className="w-10 h-10 rounded-md bg-[#0A2E76] flex items-center justify-center">
+                  <stat.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="text-heading-3 text-[hsl(213,80%,12%)] font-heading">{stat.value}</div>
+                  <div className="text-heading-3 text-[#0A2E76] font-heading">{stat.value}</div>
                   <div className="text-body-sm text-[hsl(215,15%,45%)]">{stat.label}</div>
                 </div>
               </div>
