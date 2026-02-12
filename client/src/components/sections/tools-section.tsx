@@ -103,7 +103,7 @@ export function ToolsSection() {
                 className="flex"
               >
                 <Card
-                  className="p-5 flex-1 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group"
+                  className="p-5 flex-1 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-col"
                   onClick={() => setSelectedTool(idx)}
                   data-testid={`card-tool-${idx}`}
                 >
@@ -113,17 +113,19 @@ export function ToolsSection() {
                   <h3 className="text-[15px] font-bold text-[#0A2E76] font-heading mb-2 leading-snug">
                     {tool.title}
                   </h3>
-                  <p className="text-body-sm text-[hsl(215,15%,45%)] leading-relaxed mb-4">
+                  <p className="text-body-sm text-[hsl(215,15%,45%)] leading-relaxed flex-1">
                     {tool.description}
                   </p>
-                  <Button
-                    size="sm"
-                    className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold"
-                    data-testid={`button-tool-saiba-mais-${idx}`}
-                    onClick={(e) => { e.stopPropagation(); setSelectedTool(idx); }}
-                  >
-                    Saiba mais
-                  </Button>
+                  <div className="flex justify-end mt-4">
+                    <Button
+                      size="sm"
+                      className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold"
+                      data-testid={`button-tool-saiba-mais-${idx}`}
+                      onClick={(e) => { e.stopPropagation(); setSelectedTool(idx); }}
+                    >
+                      Saiba mais
+                    </Button>
+                  </div>
                 </Card>
               </motion.div>
             ))}
