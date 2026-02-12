@@ -120,10 +120,9 @@ export function HeroSection() {
               alt="Plataforma no celular"
               className="w-full h-auto object-contain max-w-[540px] ml-auto drop-shadow-2xl"
             />
-            {/* Elementos decorativos inspirados na imagem */}
             <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-16 h-16 bg-orange-400 rotate-45 rounded-lg -z-10 blur-[1px]" />
             <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -z-10" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
