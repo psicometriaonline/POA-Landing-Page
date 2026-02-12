@@ -14,10 +14,10 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative min-h-[90vh] flex items-center pt-24 md:pt-32"
+      className="relative min-h-[85vh] flex items-center pt-20 md:pt-24"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="container-narrow relative z-10 py-12 md:py-20">
+      <div className="container-narrow relative z-10 py-8 md:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="text-left">
             <motion.div

@@ -239,7 +239,11 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-28;
+    @apply py-16 md:py-24;
+  }
+
+  .section-spacing {
+    @apply space-y-16 md:space-y-24;
   }
 
   .container-narrow {
