@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
 
 const universities = [
-  { name: "USP", logo: "/logos/1.webp" },
-  { name: "UFRJ", logo: "/logos/2.webp" },
-  { name: "UNICAMP", logo: "/logos/3.webp" },
-  { name: "UFMG", logo: "/logos/4.webp" },
-  { name: "UNIFESP", logo: "/logos/5.webp" },
-  { name: "UFC", logo: "/logos/6.webp" },
-  { name: "UFSC", logo: "/logos/7.webp" },
-  { name: "UnB", logo: "/logos/8.webp" },
-  { name: "UFRGS", logo: "/logos/9.webp" },
-  { name: "UFSCar", logo: "/logos/10.webp" },
-  { name: "UFCG", logo: "/logos/11.webp" },
-  { name: "Universidade do Minho", logo: "/logos/12.webp" },
+  { name: "USP", logo: "/logos/USP.webp" },
+  { name: "UFRJ", logo: "/logos/UFRJ.webp" },
+  { name: "UNICAMP", logo: "/logos/UNICAMP.webp" },
+  { name: "UFMG", logo: "/logos/UFMG.webp" },
+  { name: "UFRGS", logo: "/logos/UFRGS.webp" },
+  { name: "UFSCar", logo: "/logos/UFSCAR.webp" },
+  { name: "UMass Dartmouth", logo: "/logos/Dartmouth.webp" },
+  { name: "Utrecht University", logo: "/logos/Utrecht.webp" },
+  { name: "UC Davis", logo: "/logos/Davis.webp" },
+  { name: "Universidade do Minho", logo: "/logos/Minho.webp" },
+  { name: "Universidade do Porto", logo: "/logos/Porto.webp" },
 ];
 
 export function TrustSection() {
