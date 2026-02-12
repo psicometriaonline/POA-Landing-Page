@@ -49,10 +49,8 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-6 leading-[1.1]"
             >
-              A plataforma completa para{" "}
-              <span className="text-[#0065FF]">
-                pesquisadores em Psicometria
-              </span>
+              A maior plataforma de pesquisa quantitativa da{" "}
+              <span className="text-[#0065FF]">América Latina.</span>
             </motion.h1>
 
             <motion.p
@@ -61,8 +59,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-10 leading-relaxed"
             >
-              Cursos, ferramentas e uma comunidade com mais de 6.000 pesquisadores.
-              Tudo o que você precisa para dominar a ciência da medição psicológica em um só lugar.
+              Cadastre-se gratuitamente e tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
             </motion.p>
 
             <motion.div
