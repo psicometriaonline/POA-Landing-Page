@@ -1,25 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Users, BookOpen, Wrench, PlayCircle } from "lucide-react";
-import phoneMockup from "@assets/image_1770910768711.png";
-
-const stats = [
-  { icon: Users, value: "6.000+", label: "Pesquisadores" },
-  { icon: BookOpen, value: "50+", label: "Cursos" },
-  { icon: Wrench, value: "20+", label: "Ferramentas" },
-];
+import { PlayCircle } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative min-h-[85vh] flex items-center pt-20 md:pt-24"
+      className="relative flex items-center pt-20 md:pt-24"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="container-narrow relative z-10 py-8 md:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="text-left">
+      <div className="container-narrow relative z-10 py-12 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+          <div className="flex flex-col justify-center text-left py-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -88,40 +81,25 @@ export function HeroSection() {
               <PlayCircle className="w-5 h-5" />
               <span>Assistir video</span>
             </motion.button>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-wrap items-center gap-8 md:gap-12 mt-16"
-            >
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-3" data-testid={`stat-${stat.label.toLowerCase()}`}>
-                  <div className="w-10 h-10 rounded-md bg-[#0A2E76] flex items-center justify-center">
-                    <stat.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-heading-3 text-[#0A2E76] font-heading leading-tight">{stat.value}</div>
-                    <div className="text-body-sm text-[hsl(215,15%,45%)]">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center"
           >
-            <img
-              src={phoneMockup}
-              alt="Plataforma no celular"
-              className="w-full h-auto object-contain max-w-[540px] ml-auto drop-shadow-2xl"
-            />
+            <div className="w-full h-full min-h-[500px] bg-slate-200 rounded-2xl overflow-hidden shadow-2xl relative">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
+                alt="Plataforma POA"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E76]/20 to-transparent" />
+            </div>
+            {/* Elementos decorativos */}
             <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-16 h-16 bg-orange-400 rotate-45 rounded-lg -z-10 blur-[1px]" />
-            <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute bottom-0 -right-4 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -z-10" />
           </motion.div>
         </div>
       </div>
