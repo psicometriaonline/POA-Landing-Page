@@ -1,9 +1,25 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { PlayCircle } from "lucide-react";
 
 export function HeroSection() {
+  const [onlineUsers, setOnlineUsers] = useState(783);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOnlineUsers((prev) => {
+        const change = Math.floor(Math.random() * 17) - 8; // -8 to +8
+        const next = prev + change;
+        if (next < 783) return 783 + Math.abs(change);
+        if (next > 985) return 985 - Math.abs(change);
+        return next;
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       data-testid="section-hero"
@@ -19,8 +35,11 @@ export function HeroSection() {
               transition={{ duration: 0.5 }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-8 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                783 pesquisadores online agora
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span className="font-medium">{onlineUsers} pesquisadores online agora</span>
               </div>
             </motion.div>
 
@@ -43,7 +62,7 @@ export function HeroSection() {
               className="text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-10 leading-relaxed"
             >
               Cursos, ferramentas e uma comunidade com mais de 6.000 pesquisadores.
-              Tudo o que voce precisa para dominar a ciencia da medicao psicologica em um so lugar.
+              Tudo o que você precisa para dominar a ciência da medição psicológica em um só lugar.
             </motion.p>
 
             <motion.div
@@ -63,11 +82,11 @@ export function HeroSection() {
                   data-testid="button-hero-cta"
                   className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
                 >
-                  Cadastre-se - e gratis!
+                  Cadastre-se. É grátis!
                 </Button>
               </div>
               <p className="text-body-sm text-[hsl(215,15%,55%)]">
-                Ao se cadastrar, voce concorda com nossos{" "}
+                Ao se cadastrar, você concorda com nossos{" "}
                 <a href="#" className="underline hover:text-[#0065FF] transition-colors">Termos de Privacidade</a>.
               </p>
             </motion.div>
@@ -79,7 +98,7 @@ export function HeroSection() {
               className="flex items-center gap-2 text-[#0A2E76] font-medium hover:text-[#0065FF] transition-colors"
             >
               <PlayCircle className="w-5 h-5" />
-              <span>Assistir video</span>
+              <span>Assistir vídeo</span>
             </motion.button>
           </div>
 
@@ -97,7 +116,6 @@ export function HeroSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E76]/20 to-transparent" />
             </div>
-            {/* Elementos decorativos */}
             <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-16 h-16 bg-orange-400 rotate-45 rounded-lg -z-10 blur-[1px]" />
             <div className="absolute bottom-0 -right-4 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -z-10" />
           </motion.div>
