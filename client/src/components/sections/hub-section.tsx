@@ -674,11 +674,11 @@ export function HubSection() {
                 >
                   <div className="flex items-center gap-3 mb-1">
                     <currentBlock.icon className="w-5 h-5 text-[#0065FF]" />
-                    <h4 className="text-lg font-heading font-bold text-[#0A2E76]">
+                    <h4 className="text-xl font-heading font-bold text-[#0A2E76]">
                       {currentBlock.name}
                     </h4>
                   </div>
-                  <p className="text-sm text-[hsl(215,15%,45%)] mb-6">
+                  <p className="text-base text-[hsl(215,15%,45%)] mb-6">
                     {currentBlock.subtitle} — <span className="font-semibold text-[#0065FF]">{currentBlock.totalCourses} cursos</span>
                   </p>
 
@@ -687,7 +687,7 @@ export function HubSection() {
                       <div key={sub.name}>
                         <div className="flex items-center gap-2 mb-3">
                           <ChevronRight className="w-4 h-4 text-[#0065FF]" />
-                          <h5 className="text-sm font-heading font-semibold text-[#0A2E76]">
+                          <h5 className="text-base font-heading font-semibold text-[#0A2E76]">
                             {sub.name}
                           </h5>
                           <span className="text-xs text-[hsl(215,15%,55%)] bg-white px-2 py-0.5 rounded-full">
@@ -698,25 +698,25 @@ export function HubSection() {
                           {sub.courses.map((course, courseIdx) => (
                             <div
                               key={course.name}
-                              className="bg-white rounded-lg px-4 py-3 flex items-start justify-between gap-3"
+                              className="bg-white rounded-lg px-5 py-4 flex items-start justify-between gap-4"
                               data-testid={`course-item-${currentBlock.id}-${subIdx}-${courseIdx}`}
                             >
                               <div className="flex items-start gap-3 min-w-0">
-                                <div className="w-7 h-7 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
-                                  <BookOpen className="w-3 h-3 text-[#0065FF]" />
+                                <div className="w-8 h-8 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
+                                  <BookOpen className="w-3.5 h-3.5 text-[#0065FF]" />
                                 </div>
                                 <div className="min-w-0">
-                                  <p className="text-sm font-medium text-[#0A2E76] leading-snug">
+                                  <p className="text-[15px] font-semibold text-[#0A2E76] leading-snug">
                                     {course.name}
                                   </p>
-                                  <p className="text-xs text-[hsl(215,15%,50%)] mt-0.5 leading-relaxed">
+                                  <p className="text-sm text-[hsl(215,15%,50%)] mt-1 leading-relaxed">
                                     {course.description}
                                   </p>
                                 </div>
                               </div>
                               <button
                                 onClick={() => setSyllabusModal(course)}
-                                className="text-xs font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1"
+                                className="text-sm font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1"
                                 data-testid={`button-syllabus-${currentBlock.id}-${subIdx}-${courseIdx}`}
                               >
                                 Ver ementa
@@ -754,31 +754,43 @@ export function HubSection() {
       </div>
 
       <Dialog open={syllabusModal !== null} onOpenChange={(open) => { if (!open) setSyllabusModal(null); }}>
-        <DialogContent className="max-w-lg" data-testid="dialog-syllabus">
+        <DialogContent className="max-w-lg p-0 gap-0 overflow-hidden" data-testid="dialog-syllabus">
           {syllabusModal && (
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0">
-                  <BookOpen className="w-4 h-4 text-[#0065FF]" />
+            <div className="flex flex-col">
+              <div className="p-6 pb-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0">
+                    <BookOpen className="w-4 h-4 text-[#0065FF]" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-[#0A2E76] leading-snug">
+                    {syllabusModal.name}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-heading font-bold text-[#0A2E76] leading-snug">
-                  {syllabusModal.name}
-                </h3>
+                <p className="text-base text-[hsl(215,15%,45%)] mb-5 leading-relaxed">
+                  {syllabusModal.description}
+                </p>
+                <p className="text-xs font-semibold text-[hsl(215,15%,55%)] uppercase tracking-wider mb-3">
+                  Ementa do curso
+                </p>
+                <ul className="space-y-2.5">
+                  {syllabusModal.syllabus.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-base text-[hsl(215,15%,40%)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0065FF] mt-2 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="text-sm text-[hsl(215,15%,45%)] mb-4 leading-relaxed">
-                {syllabusModal.description}
-              </p>
-              <p className="text-xs font-semibold text-[hsl(215,15%,55%)] uppercase tracking-wider mb-3">
-                Ementa do curso
-              </p>
-              <ul className="space-y-2.5">
-                {syllabusModal.syllabus.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-[hsl(215,15%,40%)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0065FF] mt-1.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="p-6 pt-4 border-t border-[#E2E5EA] bg-[#F9FAFB]">
+                <Button
+                  size="lg"
+                  data-testid="button-syllabus-cta"
+                  className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
+                >
+                  Cadastrar gratuitamente
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             </div>
           )}
         </DialogContent>
