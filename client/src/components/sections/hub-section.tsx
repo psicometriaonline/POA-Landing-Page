@@ -13,6 +13,7 @@ import {
   Sparkles,
   Briefcase,
   ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 
 interface Course {
@@ -572,7 +573,9 @@ const competencies = [
 export function HubSection() {
   const [activeBlock, setActiveBlock] = useState(0);
   const [syllabusModal, setSyllabusModal] = useState<Course | null>(null);
+  const [openSubcategory, setOpenSubcategory] = useState(0);
   const currentBlock = blocks[activeBlock];
+  const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
   return (
     <section
@@ -637,7 +640,7 @@ export function HubSection() {
               {blocks.map((block, idx) => (
                 <button
                   key={block.id}
-                  onClick={() => setActiveBlock(idx)}
+                  onClick={() => { setActiveBlock(idx); setOpenSubcategory(0); }}
                   className={`w-full text-left px-5 py-4 rounded-lg transition-all duration-200 ${
                     activeBlock === idx
                       ? "bg-[#0A2E76] shadow-lg"
@@ -682,73 +685,113 @@ export function HubSection() {
                     {currentBlock.subtitle} — <span className="font-semibold text-[#0065FF]">{currentBlock.totalCourses} cursos</span>
                   </p>
 
-                  <div className="space-y-6">
-                    {currentBlock.subcategories.map((sub, subIdx) => (
-                      <div key={sub.name}>
-                        <div className="flex items-center gap-2 mb-3">
-                          <ChevronRight className="w-4 h-4 text-[#0065FF]" />
-                          <h5 className="text-base font-heading font-semibold text-[#0A2E76]">
-                            {sub.name}
-                          </h5>
-                          <span className="text-xs text-[hsl(215,15%,55%)] bg-white px-2 py-0.5 rounded-full">
-                            {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {sub.courses.map((course, courseIdx) => (
-                            <div
-                              key={course.name}
-                              className="bg-white rounded-lg px-5 py-4 flex items-start justify-between gap-4"
-                              data-testid={`course-item-${currentBlock.id}-${subIdx}-${courseIdx}`}
+                  <div className="space-y-3">
+                    {currentBlock.subcategories.map((sub, subIdx) => {
+                      const isOpen = hasMultipleSubcategories ? openSubcategory === subIdx : true;
+                      return (
+                        <div key={sub.name} className="rounded-xl overflow-hidden">
+                          {hasMultipleSubcategories && (
+                            <button
+                              onClick={() => setOpenSubcategory(isOpen ? -1 : subIdx)}
+                              className={`w-full flex items-center gap-2 px-5 py-3.5 transition-colors duration-200 ${
+                                isOpen ? "bg-[#0A2E76]" : "bg-white"
+                              }`}
+                              data-testid={`accordion-subcategory-${currentBlock.id}-${subIdx}`}
                             >
-                              <div className="flex items-start gap-3 min-w-0">
-                                <div className="w-8 h-8 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
-                                  <BookOpen className="w-3.5 h-3.5 text-[#0065FF]" />
-                                </div>
-                                <div className="min-w-0">
-                                  <p className="text-[15px] font-semibold text-[#0A2E76] leading-snug">
-                                    {course.name}
-                                  </p>
-                                  <p className="text-sm text-[hsl(215,15%,50%)] mt-1 leading-relaxed">
-                                    {course.description}
-                                  </p>
-                                </div>
-                              </div>
-                              <button
-                                onClick={() => setSyllabusModal(course)}
-                                className="text-sm font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1"
-                                data-testid={`button-syllabus-${currentBlock.id}-${subIdx}-${courseIdx}`}
-                              >
-                                Ver ementa
-                              </button>
+                              {isOpen ? (
+                                <ChevronDown className="w-4 h-4 text-white shrink-0" />
+                              ) : (
+                                <ChevronRight className="w-4 h-4 text-[#0065FF] shrink-0" />
+                              )}
+                              <h5 className={`text-base font-heading font-semibold ${isOpen ? "text-white" : "text-[#0A2E76]"}`}>
+                                {sub.name}
+                              </h5>
+                              <span className={`text-xs px-2 py-0.5 rounded-full ml-auto shrink-0 ${
+                                isOpen ? "bg-white/20 text-white" : "bg-[#E2E5EA] text-[hsl(215,15%,55%)]"
+                              }`}>
+                                {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
+                              </span>
+                            </button>
+                          )}
+                          {!hasMultipleSubcategories && (
+                            <div className="flex items-center gap-2 mb-3">
+                              <ChevronRight className="w-4 h-4 text-[#0065FF]" />
+                              <h5 className="text-base font-heading font-semibold text-[#0A2E76]">
+                                {sub.name}
+                              </h5>
+                              <span className="text-xs text-[hsl(215,15%,55%)] bg-white px-2 py-0.5 rounded-full">
+                                {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
+                              </span>
                             </div>
-                          ))}
+                          )}
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.25, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                              >
+                                <div className={`space-y-2 ${hasMultipleSubcategories ? "pt-3" : ""}`}>
+                                  {sub.courses.map((course, courseIdx) => (
+                                    <div
+                                      key={course.name}
+                                      className="bg-white rounded-lg px-5 py-4 flex items-start justify-between gap-4"
+                                      data-testid={`course-item-${currentBlock.id}-${subIdx}-${courseIdx}`}
+                                    >
+                                      <div className="flex items-start gap-3 min-w-0">
+                                        <div className="w-8 h-8 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
+                                          <BookOpen className="w-3.5 h-3.5 text-[#0065FF]" />
+                                        </div>
+                                        <div className="min-w-0">
+                                          <p className="text-[15px] font-semibold text-[#0A2E76] leading-snug">
+                                            {course.name}
+                                          </p>
+                                          <p className="text-sm text-[hsl(215,15%,50%)] mt-1 leading-relaxed">
+                                            {course.description}
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <button
+                                        onClick={() => setSyllabusModal(course)}
+                                        className="text-sm font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1"
+                                        data-testid={`button-syllabus-${currentBlock.id}-${subIdx}-${courseIdx}`}
+                                      >
+                                        Ver ementa
+                                      </button>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap gap-3 justify-center">
+                    <Button
+                      size="lg"
+                      data-testid="button-hub-start"
+                      className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
+                    >
+                      Comece gratuitamente
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      data-testid="button-hub-plans"
+                      className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
+                    >
+                      Ver planos
+                    </Button>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
-            <Button
-              size="lg"
-              data-testid="button-hub-start"
-              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
-            >
-              Comece gratuitamente
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              data-testid="button-hub-plans"
-              className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
-            >
-              Ver planos
-            </Button>
           </div>
         </motion.div>
       </div>
