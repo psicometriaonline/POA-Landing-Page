@@ -146,7 +146,7 @@ export function HeroSection() {
               </button>
               
               <iframe
-                src="https://player.vimeo.com/video/367756121?h=9d6c4d7e35&autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479"
+                src="https://player.vimeo.com/video/367756121?h=9d6c4d7e35&autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&controls=0&title=0&byline=0&portrait=0"
                 className="absolute inset-0 w-full h-full"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
