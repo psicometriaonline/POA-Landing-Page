@@ -86,6 +86,17 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        heading: ["'DM Sans'", "var(--font-sans)"],
+      },
+      fontSize: {
+        "display": ["3.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "display-sm": ["2.75rem", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "heading-1": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "heading-2": ["1.875rem", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "heading-3": ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.65" }],
+        "body": ["1rem", { lineHeight: "1.65" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
       },
       keyframes: {
         "accordion-down": {
