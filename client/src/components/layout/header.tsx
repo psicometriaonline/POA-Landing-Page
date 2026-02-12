@@ -57,7 +57,7 @@ export function Header() {
             <Link href="/entrar">
               <span
                 data-testid="button-login"
-                className="px-4 py-2 rounded-md text-body-sm font-medium text-white transition-colors cursor-pointer hover:text-[#0065FF]"
+                className="px-5 py-2 rounded-full text-body-sm font-medium text-[#0A2E76] bg-white border border-[#0A2E76] transition-all cursor-pointer hover:bg-[#F4F5F7] hover:text-[#0065FF] hover:border-[#0065FF]"
               >
                 Entrar
               </span>
