@@ -532,49 +532,40 @@ export function HubSection() {
       style={{ backgroundColor: "#FFFFFF" }}
     >
       <div className="container-narrow">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl px-8 py-14 md:px-16 md:py-20 mb-12 text-center"
+          style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
+        >
+          <h2
+            className="text-display-sm md:text-display-md font-heading font-bold text-white leading-[1.1] mb-6 tracking-tight"
+            data-testid="text-hub-label"
           >
-            <p className="text-sm font-semibold tracking-widest text-[#0065FF] uppercase mb-4" data-testid="text-hub-label">
-              Hub Educacional
-            </p>
-            <h2 className="text-heading-1 md:text-display-sm text-[#0A2E76] font-heading leading-[1.15]">
-              A maior formação em Psicometria e Análise Quantitativa de Dados da{" "}
-              <span className="text-[#0065FF]">América Latina.</span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-6 lg:pt-2"
-          >
-            <p className="text-body-lg text-[hsl(215,15%,45%)] leading-relaxed">
-              Tenha acesso a maior formação em Psicometria e Análise Quantitativa de Dados da América Latina, e desenvolva todas as principais competências acadêmicas:
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {competencies.map((comp) => (
-                <div
-                  key={comp.label}
-                  className="flex items-center gap-2 bg-[#F4F5F7] rounded-md px-4 py-2"
-                  data-testid={`badge-competency-${comp.label.toLowerCase().replace(/ /g, "-")}`}
-                >
-                  <comp.icon className="w-4 h-4 text-[#0065FF]" />
-                  <span className="text-sm font-medium text-[#0A2E76]">{comp.label}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-body-md text-[hsl(215,15%,45%)] leading-relaxed">
-              Nossos cursos vão te levar do absoluto zero até o avançado em análise de dados. Você não precisa de nenhum conhecimento prévio.
-            </p>
-          </motion.div>
-        </div>
+            Hub Educacional
+          </h2>
+          <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
+            Tenha acesso a maior formação em Psicometria e Análise Quantitativa de Dados da América Latina e desenvolva todas as principais competências acadêmicas.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {competencies.map((comp) => (
+              <div
+                key={comp.label}
+                className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-md px-4 py-2 border border-white/20"
+                data-testid={`badge-competency-${comp.label.toLowerCase().replace(/ /g, "-")}`}
+              >
+                <comp.icon className="w-4 h-4 text-white" />
+                <span className="text-sm font-medium text-white">{comp.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-body-md text-white/70 leading-relaxed max-w-2xl mx-auto">
+            Nossos cursos vão te levar do absoluto zero até o avançado em análise de dados.{" "}
+            <span className="text-white font-semibold">Você não precisa de nenhum conhecimento prévio.</span>
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
