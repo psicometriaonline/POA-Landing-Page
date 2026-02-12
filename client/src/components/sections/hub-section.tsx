@@ -562,7 +562,8 @@ export function HubSection() {
             ))}
           </div>
           <p className="text-body-md text-white/70 leading-relaxed max-w-2xl mx-auto">
-            Nossos cursos vão te levar do absoluto zero até o avançado em análise de dados.{" "}
+            Nossos cursos vão te levar do absoluto zero até o avançado em análise de dados.
+            <br />
             <span className="text-white font-semibold">Você não precisa de nenhum conhecimento prévio.</span>
           </p>
         </motion.div>
