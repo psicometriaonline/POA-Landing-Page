@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Users, Calculator, Sparkles, BookOpen, Code, BarChart3 } from "lucide-react";
+import { ToolModal } from "./tool-modal";
 
 const tools = [
   {
@@ -27,16 +29,18 @@ const tools = [
   {
     icon: Code,
     title: "Gerador de Sintaxe em R",
-    description: "Crie sintaxes em R prontas para rodar, respondendo apenas algumas perguntas. Nossas sintaxes são todas comentadas para que você aprenda enquanto utiliza a ferramenta.",
+    description: "Crie sintaxes em R prontas para rodar, respondendo apenas algumas perguntas.",
   },
   {
     icon: BarChart3,
-    title: "Calculadora de Tamanho de Amostra para Surveys",
-    description: "Determine o tamanho ideal da sua amostra para pesquisas com margem de erro e nível de confiança controlados.",
+    title: "Calculadora de Amostra para Surveys",
+    description: "Determine o tamanho ideal da sua amostra para pesquisas com margem de erro controlada.",
   },
 ];
 
 export function ToolsSection() {
+  const [selectedTool, setSelectedTool] = useState<number | null>(null);
+
   return (
     <section
       data-testid="section-tools"
@@ -98,7 +102,11 @@ export function ToolsSection() {
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 className="flex"
               >
-                <Card className="p-5 flex-1 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group">
+                <Card
+                  className="p-5 flex-1 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group"
+                  onClick={() => setSelectedTool(idx)}
+                  data-testid={`card-tool-${idx}`}
+                >
                   <div className="w-10 h-10 rounded-lg bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center mb-4 group-hover:bg-[#0A2E76] group-hover:border-[#0A2E76] transition-colors duration-300">
                     <tool.icon className="w-4 h-4 text-[#0A2E76] group-hover:text-white transition-colors duration-300" />
                   </div>
@@ -129,6 +137,11 @@ export function ToolsSection() {
           </motion.div>
         </div>
       </div>
+
+      <ToolModal
+        toolIndex={selectedTool}
+        onClose={() => setSelectedTool(null)}
+      />
     </section>
   );
 }
