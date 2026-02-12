@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { TrustSection } from "@/components/sections/trust-section";
 import { ToolsSection } from "@/components/sections/tools-section";
 import { HubSection } from "@/components/sections/hub-section";
+import { SupportSection } from "@/components/sections/support-section";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <TrustSection />
       <ToolsSection />
       <HubSection />
+      <SupportSection />
     </main>
   );
 }
