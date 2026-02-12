@@ -44,7 +44,7 @@ export function Header() {
                   className={`px-4 py-2 rounded-md text-body-sm font-medium transition-all duration-200 cursor-pointer ${
                     location === item.href
                       ? "text-white"
-                      : "text-white/60 hover:text-[#0065FF]"
+                      : "text-white hover:text-[#0065FF]"
                   }`}
                 >
                   {item.label}
@@ -57,7 +57,7 @@ export function Header() {
             <Link href="/entrar">
               <span
                 data-testid="button-login"
-                className="px-4 py-2 rounded-md text-body-sm font-medium text-white/60 transition-colors cursor-pointer hover:text-[#0065FF]"
+                className="px-4 py-2 rounded-md text-body-sm font-medium text-white transition-colors cursor-pointer hover:text-[#0065FF]"
               >
                 Entrar
               </span>

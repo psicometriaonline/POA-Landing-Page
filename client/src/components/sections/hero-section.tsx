@@ -32,10 +32,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-display-sm md:text-display text-white font-heading text-balance mb-6"
+            className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-6"
           >
             A plataforma completa para{" "}
-            <span className="text-white">
+            <span className="text-[#0065FF]">
               pesquisadores em Psicometria
             </span>
           </motion.h1>
