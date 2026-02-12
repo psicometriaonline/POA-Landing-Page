@@ -50,7 +50,7 @@ function highlightText(title: string, highlight: string) {
   const after = title.slice(index + highlight.length);
   return (
     <>
-      {before}<span className="text-[#00B8D4]">{match}</span>{after}
+      {before}<span className="text-[#0065FF]">{match}</span>{after}
     </>
   );
 }
@@ -72,7 +72,7 @@ export function ToolsSection() {
             className="text-heading-1 md:text-display-sm text-[#0A2E76] font-heading leading-[1.15]"
           >
             Resolva desafios da sua pesquisa com nossas ferramentas{" "}
-            <span className="text-[#00B8D4]">estatísticas.</span>
+            <span className="text-[#0065FF]">estatísticas.</span>
           </motion.h2>
 
           <motion.div

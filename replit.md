@@ -4,7 +4,7 @@
 Site institucional (landing page) para a plataforma Psicometria Online Academy (POA). A plataforma principal já existe em outro projeto Replit (POA - Member Area). Este projeto é a página de marketing/institucional.
 
 ## Design System
-- **Cores primárias:** Azul escuro (#003B7A / hsl 213 80% 25%), azul médio, cyan (#00B8D4)
+- **Cores primárias:** Azul escuro (#0A2E76), azul claro (#0065FF), fundo claro (#F4F5F7)
 - **Tipografia:** DM Sans (headings), Inter (corpo)
 - **Estilo visual:** Inspirado em Zoom, Trello, Monday - seções com alternância de cores (azul escuro, cinza claro, branco)
 - **Abordagem:** Construindo seção por seção com o usuário
