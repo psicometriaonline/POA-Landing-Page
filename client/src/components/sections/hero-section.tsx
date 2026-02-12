@@ -140,9 +140,10 @@ export function HeroSection() {
             >
               <button
                 onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+                className="absolute top-4 right-4 z-50 p-3 bg-white hover:bg-white/90 rounded-full text-[#0A2E76] shadow-xl transition-all hover:scale-110 active:scale-95 border border-[#E2E5EA]"
+                aria-label="Fechar vídeo"
               >
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 stroke-[2.5px]" />
               </button>
               
               <iframe
