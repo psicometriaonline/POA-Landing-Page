@@ -24,7 +24,7 @@ export function Header() {
       data-testid="header"
       className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-[hsl(213,80%,8%)] via-[hsl(213,80%,8%)]/90 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-full bg-[hsl(213,80%,8%)] pointer-events-none" />
       <div className="relative flex justify-center px-4 pt-4">
       <div className="w-full max-w-6xl bg-[hsl(213,80%,8%)]/95 backdrop-blur-md border border-[#0065FF]/30 rounded-full px-6 md:px-10 shadow-lg">
         <div className="flex items-center justify-between gap-4 h-16 md:h-[72px]">
