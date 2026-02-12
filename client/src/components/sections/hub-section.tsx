@@ -771,7 +771,7 @@ export function HubSection() {
                     })}
                   </div>
 
-                  <div className="mt-8 flex flex-wrap gap-3 justify-center">
+                  <div className="mt-8 flex flex-wrap gap-3">
                     <Button
                       size="lg"
                       data-testid="button-hub-start"
