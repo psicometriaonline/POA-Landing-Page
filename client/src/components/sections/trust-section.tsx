@@ -41,7 +41,7 @@ export function TrustSection() {
           {scrollItems.map((uni, idx) => (
             <div
               key={`${uni.name}-${idx}`}
-              className="flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-300"
+              className="flex-shrink-0 flex items-center justify-center"
             >
               <img
                 src={uni.logo}
