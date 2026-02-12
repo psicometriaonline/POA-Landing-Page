@@ -113,9 +113,17 @@ export function ToolsSection() {
                   <h3 className="text-[15px] font-bold text-[#0A2E76] font-heading mb-2 leading-snug">
                     {tool.title}
                   </h3>
-                  <p className="text-body-sm text-[hsl(215,15%,45%)] leading-relaxed">
+                  <p className="text-body-sm text-[hsl(215,15%,45%)] leading-relaxed mb-4">
                     {tool.description}
                   </p>
+                  <Button
+                    size="sm"
+                    className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold"
+                    data-testid={`button-tool-saiba-mais-${idx}`}
+                    onClick={(e) => { e.stopPropagation(); setSelectedTool(idx); }}
+                  >
+                    Saiba mais
+                  </Button>
                 </Card>
               </motion.div>
             ))}
