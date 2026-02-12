@@ -706,10 +706,10 @@ export function HubSection() {
                               <h5 className={`text-base font-heading font-semibold ${isOpen ? "text-white" : "text-[#0A2E76]"}`}>
                                 {sub.name}
                               </h5>
-                              <span className={`text-xs px-2 py-0.5 rounded-full ml-auto shrink-0 ${
-                                isOpen ? "bg-white/20 text-white" : "bg-[#E2E5EA] text-[hsl(215,15%,55%)]"
+                              <span className={`text-sm font-semibold ml-auto shrink-0 ${
+                                isOpen ? "text-white/80" : "text-[#0065FF]"
                               }`}>
-                                {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
+                                {isOpen ? "Fechar" : "Ver cursos"}
                               </span>
                             </button>
                           )}
