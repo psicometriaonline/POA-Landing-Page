@@ -41,7 +41,7 @@ const blocks: Block[] = [
     id: 1,
     name: "Ciclo da Autonomia",
     subtitle: "Construa as bases para a independência acadêmica",
-    description: "O ponto de partida ideal para quem está começando na pesquisa. Aqui você desenvolve as competências essenciais — desde estatística básica até escrita científica — e aprende a usar os gerenciadores de referências que vão acompanhar toda a sua trajetória acadêmica.",
+    description: "Domine os três pilares fundamentais da pesquisa científica: método, análise de dados e escrita científica.",
     icon: GraduationCap,
     totalCourses: 8,
     subcategories: [
@@ -149,7 +149,7 @@ const blocks: Block[] = [
     id: 2,
     name: "Aprofundamento Estratégico",
     subtitle: "Domine técnicas avançadas de análise e pesquisa",
-    description: "Para quem já domina o básico e quer ir além. Este bloco reúne o que há de mais robusto em Psicometria, modelagem estatística, revisões sistemáticas e análise textual — as competências que diferenciam um pesquisador de excelência.",
+    description: "Com os nossos cursos de aprofundamento estratégico, você passará a ser reconhecido como um expert na sua área específica de conhecimento.",
     icon: Brain,
     totalCourses: 16,
     subcategories: [
@@ -353,9 +353,90 @@ const blocks: Block[] = [
   },
   {
     id: 3,
-    name: "Inteligência Artificial Aplicada à Pesquisa",
+    name: "Análise de Dados com o R",
+    subtitle: "Domine a linguagem R para análise estatística",
+    description: "Uma formação inteira em R para você que deseja aprofundar ainda mais o seu conhecimento.",
+    icon: Code,
+    totalCourses: 6,
+    subcategories: [
+      {
+        name: "Do Básico ao Avançado em R",
+        courses: [
+          {
+            name: "R do Zero: Primeiros Passos",
+            description: "Comece a programar em R mesmo sem nenhuma experiência prévia em programação.",
+            syllabus: [
+              "Instalação do R e RStudio",
+              "Tipos de dados, vetores e data frames",
+              "Importação e exportação de dados",
+              "Funções básicas e operações com dados",
+              "Introdução ao tidyverse: dplyr e tidyr",
+            ],
+          },
+          {
+            name: "Visualização de Dados com ggplot2",
+            description: "Crie gráficos profissionais para publicação com o pacote ggplot2.",
+            syllabus: [
+              "Gramática dos gráficos: estéticas, geometrias e camadas",
+              "Gráficos de barras, dispersão, boxplot e histogramas",
+              "Personalização de temas, cores e rótulos",
+              "Gráficos para publicação científica",
+              "Exportação em alta resolução para artigos e apresentações",
+            ],
+          },
+          {
+            name: "Estatística Inferencial no R",
+            description: "Execute todas as principais análises inferenciais diretamente no R.",
+            syllabus: [
+              "Testes t, ANOVA e ANCOVA no R",
+              "Correlação de Pearson e Spearman",
+              "Regressão linear e múltipla",
+              "Testes não paramétricos: Wilcoxon, Kruskal-Wallis e Mann-Whitney",
+              "Tamanho de efeito e poder estatístico",
+            ],
+          },
+          {
+            name: "Psicometria com R: Pacotes Essenciais",
+            description: "Utilize os pacotes especializados em psicometria disponíveis no R.",
+            syllabus: [
+              "Pacote psych: análise fatorial e fidedignidade",
+              "Pacote lavaan: AFC e modelagem de equações estruturais",
+              "Pacote mirt: teoria de resposta ao item",
+              "Pacote semTools: invariância de medida",
+              "Pacote EGAnet: análise de redes e dimensionalidade",
+            ],
+          },
+          {
+            name: "R Markdown e Relatórios Reproduzíveis",
+            description: "Produza relatórios dinâmicos que integram código, análise e texto.",
+            syllabus: [
+              "Criação de documentos dinâmicos com R Markdown",
+              "Integração de código, resultados e texto",
+              "Formatação para PDF, HTML e Word",
+              "Automatização de relatórios de análise",
+              "Boas práticas de pesquisa reproduzível",
+            ],
+          },
+          {
+            name: "R Avançado: Programação Funcional e Automação",
+            description: "Leve suas habilidades em R ao próximo nível com programação funcional.",
+            syllabus: [
+              "Funções personalizadas e programação funcional com purrr",
+              "Loops e iterações eficientes",
+              "Web scraping e coleta automatizada de dados",
+              "Criação de pacotes R próprios",
+              "Integração com APIs e automação de fluxos de trabalho",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Inteligência Artificial Aplicada a Pesquisas Científicas",
     subtitle: "Use IA para acelerar sua pesquisa científica",
-    description: "A inteligência artificial está transformando a pesquisa. Neste bloco, você aprende a usar ferramentas de IA de forma ética e estratégica — da revisão de literatura à escrita científica, passando por análise qualitativa e automação de processos.",
+    description: "Aprenda procedimentos de análise de dados extremamente inovadores, para responder perguntas de pesquisa cada vez melhores e mais complexas.",
     icon: Sparkles,
     totalCourses: 7,
     subcategories: [
@@ -444,91 +525,10 @@ const blocks: Block[] = [
     ],
   },
   {
-    id: 4,
-    name: "Análise de Dados com o R",
-    subtitle: "Domine a linguagem R para análise estatística",
-    description: "O R é a ferramenta mais poderosa para análise de dados na pesquisa acadêmica. Neste bloco, você vai do zero absoluto à programação avançada, passando por visualização de dados, psicometria e relatórios reproduzíveis.",
-    icon: Code,
-    totalCourses: 6,
-    subcategories: [
-      {
-        name: "Do Básico ao Avançado em R",
-        courses: [
-          {
-            name: "R do Zero: Primeiros Passos",
-            description: "Comece a programar em R mesmo sem nenhuma experiência prévia em programação.",
-            syllabus: [
-              "Instalação do R e RStudio",
-              "Tipos de dados, vetores e data frames",
-              "Importação e exportação de dados",
-              "Funções básicas e operações com dados",
-              "Introdução ao tidyverse: dplyr e tidyr",
-            ],
-          },
-          {
-            name: "Visualização de Dados com ggplot2",
-            description: "Crie gráficos profissionais para publicação com o pacote ggplot2.",
-            syllabus: [
-              "Gramática dos gráficos: estéticas, geometrias e camadas",
-              "Gráficos de barras, dispersão, boxplot e histogramas",
-              "Personalização de temas, cores e rótulos",
-              "Gráficos para publicação científica",
-              "Exportação em alta resolução para artigos e apresentações",
-            ],
-          },
-          {
-            name: "Estatística Inferencial no R",
-            description: "Execute todas as principais análises inferenciais diretamente no R.",
-            syllabus: [
-              "Testes t, ANOVA e ANCOVA no R",
-              "Correlação de Pearson e Spearman",
-              "Regressão linear e múltipla",
-              "Testes não paramétricos: Wilcoxon, Kruskal-Wallis e Mann-Whitney",
-              "Tamanho de efeito e poder estatístico",
-            ],
-          },
-          {
-            name: "Psicometria com R: Pacotes Essenciais",
-            description: "Utilize os pacotes especializados em psicometria disponíveis no R.",
-            syllabus: [
-              "Pacote psych: análise fatorial e fidedignidade",
-              "Pacote lavaan: AFC e modelagem de equações estruturais",
-              "Pacote mirt: teoria de resposta ao item",
-              "Pacote semTools: invariância de medida",
-              "Pacote EGAnet: análise de redes e dimensionalidade",
-            ],
-          },
-          {
-            name: "R Markdown e Relatórios Reproduzíveis",
-            description: "Produza relatórios dinâmicos que integram código, análise e texto.",
-            syllabus: [
-              "Criação de documentos dinâmicos com R Markdown",
-              "Integração de código, resultados e texto",
-              "Formatação para PDF, HTML e Word",
-              "Automatização de relatórios de análise",
-              "Boas práticas de pesquisa reproduzível",
-            ],
-          },
-          {
-            name: "R Avançado: Programação Funcional e Automação",
-            description: "Leve suas habilidades em R ao próximo nível com programação funcional.",
-            syllabus: [
-              "Funções personalizadas e programação funcional com purrr",
-              "Loops e iterações eficientes",
-              "Web scraping e coleta automatizada de dados",
-              "Criação de pacotes R próprios",
-              "Integração com APIs e automação de fluxos de trabalho",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
     id: 5,
     name: "Desenvolvimento Profissional",
     subtitle: "Transforme conhecimento em carreira",
-    description: "Conhecimento técnico é essencial, mas saber como transformá-lo em oportunidades profissionais é o que faz a diferença. Aqui você aprende a viver de análise de dados e a se preparar para concursos acadêmicos.",
+    description: "Acesse formações profissionalizantes, seja para você que deseja seguir a carreira de professor-pesquisador ou você que quer se tornar consultor em Análise de Dados.",
     icon: Briefcase,
     totalCourses: 2,
     subcategories: [
