@@ -746,7 +746,7 @@ const blocks: Block[] = [
     totalCourses: 2,
     subcategories: [
       {
-        name: "Curso de Preparação para Concursos",
+        name: "Carreira Acadêmica e Mercado",
         courses: [
           {
             name: "Curso de Preparação para Concursos",
@@ -761,11 +761,6 @@ const blocks: Block[] = [
               "Preparação estratégica do Memorial",
             ],
           },
-        ],
-      },
-      {
-        name: "Viver de Análise de Dados",
-        courses: [
           {
             name: "Viver de Análise de Dados",
             description: "Aprenda a construir uma carreira sólida como consultor em análise de dados, da precificação ao crescimento.",
