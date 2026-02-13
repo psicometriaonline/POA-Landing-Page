@@ -1,0 +1,209 @@
+###Aprofundamento Estratégico 
+
+##Modelos Mistos e Hierárquicos
+
+#Modelos Lineares Generalizados (GLM)
+● O que são Modelos Generalizados?
+
+● Aplicações dos Modelos Generalizados
+
+● Vantagens em Relação às ANOVAS
+
+● Distribuições de Probabilidade: Variáveis Contínuas e Discretas
+
+● Funções de Ligação
+
+● Matrizes de covariância
+
+● Execução, Interpretação e Descrição dos resultados (GLM)
+
+#Equações de Estimativas Generalizadas (GEE)
+● O que são as Equações de Estimativas Generalizadas (GEE)?
+
+● Aplicações das Equações de Estimativas Generalizadas (GEE)
+
+● Vantagens em Relação às ANOVAS
+
+● Distribuições de Probabilidade: Variáveis Contínuas e Discretas
+
+● Funções de Ligação
+
+● Matrizes de covariância
+
+● Execução, Interpretação e Descrição dos resultados (GEE)
+
+#Modelos Multinível
+● Introdução às Análises Multinível
+
+● Regressões lineares multinível
+
+● Regressões logísticas multinível 
+
+● Análises práticas (R, JASP e Mplus)
+
+● Descrevendo os resultados
+
+#Análise de Mediação e Moderação
+● Introdução à Análises de Moderação e Mediação
+
+● Diferenças entre Mediação e Moderação
+
+● Realizando uma análise de Mediação
+
+● Realizando uma análise de Moderação
+
+● Descrevendo os resultados
+
+###Aprofundamento Estratégico
+##Revisões da Literatura e Metanálise
+#Revisões da Literatura (Revisão Narrativa, Revisão de Escopo e Revisão Sistemática)
+
+● Tipos de revisões da literatura
+
+● Revisão Sistemática
+
+● Scoping Review
+
+● Revisão Narrativa
+
+● Comparando os diferentes tipos de Revisões
+
+● Delineamento de questões de pesquisa
+
+● Objetivos da Revisão Narrativa
+
+● Objetivos da Revisão de Escopo
+
+● Objetivos da Revisão Sistemática
+
+● Perguntas de pesquisa dos diferentes tipos de revisão
+
+● Identificação e seleção da literatura relevante
+
+● Estratégias de Buscas
+
+● Buscas nas bases de dados
+
+● Seleção da literatura relevante
+
+● Análises de concordância
+
+● Avaliação do risco de viés
+
+● Extração e síntese dos dados
+
+● Registro no PROSPERO
+
+● Registro no OSF
+
+● Publicação dos Protocolos de Revisão
+
+● Protocolo PRISMA
+
+● Redação de artigos de revisão
+
+
+#Metanálise
+● Introdução à metanálise;
+
+● Modelo de efeito fixo;
+
+● Heterogeneidade
+
+● Modelo de efeitos aleatórios
+
+● Modelo de Efeito Fixo vs Modelo de Efeitos Aleatórios
+
+● Heterogeneidade na metanálise 
+
+● Análise de subgrupos
+
+● Robustez da medida metanalítica (Análise de sensibilidade);
+
+● Avaliação do viés de publicação na metanálise (funnel plot; teste de Egger; teste de Begg)
+
+● Ajustando o viés de publicação usando o método de Trim-and-Fill
+
+##Analise de Dados Textuais
+#IRAMUTEQ
+● Introdução ao IRAMUTEQ
+
+● Configuração do Corpus textuais
+
+● Nuvem de palavras
+
+● Análises de similitude
+
+● Análises de especificidades
+
+● Análise Fatorial por Correspondência
+
+● Classificação Hierárquica Descendente
+
+
+##Estudos Epidemiológicos e Populacionais
+#Análise de Dados de Estudos Epidemiológicos
+● Regressão de Poisson Simples
+
+● Modelo superdisperso
+
+● Regressão binomial negativa 
+
+● Regressão de Poisson Robusta  
+
+● Análises de Sobrevida (Survival Analyses)
+
+● Tábua de sobrevida 
+
+● Teste log-rank 
+
+● Regressão de Cox Simples
+
+● Regressão de Cox Multivariada
+
+
+#Séries Temporais
+● Introdução a Séries Temporais
+
+● Instalando o Joinpoint
+
+● Análise de taxa e indicadores
+
+● Análise de taxa e indicadores (Interpretação)
+
+● Análise de taxas e indicadores por categorias
+
+● Interpretação Análise por categorias
+
+● Análise ajustada por idade
+
+● Análise ajustada por idade (usando by)
+
+● Descrição dos resultados
+
+#Pesquisa com Dados Abertos
+● Introdução à Pesquisa com dados secundários
+
+● DATASUS – Tabwin
+
+● Descomprimindo arquivos DBC via Tabwin e R
+
+● Realizando pesquisa com dados individuados (Processamento e análise)
+
+● DATASUS – Dados agregados via Tabwin e Tabnet
+
+● Atlas Brasil – Censo demográfico e Desenvolvimento humano
+
+● INEP – Dados educacionais
+
+● IPEA – Dados econômicos
+
+● INMET – Clima e tempo
+
+● IBGE e Portal brasileiro de dados abertos
+
+● Criando um banco para estudos de séries temporais
+
+● Criando banco de dados para estudos correlacionais
+
+● Processamento e análise de dados agregados em SPSS
