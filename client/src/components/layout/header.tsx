@@ -8,6 +8,7 @@ import logoPath from "@assets/image_1770909567089.png";
 const navItems = [
   { label: "Ferramentas", href: "/ferramentas" },
   { label: "Cursos", href: "/cursos" },
+  { label: "Suporte", href: "/suporte" },
   { label: "Planos", href: "/planos" },
 ];
 
