@@ -56,9 +56,7 @@ export function SupportSection() {
             className="text-body-lg text-[hsl(215,15%,45%)] max-w-3xl mx-auto leading-relaxed"
             data-testid="text-support-subtitle"
           >
-            Eu tenho duas certezas na vida.{" "}
-            <span className="font-bold text-[#0A2E76]">Primeiro:</span> Você vai aprender muito conosco.{" "}
-            <span className="font-bold text-[#0A2E76]">Segundo:</span> Você vai ter dúvidas no meio do caminho. É exatamente por isso que você pode tirar suas dúvidas através de 4 canais diferentes.
+            Você vai aprender muito conosco, mas terá dúvidas no meio do caminho. Por isso, oferecemos acesso a <span className="font-bold text-[#0A2E76]">quatro (4) canais de suporte</span>.
           </p>
         </motion.div>
 
