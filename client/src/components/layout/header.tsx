@@ -10,6 +10,7 @@ const navItems = [
   { label: "Cursos", href: "/cursos" },
   { label: "Suporte", href: "/suporte" },
   { label: "Planos", href: "/planos" },
+  { label: "Sobre Nós", href: "/sobre" },
 ];
 
 export function Header() {
