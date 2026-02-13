@@ -1,0 +1,70 @@
+###Inteligência Artificial Aplicada a Pesquisas Científicas
+##Machine Learning Aplicado à Pesquisa Científica
+O que é Machine Learning
+Machine Learning e Psicometria
+Como a Máquina Aprende
+Machine Learning Supervisionado
+Machine Learning Não-Supervisionado
+Selecionando Algoritmos e Métodos
+JASP (Clustering)
+JASP (Classificação)
+JASP (Regressão)
+Conhecendo o software ORANGE
+Aula Bônus: IA na Avaliação Psicológica
+Aula Bônus: Livros recomendados
+Aula Bônus: O futuro da IA na sociedade
+Aula Bônus: Estudos de caso (Pesquisas científicas)
+
+#Processamento de Linguagem Natural
+Introdução à Processamento de Linguagem Natural
+Preparação do seu banco de dados
+Codificando palavras no PLN: Teoria e Prática
+Visual Analytics de Palavras: Teoria e Prática
+Codificando frases no PLN: Teoria e Prática
+Trabalhando com “Menções”: Teoria e Prática
+Codificando “Assuntos”: Teoria e Prática
+Codificando “Sentimentos”: Teoria e Prática
+
+#Probabilistic Graph Models
+Definição de PGMs
+Constituintes de um PGM
+Criação de uma PGM
+Tipologia de uma PGM
+Realizando uma PGM no R
+PGMs versus MEE
+
+
+#Redes Neurais Artificiais
+Introdução a Deep Learning
+Avaliando Deep Learning
+Redes Neurais (SPSS): Teoria e Prática
+Estudos de Caso (Pesquisa Científica)
+
+###Desenvolvimento Profissional
+
+##Curso de Preparação para Concursos
+#Curso de Preparação para Concursos
+Entendendo em profundidade o Edital do Concurso
+Avaliando as especificidades do Instituto
+Conhecendo a banca
+Descobrindo o perfil do candidato ideal
+Preparação estratégica da Prova Escrita
+Preparação estratégica da Prova de Aula
+Preparação estratégica do Memorial
+
+
+##Viver de Análise de Dados
+#Viver de Análise de Dados
+Por que se tornar um consultor em análise de dados
+Quem pode prestar consultoria em análise de dados
+Quando começar (aspectos subjetivos)
+Quando começar (aspectos objetivos)
+Como e para quem divulgar
+Como cobrar (Estimando o valor do seu trabalho)
+Como cobrar (estimando a demanda do cliente)
+Escrita do Relatório e Devolutiva
+Consultoria com dados problemáticos
+Consultoria para Pessoa Jurídica
+Consultoria com CPF ou CNPJ
+Consultoria e Dedicação Exclusiva
+Escala e Crescimento
