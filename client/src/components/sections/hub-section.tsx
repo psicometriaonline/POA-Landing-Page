@@ -204,7 +204,7 @@ const blocks: Block[] = [
     id: 2,
     name: "Aprofundamento Estratégico",
     subtitle: "Domine técnicas avançadas de análise e pesquisa",
-    description: "Com os nossos cursos de aprofundamento estratégico, você passará a ser reconhecido como um expert na sua área específica de conhecimento.",
+    description: "Passe a ser reconhecido como um expert na sua área específica de conhecimento.",
     icon: Brain,
     totalCourses: 19,
     subcategories: [
@@ -670,7 +670,7 @@ const blocks: Block[] = [
     id: 4,
     name: "Inteligência Artificial Aplicada a Pesquisas Científicas",
     subtitle: "Use IA para acelerar sua pesquisa científica",
-    description: "Aprenda procedimentos de análise de dados extremamente inovadores, para responder perguntas de pesquisa cada vez melhores e mais complexas.",
+    description: "Aprenda vários procedimentos de Machine Learning aplicados à pesquisa científica.",
     icon: Sparkles,
     totalCourses: 4,
     subcategories: [
@@ -741,7 +741,7 @@ const blocks: Block[] = [
     id: 5,
     name: "Desenvolvimento Profissional",
     subtitle: "Transforme conhecimento em carreira",
-    description: "Acesse formações profissionalizantes, seja para você que deseja seguir a carreira de professor-pesquisador ou você que quer se tornar consultor em Análise de Dados.",
+    description: "Cursos específicos para quem deseja seguir a carreira de professor concursado ou se tornar consultor em Análise de Dados.",
     icon: Briefcase,
     totalCourses: 2,
     subcategories: [
