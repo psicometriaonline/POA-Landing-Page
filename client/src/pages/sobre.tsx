@@ -13,11 +13,11 @@ import prof8 from "@assets/professor-8.jpg";
 import prof9 from "@assets/professor-9.jpg";
 import prof10 from "@assets/professor-10.jpg";
 import prof11 from "@assets/professor-11.jpg";
-import prof12 from "@assets/professor-12.jpg";
 
 interface Professor {
   id: number;
   name: string;
+  institution: string;
   role: string;
   bio: string;
   photo: string;
@@ -26,87 +26,91 @@ interface Professor {
 const professors: Professor[] = [
   {
     id: 1,
-    name: "Lucas Mendes",
-    role: "Psicometria Clássica",
-    bio: "Doutor em Psicologia pela USP, com especialização em Teoria Clássica dos Testes. Atua há mais de 10 anos no desenvolvimento e validação de instrumentos psicológicos para o contexto brasileiro.",
+    name: "Me. Douglas de Farias Dutra",
+    institution: "Psicometria Online Academy",
+    role: "Análise de Dados com o R",
+    bio: "Professor do Curso de Análise de Dados com o R",
     photo: prof1,
   },
   {
     id: 2,
-    name: "Mariana Costa",
-    role: "Análise Fatorial",
-    bio: "Mestre e Doutora em Psicologia pela UFMG, com foco em análise fatorial exploratória e confirmatória. Pesquisadora com ampla experiência em modelagem de equações estruturais.",
+    name: "Dr. Alex Bacadini França",
+    institution: "Psicometria Online Academy",
+    role: "Análise de Redes",
+    bio: "Professor do Curso de Análise de Redes: Teoria e Prática",
     photo: prof2,
   },
   {
     id: 3,
-    name: "Roberto Almeida",
-    role: "Teoria de Resposta ao Item",
-    bio: "Professor Doutor com pós-doutorado em TRI pela Universidade de Amsterdam. Especialista em modelos de Rasch e calibração de itens para avaliações de larga escala.",
+    name: "Dra. Érica Ikegami",
+    institution: "Psicometria Online Academy",
+    role: "Zotero",
+    bio: "Professora do Curso de Zotero",
     photo: prof3,
   },
   {
     id: 4,
-    name: "Camila Ferreira",
-    role: "Estatística Aplicada",
-    bio: "Doutora em Estatística pela UNICAMP, com foco em métodos quantitativos aplicados às ciências sociais. Experiência em consultoria estatística para pesquisas acadêmicas.",
+    name: "Dr. Vinicius Coscioni",
+    institution: "Utrecht University",
+    role: "Metodologia e Revisões da Literatura",
+    bio: "Professor do Curso de Metodologia e Revisões da Literatura",
     photo: prof4,
   },
   {
     id: 5,
-    name: "André Oliveira",
-    role: "Análise de Dados com R",
-    bio: "Mestre em Ciência de Dados pela PUC-Rio. Especialista em programação em R e Python para análises psicométricas, com foco em automação de relatórios e visualização de dados.",
+    name: "Dr. Nelson Carvas Junior",
+    institution: "UNIFESP (Cochrane)",
+    role: "Metanálise",
+    bio: "Professor do Curso de Metanálise",
     photo: prof5,
   },
   {
     id: 6,
-    name: "Juliana Santos",
-    role: "Avaliação Psicológica",
-    bio: "Doutora em Avaliação Psicológica pela UnB. Membro do SATEPSI e especialista em construção, adaptação e validação de testes psicológicos no contexto clínico e organizacional.",
+    name: "Dr. Leonardo Mose",
+    institution: "Universidade São Francisco",
+    role: "Multinível e Controle de Vieses de Resposta",
+    bio: "Professor do Curso de Multinível e Controle de Vieses de Resposta",
     photo: prof6,
   },
   {
     id: 7,
-    name: "Felipe Rocha",
-    role: "Machine Learning",
-    bio: "Doutor em Inteligência Artificial pela COPPE/UFRJ. Pesquisador com foco na aplicação de técnicas de machine learning e IA para análise de dados comportamentais e psicométricos.",
+    name: "Dra. Thayane Woellner Sviercoski Manosso",
+    institution: "Universidade Federal de Santa Maria",
+    role: "Mendeley e EndNote",
+    bio: "Professora do Curso de Mendeley e EndNote",
     photo: prof7,
   },
   {
     id: 8,
-    name: "Isabela Lima",
-    role: "Metodologia de Pesquisa",
-    bio: "Doutora em Metodologia de Pesquisa pela UFSC. Especialista em delineamentos experimentais, meta-análise e revisão sistemática aplicados à Psicologia.",
+    name: "Dr. George Jó Bezerra Sousa",
+    institution: "Psicometria Online Academy",
+    role: "Análise de Dados para Estudos Epidemiológicos",
+    bio: "Professor do Curso de Análise de Dados para Estudos Epidemiológicos",
     photo: prof8,
   },
   {
     id: 9,
-    name: "Patrícia Duarte",
-    role: "Psicologia Positiva",
-    bio: "Pós-Doutora em Psicologia Positiva pela University of Pennsylvania. Pesquisadora com foco em bem-estar subjetivo, forças de caráter e florescimento humano.",
+    name: "Dra. Gisele Magarotto",
+    institution: "Universidade São Francisco",
+    role: "Análise de Perfis e Classes Latentes",
+    bio: "Professora do Curso de Análise de Classes e Perfis Latentes (LCA/LPA)",
     photo: prof9,
   },
   {
     id: 10,
-    name: "Thiago Nascimento",
-    role: "Análise Multinível",
-    bio: "Doutor em Psicologia Social pela UERJ. Especialista em modelagem multinível e análise de dados longitudinais aplicados ao contexto organizacional e educacional.",
+    name: "Dr. Marcio Braga de Melo",
+    institution: "Universidade Federal do Ceará",
+    role: "GLM e Equações de Estimativas Generalizadas",
+    bio: "Professor do Curso de Modelo Linear Generalizado e Equações de Estimativas Generalizadas",
     photo: prof10,
   },
   {
     id: 11,
-    name: "Carolina Vieira",
-    role: "Neuropsicometria",
-    bio: "Doutora em Neurociência pela UFRGS. Pesquisadora com foco na interface entre neurociência cognitiva e psicometria, desenvolvendo instrumentos de avaliação neuropsicológica.",
+    name: "Dr. Ícaro Moreira Costa",
+    institution: "Universidade de Fortaleza",
+    role: "IRAMUTEQ",
+    bio: "Professor do Curso de IRAMUTEQ",
     photo: prof11,
-  },
-  {
-    id: 12,
-    name: "Ricardo Martins",
-    role: "Análise Bayesiana",
-    bio: "Pós-Doutor em Estatística Bayesiana pela University of Cambridge. Especialista em modelos bayesianos aplicados à psicometria e estimação de parâmetros em amostras reduzidas.",
-    photo: prof12,
   },
 ];
 
@@ -129,8 +133,8 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
         />
       </div>
       <h3 className="text-base font-heading font-bold text-[#0A2E76]">{professor.name}</h3>
-      <p className="text-sm text-[#0065FF] font-medium mt-0.5">{professor.role}</p>
-      <p className="text-sm text-[hsl(215,15%,45%)] mt-1.5 leading-relaxed line-clamp-2">{professor.bio}</p>
+      <p className="text-sm text-[hsl(215,15%,45%)] mt-0.5">{professor.institution}</p>
+      <p className="text-sm text-[#0065FF] font-medium mt-1">{professor.bio}</p>
     </motion.div>
   );
 }
@@ -179,8 +183,8 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
           >
             {professor.name}
           </h3>
-          <p className="text-sm font-semibold text-[#0065FF] mb-5">{professor.role}</p>
-          <p className="text-body-md text-[hsl(215,15%,35%)] leading-relaxed">{professor.bio}</p>
+          <p className="text-sm text-[hsl(215,15%,45%)] mb-1">{professor.institution}</p>
+          <p className="text-sm font-semibold text-[#0065FF] mb-5">{professor.bio}</p>
         </div>
       </motion.div>
     </motion.div>
