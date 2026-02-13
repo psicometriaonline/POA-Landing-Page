@@ -167,7 +167,7 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3 }}
-        className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col sm:flex-row"
+        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
         data-testid={`modal-professor-${professor.id}`}
       >
@@ -179,17 +179,17 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
           <X className="w-4 h-4" />
         </button>
 
-        <div className="sm:w-2/5 flex-shrink-0">
-          <div className="aspect-[3/4] sm:h-full">
+        <div className="p-6 pb-0 flex justify-center">
+          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#F4F5F7] shadow-lg flex-shrink-0">
             <img
               src={professor.photo}
               alt={professor.name}
-              className="w-full h-full object-cover rounded-t-2xl sm:rounded-t-none sm:rounded-l-2xl"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
 
-        <div className="p-6 sm:p-8 flex flex-col justify-center sm:w-3/5 overflow-y-auto max-h-[60vh] sm:max-h-none">
+        <div className="p-6 pt-4 text-center">
           <h3
             className="text-xl font-heading font-bold text-[#0A2E76] mb-1"
             data-testid="text-modal-professor-name"
@@ -198,7 +198,7 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
           </h3>
           <p className="text-sm text-[hsl(215,15%,45%)] mb-1">{professor.institution}</p>
           <p className="text-sm font-semibold text-[#0065FF] mb-4">{professor.role}</p>
-          <p className="text-sm text-[hsl(215,15%,35%)] leading-relaxed mb-6">{professor.bio}</p>
+          <p className="text-sm text-[hsl(215,15%,35%)] leading-relaxed text-left mb-6">{professor.bio}</p>
           <a
             href="https://psicometriaonline.com.br/academy/"
             target="_blank"
