@@ -957,9 +957,10 @@ export function HubSection() {
                               >
                                 <div className={`space-y-2 ${hasMultipleSubcategories ? "pt-3" : ""}`}>
                                   {sub.courses.map((course, courseIdx) => (
-                                    <div
+                                    <button
                                       key={course.name}
-                                      className="bg-white rounded-lg px-5 py-4 flex items-start justify-between gap-4"
+                                      onClick={() => setSyllabusModal(course)}
+                                      className="w-full text-left bg-white rounded-lg px-5 py-4 flex items-start justify-between gap-4 transition-colors duration-150 hover:bg-[#F0F4FF] cursor-pointer group"
                                       data-testid={`course-item-${currentBlock.id}-${subIdx}-${courseIdx}`}
                                     >
                                       <div className="flex items-start gap-3 min-w-0">
@@ -975,14 +976,13 @@ export function HubSection() {
                                           </p>
                                         </div>
                                       </div>
-                                      <button
-                                        onClick={() => setSyllabusModal(course)}
-                                        className="text-sm font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1"
+                                      <span
+                                        className="text-sm font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1 bg-[#E8F0FE] px-3 py-1 rounded-md group-hover:bg-[#0065FF] group-hover:text-white transition-colors duration-150"
                                         data-testid={`button-syllabus-${currentBlock.id}-${subIdx}-${courseIdx}`}
                                       >
                                         Ver ementa
-                                      </button>
-                                    </div>
+                                      </span>
+                                    </button>
                                   ))}
                                 </div>
                               </motion.div>
