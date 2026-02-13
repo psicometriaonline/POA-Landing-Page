@@ -26,8 +26,7 @@ export function CertificateSection() {
               className="text-body-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
               data-testid="text-certificate-subtitle"
             >
-              A dedicação que você vai ter na nossa plataforma{" "}
-              <span className="font-bold text-white">pode e deve ser comprovada.</span>
+              A dedicação que você vai ter na nossa plataforma <span className="font-bold text-white">pode e deve ser comprovada.</span>
             </p>
           </motion.div>
           <motion.div
