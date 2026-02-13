@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Award } from "lucide-react";
 import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
 
 export function CertificateSection() {
@@ -37,6 +38,14 @@ export function CertificateSection() {
             className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
           >
             <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-lg bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0">
+                  <Award className="w-5 h-5 text-[#0065FF]" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-[#0A2E76]">
+                  Currículo potencializado
+                </h3>
+              </div>
               <p className="text-body-lg text-[hsl(215,15%,35%)] leading-relaxed mb-6">
                 Você recebe certificados em{" "}
                 <span className="underline decoration-[#0065FF] underline-offset-4 font-semibold text-[#0A2E76]">
