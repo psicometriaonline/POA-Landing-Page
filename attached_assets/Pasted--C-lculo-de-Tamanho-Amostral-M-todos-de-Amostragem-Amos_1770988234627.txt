@@ -1,0 +1,137 @@
+#Cálculo de Tamanho Amostral
+● Métodos de Amostragem
+
+● Amostragem probabilística
+
+● Amostragem não-probabilística
+
+● Representatividade e poder estatístico 
+
+● Revisão de Estatística Inferencial
+
+● Tamanhos de efeito
+
+● Tipos de análise de poder
+
+● Cálculo de Tamanho de Efeito: Correlação
+
+● Cálculo de Tamanho de Efeito: Teste t independente
+
+● Cálculo de Tamanho de Efeito: Teste t dependente
+
+● Cálculo de Tamanho de Efeito: ANOVA simples
+
+● Cálculo de Tamanho de Efeito: ANCOVA
+
+● Cálculo de Tamanho de Efeito: ANOVA Fatorial
+
+● Cálculo de Tamanho de Efeito: ANOVA de Medidas Repetidas
+
+● Cálculo de Tamanho de Efeito: Regressão Linear (Simples e Múltipla)
+
+● Cálculo de Tamanho de Efeito: Regressão Logística
+
+● E muito mais…
+
+
+
+
+#Zotero
+
+● Introdução ao Zotero
+
+● Comparação com outros gerenciadores de referências
+
+● Conhecendo Zotero Desktop
+
+● Criação de biblioteca, coleção e subcoleção
+
+● Adicionando Itens no Zotero Desktop
+
+● Painéis (biblioteca, itens e metadados)
+
+● Busca de itens
+
+● Uso do Zotero no Editor de Textos
+
+● Site do Zotero (Documentação, Fórum, Colaboração e Emprego)
+
+● Criação e gerenciamento de grupos
+
+● Zoterobib
+
+● Fichamentos de artigos no Zotero
+
+● Uso do Zotero para condução de Revisões da Literatura
+
+● Protegendo seus arquivos
+
+
+
+#Mendeley
+● Introdução ao Mendeley
+
+● Formatos de bibliotecas
+
+● Estilos de Citação de Referências
+
+● Mendeley Online (MRM)
+
+● Busca online no Mendeley
+
+● Biblioteca Mendeley: Caderno, Informações e Notas
+
+● Ferramenta de Edição de PDF
+
+● Preferências e Organização da Biblioteca
+
+● Inserir leituras na sua biblioteca
+
+● Coleções de leituras (Pastas)
+
+● Grupos de Estudo (compartilhamento de leituras)
+
+● Mendeley Reference Manager (MRM) Desktop
+
+● Mendeley Web Importer para navegadores
+
+● Mendeley Cite para Word
+
+● Mendeley Cite: Estilos de citação
+
+● Mendeley Desktop
+
+● Mendeley Citation Style Language Editor
+
+● Editando Estilos de Citação com o CSL
+
+● Layout e Citações pelo plug-in Mendeley no Word
+
+● Estilos de Citação no plug-in do Word
+
+
+#EndNote
+● Introdução ao EndNote
+
+● Conceitos básicos
+
+● Formatos de Bibliotecas
+
+● Estilos de Citação
+
+● EndNote Web
+
+● Criando, inserindo e gerenciando referencias online
+
+● Master Journal List (Encontre o periódico ideal)
+
+● EndNote Cite
+
+● Inserindo citações
+
+● Formatando, covertendo e exportando citações
+
+● EndNote Click
+
+● EndNote Versões IOS e EndNote 20
+
