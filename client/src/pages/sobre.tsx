@@ -198,7 +198,17 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
           </h3>
           <p className="text-sm text-[hsl(215,15%,45%)] mb-1">{professor.institution}</p>
           <p className="text-sm font-semibold text-[#0065FF] mb-4">{professor.role}</p>
-          <p className="text-sm text-[hsl(215,15%,35%)] leading-relaxed text-left mb-6">{professor.bio}</p>
+          {(() => {
+            const parts = professor.bio.split(/(Na Academy,.*$)/);
+            return (
+              <>
+                <p className="text-sm text-[hsl(215,15%,35%)] leading-relaxed text-left mb-4">{parts[0].trim()}</p>
+                {parts[1] && (
+                  <p className="text-sm font-semibold text-[#0065FF] text-left mb-6">{parts[1].trim()}</p>
+                )}
+              </>
+            );
+          })()}
           <a
             href="https://psicometriaonline.com.br/academy/"
             target="_blank"
