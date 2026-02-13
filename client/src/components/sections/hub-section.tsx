@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -796,6 +796,7 @@ export function HubSection() {
   const [activeBlock, setActiveBlock] = useState(0);
   const [syllabusModal, setSyllabusModal] = useState<Course | null>(null);
   const [openSubcategory, setOpenSubcategory] = useState(0);
+  const contentPanelRef = useRef<HTMLDivElement>(null);
   const currentBlock = blocks[activeBlock];
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
@@ -862,7 +863,17 @@ export function HubSection() {
               {blocks.map((block, idx) => (
                 <button
                   key={block.id}
-                  onClick={() => { setActiveBlock(idx); setOpenSubcategory(0); }}
+                  onClick={() => {
+                    setActiveBlock(idx);
+                    setOpenSubcategory(0);
+                    if (contentPanelRef.current) {
+                      const rect = contentPanelRef.current.getBoundingClientRect();
+                      if (rect.top < 90) {
+                        contentPanelRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+                        window.scrollBy({ top: -100, behavior: "smooth" });
+                      }
+                    }
+                  }}
                   className={`w-full text-left px-5 py-4 rounded-lg transition-all duration-200 ${
                     activeBlock === idx
                       ? "bg-[#0A2E76] shadow-lg"
@@ -888,7 +899,7 @@ export function HubSection() {
               ))}
             </div>
 
-            <div className="bg-[#F4F5F7] rounded-2xl p-6 md:p-8 min-h-[500px] lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-110px)] lg:overflow-y-auto">
+            <div ref={contentPanelRef} className="bg-[#F4F5F7] rounded-2xl p-6 md:p-8 min-h-[500px] lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-110px)] lg:overflow-y-auto">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentBlock.id}
