@@ -25,7 +25,7 @@ const channels = [
     icon: Video,
     title: "Encontros semanais ao vivo no Zoom",
     description:
-      "Ficou com uma dúvida na aula que está assistindo? Basta comentar abaixo. Todas as perguntas são respondidas.",
+      "Toda semana, encontro ao vivo para tirar suas dúvidas específicas com a nossa equipe.",
   },
 ];
 
