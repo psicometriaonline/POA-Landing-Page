@@ -35,7 +35,7 @@ export function CertificateSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-5 md:p-7 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"
+            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg px-5 py-3 md:px-7 md:py-4 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-5">
