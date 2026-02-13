@@ -3,17 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import founderPhoto from "@assets/image_1770946309483.png";
-import prof1 from "@assets/professor-1.jpg";
-import prof2 from "@assets/professor-2.jpg";
-import prof3 from "@assets/professor-3.jpg";
-import prof4 from "@assets/professor-4.jpg";
-import prof5 from "@assets/professor-5.jpg";
-import prof6 from "@assets/professor-6.jpg";
-import prof7 from "@assets/professor-7.jpg";
-import prof8 from "@assets/professor-8.jpg";
-import prof9 from "@assets/professor-9.jpg";
-import prof10 from "@assets/professor-10.jpg";
-import prof11 from "@assets/professor-11.jpg";
+import prof1 from "@assets/Douglas_1771008596697.jpg";
+import prof2 from "@assets/Alex_França_1771008596696.jpg";
+import prof3 from "@assets/Érica_Midori_Ikegami_1771008596699.jpg";
+import prof4 from "@assets/Vinicius_Coscioni_1771008596701.jpeg";
+import prof5 from "@assets/Nelson_Carvas_Junior_1771008596706.jpeg";
+import prof6 from "@assets/Leonardo_Mose_1771008596708.jpeg";
+import prof7 from "@assets/Thayane_1771008596707.jpeg";
+import prof8 from "@assets/George_Jó_Sousa_1771008596702.jpg";
+import prof9 from "@assets/Gisele_Magarotto_Machado_1771008596703.jpg";
+import prof10 from "@assets/Marcio_Braga_de_Melo_1771008596710.gif";
+import prof11 from "@assets/Icaro_Moreira_Costa_1771008596705.jpg";
 
 interface Professor {
   id: number;
