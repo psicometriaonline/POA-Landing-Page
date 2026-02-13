@@ -888,7 +888,7 @@ export function HubSection() {
               ))}
             </div>
 
-            <div className="bg-[#F4F5F7] rounded-2xl p-6 md:p-8 min-h-[500px]">
+            <div className="bg-[#F4F5F7] rounded-2xl p-6 md:p-8 min-h-[500px] lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-110px)] lg:overflow-y-auto">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentBlock.id}
