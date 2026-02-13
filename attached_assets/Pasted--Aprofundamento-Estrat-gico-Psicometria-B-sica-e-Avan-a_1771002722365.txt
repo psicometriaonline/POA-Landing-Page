@@ -1,0 +1,358 @@
+### Aprofundamento Estratégico
+## Psicometria Básica e Avançada
+#Construção, Adaptação & Validação de Instrumentos
+● Introdução à construção de medidas
+
+● Revisão da literatura (aspectos constitutivos e operacionais dos itens)
+
+● Construção dos itens
+
+● Dificuldade dos itens
+
+● Etapas da avaliação por experts e população alvo
+
+● Medidas de concordância (IVC, RVC, CVC)
+
+● Etapas de Adaptação Transcultural de Instrumentos
+
+● Validade de conteúdo
+
+● Validade baseada na estrutura interna
+
+● Validade baseada na relação com medidas externas
+
+● Validade baseada no processo de resposta
+
+● Validade consequencial
+
+  
+#Análise Fatorial Exploratória e Confirmatória
+● Teoria e Prática de Análises Fatoriais Exploratórias e Análises Fatoriais Confirmatórias 
+
+● Modelos unifatorial
+
+● Modelos multifatorial
+
+● Modelos de segunda-ordem
+
+● Modelos bi-factor
+
+● Análises Fatoriais Confirmatórias Multigrupo
+#Modelagem por Equações Estruturais
+● Aspectos teóricos da MEE
+
+● Símbolos e terminologias
+
+● Conceitos de Graus de liberdade
+
+● Índices de ajuste
+
+● Índices de modificação
+
+● Métodos de Estimação
+
+● Execução prática de Modelagem por Equações Estruturais Completa
+#Teoria de Resposta ao Item (TRI)
+ Introdução à Teoria de Resposta ao Item
+
+● Teoria Clássica dos testes versus Teoria de Resposta ao Item
+
+● TRI 1-parâmetro logístico (1-PL)
+
+● TRI 2-parâmetros logísticos (2-PL)
+
+● TRI 3-parâmetros logísticos (3-PL)
+
+● TRI 4-parâmetros logísticos (4-PL)
+
+● Curva Característica e de informação do Item (CCI e CII)
+
+● Funcionamento diferencial do item (DIF)
+
+● Modelo Rasch (dados dicotômicos e politômicos)
+
+● Medidas de Ajuste
+
+● Confiabilidade item-pessoa
+
+● Infit e Outfit
+
+● Avaliação de Thresholds
+#Análise de Redes: Teoria e Prática
+ Teoria da Análise de Redes
+
+● Terminologias e Conceitos 
+
+● Estimação e Seleção do Modelo
+
+● Descrição da Rede 
+
+● Tamanho Amostral 
+
+● Precisão das Arestas 
+
+● Estabilidade das Redes
+
+● Aulas práticas (R e JASP)
+
+● Exploratory Graph Analysis (Teoria e Prática)
+
+● Análise de Redes Multigrupo (Network Comparison Test; NCT - Teoria e Prática)
+
+#Análise de Classes e Perfis Latentes (LCA/LPA)
+ O que é Análise de Classes Latentes (LCA) 
+
+● O que é Análise de Perfis Latentes (LPA)
+
+● Aplicações dos Modelos de LPA/LCA 
+
+● Pressupostos e pré-requisitos para implementação da LCA/LPA 
+
+● Decidindo o número de classes e perfis latentes 
+
+● LCA e LPA na prática (JAMOVI e R)
+
+● Interpretando os resultados de uma LCA/LPA
+
+● Reportando os resultados 
+
+● Utilizando os resultados de uma LCA/LPA em análises subsequentes
+
+● Controlando vieses nas análises de LCA/LPA
+
+● Introdução ao tidySEM
+
+#Controle de Aquiescência
+● Introdução ao Vieses de Resposta
+
+● Introdução à Aquiescência
+
+● Calculando os Escores
+
+● Modelo de Interceptos Randômicos
+
+● Modelo de Interceptos Randômicos (TRI – Multidimensional)
+
+● Recentralização
+
+● Modelo MIMIC
+
+#Controle de Desejabilidade Social
+● Introdução à Desejabilidade Social
+
+● Análises de Juízes na Desejabilidade Social
+
+● Avaliação de Estrutura Interna (Quádruplas)
+
+● Avaliação de Estrutura Interna (Escala Neutralizada)
+
+● Análises Multigrupo + MIMIC
+
+#Métodos de escolha forçada
+
+● Introdução à Escolha Forçada
+
+● Recodificando Variáveis
+
+● Modelo Fatorial Thurstoniano
+
+● Modelo da Teoria de Resposta ao Item Thurstoniano
+
+● Análises de Precisão da Escolha Forçada
+
+
+###Análises de dados com o R
+##Fundamentos do R: linguagem, scripts e funções
+#R: Linguagem, Scripts e Funções
+● Introdução ao R e RStudio
+
+● Painéis do RStudio
+
+● Criando Objetos
+
+● Manejando o workspace
+
+● Criando vetores
+
+● Classes de dados (logicals, numeric, interger, complex, characters, factor)
+
+● Estrutura de dados
+
+● Trabalhando com vetores
+
+● Reciclagem
+
+● Matrizes
+
+● Arrays
+
+● Data frame
+
+● Importando e exportando arquivos
+
+● Manipulação de dados
+
+##Análises estatísticas e psicométricas
+#R: Análises Bi & multivariadas
+● Estatísticas descritivas (média, moda, mediana, desvio e erro-padrão, escore z)
+
+● Curva normal
+
+● Correlações (Pearson, Spearman, Kendall)
+
+● Regressões (Linear, logística, Poisson, Cox)
+
+● Testes t (amostra única, dependente e independente)
+
+● ANOVAs e MANOVAs (Simples, Fatorial e de Medidas Repetidas)
+
+● Qui-Quadrado de aderência e independência para duas e múltiplas categorias
+
+● Qui-quadrado longitudinal (Q de Cochran e McNemar)
+
+● Testes não-paramétricos (Mann-Whitney, Kruskal-Wallis, Wilcoxon Signed-Rank, ANOVA de Friedman)
+
+● Curva ROC
+
+#R: Análise Fatorial e Modelagem por Equações Estruturais
+● Análise Fatorial Exploratória
+
+● Análise Fatorial Confirmatória Unifatorial
+
+● Análise Fatorial Confirmatória Multifatorial
+
+● Análise Fatorial Confirmatória de Segunda-Ordem
+
+● Análise Fatorial Confirmatória (Bi-factor)
+
+● Análise Fatorial Confirmatória Multigrupo
+
+#R: Testes não paramétricos para delineamentos complexos
+● Estudos Transversais: rankFD
+
+○ Introdução às análises não paramétricas avançadas
+
+○ Análises com uma fator independente
+
+○ Reportando a análise com um fator (grupos independentes)
+
+○ Análise com dois fatores independentes
+
+○ Reportando a análise com dois fatores (grupos independentes)
+
+● Estudos longitudinais: nparLD
+
+○ Preparando o banco para testes de medidas repetidas
+
+○ Análise com um fator (medidas repetidas)
+
+○ Reportando a análise com um fator (medidas repetidas)
+
+○ Análise com dois fatores (delineamento misto)
+
+○ Reportando a análise com dois fatores (delineamento misto)
+
+○ Análise com três fatores (delineamento misto)
+
+○ Reportando a análise com três fatores (delineamento misto)
+
+● Métodos multivariados: MANOVA.RM
+
+○ Análise multivariada de um fator
+
+○ Reportando a análise multivariada com um fator
+
+○ Análise multivariada com dois fatores independentes
+
+ ○ Reportando a análise multivariada com dois fatores independentes
+
+○ Análise multivariada com dois fatores (delineamento misto)
+
+○ Reportando a análise multivariada mista
+
+#R: Teoria de Resposta ao Item
+● TRI 1-parâmetro logístico (1-PL)
+
+● TRI 2-parâmetros logísticos (2-PL)
+
+● TRI 3-parâmetros logísticos (3-PL)
+
+● TRI Multidimensional
+
+● Curva Característica e de informação do Item (CCI e CII)
+
+● Funcionamento diferencial do item (DIF)
+
+● Modelo Rasch (dados dicotômicos e politômicos)
+
+● Medidas de Ajuste
+
+● Confiabilidade item-pessoa
+
+● Infit e Outfit
+
+● Avaliação de Thresholds
+
+##Manipulação e visualização de dados
+#R: ggplot2
+● Introdução ao ggplot2
+
+● Alterando cor, forma e tamanho
+
+● Legendas e temas
+
+● Personalizando o tema
+
+● Exportando o gráfico
+
+● Gráficos univariados
+
+● Função theme_set()
+
+● Histograma básico
+
+● Dividindo o histograma por cor
+
+● Dividindo o histograma por facetas
+
+● Histograma para diversas variáveis
+
+● Gráfico de Densidade
+
+● Interpretando o Boxplot
+
+● Criando o Boxplot
+
+● Unindo o boxplot com outros gráficos
+
+
+#R: Tidyverse
+● Funções Básicas dplyr e tidyr
+
+● Tibble e glimpse()
+
+● Selecionando variáveis: select() e verbos auxiliares
+
+● Renomeando variáveis: rename() e rename_with()
+
+● Criando e alterando variáveis: mutate(), transmute(), across()
+
+● Selecionando casos: filter() e slice()
+
+● Reordenando casos: arrange()
+
+● Contando frequências: count()
+
+● Resumindo informações: summarise() e group_by()
+
+● Alterando formato do banco: pivot_wider e pivot_longer
+
+● Fatores: forcats
+
+● Organizando níveis: fct_relevel()
+
+● Renomeando e colapsando níveis: fct_recode() e fct_collapse()
+
+● Reordenando níveis automaticamente: fct_reorder() e fct_infreq()
+
+● Reduzindo níveis: fct_lump_()
