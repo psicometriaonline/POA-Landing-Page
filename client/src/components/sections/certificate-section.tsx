@@ -3,18 +3,17 @@ import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
 
 export function CertificateSection() {
   return (
-    <section data-testid="section-certificate" className="relative">
-      <div
-        className="section-padding pb-32"
-        style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
-      >
+    <section data-testid="section-certificate" className="relative" style={{ backgroundColor: "#F4F5F7" }}>
+      <div className="absolute inset-x-0 top-0 h-[80%]" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }} />
+
+      <div className="relative section-padding">
         <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center"
+            className="text-center mb-12"
           >
             <h2
               className="text-heading-1 md:text-display-sm font-heading font-bold text-white leading-[1.15] mb-4"
@@ -30,11 +29,6 @@ export function CertificateSection() {
               <span className="font-bold text-white">pode e deve ser comprovada.</span>
             </p>
           </motion.div>
-        </div>
-      </div>
-
-      <div className="relative -mt-20 pb-16" style={{ backgroundColor: "#F4F5F7" }}>
-        <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
