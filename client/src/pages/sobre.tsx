@@ -20,6 +20,7 @@ interface Professor {
   name: string;
   institution: string;
   role: string;
+  cardLabel: string;
   bio: string;
   photo: string;
 }
@@ -30,6 +31,7 @@ const professors: Professor[] = [
     name: "Me. Douglas de Farias Dutra",
     institution: "Psicometria Online Academy",
     role: "Análise de Dados com o R",
+    cardLabel: "Professor do Curso de Análise de Dados com o R",
     bio: "Mestre em Psicologia pela Universidade Federal do Rio de Janeiro (UFRJ), com foco em funções executivas e neuropsicologia cognitiva. Fundador da Psicometria Online Academy, atua como professor e consultor em psicometria, análise quantitativa de dados e construção de instrumentos psicológicos. Especialista em linguagem R aplicada à pesquisa científica desde 2017. Na Academy, será seu professor de Análise de Dados com o R.",
     photo: prof1,
   },
@@ -38,6 +40,7 @@ const professors: Professor[] = [
     name: "Dr. Alex Bacadini França",
     institution: "Psicometria Online Academy",
     role: "Análise de Redes",
+    cardLabel: "Professor do Curso de Análise de Redes: Teoria e Prática",
     bio: "Doutor e Mestre em Psicologia pela Universidade Federal de São Carlos, com estágio-sanduíche na Universidade do Porto (Portugal) e pós-doutorado na Open University (Inglaterra). Especialista em análise quantitativa de dados, psicometria e análise de redes (network analysis). Possui experiência com testes e medidas psicológicas, metacognição, envelhecimento e qualidade de vida. Na Academy, será seu professor de Análise de Redes: Teoria e Prática.",
     photo: prof2,
   },
@@ -46,6 +49,7 @@ const professors: Professor[] = [
     name: "Dra. Érica Midori Ikegami",
     institution: "Universidade Federal do Triângulo Mineiro",
     role: "Zotero",
+    cardLabel: "Professora do Curso de Zotero",
     bio: "Doutora e Mestre em Atenção à Saúde pela Universidade Federal do Triângulo Mineiro (UFTM). Especialista em Fisioterapia em Gerontologia, com pós-graduação em Residência Integrada Multiprofissional em Saúde (UFTM). Possui vasta experiência em pesquisa quantitativa, revisões sistemáticas e gerenciamento de referências bibliográficas. Na Academy, será sua professora de Zotero.",
     photo: prof3,
   },
@@ -54,6 +58,7 @@ const professors: Professor[] = [
     name: "Dr. Vinicius Coscioni",
     institution: "Utrecht University",
     role: "Metodologia e Revisões da Literatura",
+    cardLabel: "Professor do Curso de Metodologia e Revisões da Literatura",
     bio: "Professor Assistente no Departamento de Psicologia do Desenvolvimento da Universidade de Utrecht, Holanda. Doutor em Psicologia pela Universidade de Coimbra (Portugal) e pela UFRGS. Especialista em revisões sistemáticas, scoping reviews e síntese de evidências. Autor de múltiplas revisões publicadas em periódicos internacionais, com expertise em metodologia de pesquisa e desenvolvimento de escalas psicométricas validadas internacionalmente. Na Academy, será seu professor de Metodologia e Revisões da Literatura.",
     photo: prof4,
   },
@@ -62,6 +67,7 @@ const professors: Professor[] = [
     name: "Dr. Nelson Carvas Junior",
     institution: "UNIFESP (Cochrane)",
     role: "Metanálise",
+    cardLabel: "Professor do Curso de Metanálise",
     bio: "Doutorando em Saúde Baseada em Evidências pela UNIFESP e pesquisador voluntário da Cochrane Brasil. Mestre em Ciências da Saúde, com expertise em metanálise em rede (network meta-analysis), revisões sistemáticas rápidas e vivas (rapid living systematic reviews). Atua como estatístico e metodologista em múltiplos projetos multicêntricos de síntese de evidências. Na Academy, será seu professor de Metanálise.",
     photo: prof5,
   },
@@ -70,6 +76,7 @@ const professors: Professor[] = [
     name: "Dr. Leonardo de Barros Mose",
     institution: "Universidade São Francisco",
     role: "Multinível e Controle de Vieses de Resposta",
+    cardLabel: "Professor do Curso de Multinível e Controle de Vieses de Resposta",
     bio: "Doutor e Mestre em Psicologia pela Universidade São Francisco (CAPES 7). Membro do GT de Psicometria na ANPEPP. Especialista em psicometria, modelagem de equações estruturais, teoria de resposta ao item, análises multinível e multigrupo, avaliação em larga escala e controle de vieses de resposta. Atua nas áreas de personalidade, interesses profissionais e habilidades socioemocionais. Na Academy, será seu professor de Modelos Multinível e Controle de Vieses de Resposta.",
     photo: prof6,
   },
@@ -78,6 +85,7 @@ const professors: Professor[] = [
     name: "Dra. Thayane Woellner Sviercoski Manosso",
     institution: "Universidade Federal de Santa Maria",
     role: "Mendeley e EndNote",
+    cardLabel: "Professora do Curso de Mendeley e EndNote",
     bio: "Doutoranda em Engenharia de Produção pela UFSM. Mestre em Administração pela Universidade de Passo Fundo (bolsista CAPES). Pós-graduada em Economia e Gestão do Agronegócio pela FGV e Engenheira Agrônoma pela UEPG. Possui expertise em análise de dados, metodologia de pesquisa e gerenciamento de referências bibliográficas. Na Academy, será sua professora de Mendeley e EndNote.",
     photo: prof7,
   },
@@ -86,6 +94,7 @@ const professors: Professor[] = [
     name: "Dr. George Jó Bezerra Sousa",
     institution: "Ministério da Saúde, Brasil",
     role: "Análise de Dados para Estudos Epidemiológicos",
+    cardLabel: "Professor do Curso de Análise de Dados para Estudos Epidemiológicos",
     bio: "Doutor em Cuidados Clínicos em Enfermagem e Saúde pela UECE. Especialista em Informática em Saúde (UNIFESP). Ex-bolsista Ciências sem Fronteiras na James Cook University (Austrália). Consultor Técnico do Programa de Hanseníase do Ministério da Saúde. Membro do Grupo de Pesquisa Clínica e Epidemiologia das Doenças Infecciosas e Parasitárias (CEDIP-UECE). Especialista em análise espacial, séries temporais e mineração de dados em saúde. Na Academy, será seu professor de Análise de Dados para Estudos Epidemiológicos.",
     photo: prof8,
   },
@@ -94,6 +103,7 @@ const professors: Professor[] = [
     name: "Dra. Gisele Magarotto Machado",
     institution: "Universidade de Oslo / Akershus University Hospital",
     role: "Análise de Perfis e Classes Latentes",
+    cardLabel: "Professora do Curso de Análise de Classes e Perfis Latentes (LCA/LPA)",
     bio: "Doutora e Mestre em Psicologia com ênfase em Avaliação Psicológica pela Universidade São Francisco (bolsista CAPES). Realizou Doutorado Sanduíche na Universidade de Oslo (PDSE-CAPES). Atualmente é pesquisadora de pós-doutorado duplamente afiliada ao Akershus University Hospital e à Universidade de Oslo (Noruega). Especialista em saúde mental, psicometria, personalidade e transtornos de personalidade. Na Academy, será sua professora de Análise de Classes e Perfis Latentes (LCA/LPA).",
     photo: prof9,
   },
@@ -102,6 +112,7 @@ const professors: Professor[] = [
     name: "Dr. Márcio Braga de Melo",
     institution: "Universidade Federal do Ceará",
     role: "GLM e Equações de Estimativas Generalizadas",
+    cardLabel: "Professor do Curso de Modelo Linear Generalizado e Equações de Estimativas Generalizadas",
     bio: "Professor Efetivo no Departamento de Psicologia da Universidade Federal do Ceará (UFC). Doutor (CAPES) e Mestre (FAPESP) em Ciências na linha de Neurobiologia da Memória pela UNIFESP (CAPES 7). Pós-graduado em Neuropsicologia pelo CDN-SP. Graduado em Psicologia pela UFAL. Especialista em modelos lineares generalizados (GLM), equações de estimativas generalizadas (GEE) e modelos lineares mistos generalizados (GLMM). Na Academy, será seu professor de Modelo Linear Generalizado e Equações de Estimativas Generalizadas.",
     photo: prof10,
   },
@@ -110,6 +121,7 @@ const professors: Professor[] = [
     name: "Dr. Ícaro Moreira Costa",
     institution: "Universidade de Fortaleza",
     role: "IRAMUTEQ",
+    cardLabel: "Professor do Curso de IRAMUTEQ",
     bio: "Doutor em Psicologia pela UFRGS, Mestre e Graduado em Psicologia pela Universidade de Fortaleza (UNIFOR). Professor na área de Avaliação Psicológica e Pesquisa Quantitativa na UNIFOR. Psicólogo clínico com orientação cognitivo-comportamental. Dedicado a estudos em saúde mental, psicometria e análise de dados textuais. Na Academy, será seu professor de IRAMUTEQ.",
     photo: prof11,
   },
@@ -135,7 +147,7 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
       </div>
       <h3 className="text-base font-heading font-bold text-[#0A2E76]">{professor.name}</h3>
       <p className="text-sm text-[hsl(215,15%,45%)] mt-0.5">{professor.institution}</p>
-      <p className="text-sm text-[#0065FF] font-medium mt-1">{professor.bio}</p>
+      <p className="text-sm text-[#0065FF] font-medium mt-1">{professor.cardLabel}</p>
     </motion.div>
   );
 }
