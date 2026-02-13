@@ -115,7 +115,7 @@ const professors: Professor[] = [
     institution: "Universidade Federal do Ceará",
     role: "GLM e Equações de Estimativas Generalizadas",
     cardLabel: "Professor do Curso de Modelo Linear Generalizado e Equações de Estimativas Generalizadas",
-    bio: "Professor Efetivo no Departamento de Psicologia da Universidade Federal do Ceará (UFC). Doutor (CAPES) e Mestre (FAPESP) em Ciências na linha de Neurobiologia da Memória pela UNIFESP (CAPES 7). Pós-graduado em Neuropsicologia pelo CDN-SP. Graduado em Psicologia pela UFAL. Especialista em modelos lineares generalizados (GLM), equações de estimativas generalizadas (GEE) e modelos lineares mistos generalizados (GLMM). Na Academy, será seu professor de Modelo Linear Generalizado e Equações de Estimativas Generalizadas.",
+    bio: "Professor Efetivo no Departamento de Psicologia da Universidade Federal do Ceará (UFC). Doutor e Mestre em Ciências na linha de Neurobiologia da Memória pela UNIFESP (CAPES 7). Pós-graduado em Neuropsicologia pelo CDN-SP. Graduado em Psicologia pela UFAL. Especialista em modelos lineares generalizados (GLM), equações de estimativas generalizadas (GEE) e modelos lineares mistos generalizados (GLMM). Na Academy, será seu professor de Modelo Linear Generalizado e Equações de Estimativas Generalizadas.",
     photo: prof10,
   },
   {
