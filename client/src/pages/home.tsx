@@ -3,6 +3,7 @@ import { TrustSection } from "@/components/sections/trust-section";
 import { ToolsSection } from "@/components/sections/tools-section";
 import { HubSection } from "@/components/sections/hub-section";
 import { SupportSection } from "@/components/sections/support-section";
+import { CertificateSection } from "@/components/sections/certificate-section";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ToolsSection />
       <HubSection />
       <SupportSection />
+      <CertificateSection />
     </main>
   );
 }
