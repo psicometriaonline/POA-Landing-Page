@@ -23,6 +23,7 @@ interface Professor {
   cardLabel: string;
   bio: string;
   photo: string;
+  photoPosition?: string;
 }
 
 const professors: Professor[] = [
@@ -68,6 +69,7 @@ const professors: Professor[] = [
     institution: "UNIFESP (Cochrane)",
     role: "Metanálise",
     cardLabel: "Professor do Curso de Metanálise",
+    photoPosition: "top",
     bio: "Doutorando em Saúde Baseada em Evidências pela UNIFESP e pesquisador voluntário da Cochrane Brasil. Mestre em Ciências da Saúde, com expertise em metanálise em rede (network meta-analysis), revisões sistemáticas rápidas e vivas (rapid living systematic reviews). Atua como estatístico e metodologista em múltiplos projetos multicêntricos de síntese de evidências. Na Academy, será seu professor de Metanálise.",
     photo: prof5,
   },
@@ -143,6 +145,7 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
           src={professor.photo}
           alt={professor.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          style={professor.photoPosition ? { objectPosition: professor.photoPosition } : undefined}
         />
       </div>
       <h3 className="text-base font-heading font-bold text-[#0A2E76]">{professor.name}</h3>
