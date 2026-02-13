@@ -7,14 +7,14 @@ export function CertificateSection() {
     <section data-testid="section-certificate" className="relative" style={{ backgroundColor: "#F4F5F7" }}>
       <div className="absolute inset-x-0 top-0 h-[80%]" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }} />
 
-      <div className="relative py-12 md:py-16 px-4">
+      <div className="relative section-padding">
         <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-6"
+            className="text-center mb-12"
           >
             <h2
               className="text-heading-1 md:text-display-sm font-heading font-bold text-white leading-[1.15] mb-4"
@@ -35,7 +35,7 @@ export function CertificateSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-5 md:p-7 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-5">
