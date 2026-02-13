@@ -83,7 +83,7 @@ const professors: Professor[] = [
   {
     id: 8,
     name: "Dr. George Jó Bezerra Sousa",
-    institution: "Psicometria Online Academy",
+    institution: "Ministério da Saúde, Brasil",
     role: "Análise de Dados para Estudos Epidemiológicos",
     bio: "Professor do Curso de Análise de Dados para Estudos Epidemiológicos",
     photo: prof8,
