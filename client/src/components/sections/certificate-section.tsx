@@ -14,7 +14,7 @@ export function CertificateSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h2
               className="text-heading-1 md:text-display-sm font-heading font-bold text-white leading-[1.15] mb-4"
@@ -35,7 +35,7 @@ export function CertificateSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+            className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-5">
