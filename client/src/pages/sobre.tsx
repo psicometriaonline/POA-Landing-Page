@@ -38,7 +38,7 @@ export default function Sobre() {
                   className="text-body-md text-[hsl(215,15%,35%)] leading-relaxed"
                   data-testid="text-sobre-bio-2"
                 >
-                  Autor de mais de 60 artigos e de um livro reconhecido nacionalmente, somo mais de 5.200 citações em revistas de referência na área. Em 2020, deixei a carreira acadêmica para fundar a Psicometria Online Academy, uma formação com um objetivo claro: alavancar sua trajetória acadêmica e formar pesquisadores de excelência.
+                  Em 2020, deixei a carreira acadêmica para fundar a Psicometria Online Academy, uma formação com um objetivo claro: alavancar sua trajetória acadêmica e formar pesquisadores de excelência.
                 </p>
               </div>
 
