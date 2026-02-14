@@ -265,40 +265,48 @@ export default function Planos() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <div className="bg-white rounded-2xl border border-[#E2E5EA] overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
-                  <thead>
-                    <tr className="border-b border-[#E2E5EA]">
-                      <th className="text-left p-5 w-[40%]">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
-                          Recursos
-                        </span>
-                      </th>
-                      {planHeaders.map((plan) => {
-                        const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
-                        return (
-                          <th key={plan.id} className="p-5 text-center w-[20%] relative" data-testid={`th-plan-${plan.id}`}>
-                            {plan.badge && (
-                              <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                                <span className="inline-block px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#0065FF] text-white shadow-md shadow-[#0065FF]/25 whitespace-nowrap">
-                                  {plan.badge}
-                                </span>
+            <div className="relative">
+              <div className="flex" style={{ paddingLeft: "40%" }}>
+                {planHeaders.map((plan) => (
+                  <div key={plan.id} className="flex-1 flex justify-center">
+                    {plan.badge && (
+                      <span
+                        className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
+                        data-testid={`badge-plan-${plan.id}`}
+                      >
+                        {plan.badge}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="bg-white rounded-2xl border border-[#E2E5EA] overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
+                    <thead>
+                      <tr className="border-b border-[#E2E5EA]">
+                        <th className="text-left p-5 w-[40%]">
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
+                            Recursos
+                          </span>
+                        </th>
+                        {planHeaders.map((plan) => {
+                          const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
+                          return (
+                            <th key={plan.id} className="p-5 text-center w-[20%]" data-testid={`th-plan-${plan.id}`}>
+                              <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
+                              <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                                {formatPrice(price)}
+                                <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
                               </div>
-                            )}
-                            <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
-                            <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                              {formatPrice(price)}
-                              <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                            </div>
-                            {billing === "anual" && (
-                              <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                                Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
-                              </p>
-                            )}
-                          </th>
-                        );
-                      })}
+                              {billing === "anual" && (
+                                <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                                  Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
+                                </p>
+                              )}
+                            </th>
+                          );
+                        })}
                     </tr>
                   </thead>
                   <tbody>
@@ -355,7 +363,8 @@ export default function Planos() {
                       ))}
                     </tr>
                   </tbody>
-                </table>
+                  </table>
+                </div>
               </div>
             </div>
           </motion.div>
