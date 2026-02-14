@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Sparkles, Zap, Crown, Star } from "lucide-react";
+import { Check, X as XIcon, ArrowRight, Sparkles, Zap, Crown, Star, Coins } from "lucide-react";
 
 type BillingPeriod = "mensal" | "anual";
 
 interface Plan {
   id: string;
   name: string;
+  subtitle: string;
   icon: typeof Star;
   description: string;
   monthlyPrice: number;
@@ -15,6 +16,8 @@ interface Plan {
   highlighted?: boolean;
   badge?: string;
   features: string[];
+  notIncluded?: string[];
+  tokens: string;
   cta: string;
   ctaVariant: "outline" | "default";
 }
@@ -23,54 +26,130 @@ const plans: Plan[] = [
   {
     id: "free",
     name: "Free",
+    subtitle: "14 dias",
     icon: Star,
-    description: "Para quem quer conhecer a plataforma e dar os primeiros passos.",
+    description: "Acesso completo por 14 dias para conhecer toda a plataforma.",
     monthlyPrice: 0,
     yearlyPrice: 0,
     features: [
-      "Em breve",
+      "Todos os cursos da Academy",
+      "Biblioteca Eletrônica",
+      "Cursos - Ciclo da Autonomia",
+      "Cursos - Todos os demais",
+      "Calculadora de Tamanho Amostral",
+      "Calculadora de Tamanho de Efeito",
+      "Emissão de Certificado",
+      "Cursos Extras (todos)",
+      "Glossário Acadêmico",
+      "IA - Classificador de Análise",
+      "IA - Gerador de Sintaxe",
+      "Suporte - Chatbot",
+      "Suporte - Email",
+      "Suporte - Plataforma",
     ],
+    tokens: "20.000 tokens (Aprox. R$ 0,80)",
     cta: "Comece Grátis",
     ctaVariant: "outline",
   },
   {
     id: "master",
     name: "Master",
+    subtitle: "R$ 75,90/mês",
     icon: Zap,
     description: "Para quem busca aprofundamento com acesso ampliado aos cursos.",
-    monthlyPrice: 59.90,
-    yearlyPrice: 39.90,
+    monthlyPrice: 75.90,
+    yearlyPrice: 49.90,
     features: [
-      "Em breve",
+      "Biblioteca Eletrônica",
+      "Cursos - Ciclo da Autonomia",
+      "Calculadora de Tamanho Amostral",
+      "Calculadora de Tamanho de Efeito",
+      "Emissão de Certificado",
+      "Cursos Extras - Preparação para Concursos",
+      "Cursos Extras - IA para Pesquisas Científicas",
+      "Cursos Extras - Viver de Análise de Dados",
+      "Glossário Acadêmico",
+      "IA - Gerador de Sintaxe",
+      "Suporte - Chatbot",
+      "Suporte - Plataforma",
+      "Todos os cursos da Academy",
     ],
+    notIncluded: [
+      "Cursos - Todos os demais",
+      "IA - Classificador de Análise",
+      "Suporte - Academeeting",
+      "Suporte - Comunidade de Alunos",
+      "Suporte - Email",
+    ],
+    tokens: "100.000 tokens/mês",
     cta: "Assinar Master",
     ctaVariant: "default",
   },
   {
     id: "pro",
     name: "Pro",
+    subtitle: "R$ 109,90/mês",
     icon: Sparkles,
     description: "O plano mais escolhido. Acesso completo com suporte prioritário.",
-    monthlyPrice: 89.90,
-    yearlyPrice: 59.90,
+    monthlyPrice: 109.90,
+    yearlyPrice: 74.90,
     highlighted: true,
     badge: "Mais Popular",
     features: [
-      "Em breve",
+      "Biblioteca Eletrônica",
+      "Cursos - Ciclo da Autonomia",
+      "Calculadora de Tamanho Amostral",
+      "Calculadora de Tamanho de Efeito",
+      "Emissão de Certificado",
+      "Cursos Extras - Preparação para Concursos",
+      "Glossário Acadêmico",
+      "IA - Classificador de Análise",
+      "IA - Gerador de Sintaxe",
+      "Suporte - Academeeting",
+      "Suporte - Chatbot",
+      "Suporte - Comunidade de Alunos",
+      "Suporte - Email",
+      "Suporte - Plataforma",
+      "Todos os cursos da Academy",
     ],
+    notIncluded: [
+      "Cursos - Todos os demais",
+      "Cursos Extras - IA para Pesquisas Científicas",
+      "Cursos Extras - Viver de Análise de Dados",
+    ],
+    tokens: "300.000 tokens/mês",
     cta: "Assinar Pro",
     ctaVariant: "default",
   },
   {
     id: "premium",
     name: "Premium",
+    subtitle: "R$ 169,90/mês",
     icon: Crown,
-    description: "Experiência completa com mentorias exclusivas e acesso ilimitado.",
-    monthlyPrice: 149.90,
-    yearlyPrice: 99.90,
+    description: "Acesso ilimitado a tudo. A experiência completa da Academy.",
+    monthlyPrice: 169.90,
+    yearlyPrice: 114.90,
     features: [
-      "Em breve",
+      "Biblioteca Eletrônica",
+      "Cursos - Ciclo da Autonomia",
+      "Cursos - Todos os demais",
+      "Calculadora de Tamanho Amostral",
+      "Calculadora de Tamanho de Efeito",
+      "Emissão de Certificado",
+      "Cursos Extras - Preparação para Concursos",
+      "Cursos Extras - IA para Pesquisas Científicas",
+      "Cursos Extras - Viver de Análise de Dados",
+      "Glossário Acadêmico",
+      "IA - Classificador de Análise",
+      "IA - Gerador de Sintaxe",
+      "Suporte - Academeeting",
+      "Suporte - Chatbot",
+      "Suporte - Comunidade de Alunos",
+      "Suporte - Email",
+      "Suporte - Plataforma",
+      "Todos os cursos da Academy",
     ],
+    tokens: "500.000 tokens/mês",
     cta: "Assinar Premium",
     ctaVariant: "default",
   },
@@ -159,16 +238,16 @@ function PlanCard({ plan, billing, index }: { plan: Plan; billing: BillingPeriod
         )}
         {isFree && (
           <p className={`text-xs mt-1.5 ${plan.highlighted ? "text-white/60" : "text-[hsl(215,15%,55%)]"}`}>
-            Para sempre
+            Acesso por 14 dias
           </p>
         )}
       </div>
 
       <div className="flex-1 mb-8">
         <div className={`h-px mb-5 ${plan.highlighted ? "bg-white/10" : "bg-[#E2E5EA]"}`} />
-        <ul className="space-y-3">
+        <ul className="space-y-2.5">
           {plan.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-3">
+            <li key={i} className="flex items-start gap-2.5">
               <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
                 plan.highlighted
                   ? "bg-[#0065FF]/20"
@@ -177,14 +256,43 @@ function PlanCard({ plan, billing, index }: { plan: Plan; billing: BillingPeriod
                 <Check className={`w-3 h-3 ${plan.highlighted ? "text-[#4D9FFF]" : "text-[#0065FF]"}`} />
               </div>
               <span
-                className={`text-sm leading-snug ${plan.highlighted ? "text-white/85" : "text-[hsl(215,15%,35%)]"}`}
+                className={`text-[13px] leading-snug ${plan.highlighted ? "text-white/85" : "text-[hsl(215,15%,35%)]"}`}
                 data-testid={`text-plan-feature-${plan.id}-${i}`}
               >
                 {feature}
               </span>
             </li>
           ))}
+          {plan.notIncluded?.map((feature, i) => (
+            <li key={`no-${i}`} className="flex items-start gap-2.5 opacity-50">
+              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                plan.highlighted
+                  ? "bg-white/5"
+                  : "bg-[#E2E5EA]"
+              }`}>
+                <XIcon className={`w-3 h-3 ${plan.highlighted ? "text-white/40" : "text-[hsl(215,15%,55%)]"}`} />
+              </div>
+              <span
+                className={`text-[13px] leading-snug line-through ${plan.highlighted ? "text-white/40" : "text-[hsl(215,15%,55%)]"}`}
+              >
+                {feature}
+              </span>
+            </li>
+          ))}
         </ul>
+
+        <div className={`mt-5 pt-4 border-t ${plan.highlighted ? "border-white/10" : "border-[#E2E5EA]"}`}>
+          <div className="flex items-center gap-2.5">
+            <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+              plan.highlighted ? "bg-[#0065FF]/20" : "bg-[#0065FF]/10"
+            }`}>
+              <Coins className={`w-3 h-3 ${plan.highlighted ? "text-[#4D9FFF]" : "text-[#0065FF]"}`} />
+            </div>
+            <span className={`text-[13px] font-semibold ${plan.highlighted ? "text-white/85" : "text-[#0A2E76]"}`}>
+              {plan.tokens}
+            </span>
+          </div>
+        </div>
       </div>
 
       <a
