@@ -270,7 +270,7 @@ export default function Planos() {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <div className="relative">
-              <div className="sticky top-0 z-30" style={{ backgroundColor: "#F4F5F7" }}>
+              <div className="sticky top-[88px] md:top-[96px] z-30" style={{ backgroundColor: "#F4F5F7" }}>
                 <div className="flex" style={{ paddingLeft: "40%" }}>
                   {planHeaders.map((plan) => (
                     <div key={plan.id} className="flex-1 flex justify-center">
