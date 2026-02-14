@@ -319,12 +319,24 @@ export default function Planos() {
               transition={{ duration: 0.6 }}
             >
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-8"
+                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-5"
                 data-testid="text-planos-title"
               >
-                Invista no seu crescimento{" "}
-                <span className="text-[#4D9FFF]">acadêmico</span>
+                Impulsione a sua carreira{" "}
+                <span className="text-[#4D9FFF]">acadêmica</span>
               </h1>
+              <p
+                className="text-lg text-white/75 max-w-2xl mx-auto leading-relaxed mb-3"
+                data-testid="text-planos-subtitle"
+              >
+                Acesse gratuitamente por 14 dias a maior plataforma de pesquisa quantitativa da América Latina.
+              </p>
+              <p
+                className="text-sm text-white/50 tracking-wide mb-8"
+                data-testid="text-planos-pillars"
+              >
+                Ferramentas Estatísticas &bull; Cursos de Análise de Dados &bull; Suporte
+              </p>
 
               <a
                 href="https://psicometriaonline.com.br/academy/"
@@ -340,15 +352,15 @@ export default function Planos() {
                 </Button>
               </a>
 
-              <div className="mt-6">
+              <div className="mt-5">
                 <p
-                  className="text-[15px] text-white/80 font-medium"
+                  className="text-[13px] text-white/55"
                   data-testid="text-free-trial-line1"
                 >
-                  Comece com acesso completo por 14 dias
+                  Nenhum cartão de crédito requerido.
                 </p>
                 <p
-                  className="text-sm text-white/55 mt-1"
+                  className="text-[13px] text-white/45 mt-0.5"
                   data-testid="text-free-trial-line2"
                 >
                   Experimente todos os recursos antes de escolher seu plano.
@@ -374,6 +386,9 @@ export default function Planos() {
             >
               Planos e Preços
             </h2>
+            <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-6">
+              Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
+            </p>
 
             <div className="flex justify-center mb-2">
               <div
