@@ -24,6 +24,7 @@ interface Professor {
   bio: string;
   photo: string;
   photoPosition?: string;
+  photoScale?: number;
 }
 
 const professors: Professor[] = [
@@ -33,6 +34,8 @@ const professors: Professor[] = [
     institution: "Psicometria Online Academy",
     role: "Análise de Dados com o R",
     cardLabel: "Professor do Curso de Análise de Dados com o R",
+    photoPosition: "center 30%",
+    photoScale: 1.4,
     bio: "Mestre em Psicologia pela Universidade Federal do Rio de Janeiro (UFRJ), com foco em funções executivas e neuropsicologia cognitiva. Fundador da Psicometria Online Academy, atua como professor e consultor em psicometria, análise quantitativa de dados e construção de instrumentos psicológicos. Especialista em linguagem R aplicada à pesquisa científica desde 2017. Na Academy, será seu professor de Análise de Dados com o R.",
     photo: prof1,
   },
@@ -145,7 +148,10 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
           src={professor.photo}
           alt={professor.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          style={professor.photoPosition ? { objectPosition: professor.photoPosition } : undefined}
+          style={{
+            ...(professor.photoPosition ? { objectPosition: professor.photoPosition } : {}),
+            ...(professor.photoScale ? { transform: `scale(${professor.photoScale})` } : {}),
+          }}
         />
       </div>
       <h3 className="text-base font-heading font-bold text-[#0A2E76]">{professor.name}</h3>
