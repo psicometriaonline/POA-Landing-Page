@@ -27,7 +27,7 @@ const planHeaders: PlanHeader[] = [
     name: "Pro",
     monthlyPrice: 109.90,
     yearlyPrice: 74.90,
-    badge: "Mais Popular",
+    badge: "Mais acessado",
     cta: "Assinar Pro",
   },
   {
@@ -278,11 +278,13 @@ export default function Planos() {
                       {planHeaders.map((plan) => {
                         const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
                         return (
-                          <th key={plan.id} className="p-5 text-center w-[20%]" data-testid={`th-plan-${plan.id}`}>
+                          <th key={plan.id} className="p-5 text-center w-[20%] relative" data-testid={`th-plan-${plan.id}`}>
                             {plan.badge && (
-                              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#0065FF] text-white mb-2">
-                                {plan.badge}
-                              </span>
+                              <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                                <span className="inline-block px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#0065FF] text-white shadow-md shadow-[#0065FF]/25 whitespace-nowrap">
+                                  {plan.badge}
+                                </span>
+                              </div>
                             )}
                             <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
                             <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
@@ -302,10 +304,10 @@ export default function Planos() {
                   <tbody>
                     {featureTable.map((group, gi) => (
                       <>
-                        <tr key={`cat-${gi}`} className="bg-[#F4F5F7]/60">
+                        <tr key={`cat-${gi}`} className="bg-[#0A2E76]/[0.06]">
                           <td
                             colSpan={4}
-                            className="px-5 py-3 text-center"
+                            className="px-5 py-3"
                           >
                             <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
                               {group.category}
