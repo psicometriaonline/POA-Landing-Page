@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Sobre from "@/pages/sobre";
+import Planos from "@/pages/planos";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/sobre" component={Sobre} />
+      <Route path="/planos" component={Planos} />
       <Route component={NotFound} />
     </Switch>
   );
