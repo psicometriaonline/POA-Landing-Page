@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, Minus, ArrowRight } from "lucide-react";
+import { Check, X as XIcon, ArrowRight } from "lucide-react";
 
 type BillingPeriod = "mensal" | "anual";
 
@@ -123,7 +123,11 @@ function CellIcon({ value }: { value: CellValue }) {
       </div>
     );
   }
-  return <Minus className="w-4 h-4 text-[hsl(215,15%,70%)] mx-auto" />;
+  return (
+    <div className="w-6 h-6 rounded-full bg-[#F34266]/10 flex items-center justify-center mx-auto">
+      <XIcon className="w-3.5 h-3.5 text-[#F34266]" />
+    </div>
+  );
 }
 
 export default function Planos() {
