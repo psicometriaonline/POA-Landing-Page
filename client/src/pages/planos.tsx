@@ -270,50 +270,49 @@ export default function Planos() {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <div className="relative">
-              <div className="flex" style={{ paddingLeft: "40%" }}>
-                {planHeaders.map((plan) => (
-                  <div key={plan.id} className="flex-1 flex justify-center">
-                    {plan.badge && (
-                      <span
-                        className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
-                        data-testid={`badge-plan-${plan.id}`}
-                      >
-                        {plan.badge}
-                      </span>
-                    )}
+              <div className="sticky top-0 z-30" style={{ backgroundColor: "#F4F5F7" }}>
+                <div className="flex" style={{ paddingLeft: "40%" }}>
+                  {planHeaders.map((plan) => (
+                    <div key={plan.id} className="flex-1 flex justify-center">
+                      {plan.badge && (
+                        <span
+                          className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
+                          data-testid={`badge-plan-${plan.id}`}
+                        >
+                          {plan.badge}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex border border-[#E2E5EA] bg-white rounded-t-2xl shadow-sm">
+                  <div className="w-[40%] flex items-center p-5">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
+                      Recursos
+                    </span>
                   </div>
-                ))}
+                  {planHeaders.map((plan) => {
+                    const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
+                    return (
+                      <div key={plan.id} className="w-[20%] p-5 text-center" data-testid={`th-plan-${plan.id}`}>
+                        <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
+                        <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                          {formatPrice(price)}
+                          <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                        </div>
+                        {billing === "anual" && (
+                          <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                            Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
+              <div className="bg-white rounded-b-2xl border-x border-b border-[#E2E5EA] shadow-sm">
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
-                    <thead className="sticky top-0 z-30" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
-                      <tr className="border-b border-[#E2E5EA] bg-white">
-                        <th className="text-left p-5 w-[40%] bg-white rounded-tl-2xl">
-                          <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
-                            Recursos
-                          </span>
-                        </th>
-                        {planHeaders.map((plan, i) => {
-                          const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
-                          const isLast = i === planHeaders.length - 1;
-                          return (
-                            <th key={plan.id} className={`p-5 text-center w-[20%] bg-white ${isLast ? "rounded-tr-2xl" : ""}`} data-testid={`th-plan-${plan.id}`}>
-                              <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
-                              <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                                {formatPrice(price)}
-                                <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                              </div>
-                              {billing === "anual" && (
-                                <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                                  Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
-                                </p>
-                              )}
-                            </th>
-                          );
-                        })}
-                    </tr>
-                  </thead>
                   <tbody>
                     {featureTable.map((group, gi) => (
                       <>
