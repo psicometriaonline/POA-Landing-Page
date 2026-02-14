@@ -118,8 +118,8 @@ function CellIcon({ value }: { value: CellValue }) {
   }
   if (value) {
     return (
-      <div className="w-6 h-6 rounded-full bg-[#0065FF]/10 flex items-center justify-center mx-auto">
-        <Check className="w-3.5 h-3.5 text-[#0065FF]" />
+      <div className="w-6 h-6 rounded-full bg-[#22C55E]/10 flex items-center justify-center mx-auto">
+        <Check className="w-3.5 h-3.5 text-[#22C55E]" />
       </div>
     );
   }
@@ -284,20 +284,21 @@ export default function Planos() {
                   </div>
                 ))}
               </div>
-              <div className="bg-white rounded-2xl border border-[#E2E5EA] overflow-hidden shadow-sm">
+              <div className="bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
-                    <thead>
-                      <tr className="border-b border-[#E2E5EA]">
-                        <th className="text-left p-5 w-[40%]">
+                    <thead className="sticky top-0 z-30" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
+                      <tr className="border-b border-[#E2E5EA] bg-white">
+                        <th className="text-left p-5 w-[40%] bg-white rounded-tl-2xl">
                           <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
                             Recursos
                           </span>
                         </th>
-                        {planHeaders.map((plan) => {
+                        {planHeaders.map((plan, i) => {
                           const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
+                          const isLast = i === planHeaders.length - 1;
                           return (
-                            <th key={plan.id} className="p-5 text-center w-[20%]" data-testid={`th-plan-${plan.id}`}>
+                            <th key={plan.id} className={`p-5 text-center w-[20%] bg-white ${isLast ? "rounded-tr-2xl" : ""}`} data-testid={`th-plan-${plan.id}`}>
                               <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
                               <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
                                 {formatPrice(price)}
