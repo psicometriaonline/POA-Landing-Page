@@ -24,34 +24,6 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "free",
-    name: "Free",
-    subtitle: "14 dias",
-    icon: Star,
-    description: "Acesso completo por 14 dias para conhecer toda a plataforma.",
-    monthlyPrice: 0,
-    yearlyPrice: 0,
-    features: [
-      "Todos os cursos da Academy",
-      "Biblioteca Eletrônica",
-      "Cursos - Ciclo da Autonomia",
-      "Cursos - Todos os demais",
-      "Calculadora de Tamanho Amostral",
-      "Calculadora de Tamanho de Efeito",
-      "Emissão de Certificado",
-      "Cursos Extras (todos)",
-      "Glossário Acadêmico",
-      "IA - Classificador de Análise",
-      "IA - Gerador de Sintaxe",
-      "Suporte - Chatbot",
-      "Suporte - Email",
-      "Suporte - Plataforma",
-    ],
-    tokens: "20.000 tokens (Aprox. R$ 0,80)",
-    cta: "Comece Grátis",
-    ctaVariant: "outline",
-  },
-  {
     id: "master",
     name: "Master",
     subtitle: "R$ 75,90/mês",
@@ -339,76 +311,105 @@ export default function Planos() {
           }}
         />
 
-        <div className="relative pt-28 md:pt-32 pb-32 md:pb-40">
+        <div className="relative pt-28 md:pt-32 pb-16 md:pb-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-white/10 text-white/80 border border-white/10 mb-6"
-                data-testid="badge-planos-header"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                Planos e Preços
-              </span>
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-5"
+                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-8"
                 data-testid="text-planos-title"
               >
                 Invista no seu crescimento{" "}
                 <span className="text-[#4D9FFF]">acadêmico</span>
               </h1>
-              <p
-                className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed mb-10"
-                data-testid="text-planos-subtitle"
-              >
-                Escolha o plano ideal para a sua jornada. Acesse cursos, ferramentas
-                e uma comunidade de pesquisadores comprometidos com a excelência.
-              </p>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center p-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/10"
-              data-testid="toggle-billing"
-            >
-              <button
-                onClick={() => setBilling("mensal")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  billing === "mensal"
-                    ? "bg-white text-[#0A2E76] shadow-md"
-                    : "text-white/70 hover:text-white"
-                }`}
-                data-testid="button-billing-mensal"
+              <a
+                href="https://psicometriaonline.com.br/academy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-hero-signup"
               >
-                Mensal
-              </button>
-              <button
-                onClick={() => setBilling("anual")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative ${
-                  billing === "anual"
-                    ? "bg-white text-[#0A2E76] shadow-md"
-                    : "text-white/70 hover:text-white"
-                }`}
-                data-testid="button-billing-anual"
-              >
-                Anual
-                <span className="absolute -top-2.5 -right-3 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none">
-                  -33%
-                </span>
-              </button>
+                <Button
+                  className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
+                >
+                  Cadastre-se Gratuitamente
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+
+              <div className="mt-6">
+                <p
+                  className="text-[15px] text-white/80 font-medium"
+                  data-testid="text-free-trial-line1"
+                >
+                  Comece com acesso completo por 14 dias
+                </p>
+                <p
+                  className="text-sm text-white/55 mt-1"
+                  data-testid="text-free-trial-line2"
+                >
+                  Experimente todos os recursos antes de escolher seu plano.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="relative -mt-20 md:-mt-24 pb-20 md:pb-28">
+      <section className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4"
+              data-testid="text-planos-pricing-title"
+            >
+              Planos e Preços
+            </h2>
+
+            <div className="flex justify-center mb-2">
+              <div
+                className="inline-flex items-center p-1 rounded-full bg-[#0A2E76]/5 border border-[#0A2E76]/10"
+                data-testid="toggle-billing"
+              >
+                <button
+                  onClick={() => setBilling("mensal")}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                    billing === "mensal"
+                      ? "bg-[#0A2E76] text-white shadow-md"
+                      : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
+                  }`}
+                  data-testid="button-billing-mensal"
+                >
+                  Mensal
+                </button>
+                <button
+                  onClick={() => setBilling("anual")}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative ${
+                    billing === "anual"
+                      ? "bg-[#0A2E76] text-white shadow-md"
+                      : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
+                  }`}
+                  data-testid="button-billing-anual"
+                >
+                  Anual
+                  <span className="absolute -top-2.5 -right-3 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none">
+                    -33%
+                  </span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-5 items-start">
             {plans.map((plan, index) => (
               <PlanCard key={plan.id} plan={plan} billing={billing} index={index} />
             ))}
