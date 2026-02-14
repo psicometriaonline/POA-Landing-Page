@@ -118,8 +118,8 @@ function CellIcon({ value }: { value: CellValue }) {
   }
   if (value) {
     return (
-      <div className="w-6 h-6 rounded-full bg-[#22C55E]/10 flex items-center justify-center mx-auto">
-        <Check className="w-3.5 h-3.5 text-[#22C55E]" />
+      <div className="w-6 h-6 rounded-full bg-[#0050CC]/10 flex items-center justify-center mx-auto">
+        <Check className="w-3.5 h-3.5 text-[#0050CC]" />
       </div>
     );
   }
