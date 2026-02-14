@@ -1,134 +1,110 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, X as XIcon, ArrowRight, Sparkles, Zap, Crown, Star, Coins } from "lucide-react";
+import { Check, Minus, ArrowRight } from "lucide-react";
 
 type BillingPeriod = "mensal" | "anual";
 
-interface Plan {
+interface PlanHeader {
   id: string;
   name: string;
-  subtitle: string;
-  icon: typeof Star;
-  description: string;
   monthlyPrice: number;
   yearlyPrice: number;
-  highlighted?: boolean;
   badge?: string;
-  features: string[];
-  notIncluded?: string[];
-  tokens: string;
   cta: string;
-  ctaVariant: "outline" | "default";
 }
 
-const plans: Plan[] = [
+const planHeaders: PlanHeader[] = [
   {
     id: "master",
     name: "Master",
-    subtitle: "R$ 75,90/mês",
-    icon: Zap,
-    description: "Para quem busca aprofundamento com acesso ampliado aos cursos.",
     monthlyPrice: 75.90,
     yearlyPrice: 49.90,
-    features: [
-      "Biblioteca Eletrônica",
-      "Cursos - Ciclo da Autonomia",
-      "Calculadora de Tamanho Amostral",
-      "Calculadora de Tamanho de Efeito",
-      "Emissão de Certificado",
-      "Cursos Extras - Preparação para Concursos",
-      "Cursos Extras - IA para Pesquisas Científicas",
-      "Cursos Extras - Viver de Análise de Dados",
-      "Glossário Acadêmico",
-      "IA - Gerador de Sintaxe",
-      "Suporte - Chatbot",
-      "Suporte - Plataforma",
-      "Todos os cursos da Academy",
-    ],
-    notIncluded: [
-      "Cursos - Todos os demais",
-      "IA - Classificador de Análise",
-      "Suporte - Academeeting",
-      "Suporte - Comunidade de Alunos",
-      "Suporte - Email",
-    ],
-    tokens: "100.000 tokens/mês",
     cta: "Assinar Master",
-    ctaVariant: "default",
   },
   {
     id: "pro",
     name: "Pro",
-    subtitle: "R$ 109,90/mês",
-    icon: Sparkles,
-    description: "O plano mais escolhido. Acesso completo com suporte prioritário.",
     monthlyPrice: 109.90,
     yearlyPrice: 74.90,
-    highlighted: true,
     badge: "Mais Popular",
-    features: [
-      "Biblioteca Eletrônica",
-      "Cursos - Ciclo da Autonomia",
-      "Calculadora de Tamanho Amostral",
-      "Calculadora de Tamanho de Efeito",
-      "Emissão de Certificado",
-      "Cursos Extras - Preparação para Concursos",
-      "Glossário Acadêmico",
-      "IA - Classificador de Análise",
-      "IA - Gerador de Sintaxe",
-      "Suporte - Academeeting",
-      "Suporte - Chatbot",
-      "Suporte - Comunidade de Alunos",
-      "Suporte - Email",
-      "Suporte - Plataforma",
-      "Todos os cursos da Academy",
-    ],
-    notIncluded: [
-      "Cursos - Todos os demais",
-      "Cursos Extras - IA para Pesquisas Científicas",
-      "Cursos Extras - Viver de Análise de Dados",
-    ],
-    tokens: "300.000 tokens/mês",
     cta: "Assinar Pro",
-    ctaVariant: "default",
   },
   {
     id: "premium",
     name: "Premium",
-    subtitle: "R$ 169,90/mês",
-    icon: Crown,
-    description: "Acesso ilimitado a tudo. A experiência completa da Academy.",
     monthlyPrice: 169.90,
     yearlyPrice: 114.90,
-    features: [
-      "Biblioteca Eletrônica",
-      "Cursos - Ciclo da Autonomia",
-      "Cursos - Todos os demais",
-      "Calculadora de Tamanho Amostral",
-      "Calculadora de Tamanho de Efeito",
-      "Emissão de Certificado",
-      "Cursos Extras - Preparação para Concursos",
-      "Cursos Extras - IA para Pesquisas Científicas",
-      "Cursos Extras - Viver de Análise de Dados",
-      "Glossário Acadêmico",
-      "IA - Classificador de Análise",
-      "IA - Gerador de Sintaxe",
-      "Suporte - Academeeting",
-      "Suporte - Chatbot",
-      "Suporte - Comunidade de Alunos",
-      "Suporte - Email",
-      "Suporte - Plataforma",
-      "Todos os cursos da Academy",
-    ],
-    tokens: "500.000 tokens/mês",
     cta: "Assinar Premium",
-    ctaVariant: "default",
+  },
+];
+
+type CellValue = boolean | string;
+
+interface FeatureRow {
+  label: string;
+  sub?: string;
+  values: [CellValue, CellValue, CellValue];
+}
+
+interface CategoryGroup {
+  category: string;
+  rows: FeatureRow[];
+}
+
+const featureTable: CategoryGroup[] = [
+  {
+    category: "Formações",
+    rows: [
+      { label: "Formação Fundamental em Pesquisa Científica", values: [true, true, true] },
+      { label: "Formação Completa em Análise de Dados com R", values: [false, true, true] },
+      { label: "Formação Avançada em Métodos Científicos", sub: "Modelos Mistos, Metanálise, Psicometria, Dados Textuais e Estudos Epidemiológicos", values: [false, true, true] },
+    ],
+  },
+  {
+    category: "Formações Especiais",
+    rows: [
+      { label: "Curso de Preparação para Concursos", values: [false, false, true] },
+      { label: "IA para Pesquisas Científicas", values: [false, false, true] },
+      { label: "Formação Viver de Análise de Dados", values: [false, false, true] },
+    ],
+  },
+  {
+    category: "Ferramentas Estatísticas",
+    rows: [
+      { label: "Calculadora de Tamanho Amostral", values: [true, true, true] },
+      { label: "Calculadora de Tamanho de Efeito", values: [true, true, true] },
+      { label: "Classificador de Análises Estatísticas", values: [true, true, true] },
+      { label: "Gerador de Sintaxe em R", values: [true, true, true] },
+    ],
+  },
+  {
+    category: "Recursos Didáticos",
+    rows: [
+      { label: "Biblioteca Eletrônica", values: [true, true, true] },
+      { label: "Glossário Acadêmico", values: [true, true, true] },
+      { label: "Livros Metodológicos", values: [true, true, true] },
+      { label: "Certificados de conclusão", values: [true, true, true] },
+    ],
+  },
+  {
+    category: "Suporte",
+    rows: [
+      { label: "Chatbot", values: [true, true, true] },
+      { label: "Comunidade de alunos", values: [true, true, true] },
+      { label: "Suporte por email", values: [false, true, true] },
+      { label: "Suporte direto pela plataforma", values: [false, true, true] },
+    ],
+  },
+  {
+    category: "Inteligência Artificial",
+    rows: [
+      { label: "Tokens incluídos por mês", values: ["100.000", "300.000", "500.000"] },
+    ],
   },
 ];
 
 function formatPrice(price: number) {
-  if (price === 0) return "Grátis";
   return price.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -136,159 +112,18 @@ function formatPrice(price: number) {
   });
 }
 
-function PlanCard({ plan, billing, index }: { plan: Plan; billing: BillingPeriod; index: number }) {
-  const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
-  const isFree = plan.monthlyPrice === 0;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative flex flex-col rounded-2xl p-6 lg:p-8 transition-all duration-300 ${
-        plan.highlighted
-          ? "bg-[#0A2E76] text-white shadow-2xl shadow-[#0A2E76]/20 scale-[1.02] lg:scale-105 z-10 border-2 border-[#0065FF]"
-          : "bg-white text-[#0A2E76] border border-[#E2E5EA] hover:border-[#0065FF]/30 hover:shadow-lg"
-      }`}
-      data-testid={`card-plan-${plan.id}`}
-    >
-      {plan.badge && (
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-          <span
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0065FF] text-white shadow-lg shadow-[#0065FF]/30"
-            data-testid={`badge-plan-${plan.id}`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            {plan.badge}
-          </span>
-        </div>
-      )}
-
-      <div className="mb-6">
-        <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${
-          plan.highlighted
-            ? "bg-white/10"
-            : "bg-[#F4F5F7]"
-        }`}>
-          <plan.icon className={`w-5 h-5 ${plan.highlighted ? "text-[#0065FF]" : "text-[#0065FF]"}`} />
-        </div>
-        <h3
-          className={`text-xl font-heading font-bold mb-2 ${plan.highlighted ? "text-white" : "text-[#0A2E76]"}`}
-          data-testid={`text-plan-name-${plan.id}`}
-        >
-          {plan.name}
-        </h3>
-        <p
-          className={`text-sm leading-relaxed ${plan.highlighted ? "text-white/70" : "text-[hsl(215,15%,45%)]"}`}
-          data-testid={`text-plan-description-${plan.id}`}
-        >
-          {plan.description}
-        </p>
+function CellIcon({ value }: { value: CellValue }) {
+  if (typeof value === "string") {
+    return <span className="font-bold text-[#0A2E76] text-sm">{value}</span>;
+  }
+  if (value) {
+    return (
+      <div className="w-6 h-6 rounded-full bg-[#0065FF]/10 flex items-center justify-center mx-auto">
+        <Check className="w-3.5 h-3.5 text-[#0065FF]" />
       </div>
-
-      <div className="mb-6">
-        <div className="flex items-baseline gap-1">
-          <span
-            className={`text-4xl font-heading font-bold ${plan.highlighted ? "text-white" : "text-[#0A2E76]"}`}
-            data-testid={`text-plan-price-${plan.id}`}
-          >
-            {isFree ? "R$ 0" : formatPrice(price)}
-          </span>
-          {!isFree && (
-            <span className={`text-sm ${plan.highlighted ? "text-white/60" : "text-[hsl(215,15%,55%)]"}`}>
-              /mês
-            </span>
-          )}
-        </div>
-        {!isFree && billing === "anual" && (
-          <p className={`text-xs mt-1.5 ${plan.highlighted ? "text-[#0065FF]/80" : "text-[#0065FF]"}`}>
-            <span className="font-semibold">
-              Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
-            </span>
-          </p>
-        )}
-        {isFree && (
-          <p className={`text-xs mt-1.5 ${plan.highlighted ? "text-white/60" : "text-[hsl(215,15%,55%)]"}`}>
-            Acesso por 14 dias
-          </p>
-        )}
-      </div>
-
-      <div className="flex-1 mb-8">
-        <div className={`h-px mb-5 ${plan.highlighted ? "bg-white/10" : "bg-[#E2E5EA]"}`} />
-        <ul className="space-y-2.5">
-          {plan.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-2.5">
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                plan.highlighted
-                  ? "bg-[#0065FF]/20"
-                  : "bg-[#0065FF]/10"
-              }`}>
-                <Check className={`w-3 h-3 ${plan.highlighted ? "text-[#4D9FFF]" : "text-[#0065FF]"}`} />
-              </div>
-              <span
-                className={`text-[13px] leading-snug ${plan.highlighted ? "text-white/85" : "text-[hsl(215,15%,35%)]"}`}
-                data-testid={`text-plan-feature-${plan.id}-${i}`}
-              >
-                {feature}
-              </span>
-            </li>
-          ))}
-          {plan.notIncluded?.map((feature, i) => (
-            <li key={`no-${i}`} className="flex items-start gap-2.5 opacity-50">
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                plan.highlighted
-                  ? "bg-white/5"
-                  : "bg-[#E2E5EA]"
-              }`}>
-                <XIcon className={`w-3 h-3 ${plan.highlighted ? "text-white/40" : "text-[hsl(215,15%,55%)]"}`} />
-              </div>
-              <span
-                className={`text-[13px] leading-snug line-through ${plan.highlighted ? "text-white/40" : "text-[hsl(215,15%,55%)]"}`}
-              >
-                {feature}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className={`mt-5 pt-4 border-t ${plan.highlighted ? "border-white/10" : "border-[#E2E5EA]"}`}>
-          <div className="flex items-center gap-2.5">
-            <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-              plan.highlighted ? "bg-[#0065FF]/20" : "bg-[#0065FF]/10"
-            }`}>
-              <Coins className={`w-3 h-3 ${plan.highlighted ? "text-[#4D9FFF]" : "text-[#0065FF]"}`} />
-            </div>
-            <span className={`text-[13px] font-semibold ${plan.highlighted ? "text-white/85" : "text-[#0A2E76]"}`}>
-              {plan.tokens}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <a
-        href="https://psicometriaonline.com.br/academy/"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-testid={`button-plan-cta-${plan.id}`}
-      >
-        <Button
-          className={`w-full gap-2 font-semibold ${
-            plan.highlighted
-              ? "bg-white text-[#0A2E76] hover:bg-white/90"
-              : plan.ctaVariant === "default"
-                ? "bg-[#0065FF] text-white hover:bg-[#0050CC]"
-                : "border-[#0A2E76]/20 text-[#0A2E76] hover:bg-[#0A2E76]/5"
-          }`}
-          variant={plan.ctaVariant === "outline" && !plan.highlighted ? "outline" : "default"}
-        >
-          {plan.cta}
-          <ArrowRight className="w-4 h-4" />
-        </Button>
-      </a>
-    </motion.div>
-  );
+    );
+  }
+  return <Minus className="w-4 h-4 text-[hsl(215,15%,70%)] mx-auto" />;
 }
 
 export default function Planos() {
@@ -372,13 +207,13 @@ export default function Planos() {
       </section>
 
       <section className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
             <h2
               className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4"
@@ -386,11 +221,11 @@ export default function Planos() {
             >
               Planos e Preços
             </h2>
-            <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-6">
+            <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-8">
               Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
             </p>
 
-            <div className="flex justify-center mb-2">
+            <div className="flex justify-center">
               <div
                 className="inline-flex items-center p-1 rounded-full bg-[#0A2E76]/5 border border-[#0A2E76]/10"
                 data-testid="toggle-billing"
@@ -424,11 +259,104 @@ export default function Planos() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-5 items-start">
-            {plans.map((plan, index) => (
-              <PlanCard key={plan.id} plan={plan} billing={billing} index={index} />
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <div className="bg-white rounded-2xl border border-[#E2E5EA] overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
+                  <thead>
+                    <tr className="border-b border-[#E2E5EA]">
+                      <th className="text-left p-5 w-[40%]">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
+                          Recursos
+                        </span>
+                      </th>
+                      {planHeaders.map((plan) => {
+                        const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
+                        return (
+                          <th key={plan.id} className="p-5 text-center w-[20%]" data-testid={`th-plan-${plan.id}`}>
+                            {plan.badge && (
+                              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#0065FF] text-white mb-2">
+                                {plan.badge}
+                              </span>
+                            )}
+                            <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
+                            <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                              {formatPrice(price)}
+                              <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                            </div>
+                            {billing === "anual" && (
+                              <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                                Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
+                              </p>
+                            )}
+                          </th>
+                        );
+                      })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {featureTable.map((group, gi) => (
+                      <>
+                        <tr key={`cat-${gi}`} className="bg-[#F4F5F7]/60">
+                          <td
+                            colSpan={4}
+                            className="px-5 py-3 text-center"
+                          >
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                              {group.category}
+                            </span>
+                          </td>
+                        </tr>
+                        {group.rows.map((row, ri) => (
+                          <tr
+                            key={`row-${gi}-${ri}`}
+                            className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
+                          >
+                            <td className="px-5 py-3.5 text-sm text-[hsl(215,15%,30%)]">
+                              {row.label}
+                              {row.sub && (
+                                <span className="block text-xs text-[hsl(215,15%,55%)] mt-0.5">{row.sub}</span>
+                              )}
+                            </td>
+                            {row.values.map((val, vi) => (
+                              <td key={vi} className="px-5 py-3.5 text-center">
+                                <CellIcon value={val} />
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </>
+                    ))}
+                    <tr className="border-t-2 border-[#E2E5EA]">
+                      <td className="p-5" />
+                      {planHeaders.map((plan) => (
+                        <td key={plan.id} className="p-5 text-center">
+                          <a
+                            href="https://psicometriaonline.com.br/academy/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-testid={`button-plan-cta-${plan.id}`}
+                          >
+                            <Button
+                              className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+                            >
+                              {plan.cta}
+                              <ArrowRight className="w-4 h-4" />
+                            </Button>
+                          </a>
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
