@@ -328,7 +328,7 @@ export function CtaSection() {
                 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
                 data-testid="text-cta-title"
               >
-                A Plataforma de Pesquisa Quantitativa que vai transformar a sua carreira acadêmica.
+                A Plataforma de <span className="text-[#0065FF]">Pesquisa Quantitativa</span> que vai transformar a sua carreira acadêmica.
               </h2>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
