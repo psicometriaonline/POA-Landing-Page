@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import avatar1 from "@assets/19_1771128693704.png";
 import avatar2 from "@assets/36_1771128693705.png";
 import avatar3 from "@assets/38_1771128693705.png";
@@ -118,6 +118,35 @@ function NetworkCanvas() {
 }
 
 function GradientBorder() {
+  const borderRef = useRef<SVGRectElement>(null);
+  const [pathD, setPathD] = useState("");
+
+  useEffect(() => {
+    const updatePath = () => {
+      const rect = borderRef.current;
+      if (!rect) return;
+      const svg = rect.closest("svg");
+      if (!svg) return;
+      const w = svg.clientWidth - 1;
+      const h = svg.clientHeight - 1;
+      const r = 16;
+      const x = 0.5;
+      const y = 0.5;
+      setPathD(
+        `M${x + w / 2},${y} ` +
+        `L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} ` +
+        `L${x + w},${y + h - r} Q${x + w},${y + h} ${x + w - r},${y + h} ` +
+        `L${x + r},${y + h} Q${x},${y + h} ${x},${y + h - r} ` +
+        `L${x},${y + r} Q${x},${y} ${x + r},${y} Z`
+      );
+    };
+    updatePath();
+    const obs = new ResizeObserver(updatePath);
+    const svg = borderRef.current?.closest("svg");
+    if (svg) obs.observe(svg);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="absolute inset-0 pointer-events-none rounded-2xl" aria-hidden="true">
       <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
@@ -136,8 +165,15 @@ function GradientBorder() {
               <animate attributeName="stop-color" values="#0065FF;#0A2E76;#3399FF;#0065FF;#0A2E76" dur="5s" repeatCount="indefinite" />
             </stop>
           </linearGradient>
+          <radialGradient id="pulse-glow">
+            <stop offset="0%" stopColor="#3399FF" stopOpacity="1" />
+            <stop offset="50%" stopColor="#0065FF" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#0065FF" stopOpacity="0" />
+          </radialGradient>
+          {pathD && <path id="cta-border-path" d={pathD} fill="none" />}
         </defs>
         <rect
+          ref={borderRef}
           x="0.5" y="0.5"
           rx="16" ry="16"
           fill="none"
@@ -145,6 +181,21 @@ function GradientBorder() {
           strokeWidth="1"
           style={{ width: "calc(100% - 1px)", height: "calc(100% - 1px)" }}
         />
+        {pathD && (
+          <>
+            <circle r="3" fill="url(#pulse-glow)">
+              <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#cta-border-path" />
+              </animateMotion>
+              <animate attributeName="opacity" values="0.9;1;0.9" dur="0.5s" repeatCount="indefinite" />
+            </circle>
+            <circle r="8" fill="url(#pulse-glow)" opacity="0.3">
+              <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#cta-border-path" />
+              </animateMotion>
+            </circle>
+          </>
+        )}
       </svg>
     </div>
   );
@@ -178,11 +229,13 @@ export function CtaSection() {
                     src={src}
                     alt=""
                     className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] object-cover"
+                    style={{ animation: `avatarPulse 4s ease-in-out infinite`, animationDelay: `${i * 0.07}s` }}
                     data-testid={`avatar-cta-${i}`}
                   />
                 ))}
                 <div
                   className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] bg-[#0A2E76] flex items-center justify-center text-white text-[10px] font-bold"
+                  style={{ animation: `avatarPulse 4s ease-in-out infinite`, animationDelay: `${7 * 0.07}s` }}
                   data-testid="avatar-cta-count"
                 >
                   +6.5K

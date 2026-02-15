@@ -250,3 +250,8 @@
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
+
+@keyframes avatarPulse {
+  0%, 90%, 100% { transform: scale(1); }
+  95% { transform: scale(1.12); }
+}
