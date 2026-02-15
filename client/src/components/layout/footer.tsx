@@ -37,7 +37,7 @@ function handleFooterClick(e: React.MouseEvent, href: string) {
 
 export function Footer() {
   return (
-    <footer className="bg-[hsl(213,80%,8%)] text-white/80" data-testid="footer">
+    <footer className="text-white/80" style={{ background: "linear-gradient(180deg, hsl(213,80%,8%) 0%, #0A2E76 100%)" }} data-testid="footer">
       <div className="container-narrow py-8 lg:py-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
           <div className="col-span-2 lg:col-span-1">
