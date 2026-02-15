@@ -8,6 +8,8 @@ import { Footer } from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Sobre from "@/pages/sobre";
 import Planos from "@/pages/planos";
+import Termos from "@/pages/termos";
+import Privacidade from "@/pages/privacidade";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,6 +18,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/sobre" component={Sobre} />
       <Route path="/planos" component={Planos} />
+      <Route path="/legal/termos" component={Termos} />
+      <Route path="/legal/privacidade" component={Privacidade} />
       <Route component={NotFound} />
     </Switch>
   );
