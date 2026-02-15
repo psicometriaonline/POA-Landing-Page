@@ -114,8 +114,8 @@ export function TestimonialsSection() {
                   style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
                   data-testid={`card-testimonial-${currentIndex}`}
                 >
-                  <div className="absolute top-4 right-6 text-[120px] leading-none font-serif text-white/[0.06] pointer-events-none select-none" aria-hidden="true">
-                    "
+                  <div className="absolute bottom-[-20px] right-6 text-[220px] md:text-[280px] leading-none pointer-events-none select-none" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "rgba(255,255,255,0.06)" }} aria-hidden="true">
+                    &ldquo;
                   </div>
                   <div className="flex-shrink-0 flex flex-col items-center md:items-start relative z-10">
                     <img
