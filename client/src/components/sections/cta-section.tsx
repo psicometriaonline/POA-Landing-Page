@@ -40,8 +40,8 @@ function NetworkCanvas() {
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
-    const nodeCount = 35;
-    const connectionDistance = 160;
+    const nodeCount = 80;
+    const connectionDistance = 130;
 
     if (nodesRef.current.length === 0) {
       nodesRef.current = Array.from({ length: nodeCount }, () => ({
