@@ -106,10 +106,11 @@ function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | nu
       return 0;
     };
 
-    const getColor = (blend: number, alpha: number): string => {
+    const getColor = (blend: number, baseAlpha: number): string => {
       const r = Math.round(10 + blend * (255 - 10));
       const g = Math.round(46 + blend * (255 - 46));
       const b = Math.round(118 + blend * (255 - 118));
+      const alpha = blend > 0 ? baseAlpha * (0.3 + (1 - blend) * 0.7) : baseAlpha;
       return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     };
 
