@@ -5,6 +5,7 @@ import { HubSection } from "@/components/sections/hub-section";
 import { SupportSection } from "@/components/sections/support-section";
 import { CertificateSection } from "@/components/sections/certificate-section";
 import { CtaSection } from "@/components/sections/cta-section";
+import { FaqSection } from "@/components/sections/faq-section";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <SupportSection />
       <CertificateSection />
       <CtaSection />
+      <FaqSection />
     </main>
   );
 }
