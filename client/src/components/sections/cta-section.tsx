@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import avatar1 from "@assets/19_1771128693704.png";
 import avatar2 from "@assets/36_1771128693705.png";
 import avatar3 from "@assets/38_1771128693705.png";
@@ -20,10 +20,32 @@ interface Node {
   radius: number;
 }
 
-function NetworkCanvas() {
+interface BoxRect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
+function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | null> }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const animRef = useRef<number>(0);
+  const boxRectRef = useRef<BoxRect>({ left: 0, top: 0, right: 0, bottom: 0 });
+
+  const updateBoxRect = useCallback(() => {
+    const canvas = canvasRef.current;
+    const box = boxRef.current;
+    if (!canvas || !box) return;
+    const canvasRect = canvas.getBoundingClientRect();
+    const bRect = box.getBoundingClientRect();
+    boxRectRef.current = {
+      left: bRect.left - canvasRect.left,
+      top: bRect.top - canvasRect.top,
+      right: bRect.right - canvasRect.left,
+      bottom: bRect.bottom - canvasRect.top,
+    };
+  }, [boxRef]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -35,6 +57,7 @@ function NetworkCanvas() {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
       canvas.height = canvas.offsetHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      updateBoxRect();
     };
     resize();
 
@@ -42,6 +65,7 @@ function NetworkCanvas() {
     const h = () => canvas.offsetHeight;
     const nodeCount = 80;
     const connectionDistance = 130;
+    const transitionZone = 40;
 
     if (nodesRef.current.length === 0) {
       nodesRef.current = Array.from({ length: nodeCount }, () => ({
@@ -53,10 +77,50 @@ function NetworkCanvas() {
       }));
     }
 
+    const getNodeBlend = (x: number, y: number): number => {
+      const b = boxRectRef.current;
+      if (b.right === 0 && b.bottom === 0) return 0;
+
+      const insideX = x >= b.left && x <= b.right;
+      const insideY = y >= b.top && y <= b.bottom;
+
+      if (insideX && insideY) {
+        const dLeft = x - b.left;
+        const dRight = b.right - x;
+        const dTop = y - b.top;
+        const dBottom = b.bottom - y;
+        const minDist = Math.min(dLeft, dRight, dTop, dBottom);
+        return Math.min(1, minDist / transitionZone);
+      }
+
+      let dx = 0;
+      let dy = 0;
+      if (x < b.left) dx = b.left - x;
+      else if (x > b.right) dx = x - b.right;
+      if (y < b.top) dy = b.top - y;
+      else if (y > b.bottom) dy = y - b.bottom;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < transitionZone) {
+        return Math.max(0, 1 - dist / transitionZone);
+      }
+      return 0;
+    };
+
+    const getColor = (blend: number, alpha: number): string => {
+      const r = Math.round(0 + blend * 255);
+      const g = Math.round(101 + blend * (255 - 101));
+      const b = Math.round(255);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
+    let frameCount = 0;
     const animate = () => {
       const width = w();
       const height = h();
       ctx.clearRect(0, 0, width, height);
+
+      if (frameCount % 30 === 0) updateBoxRect();
+      frameCount++;
 
       const nodes = nodesRef.current;
       for (const node of nodes) {
@@ -74,11 +138,14 @@ function NetworkCanvas() {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDistance) {
+            const midX = (nodes[i].x + nodes[j].x) / 2;
+            const midY = (nodes[i].y + nodes[j].y) / 2;
+            const blend = getNodeBlend(midX, midY);
             const opacity = (1 - dist / connectionDistance) * 0.15;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(0, 101, 255, ${opacity})`;
+            ctx.strokeStyle = getColor(blend, opacity);
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -86,9 +153,10 @@ function NetworkCanvas() {
       }
 
       for (const node of nodes) {
+        const blend = getNodeBlend(node.x, node.y);
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 101, 255, 0.3)";
+        ctx.fillStyle = getColor(blend, 0.3 + blend * 0.4);
         ctx.fill();
       }
 
@@ -106,7 +174,7 @@ function NetworkCanvas() {
       cancelAnimationFrame(animRef.current);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [updateBoxRect]);
 
   return (
     <canvas
@@ -202,15 +270,16 @@ function GradientBorder() {
 }
 
 export function CtaSection() {
+  const boxRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
-      className="relative overflow-hidden bg-[hsl(213,80%,8%)]"
+      className="relative overflow-hidden bg-[#F4F5F7]"
       data-testid="section-cta"
     >
       <div className="absolute inset-0">
-        <NetworkCanvas />
+        <NetworkCanvas boxRef={boxRef} />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0065FF]/10 via-transparent to-[#0065FF]/5 pointer-events-none" />
 
       <div className="container-narrow py-20 md:py-28 relative z-10">
         <div className="relative max-w-4xl mx-auto">
@@ -228,13 +297,13 @@ export function CtaSection() {
                     key={i}
                     src={src}
                     alt=""
-                    className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] object-cover"
+                    className="w-11 h-11 rounded-full border-2 border-[#F4F5F7] object-cover"
                     style={{ animation: `avatarPulse 4s ease-in-out infinite`, animationDelay: `${i * 0.07}s` }}
                     data-testid={`avatar-cta-${i}`}
                   />
                 ))}
                 <div
-                  className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] bg-[#0A2E76] flex items-center justify-center text-white text-[10px] font-bold"
+                  className="w-11 h-11 rounded-full border-2 border-[#F4F5F7] bg-[#0A2E76] flex items-center justify-center text-white text-[10px] font-bold"
                   style={{ animation: `avatarPulse 4s ease-in-out infinite`, animationDelay: `${7 * 0.07}s` }}
                   data-testid="avatar-cta-count"
                 >
@@ -244,7 +313,11 @@ export function CtaSection() {
             </div>
           </motion.div>
 
-          <div className="relative px-8 md:px-16 pt-16 md:pt-20 pb-14 md:pb-20">
+          <div
+            ref={boxRef}
+            className="relative px-8 md:px-16 pt-16 md:pt-20 pb-14 md:pb-20 rounded-2xl"
+            style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0B3486 50%, #0D3B94 100%)" }}
+          >
             <GradientBorder />
             <motion.div
               initial={{ opacity: 0, y: 30 }}
