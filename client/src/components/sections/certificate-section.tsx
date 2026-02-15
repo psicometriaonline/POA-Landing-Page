@@ -141,7 +141,7 @@ export function CertificateSection() {
         </div>
       </div>
 
-      <div className="relative pt-16 md:pt-24 pb-16 md:pb-24">
+      <div className="relative pt-10 md:pt-14 pb-16 md:pb-24">
         <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
