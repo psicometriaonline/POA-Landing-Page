@@ -4,6 +4,7 @@ import { ToolsSection } from "@/components/sections/tools-section";
 import { HubSection } from "@/components/sections/hub-section";
 import { SupportSection } from "@/components/sections/support-section";
 import { CertificateSection } from "@/components/sections/certificate-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { CtaSection } from "@/components/sections/cta-section";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <HubSection />
       <SupportSection />
       <CertificateSection />
+      <TestimonialsSection />
       <CtaSection />
     </main>
   );
