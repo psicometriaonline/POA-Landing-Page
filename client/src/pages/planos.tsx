@@ -255,112 +255,114 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 
 function DesktopTable({ billing }: { billing: BillingPeriod }) {
   return (
-    <div className="hidden md:block relative">
-      <div className="sticky top-[96px] z-30" style={{ backgroundColor: "#F4F5F7" }}>
-        <div className="flex" style={{ paddingLeft: "40%" }}>
-          {planHeaders.map((plan) => (
-            <div key={plan.id} className="flex-1 flex justify-center">
-              {plan.badge && (
-                <span
-                  className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
-                  data-testid={`badge-plan-${plan.id}`}
-                >
-                  {plan.badge}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-        <table className="w-full border-collapse border border-[#E2E5EA] bg-white rounded-t-2xl shadow-sm table-fixed">
-          <tbody>
-            <tr>
-              <td className="w-[40%] p-5 align-middle">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
-                  Recursos
-                </span>
-              </td>
-              {planHeaders.map((plan) => (
-                <td key={plan.id} className="w-[20%] p-5 text-center align-middle" data-testid={`th-plan-${plan.id}`}>
-                  <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
-                  {billing === "mensal" ? (
-                    <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                      {formatPrice(plan.monthlyPrice)}
-                      <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                        {formatPrice(plan.yearlyTotal)}
-                        <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/ano</span>
-                      </div>
-                      <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                        Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
-                      </p>
-                    </>
-                  )}
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="bg-white rounded-b-2xl border-x border-b border-[#E2E5EA] shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse min-w-[640px] table-fixed" data-testid="table-plans">
-            <tbody>
-              {featureTable.map((group, gi) => (
-                <>
-                  <tr key={`cat-${gi}`} className="bg-[#0A2E76]/[0.06]">
-                    <td colSpan={4} className="px-5 py-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
-                        {group.category}
-                      </span>
-                    </td>
-                  </tr>
-                  {group.rows.map((row, ri) => (
-                    <tr
-                      key={`row-${gi}-${ri}`}
-                      className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
-                    >
-                      <td className="px-5 py-3.5 text-sm text-[hsl(215,15%,30%)] w-[40%]">
-                        {row.label}
-                        {row.sub && (
-                          <span className="block text-xs text-[hsl(215,15%,55%)] mt-0.5">{row.sub}</span>
-                        )}
-                      </td>
-                      {row.values.map((val, vi) => (
-                        <td key={vi} className="px-5 py-3.5 text-center w-[20%]">
-                          <CellIcon value={val} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </>
-              ))}
-              <tr className="border-t-2 border-[#E2E5EA]">
-                <td className="p-5" />
+    <div className="hidden md:block relative bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
+      <table className="w-full border-collapse table-fixed" data-testid="table-plans">
+        <colgroup>
+          <col className="w-[40%]" />
+          <col className="w-[20%]" />
+          <col className="w-[20%]" />
+          <col className="w-[20%]" />
+        </colgroup>
+        <thead className="sticky top-[96px] z-30">
+          <tr>
+            <td colSpan={4} className="p-0" style={{ backgroundColor: "#F4F5F7" }}>
+              <div className="flex" style={{ paddingLeft: "40%" }}>
                 {planHeaders.map((plan) => (
-                  <td key={plan.id} className="p-5 text-center">
-                    <a
-                      href="https://psicometriaonline.com.br/academy/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-testid={`button-plan-cta-${plan.id}`}
-                    >
-                      <Button
-                        className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+                  <div key={plan.id} className="flex-1 flex justify-center">
+                    {plan.badge && (
+                      <span
+                        className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
+                        data-testid={`badge-plan-${plan.id}`}
                       >
-                        {plan.cta}
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </a>
-                  </td>
+                        {plan.badge}
+                      </span>
+                    )}
+                  </div>
                 ))}
+              </div>
+            </td>
+          </tr>
+          <tr className="bg-white border-b border-[#E2E5EA]">
+            <th className="p-5 text-left align-middle font-normal">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
+                Recursos
+              </span>
+            </th>
+            {planHeaders.map((plan) => (
+              <th key={plan.id} className="p-5 text-center align-middle font-normal" data-testid={`th-plan-${plan.id}`}>
+                <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
+                {billing === "mensal" ? (
+                  <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                    {formatPrice(plan.monthlyPrice)}
+                    <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                      {formatPrice(plan.yearlyTotal)}
+                      <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                    </div>
+                    <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                      Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                    </p>
+                  </>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {featureTable.map((group, gi) => (
+            <>
+              <tr key={`cat-${gi}`} className="bg-[#0A2E76]/[0.06]">
+                <td colSpan={4} className="px-5 py-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                    {group.category}
+                  </span>
+                </td>
               </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+              {group.rows.map((row, ri) => (
+                <tr
+                  key={`row-${gi}-${ri}`}
+                  className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
+                >
+                  <td className="px-5 py-3.5 text-sm text-[hsl(215,15%,30%)]">
+                    {row.label}
+                    {row.sub && (
+                      <span className="block text-xs text-[hsl(215,15%,55%)] mt-0.5">{row.sub}</span>
+                    )}
+                  </td>
+                  {row.values.map((val, vi) => (
+                    <td key={vi} className="px-5 py-3.5 text-center">
+                      <CellIcon value={val} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </>
+          ))}
+          <tr className="border-t-2 border-[#E2E5EA]">
+            <td className="p-5" />
+            {planHeaders.map((plan) => (
+              <td key={plan.id} className="p-5 text-center">
+                <a
+                  href="https://psicometriaonline.com.br/academy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid={`button-plan-cta-${plan.id}`}
+                >
+                  <Button
+                    className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+                  >
+                    {plan.cta}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
