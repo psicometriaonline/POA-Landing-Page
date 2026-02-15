@@ -271,41 +271,42 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             </div>
           ))}
         </div>
-        <div className="flex border border-[#E2E5EA] bg-white rounded-t-2xl shadow-sm">
-          <div className="w-[40%] flex items-center p-5">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
-              Recursos
-            </span>
-          </div>
-          {planHeaders.map((plan) => {
-            const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
-            return (
-              <div key={plan.id} className="w-[20%] p-5 text-center" data-testid={`th-plan-${plan.id}`}>
-                <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
-                {billing === "mensal" ? (
-                  <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                    {formatPrice(plan.monthlyPrice)}
-                    <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                  </div>
-                ) : (
-                  <>
+        <table className="w-full border-collapse border border-[#E2E5EA] bg-white rounded-t-2xl shadow-sm table-fixed">
+          <tbody>
+            <tr>
+              <td className="w-[40%] p-5 align-middle">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(215,15%,55%)]">
+                  Recursos
+                </span>
+              </td>
+              {planHeaders.map((plan) => (
+                <td key={plan.id} className="w-[20%] p-5 text-center align-middle" data-testid={`th-plan-${plan.id}`}>
+                  <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
+                  {billing === "mensal" ? (
                     <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                      {formatPrice(plan.yearlyTotal)}
-                      <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                      {formatPrice(plan.monthlyPrice)}
+                      <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
                     </div>
-                    <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                      Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
-                    </p>
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </div>
+                  ) : (
+                    <>
+                      <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                        {formatPrice(plan.yearlyTotal)}
+                        <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                      </div>
+                      <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                        Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                      </p>
+                    </>
+                  )}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className="bg-white rounded-b-2xl border-x border-b border-[#E2E5EA] shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse min-w-[640px]" data-testid="table-plans">
+          <table className="w-full border-collapse min-w-[640px] table-fixed" data-testid="table-plans">
             <tbody>
               {featureTable.map((group, gi) => (
                 <>
