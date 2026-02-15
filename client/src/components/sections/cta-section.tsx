@@ -216,26 +216,24 @@ function GradientBorder() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none rounded-2xl" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none rounded-2xl z-30" aria-hidden="true">
       <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
         <defs>
           <linearGradient id="cta-border-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#0A2E76">
-              <animate attributeName="stop-color" values="#0A2E76;#0065FF;#3399FF;#0065FF;#0A2E76" dur="5s" repeatCount="indefinite" />
+            <stop offset="0%" stopColor="#0065FF" stopOpacity="0.3">
+              <animate attributeName="stop-opacity" values="0.3;0.5;0.3" dur="5s" repeatCount="indefinite" />
             </stop>
-            <stop offset="33%" stopColor="#0065FF">
-              <animate attributeName="stop-color" values="#0065FF;#3399FF;#0A2E76;#3399FF;#0065FF" dur="5s" repeatCount="indefinite" />
+            <stop offset="50%" stopColor="#0065FF" stopOpacity="0.5">
+              <animate attributeName="stop-opacity" values="0.5;0.3;0.5" dur="5s" repeatCount="indefinite" />
             </stop>
-            <stop offset="66%" stopColor="#3399FF">
-              <animate attributeName="stop-color" values="#3399FF;#0A2E76;#0065FF;#0A2E76;#3399FF" dur="5s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="100%" stopColor="#0065FF">
-              <animate attributeName="stop-color" values="#0065FF;#0A2E76;#3399FF;#0065FF;#0A2E76" dur="5s" repeatCount="indefinite" />
+            <stop offset="100%" stopColor="#3399FF" stopOpacity="0.4">
+              <animate attributeName="stop-opacity" values="0.4;0.6;0.4" dur="5s" repeatCount="indefinite" />
             </stop>
           </linearGradient>
           <radialGradient id="pulse-glow">
-            <stop offset="0%" stopColor="#3399FF" stopOpacity="1" />
-            <stop offset="50%" stopColor="#0065FF" stopOpacity="0.6" />
+            <stop offset="0%" stopColor="#66BBFF" stopOpacity="1" />
+            <stop offset="30%" stopColor="#3399FF" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="#0065FF" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#0065FF" stopOpacity="0" />
           </radialGradient>
           {pathD && <path id="cta-border-path" d={pathD} fill="none" />}
@@ -246,18 +244,23 @@ function GradientBorder() {
           rx="16" ry="16"
           fill="none"
           stroke="url(#cta-border-grad)"
-          strokeWidth="1"
+          strokeWidth="1.5"
           style={{ width: "calc(100% - 1px)", height: "calc(100% - 1px)" }}
         />
         {pathD && (
           <>
-            <circle r="3" fill="url(#pulse-glow)">
+            <circle r="6" fill="url(#pulse-glow)">
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#cta-border-path" />
               </animateMotion>
               <animate attributeName="opacity" values="0.9;1;0.9" dur="0.5s" repeatCount="indefinite" />
             </circle>
-            <circle r="8" fill="url(#pulse-glow)" opacity="0.3">
+            <circle r="18" fill="url(#pulse-glow)" opacity="0.35">
+              <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#cta-border-path" />
+              </animateMotion>
+            </circle>
+            <circle r="35" fill="url(#pulse-glow)" opacity="0.12">
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#cta-border-path" />
               </animateMotion>
@@ -277,7 +280,7 @@ export function CtaSection() {
       className="relative overflow-hidden bg-[#F4F5F7]"
       data-testid="section-cta"
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-20 pointer-events-none">
         <NetworkCanvas boxRef={boxRef} />
       </div>
 
@@ -324,7 +327,7 @@ export function CtaSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center"
+              className="text-center relative z-30"
             >
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
