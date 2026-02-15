@@ -46,6 +46,49 @@ const sparkles = [
   { delay: 1.6, x: "35%", y: "18%", size: 12 },
 ];
 
+const avatarColors = [
+  "bg-blue-500", "bg-emerald-500", "bg-amber-500",
+  "bg-purple-500", "bg-rose-500", "bg-cyan-500",
+];
+const avatarInitials = ["MR", "LS", "AC", "JP", "RF", "TC"];
+
+function GradientBorder() {
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="border-gradient-left" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FF3366">
+              <animate attributeName="stop-color" values="#FF3366;#FF6633;#FF3366" dur="6s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="50%" stopColor="#CC33FF">
+              <animate attributeName="stop-color" values="#CC33FF;#FF3366;#CC33FF" dur="6s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stopColor="#0065FF">
+              <animate attributeName="stop-color" values="#0065FF;#CC33FF;#0065FF" dur="6s" repeatCount="indefinite" />
+            </stop>
+          </linearGradient>
+          <linearGradient id="border-gradient-right" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0065FF">
+              <animate attributeName="stop-color" values="#0065FF;#CC33FF;#0065FF" dur="6s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="50%" stopColor="#3366FF">
+              <animate attributeName="stop-color" values="#3366FF;#0065FF;#3366FF" dur="6s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stopColor="#0065FF">
+              <animate attributeName="stop-color" values="#0065FF;#3366FF;#0065FF" dur="6s" repeatCount="indefinite" />
+            </stop>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="0" x2="0" y2="100%" stroke="url(#border-gradient-left)" strokeWidth="2" />
+        <line x1="0" y1="100%" x2="30%" y2="100%" stroke="url(#border-gradient-left)" strokeWidth="2" />
+        <line x1="100%" y1="0" x2="100%" y2="100%" stroke="url(#border-gradient-right)" strokeWidth="2" />
+        <line x1="70%" y1="100%" x2="100%" y2="100%" stroke="url(#border-gradient-right)" strokeWidth="2" />
+      </svg>
+    </div>
+  );
+}
+
 export function CtaSection() {
   return (
     <section
@@ -62,41 +105,70 @@ export function CtaSection() {
 
       <div className="container-narrow py-20 md:py-28 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-10"
         >
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
-            data-testid="text-cta-title"
-          >
-            A Plataforma de Pesquisa Quantitativa que vai transformar a sua carreira acadêmica.
-          </h2>
+          <div className="flex items-center">
+            <div className="flex -space-x-3">
+              {avatarInitials.map((initials, i) => (
+                <div
+                  key={i}
+                  className={`w-10 h-10 rounded-full ${avatarColors[i]} border-2 border-[hsl(213,80%,8%)] flex items-center justify-center text-white text-xs font-bold`}
+                  data-testid={`avatar-cta-${i}`}
+                >
+                  {initials}
+                </div>
+              ))}
+            </div>
+            <div className="ml-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold rounded-full px-3 py-2 border border-white/20">
+              +2.5K
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="relative max-w-4xl mx-auto px-8 md:px-16 py-14 md:py-20">
+          <GradientBorder />
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10"
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            <a
-              href="https://psicometriaonline.com.br/academy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="button-cta-start"
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
+              data-testid="text-cta-title"
             >
-              <Button
-                className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-white/80 gap-2 text-base"
+              A Plataforma de Pesquisa Quantitativa que vai transformar a sua carreira acadêmica.
+            </h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-10"
+            >
+              <a
+                href="https://psicometriaonline.com.br/academy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-cta-start"
               >
-                Começar
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </a>
+                <Button
+                  className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-white/80 gap-2 text-base"
+                >
+                  Começar
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
