@@ -250,13 +250,3 @@
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
-
-@keyframes borderShift {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 100%; }
-}
-
-@keyframes borderShiftH {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 0%; }
-}

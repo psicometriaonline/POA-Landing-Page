@@ -54,44 +54,33 @@ const avatarInitials = ["MR", "LS", "AC", "JP", "RF", "TC"];
 
 function GradientBorder() {
   return (
-    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div
-        className="absolute left-0 top-0 bottom-0 w-[2px]"
-        style={{
-          background: "linear-gradient(to bottom, #FF3366, #CC33FF, #0065FF)",
-          backgroundSize: "100% 200%",
-          animation: "borderShift 4s ease-in-out infinite alternate",
-        }}
-      />
-      <div
-        className="absolute left-0 bottom-0 h-[2px] w-[35%]"
-        style={{
-          background: "linear-gradient(to right, #CC33FF, #0065FF)",
-          backgroundSize: "200% 100%",
-          animation: "borderShiftH 4s ease-in-out infinite alternate",
-        }}
-      />
-      <div
-        className="absolute left-0 bottom-0 w-6 h-6 rounded-bl-xl border-l-2 border-b-2"
-        style={{ borderColor: "transparent" }}
-      />
-
-      <div
-        className="absolute right-0 top-0 bottom-0 w-[2px]"
-        style={{
-          background: "linear-gradient(to bottom, #0065FF, #3366FF, #0065FF)",
-          backgroundSize: "100% 200%",
-          animation: "borderShift 4s ease-in-out infinite alternate-reverse",
-        }}
-      />
-      <div
-        className="absolute right-0 bottom-0 h-[2px] w-[35%]"
-        style={{
-          background: "linear-gradient(to left, #0065FF, #3366FF)",
-          backgroundSize: "200% 100%",
-          animation: "borderShiftH 4s ease-in-out infinite alternate-reverse",
-        }}
-      />
+    <div className="absolute inset-0 pointer-events-none rounded-2xl" aria-hidden="true">
+      <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
+        <defs>
+          <linearGradient id="cta-border-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#0A2E76">
+              <animate attributeName="stop-color" values="#0A2E76;#0065FF;#3399FF;#0065FF;#0A2E76" dur="5s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="33%" stopColor="#0065FF">
+              <animate attributeName="stop-color" values="#0065FF;#3399FF;#0A2E76;#3399FF;#0065FF" dur="5s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="66%" stopColor="#3399FF">
+              <animate attributeName="stop-color" values="#3399FF;#0A2E76;#0065FF;#0A2E76;#3399FF" dur="5s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stopColor="#0065FF">
+              <animate attributeName="stop-color" values="#0065FF;#0A2E76;#3399FF;#0065FF;#0A2E76" dur="5s" repeatCount="indefinite" />
+            </stop>
+          </linearGradient>
+        </defs>
+        <rect
+          x="0.5" y="0.5"
+          rx="16" ry="16"
+          fill="none"
+          stroke="url(#cta-border-grad)"
+          strokeWidth="1"
+          style={{ width: "calc(100% - 1px)", height: "calc(100% - 1px)" }}
+        />
+      </svg>
     </div>
   );
 }
