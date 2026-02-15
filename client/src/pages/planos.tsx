@@ -366,7 +366,7 @@ export default function Planos() {
           }}
         />
 
-        <div className="relative pt-28 md:pt-32 pb-16 md:pb-20">
+        <div className="relative pt-32 md:pt-40 pb-16 md:pb-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
