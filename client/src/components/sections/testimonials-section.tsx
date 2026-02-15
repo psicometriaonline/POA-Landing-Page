@@ -99,20 +99,24 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="flex-1 min-w-0 bg-[#0A2E76] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10"
+                className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-[#0065FF]/20 relative overflow-hidden"
+                style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
                 data-testid={`card-testimonial-${currentIndex}`}
               >
-                <div className="flex-shrink-0 flex flex-col items-center md:items-start">
+                <div className="absolute top-4 right-6 text-[120px] leading-none font-serif text-white/[0.06] pointer-events-none select-none" aria-hidden="true">
+                  "
+                </div>
+                <div className="flex-shrink-0 flex flex-col items-center md:items-start relative z-10">
                   <img
                     src={current.image}
                     alt={current.name}
-                    className="w-32 h-44 md:w-40 md:h-52 rounded-xl object-cover"
+                    className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
                     data-testid={`img-testimonial-${currentIndex}`}
                   />
                   <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
                   <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
                 </div>
-                <div className="flex-1 flex items-center">
+                <div className="flex-1 flex items-center relative z-10">
                   <p className="text-white/80 text-sm leading-relaxed">
                     "{current.text}"
                   </p>
@@ -126,16 +130,18 @@ export function TestimonialsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -80 }}
                   transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
-                  className="hidden md:flex w-[220px] flex-shrink-0 bg-[#0A2E76] rounded-2xl p-6 flex-col items-center justify-center text-center"
+                  className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-[#0065FF]/20 relative overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
                   data-testid={`card-testimonial-peek-${currentIndex + 1}`}
                 >
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
                   <img
                     src={peek.image}
                     alt={peek.name}
-                    className="w-28 h-36 rounded-xl object-cover mb-4"
+                    className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
                   />
-                  <h4 className="text-white font-heading font-bold text-sm">{peek.name}</h4>
-                  <p className="text-white/50 text-xs mt-0.5">{peek.role}</p>
+                  <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>
+                  <p className="text-white/50 text-xs mt-0.5 relative z-10">{peek.role}</p>
                 </motion.div>
               )}
             </AnimatePresence>
