@@ -181,9 +181,12 @@ export function CtaSection() {
                     data-testid={`avatar-cta-${i}`}
                   />
                 ))}
-              </div>
-              <div className="ml-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold rounded-full px-3 py-2 border border-white/20">
-                +6.5K
+                <div
+                  className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] bg-[#0A2E76] flex items-center justify-center text-white text-[10px] font-bold"
+                  data-testid="avatar-cta-count"
+                >
+                  +6.5K
+                </div>
               </div>
             </div>
           </motion.div>
