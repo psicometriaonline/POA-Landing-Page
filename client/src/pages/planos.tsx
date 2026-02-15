@@ -510,29 +510,6 @@ export default function Planos() {
             <MobileAccordion billing={billing} />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 text-center"
-          >
-            <div className="bg-white rounded-2xl border border-[#E2E5EA] p-8 md:p-12 max-w-3xl mx-auto">
-              <h3
-                className="text-xl font-heading font-bold text-[#0A2E76] mb-3"
-                data-testid="text-planos-guarantee-title"
-              >
-                Satisfação Garantida
-              </h3>
-              <p className="text-sm text-[hsl(215,15%,45%)] leading-relaxed max-w-lg mx-auto mb-2">
-                Todos os planos contam com <span className="font-semibold text-[#0A2E76]">7 dias de garantia incondicional</span>.
-                Se não ficar satisfeito, devolvemos 100% do seu investimento.
-              </p>
-              <p className="text-xs text-[hsl(215,15%,55%)]">
-                Cancele a qualquer momento, sem burocracia.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </section>
     </main>
