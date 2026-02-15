@@ -63,7 +63,7 @@ function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | nu
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
-    const nodeCount = 80;
+    const nodeCount = 240;
     const connectionDistance = 130;
     const transitionZone = 40;
 
@@ -107,9 +107,9 @@ function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | nu
     };
 
     const getColor = (blend: number, alpha: number): string => {
-      const r = Math.round(0 + blend * 255);
-      const g = Math.round(101 + blend * (255 - 101));
-      const b = Math.round(255);
+      const r = Math.round(10 + blend * (255 - 10));
+      const g = Math.round(46 + blend * (255 - 46));
+      const b = Math.round(118 + blend * (255 - 118));
       return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     };
 
@@ -316,7 +316,7 @@ export function CtaSection() {
           <div
             ref={boxRef}
             className="relative px-8 md:px-16 pt-16 md:pt-20 pb-14 md:pb-20 rounded-2xl"
-            style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0B3486 50%, #0D3B94 100%)" }}
+            style={{ background: "hsl(213,80%,8%)" }}
           >
             <GradientBorder />
             <motion.div
