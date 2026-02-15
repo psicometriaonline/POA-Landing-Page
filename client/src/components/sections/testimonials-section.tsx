@@ -73,7 +73,7 @@ export function TestimonialsSection() {
   const peek = testimonials[currentIndex + 1];
 
   return (
-    <section className="bg-white py-16 md:py-24" data-testid="section-testimonials">
+    <section className="bg-[#F4F5F7] py-16 md:py-24" data-testid="section-testimonials">
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
