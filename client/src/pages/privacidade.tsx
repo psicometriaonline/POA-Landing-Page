@@ -3,7 +3,7 @@ import logoPath from "@assets/Academy_colorful_1771123552632.png";
 
 export default function Privacidade() {
   return (
-    <main data-testid="page-privacidade" className="pt-28 pb-20 bg-white">
+    <main data-testid="page-privacidade" className="pt-32 md:pt-40 pb-20 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="flex justify-center mb-8">
           <Link href="/">
