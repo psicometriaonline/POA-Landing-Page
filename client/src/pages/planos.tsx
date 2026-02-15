@@ -22,7 +22,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 75.90,
     yearlyPrice: 58.08,
     yearlyTotal: 697.00,
-    cta: "Assinar Master",
+    cta: "Começar gratuitamente",
   },
   {
     id: "pro",
@@ -31,7 +31,7 @@ const planHeaders: PlanHeader[] = [
     yearlyPrice: 83.08,
     yearlyTotal: 997.00,
     badge: "Mais acessado",
-    cta: "Assinar Pro",
+    cta: "Começar gratuitamente",
   },
   {
     id: "premium",
@@ -39,7 +39,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 169.90,
     yearlyPrice: 124.75,
     yearlyTotal: 1497.00,
-    cta: "Assinar Premium",
+    cta: "Começar gratuitamente",
   },
 ];
 
@@ -243,7 +243,7 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
               <Button
                 className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] text-[11px] px-2"
               >
-                Assinar
+                Começar gratuitamente
               </Button>
             </a>
           ))}
