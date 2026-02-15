@@ -55,36 +55,43 @@ const avatarInitials = ["MR", "LS", "AC", "JP", "RF", "TC"];
 function GradientBorder() {
   return (
     <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="border-gradient-left" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#FF3366">
-              <animate attributeName="stop-color" values="#FF3366;#FF6633;#FF3366" dur="6s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="50%" stopColor="#CC33FF">
-              <animate attributeName="stop-color" values="#CC33FF;#FF3366;#CC33FF" dur="6s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="100%" stopColor="#0065FF">
-              <animate attributeName="stop-color" values="#0065FF;#CC33FF;#0065FF" dur="6s" repeatCount="indefinite" />
-            </stop>
-          </linearGradient>
-          <linearGradient id="border-gradient-right" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0065FF">
-              <animate attributeName="stop-color" values="#0065FF;#CC33FF;#0065FF" dur="6s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="50%" stopColor="#3366FF">
-              <animate attributeName="stop-color" values="#3366FF;#0065FF;#3366FF" dur="6s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="100%" stopColor="#0065FF">
-              <animate attributeName="stop-color" values="#0065FF;#3366FF;#0065FF" dur="6s" repeatCount="indefinite" />
-            </stop>
-          </linearGradient>
-        </defs>
-        <line x1="0" y1="0" x2="0" y2="100%" stroke="url(#border-gradient-left)" strokeWidth="2" />
-        <line x1="0" y1="100%" x2="30%" y2="100%" stroke="url(#border-gradient-left)" strokeWidth="2" />
-        <line x1="100%" y1="0" x2="100%" y2="100%" stroke="url(#border-gradient-right)" strokeWidth="2" />
-        <line x1="70%" y1="100%" x2="100%" y2="100%" stroke="url(#border-gradient-right)" strokeWidth="2" />
-      </svg>
+      <div
+        className="absolute left-0 top-0 bottom-0 w-[2px]"
+        style={{
+          background: "linear-gradient(to bottom, #FF3366, #CC33FF, #0065FF)",
+          backgroundSize: "100% 200%",
+          animation: "borderShift 4s ease-in-out infinite alternate",
+        }}
+      />
+      <div
+        className="absolute left-0 bottom-0 h-[2px] w-[35%]"
+        style={{
+          background: "linear-gradient(to right, #CC33FF, #0065FF)",
+          backgroundSize: "200% 100%",
+          animation: "borderShiftH 4s ease-in-out infinite alternate",
+        }}
+      />
+      <div
+        className="absolute left-0 bottom-0 w-6 h-6 rounded-bl-xl border-l-2 border-b-2"
+        style={{ borderColor: "transparent" }}
+      />
+
+      <div
+        className="absolute right-0 top-0 bottom-0 w-[2px]"
+        style={{
+          background: "linear-gradient(to bottom, #0065FF, #3366FF, #0065FF)",
+          backgroundSize: "100% 200%",
+          animation: "borderShift 4s ease-in-out infinite alternate-reverse",
+        }}
+      />
+      <div
+        className="absolute right-0 bottom-0 h-[2px] w-[35%]"
+        style={{
+          background: "linear-gradient(to left, #0065FF, #3366FF)",
+          backgroundSize: "200% 100%",
+          animation: "borderShiftH 4s ease-in-out infinite alternate-reverse",
+        }}
+      />
     </div>
   );
 }
