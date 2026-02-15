@@ -174,10 +174,10 @@ export function CertificateSection() {
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.div
                     key={`main-${currentIndex}`}
-                    initial={{ opacity: 0, x: 80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -80 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    initial={{ opacity: 0, x: 60, scale: 0.97 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -60, scale: 0.97 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                     className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-white/10 relative overflow-hidden shadow-2xl"
                     style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
                     data-testid={`card-testimonial-${currentIndex}`}
@@ -205,10 +205,10 @@ export function CertificateSection() {
                   {peek && (
                     <motion.div
                       key={`peek-${currentIndex + 1}`}
-                      initial={{ opacity: 0, x: 80 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -80 }}
-                      transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
+                      initial={{ opacity: 0, x: 60, scale: 0.97 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      exit={{ opacity: 0, x: -60, scale: 0.97 }}
+                      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.08 }}
                       className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-white/10 relative overflow-hidden shadow-2xl"
                       style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
                       data-testid={`card-testimonial-peek-${currentIndex + 1}`}
