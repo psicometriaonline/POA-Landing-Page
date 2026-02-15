@@ -91,96 +91,115 @@ export function TestimonialsSection() {
         </motion.div>
 
         <div className="relative" ref={containerRef}>
-          <div className="flex gap-5 items-stretch">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div
-                key={`main-${currentIndex}`}
-                initial={{ opacity: 0, x: 80 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -80 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-[#0065FF]/20 relative overflow-hidden"
-                style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
-                data-testid={`card-testimonial-${currentIndex}`}
-              >
-                <div className="absolute top-4 right-6 text-[120px] leading-none font-serif text-white/[0.06] pointer-events-none select-none" aria-hidden="true">
-                  "
-                </div>
-                <div className="flex-shrink-0 flex flex-col items-center md:items-start relative z-10">
-                  <img
-                    src={current.image}
-                    alt={current.name}
-                    className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
-                    data-testid={`img-testimonial-${currentIndex}`}
-                  />
-                  <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
-                  <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
-                </div>
-                <div className="flex-1 flex items-center relative z-10">
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    "{current.text}"
-                  </p>
-                </div>
-              </motion.div>
-
-              {peek && (
-                <motion.div
-                  key={`peek-${currentIndex + 1}`}
-                  initial={{ opacity: 0, x: 80 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -80 }}
-                  transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
-                  className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-[#0065FF]/20 relative overflow-hidden"
-                  style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
-                  data-testid={`card-testimonial-peek-${currentIndex + 1}`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
-                  <img
-                    src={peek.image}
-                    alt={peek.name}
-                    className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
-                  />
-                  <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>
-                  <p className="text-white/50 text-xs mt-0.5 relative z-10">{peek.role}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center gap-4">
             <button
               onClick={goPrev}
               disabled={currentIndex === 0}
-              className="w-10 h-10 rounded-full bg-[#0A2E76]/10 border border-[#0A2E76]/20 flex items-center justify-center text-[#0A2E76] transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-[#0A2E76] border border-[#0065FF]/30 items-center justify-center text-white transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-prev"
               aria-label="Depoimento anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex gap-1.5">
-              {testimonials.slice(0, maxIndex + 1).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === currentIndex ? "bg-[#0065FF] w-5" : "bg-[#0A2E76]/20"
-                  }`}
-                  data-testid={`button-testimonial-dot-${i}`}
-                  aria-label={`Ir para depoimento ${i + 1}`}
-                />
-              ))}
+            <div className="flex-1 flex gap-5 items-stretch">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.div
+                  key={`main-${currentIndex}`}
+                  initial={{ opacity: 0, x: 80 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-[#0065FF]/20 relative overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
+                  data-testid={`card-testimonial-${currentIndex}`}
+                >
+                  <div className="absolute top-4 right-6 text-[120px] leading-none font-serif text-white/[0.06] pointer-events-none select-none" aria-hidden="true">
+                    "
+                  </div>
+                  <div className="flex-shrink-0 flex flex-col items-center md:items-start relative z-10">
+                    <img
+                      src={current.image}
+                      alt={current.name}
+                      className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
+                      data-testid={`img-testimonial-${currentIndex}`}
+                    />
+                    <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
+                    <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
+                  </div>
+                  <div className="flex-1 flex items-center relative z-10">
+                    <p className="text-white/80 text-sm leading-relaxed">
+                      "{current.text}"
+                    </p>
+                  </div>
+                </motion.div>
+
+                {peek && (
+                  <motion.div
+                    key={`peek-${currentIndex + 1}`}
+                    initial={{ opacity: 0, x: 80 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -80 }}
+                    transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
+                    className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-[#0065FF]/20 relative overflow-hidden"
+                    style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
+                    data-testid={`card-testimonial-peek-${currentIndex + 1}`}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
+                    <img
+                      src={peek.image}
+                      alt={peek.name}
+                      className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
+                    />
+                    <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>
+                    <p className="text-white/50 text-xs mt-0.5 relative z-10">{peek.role}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <button
               onClick={goNext}
               disabled={currentIndex >= maxIndex}
-              className="w-10 h-10 rounded-full bg-[#0A2E76]/10 border border-[#0A2E76]/20 flex items-center justify-center text-[#0A2E76] transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-[#0A2E76] border border-[#0065FF]/30 items-center justify-center text-white transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-next"
               aria-label="Próximo depoimento"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
+          </div>
+
+          <div className="flex md:hidden items-center justify-center gap-4 mt-6">
+            <button
+              onClick={goPrev}
+              disabled={currentIndex === 0}
+              className="w-10 h-10 rounded-full bg-[#0A2E76] flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              aria-label="Depoimento anterior"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={goNext}
+              disabled={currentIndex >= maxIndex}
+              className="w-10 h-10 rounded-full bg-[#0A2E76] flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              aria-label="Próximo depoimento"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex justify-center gap-1.5 mt-6">
+            {testimonials.slice(0, maxIndex + 1).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === currentIndex ? "bg-[#0065FF] w-5" : "bg-[#0A2E76]/20"
+                }`}
+                data-testid={`button-testimonial-dot-${i}`}
+                aria-label={`Ir para depoimento ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
