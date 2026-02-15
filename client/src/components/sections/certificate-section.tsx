@@ -141,6 +141,10 @@ export function CertificateSection() {
         </div>
       </div>
 
+      <div className="container-narrow">
+        <div className="border-t border-white/10" />
+      </div>
+
       <div className="relative pt-10 md:pt-14 pb-16 md:pb-24">
         <div className="container-narrow">
           <motion.div

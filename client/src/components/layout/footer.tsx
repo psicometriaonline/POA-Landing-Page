@@ -94,7 +94,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-6 pt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
-          <p className="text-body-sm text-white/40">
+          <p className="text-body-sm text-white">
             2026 Psicometria Online Academy. Todos os direitos reservados.
           </p>
         </div>
