@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logoPath from "@assets/image_1770909567089.png";
+import logoPath from "@assets/Academy_colorful_1771123552632.png";
 
 export default function Termos() {
   return (
