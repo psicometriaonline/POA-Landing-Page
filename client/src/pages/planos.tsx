@@ -156,14 +156,21 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
                     </span>
                   )}
                   <div className="font-heading font-bold text-sm text-[#0A2E76]">{plan.name}</div>
-                  <div className="text-lg font-heading font-bold text-[#0A2E76] mt-0.5">
-                    {formatPrice(price)}
-                    <span className="text-[10px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                  </div>
-                  {billing === "anual" && (
-                    <p className="text-[9px] text-[#0065FF] font-semibold mt-0.5">
-                      -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}% ({formatPrice(plan.yearlyTotal)}/ano)
-                    </p>
+                  {billing === "mensal" ? (
+                    <div className="text-lg font-heading font-bold text-[#0A2E76] mt-0.5">
+                      {formatPrice(plan.monthlyPrice)}
+                      <span className="text-[10px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="text-lg font-heading font-bold text-[#0A2E76] mt-0.5">
+                        {formatPrice(plan.yearlyTotal)}
+                        <span className="text-[10px] font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                      </div>
+                      <p className="text-[9px] text-[#0065FF] font-semibold mt-0.5">
+                        Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                      </p>
+                    </>
                   )}
                 </div>
               );
@@ -275,14 +282,21 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             return (
               <div key={plan.id} className="w-[20%] p-5 text-center" data-testid={`th-plan-${plan.id}`}>
                 <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
-                <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
-                  {formatPrice(price)}
-                  <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                </div>
-                {billing === "anual" && (
-                  <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                    -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}% &mdash; {formatPrice(plan.yearlyTotal)}/ano
-                  </p>
+                {billing === "mensal" ? (
+                  <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                    {formatPrice(plan.monthlyPrice)}
+                    <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
+                      {formatPrice(plan.yearlyTotal)}
+                      <span className="text-xs font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                    </div>
+                    <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
+                      Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                    </p>
+                  </>
                 )}
               </div>
             );
