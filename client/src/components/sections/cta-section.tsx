@@ -1,56 +1,118 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-function Sparkle({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) {
-  return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{ left: x, top: y }}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{
-        opacity: [0, 1, 0],
-        scale: [0, 1, 0],
-      }}
-      transition={{
-        duration: 2.2,
-        delay,
-        repeat: Infinity,
-        repeatDelay: Math.random() * 3 + 1.5,
-        ease: "easeInOut",
-      }}
-    >
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-        <path
-          d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41L12 0Z"
-          fill="white"
-          fillOpacity="0.7"
-        />
-      </svg>
-    </motion.div>
-  );
-}
-
-const sparkles = [
-  { delay: 0, x: "10%", y: "20%", size: 12 },
-  { delay: 0.8, x: "85%", y: "15%", size: 16 },
-  { delay: 1.4, x: "25%", y: "75%", size: 10 },
-  { delay: 0.3, x: "70%", y: "70%", size: 14 },
-  { delay: 2.0, x: "50%", y: "10%", size: 10 },
-  { delay: 1.0, x: "15%", y: "50%", size: 8 },
-  { delay: 1.8, x: "90%", y: "55%", size: 12 },
-  { delay: 0.5, x: "40%", y: "85%", size: 10 },
-  { delay: 2.5, x: "60%", y: "30%", size: 8 },
-  { delay: 1.2, x: "5%", y: "80%", size: 14 },
-  { delay: 0.7, x: "78%", y: "40%", size: 10 },
-  { delay: 1.6, x: "35%", y: "18%", size: 12 },
-];
+import { useEffect, useRef } from "react";
 
 const avatarColors = [
   "bg-blue-500", "bg-emerald-500", "bg-amber-500",
   "bg-purple-500", "bg-rose-500", "bg-cyan-500",
 ];
 const avatarInitials = ["MR", "LS", "AC", "JP", "RF", "TC"];
+
+interface Node {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+}
+
+function NetworkCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const nodesRef = useRef<Node[]>([]);
+  const animRef = useRef<number>(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+    resize();
+
+    const w = () => canvas.offsetWidth;
+    const h = () => canvas.offsetHeight;
+    const nodeCount = 35;
+    const connectionDistance = 160;
+
+    if (nodesRef.current.length === 0) {
+      nodesRef.current = Array.from({ length: nodeCount }, () => ({
+        x: Math.random() * w(),
+        y: Math.random() * h(),
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.5 + 1,
+      }));
+    }
+
+    const animate = () => {
+      const width = w();
+      const height = h();
+      ctx.clearRect(0, 0, width, height);
+
+      const nodes = nodesRef.current;
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+        if (node.x < 0 || node.x > width) node.vx *= -1;
+        if (node.y < 0 || node.y > height) node.vy *= -1;
+        node.x = Math.max(0, Math.min(width, node.x));
+        node.y = Math.max(0, Math.min(height, node.y));
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionDistance) {
+            const opacity = (1 - dist / connectionDistance) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(0, 101, 255, ${opacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 101, 255, 0.3)";
+        ctx.fill();
+      }
+
+      animRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const onResize = () => {
+      resize();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ opacity: 1 }}
+    />
+  );
+}
 
 function GradientBorder() {
   return (
@@ -92,9 +154,7 @@ export function CtaSection() {
       data-testid="section-cta"
     >
       <div className="absolute inset-0">
-        {sparkles.map((s, i) => (
-          <Sparkle key={i} {...s} />
-        ))}
+        <NetworkCanvas />
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#0065FF]/10 via-transparent to-[#0065FF]/5 pointer-events-none" />
