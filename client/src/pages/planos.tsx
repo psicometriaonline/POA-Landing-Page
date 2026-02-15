@@ -10,6 +10,7 @@ interface PlanHeader {
   name: string;
   monthlyPrice: number;
   yearlyPrice: number;
+  yearlyTotal: number;
   badge?: string;
   cta: string;
 }
@@ -19,14 +20,16 @@ const planHeaders: PlanHeader[] = [
     id: "master",
     name: "Master",
     monthlyPrice: 75.90,
-    yearlyPrice: 49.90,
+    yearlyPrice: 58.08,
+    yearlyTotal: 697.00,
     cta: "Assinar Master",
   },
   {
     id: "pro",
     name: "Pro",
     monthlyPrice: 109.90,
-    yearlyPrice: 74.90,
+    yearlyPrice: 83.08,
+    yearlyTotal: 997.00,
     badge: "Mais acessado",
     cta: "Assinar Pro",
   },
@@ -34,7 +37,8 @@ const planHeaders: PlanHeader[] = [
     id: "premium",
     name: "Premium",
     monthlyPrice: 169.90,
-    yearlyPrice: 114.90,
+    yearlyPrice: 124.75,
+    yearlyTotal: 1497.00,
     cta: "Assinar Premium",
   },
 ];
@@ -56,17 +60,17 @@ const featureTable: CategoryGroup[] = [
   {
     category: "Formações",
     rows: [
-      { label: "Formação Fundamental em Pesquisa Científica", values: [true, true, true] },
+      { label: "Formação Básica em Pesquisa Científica", values: [true, true, true] },
+      { label: "Formação Avançada em Psicometria Análise de Dados", sub: "Modelos Mistos, Metanálise, Psicometria, Dados Textuais e Estudos Epidemiológicos", values: [false, true, true] },
       { label: "Formação Completa em Análise de Dados com R", values: [false, true, true] },
-      { label: "Formação Avançada em Métodos Científicos", sub: "Modelos Mistos, Metanálise, Psicometria, Dados Textuais e Estudos Epidemiológicos", values: [false, true, true] },
     ],
   },
   {
     category: "Formações Especiais",
     rows: [
       { label: "Curso de Preparação para Concursos", values: [false, false, true] },
-      { label: "IA para Pesquisas Científicas", values: [false, false, true] },
       { label: "Formação Viver de Análise de Dados", values: [false, false, true] },
+      { label: "Inteligência Artificial Aplicada a Pesquisas Científicas", values: [false, false, true] },
     ],
   },
   {
@@ -158,7 +162,7 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
                   </div>
                   {billing === "anual" && (
                     <p className="text-[9px] text-[#0065FF] font-semibold mt-0.5">
-                      -{formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
+                      -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}% ({formatPrice(plan.yearlyTotal)}/ano)
                     </p>
                   )}
                 </div>
@@ -277,7 +281,7 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
                 </div>
                 {billing === "anual" && (
                   <p className="text-[11px] text-[#0065FF] font-semibold mt-1">
-                    Economia de {formatPrice((plan.monthlyPrice - plan.yearlyPrice) * 12)}/ano
+                    -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}% &mdash; {formatPrice(plan.yearlyTotal)}/ano
                   </p>
                 )}
               </div>
@@ -471,8 +475,8 @@ export default function Planos() {
                   data-testid="button-billing-anual"
                 >
                   Anual
-                  <span className="absolute -top-2.5 -right-3 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none">
-                    -33%
+                  <span className="absolute -top-2.5 -right-6 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none whitespace-nowrap">
+                    até -27%
                   </span>
                 </button>
               </div>
