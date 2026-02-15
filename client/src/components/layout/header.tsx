@@ -70,7 +70,7 @@ export function Header() {
               data-testid="button-signup"
               className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
             >
-              Comece Agora
+              Cadastre-se Gratuitamente
             </Button>
           </div>
 
@@ -123,7 +123,7 @@ export function Header() {
                   className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
                   data-testid="button-mobile-signup"
                 >
-                  Comece Agora
+                  Cadastre-se Gratuitamente
                 </Button>
               </div>
             </div>
