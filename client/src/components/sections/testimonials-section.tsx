@@ -73,7 +73,7 @@ export function TestimonialsSection() {
   const peek = testimonials[currentIndex + 1];
 
   return (
-    <section className="bg-[#0A2E76] py-16 md:py-24" data-testid="section-testimonials">
+    <section className="bg-white py-16 md:py-24" data-testid="section-testimonials">
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export function TestimonialsSection() {
           className="text-center mb-12"
         >
           <h2
-            className="text-3xl md:text-4xl font-heading font-bold text-white"
+            className="text-3xl md:text-4xl font-heading font-bold text-[#0A2E76]"
             data-testid="text-testimonials-title"
           >
             O que dizem os nossos alunos
@@ -99,18 +99,18 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="flex-1 min-w-0 bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 flex flex-col md:flex-row gap-6"
+                className="flex-1 min-w-0 bg-[#0A2E76] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10"
                 data-testid={`card-testimonial-${currentIndex}`}
               >
                 <div className="flex-shrink-0 flex flex-col items-center md:items-start">
                   <img
                     src={current.image}
                     alt={current.name}
-                    className="w-28 h-28 md:w-36 md:h-36 rounded-xl object-cover"
+                    className="w-32 h-44 md:w-40 md:h-52 rounded-xl object-cover"
                     data-testid={`img-testimonial-${currentIndex}`}
                   />
-                  <h4 className="text-white font-heading font-bold text-sm mt-3">{current.name}</h4>
-                  <p className="text-white/50 text-xs">{current.role}</p>
+                  <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
+                  <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
                 </div>
                 <div className="flex-1 flex items-center">
                   <p className="text-white/80 text-sm leading-relaxed">
@@ -126,16 +126,16 @@ export function TestimonialsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -80 }}
                   transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
-                  className="hidden md:flex w-[220px] flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/10 flex-col items-center justify-center text-center"
+                  className="hidden md:flex w-[220px] flex-shrink-0 bg-[#0A2E76] rounded-2xl p-6 flex-col items-center justify-center text-center"
                   data-testid={`card-testimonial-peek-${currentIndex + 1}`}
                 >
                   <img
                     src={peek.image}
                     alt={peek.name}
-                    className="w-24 h-24 rounded-xl object-cover mb-3"
+                    className="w-28 h-36 rounded-xl object-cover mb-4"
                   />
                   <h4 className="text-white font-heading font-bold text-sm">{peek.name}</h4>
-                  <p className="text-white/50 text-xs">{peek.role}</p>
+                  <p className="text-white/50 text-xs mt-0.5">{peek.role}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -145,7 +145,7 @@ export function TestimonialsSection() {
             <button
               onClick={goPrev}
               disabled={currentIndex === 0}
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-[#0A2E76]/10 border border-[#0A2E76]/20 flex items-center justify-center text-[#0A2E76] transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-prev"
               aria-label="Depoimento anterior"
             >
@@ -158,7 +158,7 @@ export function TestimonialsSection() {
                   key={i}
                   onClick={() => setCurrentIndex(i)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    i === currentIndex ? "bg-white w-5" : "bg-white/30"
+                    i === currentIndex ? "bg-[#0065FF] w-5" : "bg-[#0A2E76]/20"
                   }`}
                   data-testid={`button-testimonial-dot-${i}`}
                   aria-label={`Ir para depoimento ${i + 1}`}
@@ -169,7 +169,7 @@ export function TestimonialsSection() {
             <button
               onClick={goNext}
               disabled={currentIndex >= maxIndex}
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-[#0A2E76]/10 border border-[#0A2E76]/20 flex items-center justify-center text-[#0A2E76] transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-next"
               aria-label="Próximo depoimento"
             >
