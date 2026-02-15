@@ -63,7 +63,7 @@ function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | nu
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
-    const nodeCount = 240;
+    const nodeCount = 190;
     const connectionDistance = 130;
     const transitionZone = 40;
 
@@ -249,18 +249,13 @@ function GradientBorder() {
         />
         {pathD && (
           <>
-            <circle r="6" fill="url(#pulse-glow)">
+            <circle r="4" fill="url(#pulse-glow)">
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#cta-border-path" />
               </animateMotion>
               <animate attributeName="opacity" values="0.9;1;0.9" dur="0.5s" repeatCount="indefinite" />
             </circle>
-            <circle r="18" fill="url(#pulse-glow)" opacity="0.35">
-              <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#cta-border-path" />
-              </animateMotion>
-            </circle>
-            <circle r="35" fill="url(#pulse-glow)" opacity="0.12">
+            <circle r="12" fill="url(#pulse-glow)" opacity="0.3">
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#cta-border-path" />
               </animateMotion>
@@ -291,7 +286,7 @@ export function CtaSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex justify-center relative z-20 mb-[-1.25rem]"
+            className="flex justify-center relative z-40 mb-[-1.25rem]"
           >
             <div className="flex items-center">
               <div className="flex -space-x-2.5">
