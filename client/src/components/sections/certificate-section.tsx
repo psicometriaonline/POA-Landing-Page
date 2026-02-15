@@ -4,8 +4,8 @@ import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
 
 export function CertificateSection() {
   return (
-    <section data-testid="section-certificate" className="relative" style={{ backgroundColor: "#F4F5F7" }}>
-      <div className="absolute inset-x-0 top-0 h-[80%]" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }} />
+    <section data-testid="section-certificate" className="relative" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}>
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-[#0A2E76]" />
 
       <div className="relative section-padding">
         <div className="container-narrow">
