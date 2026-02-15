@@ -43,6 +43,7 @@ export function ToolsSection() {
 
   return (
     <section
+      id="ferramentas"
       data-testid="section-tools"
       className="section-padding"
       style={{ backgroundColor: "#F4F5F7" }}

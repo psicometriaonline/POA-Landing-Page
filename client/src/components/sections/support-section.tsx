@@ -32,6 +32,7 @@ const channels = [
 export function SupportSection() {
   return (
     <section
+      id="suporte"
       data-testid="section-support"
       className="section-padding"
       style={{ backgroundColor: "#F4F5F7" }}

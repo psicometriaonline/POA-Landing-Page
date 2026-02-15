@@ -802,6 +802,7 @@ export function HubSection() {
 
   return (
     <section
+      id="cursos"
       data-testid="section-hub"
       className="section-padding"
       style={{ backgroundColor: "#FFFFFF" }}
