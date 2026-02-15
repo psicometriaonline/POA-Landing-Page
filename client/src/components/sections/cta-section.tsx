@@ -345,7 +345,7 @@ export function CtaSection() {
                   data-testid="button-cta-start"
                 >
                   <Button
-                    className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-white/80 gap-2 text-base"
+                    className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
                   >
                     Começar
                     <ArrowRight className="w-4 h-4" />
