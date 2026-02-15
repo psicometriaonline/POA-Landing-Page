@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { MessageCircle, Mail, Users, Video } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, Mail, Users, Video, ArrowRight } from "lucide-react";
 
 const channels = [
   {
@@ -87,6 +88,28 @@ export function SupportSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="flex justify-center mt-10"
+        >
+          <a
+            href="https://psicometriaonline.com.br/academy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="button-support-cta"
+          >
+            <Button
+              className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
+            >
+              Comece agora
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
