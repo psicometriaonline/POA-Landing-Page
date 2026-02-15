@@ -73,17 +73,17 @@ export function TestimonialsSection() {
   const peek = testimonials[currentIndex + 1];
 
   return (
-    <section className="bg-[#F4F5F7] py-16 md:py-24" data-testid="section-testimonials">
+    <section className="bg-[#0A2E76] py-16 md:py-24" data-testid="section-testimonials">
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <h2
-            className="text-3xl md:text-4xl font-heading font-bold text-[#0A2E76]"
+            className="text-3xl md:text-5xl font-heading font-bold text-white"
             data-testid="text-testimonials-title"
           >
             O que dizem os nossos alunos
@@ -95,7 +95,7 @@ export function TestimonialsSection() {
             <button
               onClick={goPrev}
               disabled={currentIndex === 0}
-              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-[#0A2E76] border border-[#0065FF]/30 items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-prev"
               aria-label="Depoimento anterior"
             >
@@ -110,8 +110,8 @@ export function TestimonialsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -80 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-[#0065FF]/20 relative overflow-hidden"
-                  style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
+                  className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-white/10 relative overflow-hidden shadow-2xl"
+                  style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
                   data-testid={`card-testimonial-${currentIndex}`}
                 >
                   <div className="absolute bottom-[-60px] right-4 text-[300px] md:text-[380px] leading-none pointer-events-none select-none" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "rgba(255,255,255,0.06)" }} aria-hidden="true">
@@ -141,8 +141,8 @@ export function TestimonialsSection() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -80 }}
                     transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
-                    className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-[#0065FF]/20 relative overflow-hidden"
-                    style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0C3A8F 40%, #0E47A8 100%)" }}
+                    className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-white/10 relative overflow-hidden shadow-2xl"
+                    style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
                     data-testid={`card-testimonial-peek-${currentIndex + 1}`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
@@ -161,7 +161,7 @@ export function TestimonialsSection() {
             <button
               onClick={goNext}
               disabled={currentIndex >= maxIndex}
-              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-[#0A2E76] border border-[#0065FF]/30 items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
               data-testid="button-testimonial-next"
               aria-label="Próximo depoimento"
             >
@@ -173,7 +173,7 @@ export function TestimonialsSection() {
             <button
               onClick={goPrev}
               disabled={currentIndex === 0}
-              className="w-10 h-10 rounded-full bg-[#0A2E76] flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
               aria-label="Depoimento anterior"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -181,7 +181,7 @@ export function TestimonialsSection() {
             <button
               onClick={goNext}
               disabled={currentIndex >= maxIndex}
-              className="w-10 h-10 rounded-full bg-[#0A2E76] flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
               aria-label="Próximo depoimento"
             >
               <ChevronRight className="w-5 h-5" />
@@ -194,7 +194,7 @@ export function TestimonialsSection() {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === currentIndex ? "bg-[#0065FF] w-5" : "bg-[#0A2E76]/20"
+                  i === currentIndex ? "bg-white w-5" : "bg-white/30"
                 }`}
                 data-testid={`button-testimonial-dot-${i}`}
                 aria-label={`Ir para depoimento ${i + 1}`}
