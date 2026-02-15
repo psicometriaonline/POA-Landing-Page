@@ -2,12 +2,15 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import avatar1 from "@assets/19_1771128693704.png";
+import avatar2 from "@assets/36_1771128693705.png";
+import avatar3 from "@assets/38_1771128693705.png";
+import avatar4 from "@assets/10_1771128693706.png";
+import avatar5 from "@assets/11_1771128693706.png";
+import avatar6 from "@assets/9_1771128693707.png";
+import avatar7 from "@assets/34_1771128693707.png";
 
-const avatarColors = [
-  "bg-blue-500", "bg-emerald-500", "bg-amber-500",
-  "bg-purple-500", "bg-rose-500", "bg-cyan-500",
-];
-const avatarInitials = ["MR", "LS", "AC", "JP", "RF", "TC"];
+const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7];
 
 interface Node {
   x: number;
@@ -156,74 +159,73 @@ export function CtaSection() {
       <div className="absolute inset-0">
         <NetworkCanvas />
       </div>
-
       <div className="absolute inset-0 bg-gradient-to-b from-[#0065FF]/10 via-transparent to-[#0065FF]/5 pointer-events-none" />
 
       <div className="container-narrow py-20 md:py-28 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center mb-10"
-        >
-          <div className="flex items-center">
-            <div className="flex -space-x-3">
-              {avatarInitials.map((initials, i) => (
-                <div
-                  key={i}
-                  className={`w-10 h-10 rounded-full ${avatarColors[i]} border-2 border-[hsl(213,80%,8%)] flex items-center justify-center text-white text-xs font-bold`}
-                  data-testid={`avatar-cta-${i}`}
-                >
-                  {initials}
-                </div>
-              ))}
-            </div>
-            <div className="ml-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold rounded-full px-3 py-2 border border-white/20">
-              +2.5K
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="relative max-w-4xl mx-auto px-8 md:px-16 py-14 md:py-20">
-          <GradientBorder />
-
+        <div className="relative max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.5 }}
+            className="flex justify-center relative z-20 mb-[-1.25rem]"
           >
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
-              data-testid="text-cta-title"
-            >
-              A Plataforma de Pesquisa Quantitativa que vai transformar a sua carreira acadêmica.
-            </h2>
+            <div className="flex items-center">
+              <div className="flex -space-x-2.5">
+                {avatarImages.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    className="w-11 h-11 rounded-full border-2 border-[hsl(213,80%,8%)] object-cover"
+                    data-testid={`avatar-cta-${i}`}
+                  />
+                ))}
+              </div>
+              <div className="ml-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold rounded-full px-3 py-2 border border-white/20">
+                +6.5K
+              </div>
+            </div>
+          </motion.div>
 
+          <div className="relative px-8 md:px-16 pt-16 md:pt-20 pb-14 md:pb-20">
+            <GradientBorder />
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10"
+              transition={{ duration: 0.6 }}
+              className="text-center"
             >
-              <a
-                href="https://psicometriaonline.com.br/academy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="button-cta-start"
+              <h2
+                className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
+                data-testid="text-cta-title"
               >
-                <Button
-                  className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-white/80 gap-2 text-base"
+                A Plataforma de Pesquisa Quantitativa que vai transformar a sua carreira acadêmica.
+              </h2>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="mt-10"
+              >
+                <a
+                  href="https://psicometriaonline.com.br/academy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-cta-start"
                 >
-                  Começar
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </a>
+                  <Button
+                    className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-white/80 gap-2 text-base"
+                  >
+                    Começar
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
