@@ -797,7 +797,7 @@ export function HubSection() {
   const [syllabusModal, setSyllabusModal] = useState<Course | null>(null);
   const [openSubcategory, setOpenSubcategory] = useState(0);
   const contentPanelRef = useRef<HTMLDivElement>(null);
-  const currentBlock = blocks[activeBlock];
+  const currentBlock = activeBlock >= 0 ? blocks[activeBlock] : blocks[0];
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
   return (
@@ -859,7 +859,8 @@ export function HubSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 items-start">
+          {/* Desktop: sidebar + panel */}
+          <div className="hidden lg:grid lg:grid-cols-[320px_1fr] gap-8 items-start">
             <div className="space-y-1">
               {blocks.map((block, idx) => (
                 <button
@@ -1026,6 +1027,173 @@ export function HubSection() {
                 </motion.div>
               </AnimatePresence>
             </div>
+          </div>
+
+          {/* Mobile: accordion - conteúdo aparece logo abaixo de cada aba */}
+          <div className="lg:hidden space-y-3">
+            {blocks.map((block, idx) => {
+              const isMobileActive = activeBlock === idx;
+              const mobileBlock = blocks[idx];
+              const mobileHasMultipleSubs = mobileBlock.subcategories.length > 1;
+              return (
+                <div key={block.id} className="rounded-xl overflow-hidden">
+                  <button
+                    onClick={() => {
+                      if (isMobileActive) {
+                        setActiveBlock(-1);
+                      } else {
+                        setActiveBlock(idx);
+                        setOpenSubcategory(0);
+                      }
+                    }}
+                    className={`w-full text-left px-5 py-4 rounded-xl transition-all duration-200 ${
+                      isMobileActive
+                        ? "bg-[#0A2E76] shadow-lg rounded-b-none"
+                        : "bg-[#F4F5F7]"
+                    }`}
+                    data-testid={`tab-block-mobile-${block.id}`}
+                  >
+                    <div className="flex items-center gap-3 mb-1">
+                      <block.icon className={`w-5 h-5 shrink-0 ${isMobileActive ? "text-white" : "text-[#0065FF]"}`} />
+                      <span className={`text-base font-bold ${isMobileActive ? "text-white" : "text-[#0A2E76]"}`}>
+                        {block.name}
+                      </span>
+                      <span className={`text-xs px-1.5 py-0.5 rounded-full ml-auto shrink-0 ${
+                        isMobileActive ? "bg-white/20 text-white" : "bg-[#E2E5EA] text-[hsl(215,15%,55%)]"
+                      }`}>
+                        {block.totalCourses}
+                      </span>
+                    </div>
+                    <p className={`text-sm leading-relaxed pl-8 ${isMobileActive ? "text-white/75" : "text-[hsl(215,15%,55%)]"}`}>
+                      {block.description}
+                    </p>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isMobileActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="bg-[#F4F5F7] rounded-b-xl p-4 pt-5">
+                          <p className="text-sm text-[hsl(215,15%,45%)] mb-4">
+                            {mobileBlock.subtitle} — <span className="font-semibold text-[#0065FF]">{mobileBlock.totalCourses} cursos</span>
+                          </p>
+
+                          <div className="space-y-3">
+                            {mobileBlock.subcategories.map((sub, subIdx) => {
+                              const isSubOpen = mobileHasMultipleSubs ? openSubcategory === subIdx : true;
+                              return (
+                                <div key={sub.name} className="rounded-xl overflow-hidden">
+                                  {mobileHasMultipleSubs && (
+                                    <button
+                                      onClick={() => setOpenSubcategory(isSubOpen ? -1 : subIdx)}
+                                      className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 rounded-lg ${
+                                        isSubOpen ? "bg-[#0A2E76]" : "bg-white"
+                                      }`}
+                                      data-testid={`accordion-subcategory-mobile-${mobileBlock.id}-${subIdx}`}
+                                    >
+                                      {isSubOpen ? (
+                                        <ChevronDown className="w-4 h-4 text-white shrink-0" />
+                                      ) : (
+                                        <ChevronRight className="w-4 h-4 text-[#0065FF] shrink-0" />
+                                      )}
+                                      <h5 className={`text-sm font-heading font-semibold ${isSubOpen ? "text-white" : "text-[#0A2E76]"}`}>
+                                        {sub.name}
+                                      </h5>
+                                      <span className={`text-xs font-semibold ml-auto shrink-0 ${
+                                        isSubOpen ? "text-white/80" : "text-[#0065FF]"
+                                      }`}>
+                                        {isSubOpen ? "Fechar" : "Ver cursos"}
+                                      </span>
+                                    </button>
+                                  )}
+                                  {!mobileHasMultipleSubs && (
+                                    <div className="flex items-center gap-2 mb-2">
+                                      <ChevronRight className="w-4 h-4 text-[#0065FF]" />
+                                      <h5 className="text-sm font-heading font-semibold text-[#0A2E76]">
+                                        {sub.name}
+                                      </h5>
+                                      <span className="text-xs text-[hsl(215,15%,55%)] bg-white px-2 py-0.5 rounded-full">
+                                        {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
+                                      </span>
+                                    </div>
+                                  )}
+                                  <AnimatePresence initial={false}>
+                                    {isSubOpen && (
+                                      <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                                        className="overflow-hidden"
+                                      >
+                                        <div className={`space-y-2 ${mobileHasMultipleSubs ? "pt-3" : ""}`}>
+                                          {sub.courses.map((course, courseIdx) => (
+                                            <button
+                                              key={course.name}
+                                              onClick={() => setSyllabusModal(course)}
+                                              className="w-full text-left bg-white rounded-lg px-4 py-3 flex items-start justify-between gap-3 cursor-pointer group"
+                                              data-testid={`course-item-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
+                                            >
+                                              <div className="flex items-start gap-2.5 min-w-0">
+                                                <div className="w-7 h-7 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
+                                                  <BookOpen className="w-3 h-3 text-[#0065FF]" />
+                                                </div>
+                                                <div className="min-w-0">
+                                                  <p className="text-sm font-semibold text-[#0A2E76] leading-snug">
+                                                    {course.name}
+                                                  </p>
+                                                  <p className="text-xs text-[hsl(215,15%,50%)] mt-1 leading-relaxed line-clamp-2">
+                                                    {course.description}
+                                                  </p>
+                                                </div>
+                                              </div>
+                                              <span
+                                                className="text-xs font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1 bg-[#E8F0FE] px-2.5 py-1 rounded-md"
+                                                data-testid={`button-syllabus-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
+                                              >
+                                                Ementa
+                                              </span>
+                                            </button>
+                                          ))}
+                                        </div>
+                                      </motion.div>
+                                    )}
+                                  </AnimatePresence>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          <div className="mt-5 flex flex-col gap-2">
+                            <Button
+                              size="lg"
+                              data-testid="button-hub-start-mobile"
+                              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
+                            >
+                              Comece gratuitamente
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                            <Button
+                              size="lg"
+                              variant="outline"
+                              data-testid="button-hub-plans-mobile"
+                              className="font-semibold w-full border-[#0A2E76] text-[#0A2E76]"
+                            >
+                              Ver planos
+                            </Button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
