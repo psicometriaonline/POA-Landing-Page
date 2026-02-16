@@ -68,7 +68,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col gap-3 mb-6"
+              className="flex flex-col gap-2 mb-4"
             >
               <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
                 <Input
