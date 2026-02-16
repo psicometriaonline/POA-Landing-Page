@@ -855,7 +855,7 @@ export function HubSection() {
           style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
         >
           <h2
-            className="text-display-sm md:text-display-md font-heading font-bold text-white leading-[1.1] mb-6 tracking-tight"
+            className="text-[1.75rem] md:text-display-md font-heading font-bold text-white leading-[1.1] mb-6 tracking-tight"
             data-testid="text-hub-label"
           >
             Hub Educacional
