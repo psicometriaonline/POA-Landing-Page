@@ -92,8 +92,8 @@ export function ToolsSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 items-stretch" style={{ alignItems: "stretch" }}>
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+          <div className="flex flex-col gap-3 lg:w-1/2 shrink-0">
             {tools.map((tool, idx) => (
               <motion.div
                 key={tool.title}
@@ -136,13 +136,13 @@ export function ToolsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden lg:block rounded-2xl overflow-hidden self-stretch"
+            className="hidden lg:block lg:w-1/2 rounded-2xl overflow-hidden"
           >
             <img
               src="/images/tools-collab.webp"
               alt="Equipe colaborando em pesquisa acadêmica"
               loading="lazy"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
               data-testid="img-tools-collab"
             />
           </motion.div>
