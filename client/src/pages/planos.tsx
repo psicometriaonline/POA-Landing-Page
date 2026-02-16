@@ -149,26 +149,26 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
             {planHeaders.map((plan) => {
               const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
               return (
-                <div key={plan.id} className="p-3 text-center relative" data-testid={`mobile-th-${plan.id}`}>
+                <div key={plan.id} className="p-2 text-center relative" data-testid={`mobile-th-${plan.id}`}>
                   {plan.badge && (
                     <span className="absolute -top-6 left-1/2 -translate-x-1/2 inline-block px-3 py-1 rounded-t-lg text-[8px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white whitespace-nowrap">
                       {plan.badge}
                     </span>
                   )}
-                  <div className="font-heading font-bold text-sm text-[#0A2E76]">{plan.name}</div>
+                  <div className="font-heading font-bold text-xs text-[#0A2E76]">{plan.name}</div>
                   {billing === "mensal" ? (
-                    <div className="text-lg font-heading font-bold text-[#0A2E76] mt-0.5">
+                    <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
                       {formatPrice(plan.monthlyPrice)}
-                      <span className="text-[10px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                      <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
                     </div>
                   ) : (
                     <>
-                      <div className="text-lg font-heading font-bold text-[#0A2E76] mt-0.5">
+                      <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
                         {formatPrice(plan.yearlyTotal)}
-                        <span className="text-[10px] font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                        <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/ano</span>
                       </div>
-                      <p className="text-[9px] text-[#0065FF] font-semibold mt-0.5">
-                        Economia de {formatPrice(plan.monthlyPrice * 12 - plan.yearlyTotal)} -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                      <p className="text-[8px] text-[#0065FF] font-semibold mt-0.5 leading-tight">
+                        -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
                       </p>
                     </>
                   )}
@@ -765,11 +765,10 @@ function DetailedBreakdown() {
         <AnimatePresence>
           {isExpanded && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <>
               <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
@@ -856,8 +855,8 @@ function DetailedBreakdown() {
             ))}
           </div>
 
-          <div className="md:hidden bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
-            <div className="sticky top-[88px] z-30 grid grid-cols-[1fr_1fr_1fr] border-b border-[#E2E5EA] bg-[#0A2E76]">
+          <div className="md:hidden bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
+            <div className="sticky top-[88px] z-30 grid grid-cols-[1fr_1fr_1fr] border-b border-[#E2E5EA] bg-[#0A2E76] rounded-t-2xl">
               {planNames.map((name) => (
                 <div key={name} className="py-3 text-center">
                   <span className="text-[11px] font-bold text-white">{name}</span>
