@@ -25,7 +25,7 @@ export function TrustSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] text-center leading-tight"
+          className="text-2xl sm:text-3xl md:text-[2.1rem] font-heading font-bold text-[#0A2E76] text-center leading-tight"
           data-testid="text-home-trust-title"
         >
           Pesquisadores das melhores universidades do Brasil e do Mundo confiam na Psicometria Online Academy
