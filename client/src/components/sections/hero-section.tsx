@@ -25,12 +25,12 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative flex items-center pt-16 md:pt-20"
+      className="relative flex items-center pt-16 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="container-narrow relative z-10 py-8 md:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-          <div className="flex flex-col justify-center text-left py-2">
+      <div className="container-narrow relative z-10 py-8 md:py-10 pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
+          <div className="flex flex-col justify-center text-left py-2 pb-8 md:pb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -106,16 +106,17 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:flex items-center"
+            className="relative hidden lg:flex items-end justify-center"
           >
-            <div className="w-full h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl relative flex items-center justify-center" style={{ backgroundColor: "#F4F5F7" }}>
+            <div className="relative w-full flex items-end justify-center">
+              <div className="absolute inset-0 rounded-t-3xl" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 50%, #0065FF 100%)" }} />
               <img
                 src={heroImg}
-                alt="Plataforma POA - App com cursos de Análises Bi e Multivariadas"
+                alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
                 fetchPriority="high"
                 width={600}
-                height={900}
-                className="w-auto h-full max-h-[600px] object-contain"
+                height={600}
+                className="relative z-10 w-full max-w-[520px] object-contain object-bottom rounded-t-3xl"
               />
             </div>
           </motion.div>
