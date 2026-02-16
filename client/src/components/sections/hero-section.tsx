@@ -106,7 +106,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden lg:block flex-1 relative min-h-[480px] ml-16"
+          className="hidden lg:block flex-1 relative min-h-[480px] ml-32"
         >
           <div className="absolute inset-0 top-[-1rem] rounded-l-[3rem] overflow-hidden shadow-2xl">
             <img
