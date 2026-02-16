@@ -1248,3 +1248,5 @@ export function HubSection() {
     </section>
   );
 }
+
+export default HubSection;

@@ -176,3 +176,5 @@ export function ToolsSection() {
     </section>
   );
 }
+
+export default ToolsSection;

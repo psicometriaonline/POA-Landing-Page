@@ -116,3 +116,5 @@ export function SupportSection() {
     </section>
   );
 }
+
+export default SupportSection;

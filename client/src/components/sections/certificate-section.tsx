@@ -302,3 +302,5 @@ export function CertificateSection() {
     </section>
   );
 }
+
+export default CertificateSection;
