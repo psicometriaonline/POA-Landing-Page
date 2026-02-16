@@ -25,7 +25,7 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative pt-16 md:pt-20 overflow-hidden"
+      className="relative pt-20 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
       <div className="relative z-10 flex flex-col lg:flex-row items-stretch">
