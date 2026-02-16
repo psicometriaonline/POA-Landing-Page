@@ -1050,17 +1050,20 @@ export function HubSection() {
                     onClick={() => {
                       if (isMobileActive) {
                         setActiveBlock(-1);
-                      } else if (activeBlock >= 0) {
+                        return;
+                      }
+                      const ref = mobileBlockRefs.current[idx];
+                      if (ref) scrollToRef(ref);
+                      if (activeBlock >= 0) {
                         setActiveBlock(-1);
                         setTimeout(() => {
-                          scrollToRef(mobileBlockRefs.current[idx]);
+                          if (ref) scrollToRef(ref);
                           setTimeout(() => {
                             setActiveBlock(idx);
                             setOpenSubcategory(0);
                           }, 50);
                         }, 320);
                       } else {
-                        scrollToRef(mobileBlockRefs.current[idx]);
                         setTimeout(() => {
                           setActiveBlock(idx);
                           setOpenSubcategory(0);
@@ -1114,19 +1117,18 @@ export function HubSection() {
                                       onClick={() => {
                                         if (isSubOpen) {
                                           setOpenSubcategory(-1);
-                                        } else if (openSubcategory >= 0) {
+                                          return;
+                                        }
+                                        const subRef = mobileSubcategoryRefs.current[`${idx}-${subIdx}`];
+                                        if (subRef) scrollToRef(subRef);
+                                        if (openSubcategory >= 0) {
                                           setOpenSubcategory(-1);
                                           setTimeout(() => {
-                                            scrollToRef(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
-                                            setTimeout(() => {
-                                              setOpenSubcategory(subIdx);
-                                            }, 50);
+                                            if (subRef) scrollToRef(subRef);
+                                            setTimeout(() => setOpenSubcategory(subIdx), 50);
                                           }, 270);
                                         } else {
-                                          scrollToRef(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
-                                          setTimeout(() => {
-                                            setOpenSubcategory(subIdx);
-                                          }, 50);
+                                          setTimeout(() => setOpenSubcategory(subIdx), 50);
                                         }
                                       }}
                                       className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 ${

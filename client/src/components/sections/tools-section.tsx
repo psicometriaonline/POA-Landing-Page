@@ -141,36 +141,31 @@ export function ToolsSection() {
     const newVal = selectedTool === idx ? null : idx;
     const isMobile = window.innerWidth < 1024;
 
-    if (isMobile && newVal !== null && selectedTool !== null && selectedTool !== idx) {
+    if (!isMobile || newVal === null) {
+      setSelectedTool(newVal);
+      return;
+    }
+
+    const ref = mobileCardRefs.current[newVal];
+    if (!ref) { setSelectedTool(newVal); return; }
+
+    const headerHeight = 80;
+    const scrollToCard = () => {
+      const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: y });
+    };
+
+    scrollToCard();
+
+    if (selectedTool !== null && selectedTool !== idx) {
       setSelectedTool(null);
       setTimeout(() => {
-        const ref = mobileCardRefs.current[newVal];
-        if (ref) {
-          const headerHeight = 80;
-          const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
-          window.scrollTo({ top: y });
-        }
-        setTimeout(() => {
-          setSelectedTool(newVal);
-        }, 50);
+        scrollToCard();
+        setTimeout(() => setSelectedTool(newVal), 50);
       }, 320);
-      return;
+    } else {
+      setTimeout(() => setSelectedTool(newVal), 50);
     }
-
-    if (isMobile && newVal !== null && selectedTool === null) {
-      const ref = mobileCardRefs.current[newVal];
-      if (ref) {
-        const headerHeight = 80;
-        const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
-        window.scrollTo({ top: y });
-      }
-      setTimeout(() => {
-        setSelectedTool(newVal);
-      }, 50);
-      return;
-    }
-
-    setSelectedTool(newVal);
   };
 
   return (
