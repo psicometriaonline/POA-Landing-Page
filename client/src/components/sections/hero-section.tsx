@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, X } from "lucide-react";
+import heroImg from "@assets/optimized/image_1771217378975.webp";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -107,19 +108,16 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative hidden lg:flex items-center"
           >
-            <div className="w-full h-full min-h-[500px] bg-slate-200 rounded-2xl overflow-hidden shadow-2xl relative">
+            <div className="w-full h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl relative flex items-center justify-center" style={{ backgroundColor: "#F4F5F7" }}>
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=75&w=800"
-                alt="Plataforma POA"
+                src={heroImg}
+                alt="Plataforma POA - App com cursos de Análises Bi e Multivariadas"
                 fetchPriority="high"
-                width={800}
-                height={533}
-                className="w-full h-full object-cover"
+                width={600}
+                height={900}
+                className="w-auto h-full max-h-[600px] object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E76]/20 to-transparent" />
             </div>
-            <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-16 h-16 bg-orange-400 rotate-45 rounded-lg -z-10 blur-[1px]" />
-            <div className="absolute bottom-0 -right-4 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -z-10" />
           </motion.div>
         </div>
       </div>
