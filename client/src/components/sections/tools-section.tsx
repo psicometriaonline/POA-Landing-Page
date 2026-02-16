@@ -10,31 +10,37 @@ const tools = [
     icon: Users,
     title: "Calculadora de Tamanho Amostral",
     description: "Calcule o N necessário para realizar as análises da sua pesquisa.",
+    detail: "Defina o tamanho amostral adequado para diferentes delineamentos de pesquisa. Configure nível de significância, poder estatístico e tamanho de efeito, e receba o N mínimo necessário com explicação clara dos critérios utilizados.",
   },
   {
     icon: Calculator,
     title: "Calculadoras de Tamanho de Efeito",
     description: "Quantifique a magnitude real dos resultados obtidos, com interpretações diretas sobre os achados.",
+    detail: "Calcule d de Cohen, eta-quadrado, r de Pearson e outras medidas de tamanho de efeito. Receba classificações automáticas (pequeno, médio, grande) com base nas convenções de Cohen para facilitar a interpretação dos seus resultados.",
   },
   {
     icon: Sparkles,
     title: "Classificador de Análise de Dados",
     description: "Descubra com ajuda da nossa IA a análise correta para os seus dados.",
+    detail: "Responda perguntas sobre seus dados e objetivos de pesquisa, e nossa inteligência artificial recomenda a técnica estatística mais adequada, com justificativa metodológica completa para sua dissertação ou artigo.",
   },
   {
     icon: BookOpen,
     title: "Glossário de Termos Psicométricos e Estatísticos",
     description: "Definições rápidas e objetivas para consultas no momento em que surgem dúvidas conceituais.",
+    detail: "Encontre rapidamente definições precisas de centenas de termos como validade, fidedignidade e análise fatorial. Cada definição foi escrita com linguagem acessível e acompanhada de exemplos práticos de aplicação em pesquisas reais.",
   },
   {
     icon: Code,
     title: "Gerador de Sintaxe em R",
     description: "Crie sintaxes em R prontas para rodar, respondendo apenas algumas perguntas.",
+    detail: "Responda perguntas simples sobre suas variáveis e delineamento, e receba a sintaxe completa em R pronta para copiar e executar no RStudio, com comentários explicativos linha a linha para que você aprenda enquanto analisa.",
   },
   {
     icon: BarChart3,
     title: "Biblioteca Eletrônica",
     description: "Acesse centenas de artigos científicos que resolvem problemas metodológicos da sua pesquisa.",
+    detail: "Uma coleção curada com centenas de artigos organizados por área temática e técnica estatística. Cada artigo foi selecionado por resolver um problema metodológico concreto, com aplicações diretas para dissertações, teses e publicações.",
   },
 ];
 
@@ -59,47 +65,27 @@ export function ToolsSection() {
       style={{ backgroundColor: "#F4F5F7" }}
     >
       <div className="container-narrow">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-heading-1 md:text-display-sm text-[#0A2E76] font-heading leading-[1.15]"
+            className="text-heading-1 md:text-display-sm text-[#0A2E76] font-heading leading-[1.15] mb-4"
           >
             Resolva desafios da sua pesquisa com nossas ferramentas{" "}
             <span className="text-[#0065FF]">estatísticas.</span>
           </motion.h2>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-6 lg:pt-2"
+            className="text-body-lg text-[hsl(215,15%,45%)] leading-relaxed"
           >
-            <p className="text-body-lg text-[hsl(215,15%,45%)] leading-relaxed">
-              Cada ferramenta resolve um problema específico da sua pesquisa e, juntas, impulsionam o seu desenvolvimento acadêmico.
-            </p>
-            <div className="hidden lg:flex flex-wrap gap-3">
-              <Button
-                size="lg"
-                data-testid="button-tools-start"
-                className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold px-6"
-              >
-                Comece gratuitamente
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                data-testid="button-tools-plans"
-                className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
-              >
-                Ver planos
-              </Button>
-            </div>
-          </motion.div>
+            Cada ferramenta resolve um problema específico da sua pesquisa e, juntas, impulsionam o seu desenvolvimento acadêmico.
+          </motion.p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6 items-stretch">
@@ -166,6 +152,21 @@ export function ToolsSection() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-5 sticky top-24 z-[9999]"
                 >
+                  <div>
+                    <h3
+                      className="text-lg font-heading font-bold text-[#0A2E76] mb-1"
+                      data-testid="text-tool-preview-title"
+                    >
+                      {tools[selectedTool].title}
+                    </h3>
+                    <p
+                      className="text-sm text-[hsl(215,15%,45%)] leading-relaxed"
+                      data-testid="text-tool-preview-detail"
+                    >
+                      {tools[selectedTool].detail}
+                    </p>
+                  </div>
+
                   <div className="w-full rounded-xl overflow-hidden shadow-2xl">
                     <div className="bg-[#E8ECEF] px-3 py-2 flex items-center gap-2">
                       <div className="flex gap-1.5">
@@ -227,25 +228,6 @@ export function ToolsSection() {
               )}
             </AnimatePresence>
           </div>
-        </div>
-
-        <div className="flex lg:hidden flex-wrap gap-3 mt-8 justify-center">
-          <Button
-            size="lg"
-            data-testid="button-tools-start-mobile"
-            className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold px-6"
-          >
-            Comece gratuitamente
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            data-testid="button-tools-plans-mobile"
-            className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
-          >
-            Ver planos
-          </Button>
         </div>
       </div>
     </section>
