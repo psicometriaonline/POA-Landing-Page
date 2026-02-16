@@ -25,18 +25,18 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative flex items-center pt-20 md:pt-24"
+      className="relative flex items-center pt-16 md:pt-20"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="container-narrow relative z-10 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-          <div className="flex flex-col justify-center text-left py-4">
+      <div className="container-narrow relative z-10 py-8 md:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div className="flex flex-col justify-center text-left py-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-8 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
@@ -49,7 +49,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-6 leading-[1.1]"
+              className="text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-4 leading-[1.1]"
             >
               A maior plataforma de pesquisa quantitativa da{" "}
               <span className="text-[#0065FF]">América Latina.</span>
@@ -59,7 +59,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-10 leading-relaxed"
+              className="text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-6 leading-relaxed"
             >
               Cadastre-se gratuitamente e tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
             </motion.p>
@@ -68,7 +68,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col gap-4 mb-10"
+              className="flex flex-col gap-3 mb-6"
             >
               <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
                 <Input
