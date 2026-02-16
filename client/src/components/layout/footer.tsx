@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { Mail } from "lucide-react";
 import logoPath from "@assets/image_1770909567089.png";
 
 const footerLinks = {
@@ -51,12 +50,6 @@ export function Footer() {
             <p className="text-body-sm text-white/60 leading-relaxed mb-4">
               A maior plataforma de pesquisa quantitativa da América Latina.
             </p>
-            <div className="flex flex-col gap-2 text-body-sm text-white/50">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>contato@psicometriaonline.com.br</span>
-              </div>
-            </div>
           </div>
 
           {Object.entries(footerLinks).map(([category, links]) => (
