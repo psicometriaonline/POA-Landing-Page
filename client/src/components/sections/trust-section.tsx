@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const universities = [
   { name: "USP", logo: "/logos/USP.webp" },
   { name: "UFRJ", logo: "/logos/UFRJ.webp" },
@@ -20,30 +18,16 @@ export function TrustSection() {
   return (
     <section className="bg-white py-16 md:py-20 border-y border-[#E2E5EA] overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <h2
           className="text-[1.375rem] md:text-display-sm font-heading font-bold text-[#0A2E76] text-center"
           data-testid="text-home-trust-title"
         >
           Pesquisadores das melhores universidades do Brasil e do Mundo confiam na Psicometria Online Academy
-        </motion.h2>
+        </h2>
       </div>
 
       <div className="hidden md:flex relative">
-        <motion.div
-          className="flex gap-20 items-center whitespace-nowrap px-6"
-          animate={{
-            x: ["0%", "-33.33%"],
-          }}
-          transition={{
-            duration: 30,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
+        <div className="flex gap-20 items-center whitespace-nowrap px-6 animate-scroll-marquee">
           {scrollItems.map((uni, idx) => (
             <div
               key={`${uni.name}-${idx}`}
@@ -58,7 +42,7 @@ export function TrustSection() {
               />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       <div className="md:hidden px-6">

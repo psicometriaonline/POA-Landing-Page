@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import logoPath from "@assets/optimized/image_1770909567089.webp";
 
 const navItems = [
@@ -126,62 +125,56 @@ export function Header() {
       </div>
       </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="relative md:hidden bg-[hsl(213,80%,8%)] border-t border-white/10 overflow-hidden"
-          >
-            <div className="container-narrow py-4 flex flex-col gap-2">
-              {navItems.map((item) =>
-                item.href.startsWith("/#") ? (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    data-testid={`link-mobile-${item.label.toLowerCase()}`}
-                    className="block px-4 py-3 rounded-md text-body font-medium cursor-pointer text-white/60"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link key={item.href} href={item.href}>
-                    <span
-                      data-testid={`link-mobile-${item.label.toLowerCase()}`}
-                      className={`block px-4 py-3 rounded-md text-body font-medium cursor-pointer ${
-                        location === item.href
-                          ? "text-white bg-white/10"
-                          : "text-white/60"
-                      }`}
-                    >
-                      {item.label}
-                    </span>
-                  </Link>
-                )
-              )}
-              <div className="flex flex-col gap-2 pt-3 border-t border-white/10 mt-2">
-                <Link href="/entrar">
-                  <span
-                    data-testid="button-mobile-login"
-                    className="block px-4 py-3 rounded-md text-body font-medium text-white/60 cursor-pointer text-center"
-                  >
-                    Entrar
-                  </span>
-                </Link>
-                <Button
-                  className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
-                  data-testid="button-mobile-signup"
+      <div
+        className={`relative md:hidden bg-[hsl(213,80%,8%)] border-t border-white/10 transition-all duration-200 ease-in-out ${
+          isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <div className="container-narrow py-4 flex flex-col gap-2">
+          {navItems.map((item) =>
+            item.href.startsWith("/#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                className="block px-4 py-3 rounded-md text-body font-medium cursor-pointer text-white/60"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link key={item.href} href={item.href}>
+                <span
+                  data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                  className={`block px-4 py-3 rounded-md text-body font-medium cursor-pointer ${
+                    location === item.href
+                      ? "text-white bg-white/10"
+                      : "text-white/60"
+                  }`}
                 >
-                  Cadastre-se Gratuitamente
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {item.label}
+                </span>
+              </Link>
+            )
+          )}
+          <div className="flex flex-col gap-2 pt-3 border-t border-white/10 mt-2">
+            <Link href="/entrar">
+              <span
+                data-testid="button-mobile-login"
+                className="block px-4 py-3 rounded-md text-body font-medium text-white/60 cursor-pointer text-center"
+              >
+                Entrar
+              </span>
+            </Link>
+            <Button
+              className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
+              data-testid="button-mobile-signup"
+            >
+              Cadastre-se Gratuitamente
+            </Button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
