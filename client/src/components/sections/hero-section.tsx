@@ -114,7 +114,7 @@ export function HeroSection() {
             fetchPriority="high"
             width={800}
             height={533}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-left"
           />
         </motion.div>
       </div>
