@@ -203,7 +203,7 @@ const blocks: Block[] = [
   {
     id: 2,
     name: "Formação Avançada em Psicometria e Análise de Dados",
-    subtitle: "Domine técnicas avançadas de análise e pesquisa",
+    subtitle: "Em cinco blocos independentes, domine técnicas avançadas de análise de dados, de acordo com a sua necessidade",
     description: "Passe a ser reconhecido como um expert na sua área específica de conhecimento.",
     icon: Brain,
     totalCourses: 19,
