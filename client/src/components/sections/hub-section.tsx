@@ -1132,7 +1132,7 @@ export function HubSection() {
                                         className="overflow-hidden"
                                       >
                                         <div className="border-t border-[#E2E5EA]">
-                                          <div className="space-y-0 divide-y divide-[#F0F1F3]">
+                                          <div className="space-y-0 divide-y divide-[#E2E5EA]">
                                             {sub.courses.map((course, courseIdx) => (
                                               <button
                                                 key={course.name}
