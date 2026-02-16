@@ -61,7 +61,7 @@ const featureTable: CategoryGroup[] = [
     category: "Formações",
     rows: [
       { label: "Formação Básica em Pesquisa Científica", values: [true, true, true] },
-      { label: "Formação Avançada em Psicometria Análise de Dados", sub: "Modelos Mistos, Metanálise, Psicometria, Dados Textuais e Estudos Epidemiológicos", values: [false, true, true] },
+      { label: "Formação Avançada em Psicometria e Análise de Dados", sub: "Modelos Mistos, Metanálise, Psicometria, Dados Textuais e Estudos Epidemiológicos", values: [false, true, true] },
       { label: "Formação Completa em Análise de Dados com R", values: [false, true, true] },
     ],
   },
