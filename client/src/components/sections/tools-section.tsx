@@ -148,10 +148,10 @@ export function ToolsSection() {
         if (ref) {
           const headerHeight = 96;
           const rect = ref.getBoundingClientRect();
-          const top = window.scrollY + rect.top - headerHeight - 8;
+          const top = window.scrollY + rect.top - headerHeight;
           window.scrollTo({ top, behavior: "smooth" });
         }
-      }, 50);
+      }, 350);
     }
   };
 
