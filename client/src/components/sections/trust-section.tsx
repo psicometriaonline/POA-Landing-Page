@@ -18,11 +18,18 @@ export function TrustSection() {
   const scrollItems = [...universities, ...universities, ...universities];
 
   return (
-    <section className="bg-white py-12 border-y border-[#E2E5EA] overflow-hidden">
-      <div className="container-narrow mb-8">
-        <p className="text-center text-[#0A2E76] font-medium text-body-sm md:text-body uppercase tracking-wider opacity-80">
-          Confiada por pesquisadores das melhores universidades do Brasil e do Mundo
-        </p>
+    <section className="bg-white py-16 md:py-20 border-y border-[#E2E5EA] overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] text-center leading-tight"
+          data-testid="text-home-trust-title"
+        >
+          As melhores universidades do Brasil e do Mundo confiam na Psicometria Online Academy
+        </motion.h2>
       </div>
 
       <div className="relative flex">
