@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
-const faqs = [
+const ACADEMY_URL = "https://psicometriaonline.com.br/academy/";
+const PLANS_URL = "https://psicometriaonline.com.br/academy/#planos";
+
+const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Já sei um pouco de análise de dados. Vou me beneficiar?",
     answer:
@@ -28,9 +32,48 @@ const faqs = [
     answer:
       "A Psicometria Online Academy lhe oferece todos os recursos para que você possa se tornar um pesquisador de alto nível! Contamos com o seu empenho e dedicação para que você consiga conquistar todos os seus sonhos acadêmicos.",
   },
+  {
+    question: "Preciso ter conhecimento prévio em estatística?",
+    answer:
+      "Não! Nossa formação foi desenhada para acompanhar você desde o básico até o avançado. Temos cursos introdutórios que partem do zero e vão avançando progressivamente. Mesmo que você nunca tenha feito uma análise estatística, vai conseguir acompanhar.",
+  },
+  {
+    question: "Quais são os planos disponíveis e o que cada um inclui?",
+    answer: (
+      <>
+        Oferecemos diferentes planos para se adequar à sua necessidade. Cada plano dá acesso à nossa plataforma de cursos, ferramentas de análise e diferentes estruturas de suporte.{" "}
+        <a href={PLANS_URL} target="_blank" rel="noopener noreferrer" className="text-[#0065FF] font-semibold underline underline-offset-2">
+          Acesse nossa página de planos
+        </a>{" "}
+        para conferir os detalhes e valores atualizados.
+      </>
+    ),
+  },
+  {
+    question: "Posso cancelar a minha assinatura a qualquer momento?",
+    answer:
+      "Sim! Você pode cancelar sua assinatura quando quiser, sem burocracia. O cancelamento pode ser feito diretamente na plataforma. Após o cancelamento, você continua com acesso até o final do período já pago.",
+  },
+  {
+    question: "Existe algum plano gratuito ou período de teste?",
+    answer: (
+      <>
+        Sim, você tem 14 dias para testar todas as funcionalidades da plataforma. Basta{" "}
+        <a href={ACADEMY_URL} target="_blank" rel="noopener noreferrer" className="text-[#0065FF] font-semibold underline underline-offset-2">
+          clicar aqui
+        </a>{" "}
+        e começar agora, sem necessidade de inserir seus dados de cartão.
+      </>
+    ),
+  },
+  {
+    question: "Posso acessar as aulas pelo celular?",
+    answer:
+      "Sim! Nossa plataforma é totalmente responsiva e pode ser acessada pelo celular, tablet ou computador. Você pode assistir às aulas de onde estiver, no seu ritmo.",
+  },
 ];
 
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FaqItem({ question, answer, index }: { question: string; answer: ReactNode; index: number }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -107,6 +150,28 @@ export function FaqSection() {
             <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="flex justify-center mt-10"
+        >
+          <a
+            href={ACADEMY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="button-faq-cta"
+          >
+            <Button
+              className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
+            >
+              Começar grátis
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
