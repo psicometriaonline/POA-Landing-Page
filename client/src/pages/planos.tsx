@@ -1001,7 +1001,7 @@ function TrustCarousel() {
   const scrollItems = [...trustUniversities, ...trustUniversities, ...trustUniversities];
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden" style={{ backgroundColor: "#F4F5F7" }}>
+    <section className="py-16 md:py-20 overflow-hidden bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
