@@ -50,9 +50,13 @@ export function ToolsSection() {
 
   useEffect(() => {
     if (selectedTool !== null && previewRef.current) {
-      const isMobile = window.innerWidth < 1024;
-      if (isMobile) {
-        previewRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const headerHeight = 96;
+      const rect = previewRef.current.getBoundingClientRect();
+      const isAboveViewport = rect.top < headerHeight;
+      const isBelowViewport = rect.top > window.innerHeight * 0.6;
+      if (isAboveViewport || isBelowViewport) {
+        const top = window.scrollY + rect.top - headerHeight - 8;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     }
   }, [selectedTool]);
@@ -150,7 +154,7 @@ export function ToolsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.3 }}
-                  className="sticky top-24 z-[9999] bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 flex flex-col gap-5"
+                  className="sticky top-24 z-40 bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 flex flex-col gap-5"
                 >
                   <div className="text-center">
                     <h3
