@@ -139,28 +139,22 @@ export function ToolsSection() {
 
   const handleSelect = (idx: number) => {
     const newVal = selectedTool === idx ? null : idx;
-    setSelectedTool(newVal);
 
     const isMobile = window.innerWidth < 1024;
     if (isMobile && newVal !== null) {
       const ref = mobileCardRefs.current[newVal];
       if (ref) {
-        const headerHeight = 96;
-        const start = performance.now();
-        const duration = 400;
-        const pin = () => {
-          const rect = ref.getBoundingClientRect();
-          const offset = rect.top - headerHeight;
-          if (Math.abs(offset) > 1) {
-            window.scrollBy(0, offset);
-          }
-          if (performance.now() - start < duration) {
-            requestAnimationFrame(pin);
-          }
-        };
-        requestAnimationFrame(pin);
+        const prevTop = ref.getBoundingClientRect().top + window.scrollY;
+        setSelectedTool(newVal);
+        requestAnimationFrame(() => {
+          const headerHeight = 96;
+          const newAbsTop = ref.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo(0, newAbsTop - headerHeight);
+        });
+        return;
       }
     }
+    setSelectedTool(newVal);
   };
 
   return (
@@ -262,7 +256,7 @@ export function ToolsSection() {
         </div>
 
         {/* Mobile layout */}
-        <div className="flex flex-col gap-3 lg:hidden">
+        <div className="flex flex-col gap-3 lg:hidden" style={{ overflowAnchor: "none" }}>
           {tools.map((tool, idx) => (
             <div key={tool.title} ref={(el) => { mobileCardRefs.current[idx] = el; }}>
               <motion.div

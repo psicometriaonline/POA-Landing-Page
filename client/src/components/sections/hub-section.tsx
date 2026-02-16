@@ -803,20 +803,11 @@ export function HubSection() {
 
   const scrollToElement = (el: HTMLElement | null) => {
     if (!el) return;
-    const headerHeight = 96;
-    const start = performance.now();
-    const duration = 400;
-    const pin = () => {
-      const rect = el.getBoundingClientRect();
-      const offset = rect.top - headerHeight;
-      if (Math.abs(offset) > 1) {
-        window.scrollBy(0, offset);
-      }
-      if (performance.now() - start < duration) {
-        requestAnimationFrame(pin);
-      }
-    };
-    requestAnimationFrame(pin);
+    requestAnimationFrame(() => {
+      const headerHeight = 96;
+      const absTop = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, absTop - headerHeight);
+    });
   };
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
@@ -1050,7 +1041,7 @@ export function HubSection() {
           </div>
 
           {/* Mobile: accordion - conteúdo aparece logo abaixo de cada aba */}
-          <div className="lg:hidden space-y-3">
+          <div className="lg:hidden space-y-3" style={{ overflowAnchor: "none" }}>
             {blocks.map((block, idx) => {
               const isMobileActive = activeBlock === idx;
               const mobileBlock = blocks[idx];
