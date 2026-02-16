@@ -58,15 +58,14 @@ export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const visibleCount = 2;
-  const maxIndex = testimonials.length - visibleCount;
+  const lastIndex = testimonials.length - 1;
 
   const goNext = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev >= lastIndex ? 0 : prev + 1));
   };
 
   const goPrev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+    setCurrentIndex((prev) => (prev <= 0 ? lastIndex : prev - 1));
   };
 
   const current = testimonials[currentIndex];
