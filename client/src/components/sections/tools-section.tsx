@@ -151,8 +151,8 @@ export function ToolsSection() {
       next.add(idx);
       const ref = mobileCardRefs.current[idx];
       if (ref) {
-        const headerHeight = 80;
-        const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
+        const headerOffset = 108;
+        const y = ref.getBoundingClientRect().top + window.scrollY - headerOffset;
         window.scrollTo({ top: y });
       }
     }
