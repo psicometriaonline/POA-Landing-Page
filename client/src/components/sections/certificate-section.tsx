@@ -203,7 +203,7 @@ export function CertificateSection() {
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{ opacity: 0, x: -60, scale: 0.97 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="flex-1 min-w-0 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-white/10 relative overflow-hidden shadow-2xl"
+                    className="flex-1 min-w-0 rounded-2xl px-12 py-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 border border-white/10 relative overflow-hidden shadow-2xl"
                     style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
                     data-testid={`card-testimonial-${currentIndex}`}
                   >
