@@ -16,7 +16,7 @@ Site institucional (landing page) para a plataforma Psicometria Online Academy (
 - Páginas planejadas: /ferramentas, /cursos, /sobre, /contato
 
 ## Arquitetura
-- Frontend: React + Wouter + Tailwind CSS + Shadcn UI + Framer Motion
+- Frontend: React + Wouter + Tailwind CSS + Shadcn UI + Framer Motion (lazy sections only)
 - Backend: Express.js (mínimo, para servir app)
 - Sem banco de dados necessário neste momento
 
@@ -29,15 +29,19 @@ Site institucional (landing page) para a plataforma Psicometria Online Academy (
 ## Performance
 - Imagens convertidas para WebP (~95% redução) em attached_assets/optimized/
 - loading="lazy" em todas imagens below-the-fold, fetchPriority="high" no hero (desktop only)
-- Fontes Google não-bloqueantes (preload + media=print onload swap pattern)
-- Fontes otimizadas (apenas pesos 400/500/600/700 Inter, 500/600/700 DM Sans)
-- Seções below-the-fold na Home com React.lazy + Suspense (Tools, Hub, Support, Certificate, CTA, FAQ)
+- Fontes self-hosted: Inter e DM Sans WOFF2 em client/public/fonts/ com @font-face inline no index.html
+- font-display:swap + preload dos subsets latin para LCP rápido
+- Framer Motion removido do bundle inicial (hero, header, trust) - substituído por CSS animations (keyframes em index.css)
+- Framer Motion mantido apenas em seções lazy-loaded (tools, hub, support, certificate, cta, faq)
+- Seções below-the-fold na Home com React.lazy + Suspense (Trust, Tools, Hub, Support, Certificate, CTA, FAQ)
 - Páginas secundárias com React.lazy + Suspense (Sobre, Planos, Termos, Privacidade)
-- Preload da imagem LCP do Hero condicionado a desktop (media min-width 1024px)
+- Hero image desktop-only (hidden lg:block) - mobile LCP é texto, não imagem
 - Dimensões explícitas em imagens above-the-fold (hero, trust logos) para reduzir reflow
+- Mobile menu usa CSS transitions (não AnimatePresence)
 - Script de conversão WebP: scripts/optimize-images.sh (requer cwebp/libwebp)
 
 ## Recent Changes
+- 2026-02-16: Deep mobile perf - Self-hosted fonts (WOFF2), Framer Motion removido do bundle inicial, CSS animations puras para hero/header/trust
 - 2026-02-16: Mobile performance - Non-blocking fonts, lazy sections, conditional preload, explicit dimensions
 - 2026-02-16: Performance - WebP images, lazy loading, font optimization, code splitting, LCP preload
 - 2026-02-12: Setup inicial - Design system, Header, Footer, Hero Section
