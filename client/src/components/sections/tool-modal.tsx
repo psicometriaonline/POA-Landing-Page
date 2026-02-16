@@ -113,21 +113,21 @@ const toolModalData: ToolModalData[] = [
     ],
   },
   {
-    title: "Calculadora de Tamanho de Amostra para Surveys",
-    shortTitle: "Determine o N ideal para sua pesquisa survey",
+    title: "Biblioteca Eletrônica",
+    shortTitle: "Encontre artigos que resolvem seus desafios metodológicos",
     previewImage: "/images/tool-preview-6.webp",
     features: [
       {
-        title: "Margem de erro controlada",
-        text: "Defina a margem de erro aceitável e o nível de confiança desejado para obter o tamanho amostral preciso para seu levantamento.",
+        title: "Centenas de artigos científicos",
+        text: "Acesse uma coleção curada com centenas de artigos que abordam os principais problemas metodológicos enfrentados por pesquisadores.",
       },
       {
-        title: "Populações finitas e infinitas",
-        text: "Calcule amostras tanto para populações conhecidas quanto desconhecidas, com correção automática para populações finitas.",
+        title: "Organização por tema e técnica",
+        text: "Encontre rapidamente artigos organizados por área temática, técnica estatística e tipo de delineamento de pesquisa.",
       },
       {
-        title: "Planejamento de coleta",
-        text: "Receba recomendações práticas sobre quantos questionários enviar considerando a taxa de resposta esperada.",
+        title: "Soluções práticas para sua pesquisa",
+        text: "Cada artigo foi selecionado por resolver um problema metodológico concreto, com aplicações diretas para dissertações, teses e publicações.",
       },
     ],
   },
