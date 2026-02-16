@@ -62,15 +62,15 @@ export function TestimonialsSection() {
   const maxIndex = testimonials.length - visibleCount;
 
   const goNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const goPrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   const current = testimonials[currentIndex];
-  const peek = testimonials[currentIndex + 1];
+  const peek = testimonials[(currentIndex + 1) % testimonials.length];
 
   return (
     <section className="bg-[#0A2E76] py-16 md:py-24" data-testid="section-testimonials">
@@ -94,8 +94,7 @@ export function TestimonialsSection() {
           <div className="flex items-center gap-4">
             <button
               onClick={goPrev}
-              disabled={currentIndex === 0}
-              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity hover:bg-white/20"
               data-testid="button-testimonial-prev"
               aria-label="Depoimento anterior"
             >
@@ -135,35 +134,32 @@ export function TestimonialsSection() {
                   </div>
                 </motion.div>
 
-                {peek && (
-                  <motion.div
-                    key={`peek-${currentIndex + 1}`}
-                    initial={{ opacity: 0, x: 80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -80 }}
-                    transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
-                    className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-white/10 relative overflow-hidden shadow-2xl"
-                    style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
-                    data-testid={`card-testimonial-peek-${currentIndex + 1}`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
-                    <img
-                      src={peek.image}
-                      alt={peek.name}
-                      loading="lazy"
-                      className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
-                    />
-                    <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>
-                    <p className="text-white/50 text-xs mt-0.5 relative z-10">{peek.role}</p>
-                  </motion.div>
-                )}
+                <motion.div
+                  key={`peek-${(currentIndex + 1) % testimonials.length}`}
+                  initial={{ opacity: 0, x: 80 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80 }}
+                  transition={{ duration: 0.4, ease: "easeInOut", delay: 0.05 }}
+                  className="hidden md:flex w-[240px] flex-shrink-0 rounded-2xl p-6 flex-col items-center justify-center text-center border border-white/10 relative overflow-hidden shadow-2xl"
+                  style={{ background: "linear-gradient(135deg, #0D3B94 0%, #1252C4 50%, #1A6BF0 100%)" }}
+                  data-testid={`card-testimonial-peek-${(currentIndex + 1) % testimonials.length}`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E76]/80 via-transparent to-transparent pointer-events-none" />
+                  <img
+                    src={peek.image}
+                    alt={peek.name}
+                    loading="lazy"
+                    className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
+                  />
+                  <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>
+                  <p className="text-white/50 text-xs mt-0.5 relative z-10">{peek.role}</p>
+                </motion.div>
               </AnimatePresence>
             </div>
 
             <button
               onClick={goNext}
-              disabled={currentIndex >= maxIndex}
-              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity hover:bg-white/20"
               data-testid="button-testimonial-next"
               aria-label="Próximo depoimento"
             >
@@ -174,16 +170,14 @@ export function TestimonialsSection() {
           <div className="flex md:hidden items-center justify-center gap-4 mt-6">
             <button
               onClick={goPrev}
-              disabled={currentIndex === 0}
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity hover:bg-white/20"
               aria-label="Depoimento anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={goNext}
-              disabled={currentIndex >= maxIndex}
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+              className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity hover:bg-white/20"
               aria-label="Próximo depoimento"
             >
               <ChevronRight className="w-5 h-5" />
@@ -191,7 +185,7 @@ export function TestimonialsSection() {
           </div>
 
           <div className="flex justify-center gap-1.5 mt-6">
-            {testimonials.slice(0, maxIndex + 1).map((_, i) => (
+            {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
