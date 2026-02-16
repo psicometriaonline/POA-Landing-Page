@@ -771,8 +771,8 @@ function DetailedBreakdown() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <>
-              <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
-            <div className="grid grid-cols-[1fr_120px_120px_120px] border-b border-[#E2E5EA] bg-[#0A2E76]">
+              <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
+            <div className="sticky top-[96px] z-30 grid grid-cols-[1fr_120px_120px_120px] border-b border-[#E2E5EA] bg-[#0A2E76] rounded-t-2xl">
               <div className="px-5 py-4">
                 <span className="text-sm font-semibold text-white/80">Cursos e Recursos</span>
               </div>
@@ -924,6 +924,22 @@ function DetailedBreakdown() {
               </div>
             ))}
           </div>
+
+              <div className="flex justify-center mt-10">
+                <a
+                  href="https://psicometriaonline.com.br/academy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-detailed-cta"
+                >
+                  <Button
+                    className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
+                  >
+                    Começar Já
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </div>
               </>
             </motion.div>
           )}
