@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import logoImg from "@assets/Academy_colorful_1770925025438.png";
+import logoImg from "@assets/optimized/Academy_colorful_1770925025438.webp";
 
 interface ToolFeature {
   title: string;

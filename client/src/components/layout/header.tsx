@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoPath from "@assets/image_1770909567089.png";
+import logoPath from "@assets/optimized/image_1770909567089.webp";
 
 const navItems = [
   { label: "Ferramentas", href: "/#ferramentas" },

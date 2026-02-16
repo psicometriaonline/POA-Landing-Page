@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/hero-academy_(2)_1771223484350.png";
+import heroImg from "@assets/optimized/hero-academy_(2)_1771223484350.webp";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);

@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, useCallback } from "react";
-import avatar1 from "@assets/19_1771128693704.png";
-import avatar2 from "@assets/36_1771128693705.png";
-import avatar3 from "@assets/38_1771128693705.png";
-import avatar4 from "@assets/10_1771128693706.png";
-import avatar5 from "@assets/11_1771128693706.png";
-import avatar6 from "@assets/9_1771128693707.png";
-import avatar7 from "@assets/34_1771128693707.png";
+import avatar1 from "@assets/optimized/19_1771128693704.webp";
+import avatar2 from "@assets/optimized/36_1771128693705.webp";
+import avatar3 from "@assets/optimized/38_1771128693705.webp";
+import avatar4 from "@assets/optimized/10_1771128693706.webp";
+import avatar5 from "@assets/optimized/11_1771128693706.webp";
+import avatar6 from "@assets/optimized/9_1771128693707.webp";
+import avatar7 from "@assets/optimized/34_1771128693707.webp";
 
 const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7];
 

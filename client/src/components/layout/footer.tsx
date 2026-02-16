@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logoPath from "@assets/image_1770909567089.png";
+import logoPath from "@assets/optimized/image_1770909567089.webp";
 
 const footerLinks = {
   plataforma: [
