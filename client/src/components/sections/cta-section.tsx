@@ -54,12 +54,15 @@ function NetworkCanvas({ boxRef }: { boxRef: React.RefObject<HTMLDivElement | nu
     if (!ctx) return;
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
       updateBoxRect();
     };
-    resize();
+
+    requestAnimationFrame(resize);
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
@@ -209,8 +212,8 @@ function GradientBorder() {
         `L${x},${y + r} Q${x},${y} ${x + r},${y} Z`
       );
     };
-    updatePath();
-    const obs = new ResizeObserver(updatePath);
+    requestAnimationFrame(updatePath);
+    const obs = new ResizeObserver(() => requestAnimationFrame(updatePath));
     const svg = borderRef.current?.closest("svg");
     if (svg) obs.observe(svg);
     return () => obs.disconnect();
