@@ -47,7 +47,7 @@ export function SupportSection() {
           className="text-center mb-8 md:mb-12"
         >
           <h2
-            className="text-xl md:text-display-sm font-heading font-bold text-[#0A2E76] leading-[1.15] mb-5"
+            className="text-[1.75rem] md:text-display-sm font-heading font-bold text-[#0A2E76] leading-[1.15] mb-5"
             data-testid="text-support-title"
           >
             Suporte como você nunca viu{" "}

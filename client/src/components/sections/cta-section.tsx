@@ -330,7 +330,7 @@ export function CtaSection() {
               className="text-center relative z-30"
             >
               <h2
-                className="text-xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
+                className="text-[1.75rem] md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight tracking-tight"
                 data-testid="text-cta-title"
               >
                 A Plataforma de <span className="text-[#0065FF]">Pesquisa Quantitativa</span> que vai transformar a sua carreira acadêmica.

@@ -889,7 +889,7 @@ export function HubSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="text-center lg:text-center text-left mb-10">
-            <h3 className="text-xl md:text-display-sm font-heading font-bold text-[#0A2E76] mb-3">
+            <h3 className="text-[1.75rem] md:text-display-sm font-heading font-bold text-[#0A2E76] mb-3">
               Uma estrutura hierárquica de aprendizado
             </h3>
             <p className="text-body-lg text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed">

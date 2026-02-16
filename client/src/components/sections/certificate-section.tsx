@@ -103,7 +103,7 @@ export function CertificateSection() {
             className="text-center mb-12"
           >
             <h2
-              className="text-xl md:text-display-sm font-heading font-bold text-white leading-[1.15] mb-4"
+              className="text-[1.75rem] md:text-display-sm font-heading font-bold text-white leading-[1.15] mb-4"
               data-testid="text-certificate-title"
             >
               Certificado +300 horas
@@ -176,7 +176,7 @@ export function CertificateSection() {
               Depoimentos
             </Badge>
             <h2
-              className="text-xl md:text-5xl font-heading font-bold text-white"
+              className="text-[1.75rem] md:text-5xl font-heading font-bold text-white"
               data-testid="text-testimonials-title"
             >
               O que dizem os nossos alunos

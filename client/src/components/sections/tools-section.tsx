@@ -173,7 +173,7 @@ export function ToolsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xl md:text-display-sm text-[#0A2E76] font-heading leading-[1.15] mb-4"
+            className="text-[1.75rem] md:text-display-sm text-[#0A2E76] font-heading leading-[1.15] mb-4"
           >
             Resolva desafios da sua pesquisa com nossas ferramentas{" "}
             <span className="text-[#0065FF]">estatísticas.</span>
