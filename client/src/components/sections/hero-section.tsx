@@ -29,7 +29,7 @@ export function HeroSection() {
       style={{ backgroundColor: "#F4F5F7" }}
     >
       <div className="relative z-10 flex flex-col lg:flex-row items-stretch">
-        <div className="lg:w-[60%] flex items-center">
+        <div className="flex-1 flex items-center">
           <div className="w-full max-w-[700px] ml-auto px-6 md:px-10 lg:pl-[max(2rem,calc((100vw-1200px)/2))] lg:pr-12 py-8 md:py-10 pb-8 md:pb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden lg:block lg:w-[40%] relative min-h-[480px]"
+          className="hidden lg:block flex-1 relative min-h-[480px] ml-8"
         >
           <div className="absolute inset-0 top-[-1rem] rounded-l-[3rem] overflow-hidden shadow-2xl">
             <img
