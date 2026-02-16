@@ -115,7 +115,7 @@ function ToolPreview({ toolIndex, onClose }: { toolIndex: number; onClose: () =>
 }
 
 export function ToolsSection() {
-  const [selectedTool, setSelectedTool] = useState<number>(0);
+  const [selectedTool, setSelectedTool] = useState<number | null>(0);
   const previewRef = useRef<HTMLDivElement>(null);
   const mobilePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -135,14 +135,16 @@ export function ToolsSection() {
     }
   }, [selectedTool]);
 
+  const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const handleSelect = (idx: number) => {
-    const newVal = selectedTool === idx ? 0 : idx;
+    const newVal = selectedTool === idx ? null : idx;
     setSelectedTool(newVal);
 
     const isMobile = window.innerWidth < 1024;
-    if (isMobile) {
+    if (isMobile && newVal !== null) {
       setTimeout(() => {
-        const ref = mobilePreviewRefs.current[newVal];
+        const ref = mobileCardRefs.current[newVal];
         if (ref) {
           const headerHeight = 96;
           const rect = ref.getBoundingClientRect();
@@ -239,11 +241,13 @@ export function ToolsSection() {
           <div className="flex-1 flex flex-col" ref={previewRef}>
             <div className="sticky top-24 z-40">
               <AnimatePresence mode="wait">
-                <ToolPreview
-                  key={selectedTool}
-                  toolIndex={selectedTool}
-                  onClose={() => setSelectedTool(0)}
-                />
+                {selectedTool !== null && (
+                  <ToolPreview
+                    key={selectedTool}
+                    toolIndex={selectedTool}
+                    onClose={() => setSelectedTool(null)}
+                  />
+                )}
               </AnimatePresence>
             </div>
           </div>
@@ -252,7 +256,7 @@ export function ToolsSection() {
         {/* Mobile layout */}
         <div className="flex flex-col gap-3 lg:hidden">
           {tools.map((tool, idx) => (
-            <div key={tool.title}>
+            <div key={tool.title} ref={(el) => { mobileCardRefs.current[idx] = el; }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -283,6 +287,18 @@ export function ToolsSection() {
                       {tool.description}
                     </p>
                   </div>
+                  <Button
+                    size="sm"
+                    className={`font-semibold shrink-0 text-[12px] px-3 ${
+                      selectedTool === idx
+                        ? "bg-[#0065FF] text-white border-[#0065FF]"
+                        : "bg-[#0A2E76] text-white border-[#0A2E76]"
+                    }`}
+                    data-testid={`button-tool-mobile-saiba-mais-${idx}`}
+                    onClick={(e) => { e.stopPropagation(); handleSelect(idx); }}
+                  >
+                    {selectedTool === idx ? "Fechar" : "Saiba mais"}
+                  </Button>
                 </Card>
               </motion.div>
 
@@ -298,7 +314,7 @@ export function ToolsSection() {
                     >
                       <ToolPreview
                         toolIndex={idx}
-                        onClose={() => setSelectedTool(0)}
+                        onClose={() => setSelectedTool(null)}
                       />
                     </motion.div>
                   )}
