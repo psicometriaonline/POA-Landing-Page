@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/Hero-Academy_1771220766680.png";
+import heroImg from "@assets/Subcabeçalho_1771221977416.jpg";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -106,19 +106,16 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:flex items-end justify-center"
+            className="relative hidden lg:flex items-end justify-end self-stretch"
           >
-            <div className="relative w-full flex items-end justify-center">
-              <div className="absolute inset-0 rounded-t-3xl" style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 50%, #0065FF 100%)" }} />
-              <img
-                src={heroImg}
-                alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
-                fetchPriority="high"
-                width={600}
-                height={600}
-                className="relative z-10 w-full max-w-[520px] object-contain object-bottom rounded-t-3xl"
-              />
-            </div>
+            <img
+              src={heroImg}
+              alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
+              fetchPriority="high"
+              width={800}
+              height={533}
+              className="w-full h-full object-cover object-left rounded-tl-3xl"
+            />
           </motion.div>
         </div>
       </div>
