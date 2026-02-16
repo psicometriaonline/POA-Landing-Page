@@ -45,7 +45,8 @@ export function TrustSection() {
               <img
                 src={uni.logo}
                 alt={uni.name}
-                loading="lazy"
+                width={56}
+                height={56}
                 className="h-12 md:h-14 w-auto object-contain"
               />
             </div>

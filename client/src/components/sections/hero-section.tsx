@@ -112,6 +112,8 @@ export function HeroSection() {
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=75&w=800"
                 alt="Plataforma POA"
                 fetchPriority="high"
+                width={800}
+                height={533}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E76]/20 to-transparent" />
