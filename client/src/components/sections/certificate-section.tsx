@@ -3,56 +3,70 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Award, ChevronRight, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
-import avatar1 from "@assets/19_1771128693704.png";
-import avatar2 from "@assets/36_1771128693705.png";
-import avatar3 from "@assets/38_1771128693705.png";
-import avatar4 from "@assets/10_1771128693706.png";
-import avatar5 from "@assets/11_1771128693706.png";
-import avatar6 from "@assets/9_1771128693707.png";
-import avatar7 from "@assets/34_1771128693707.png";
+import imgVanessa from "@assets/Vanessa_Cesnik_1771207282488.png";
+import imgGustavo from "@assets/Gustavo_Pfister_Pirola_1771207282488.jpg";
+import imgFrancine from "@assets/Francine-Alves_1771207282487.webp";
+import imgWalquiria from "@assets/Walquiria_de_Andrade_1771207282485.jpg";
+import imgMarcio from "@assets/Márcio_Miranda_Leitão_1771207282487.png";
+import imgMatheus from "@assets/Matheus_Felix_1771207282486.png";
+import imgKaline from "@assets/Kaline_Lima_1771207282489.jpg";
+import imgLuis from "@assets/Luis_Felipe_1771207282489.jpg";
+import imgMiriam from "@assets/Miriam-Strelhow-2_1771207282488.webp";
 
 const testimonials = [
   {
-    name: "Carolina Mendes",
-    role: "Doutoranda em Psicologia - USP",
-    image: avatar1,
-    text: "A Psicometria Online Academy transformou completamente a minha pesquisa de doutorado. As ferramentas de análise fatorial e as aulas sobre TRI me deram a base que eu precisava para validar meu instrumento com confiança.",
+    name: "Dra. Vanessa Cesnik",
+    role: "Dra. em Psicologia (USP)",
+    image: imgVanessa,
+    text: "É o lugar onde me sinto segura pra poder estudar e tomar minhas decisões metodológicas e de pesquisa. Apesar de ter feito doutorado na USP, não aprendi nem metade do que aprendi na Academy. Isso que nem fiz todos os módulos ainda.",
   },
   {
-    name: "Ricardo Almeida",
-    role: "Professor Universitário - UFMG",
-    image: avatar2,
-    text: "Como professor, preciso estar sempre atualizado. A plataforma me permitiu dominar técnicas avançadas de psicometria que agora aplico em sala de aula e nas minhas orientações de mestrado e doutorado.",
+    name: "Me. Gustavo Pfister",
+    role: "Mestre em Psicologia (UFES)",
+    image: imgGustavo,
+    text: "Recentemente defendi minha dissertação e a banca elogiou bastante as análises dos dados. O caminho proporcionado pela Academy foi essencial pelo sucesso nesse processo de virar mestre. Só tenho a agradecer (muitíssimo!). Melhor investimento que fiz com a bolsa da pós.",
   },
   {
-    name: "Juliana Santos",
-    role: "Pesquisadora - FIOCRUZ",
-    image: avatar3,
-    text: "O suporte da comunidade é incrível. Sempre que tive dúvidas sobre modelagem de equações estruturais, encontrei respostas rápidas e precisas. A formação em R foi um divisor de águas na minha carreira.",
+    name: "Dra. Francine Alves",
+    role: "Dra. em Ciências (UNG)",
+    image: imgFrancine,
+    text: "Defendi meu doutorado. Só posso agradecer à Academy. Com o conhecimento fiz as análises sozinha, descrevi e a banca não teve nenhum comentário ou pergunta sobre as análises que realizei. Pelo contrário, foi elogiada toda a parte da análise de dados.",
   },
   {
-    name: "Fernanda Lima",
-    role: "Mestranda em Educação - UNICAMP",
-    image: avatar4,
-    text: "Eu não tinha nenhuma experiência com análise quantitativa antes da POA. Hoje, consigo rodar minhas próprias análises e interpretar resultados com segurança. A didática dos cursos é excepcional.",
+    name: "Dra. Walquiria de Andrade",
+    role: "Dra. em Educação Física (UEL)",
+    image: imgWalquiria,
+    text: "A Academy permitiu que eu aprendesse sobre algo que eu achava impossível me apropriar. A Academy fez o movimento inverso, me fazendo acreditar que eu podia sim fazer minha própria análise de forma segura com embasamento teórico científico de excelência.",
   },
   {
-    name: "Patrícia Oliveira",
-    role: "Psicóloga Organizacional",
-    image: avatar5,
-    text: "A certificação da POA abriu portas no mercado de trabalho. As empresas valorizam profissionais que dominam construção e validação de instrumentos psicométricos. Recomendo a todos os colegas.",
+    name: "Dr. Márcio de Miranda Leitão",
+    role: "Professor do curso de Letras da UFPB",
+    image: imgMarcio,
+    text: "A Academy é um porto seguro. Enriqueceu sobremaneira minha formação e consolidou meu conhecimento prévio em estatística. Também leciono nessa área de metodologia quantitativa e bioestatística e tem sido fundamental para melhorar meu material, minhas aulas e meu conhecimento.",
   },
   {
-    name: "Marcos Tavares",
-    role: "Pesquisador - INEP",
-    image: avatar6,
-    text: "Trabalho com avaliação educacional em larga escala e a formação em TRI da POA foi fundamental. O conteúdo é atualizado, prático e aplicável diretamente ao meu dia a dia profissional.",
+    name: "Dr. Matheus Felix",
+    role: "Dr. em Ciências do Comportamento (UnB)",
+    image: imgMatheus,
+    text: "Acabei de me tornar doutor pela UnB em Ciências do Comportamento (área de Cognição e Neurociências). Me formei pela UFMG e no mestrado pela USP e mesmo tendo passado pelas melhores instituições de ensino nesse país, nunca tive um aprofundamento tão amplo em psicometria quanto tive na Academy. A parte das análises que conduzi sozinho foi extremamente elogiada e isso devo sobretudo às aulas e às indicações de leituras da Academy.",
   },
   {
-    name: "Luciana Ferreira",
-    role: "Doutora em Saúde Coletiva - UERJ",
-    image: avatar7,
-    text: "A plataforma consegue tornar acessível conteúdos que normalmente só encontramos em artigos complexos em inglês. As videoaulas e os exercícios práticos fazem toda a diferença no aprendizado.",
+    name: "Dra. Kaline Lima",
+    role: "Professora da UNIFOR",
+    image: imgKaline,
+    text: "Conhecia o Bruno antes mesmo da Psicometria Online Academy, pois sempre quis ser Psicometrista também. Ao lançar a plataforma, entrei na primeira turma. Maratonei todas as aulas, inseri todos os certificados no meu currículo, finalizei meu doutorado sem nenhuma dificuldade teórica ou metodológica. Publiquei vários artigos nacionais e internacionais com a ajuda da Academy. E realizei um sonho de me tornar professora de um renomado Programa de Pós-Graduação na UNIFOR.",
+  },
+  {
+    name: "Dr. Luis Felipe",
+    role: "Professor do curso de Enfermagem (UESPI)",
+    image: imgLuis,
+    text: "Conheci a Academy quando precisava analisar os dados da minha dissertação. Foi lá que adquiri o conhecimento necessário para conquistar autonomia e me tornar um pesquisador independente. Além de me ajudar a defender minha dissertação com segurança, a Academy também contribuiu diretamente para minha aprovação como professor em uma universidade pública. Foi o melhor investimento que fiz na minha formação como pesquisador.",
+  },
+  {
+    name: "Dra. Miriam Raquel Strelhow",
+    role: "Professora do Departamento de Psicologia (PUC-SP)",
+    image: imgMiriam,
+    text: "Desde de que entrei na Academy, desenvolvi novos e importantes conhecimentos. Fiz todas as minhas análises do pós-doc e passei a auxiliar com mais convicção os grupos de pesquisa dos quais faço parte na USP. Fiz consultorias de análises para colegas. Melhorei meus conhecimentos em Metodologia de Pesquisa e já ministrei aulas sobre isso desde então. Me sinto segura, pois sei que quando preciso, posso recorrer à Academy.",
   },
 ];
 
