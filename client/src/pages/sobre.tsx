@@ -36,7 +36,7 @@ const professors: Professor[] = [
     cardLabel: "Professor do Curso de Análise de Dados com o R",
     photoPosition: "center 30%",
     photoScale: 1.4,
-    bio: "Mestre em Psicologia pela Universidade Federal do Rio de Janeiro (UFRJ), com foco em funções executivas e neuropsicologia cognitiva. Fundador da Psicometria Online Academy, atua como professor e consultor em psicometria, análise quantitativa de dados e construção de instrumentos psicológicos. Especialista em linguagem R aplicada à pesquisa científica desde 2017. Na Academy, será seu professor de Análise de Dados com o R.",
+    bio: "Mestre em Psicologia pela Universidade Federal do Rio de Janeiro (UFRJ), com foco em funções executivas e neuropsicologia cognitiva. Atua como professor e consultor em psicometria, análise quantitativa de dados e construção de instrumentos psicológicos. Especialista em linguagem R aplicada à pesquisa científica desde 2017. Na Academy, será seu professor de Análise de Dados com o R.",
     photo: prof1,
   },
   {
