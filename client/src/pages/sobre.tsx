@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import founderPhoto from "@assets/optimized/image_1770946309483.webp";
+import founderPhoto from "@assets/Bruno_Figueiredo_Damásio_(Grande)_1771213158543.JPG";
 import prof1 from "@assets/optimized/Douglas_2_1771009276690.webp";
 import prof2 from "@assets/optimized/Alex_França_1771008596696.webp";
 import prof3 from "@assets/optimized/Érica_Midori_Ikegami_2_1771009641365.webp";
@@ -278,23 +278,29 @@ export default function Sobre() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10">
-                <div data-testid="stat-experience">
-                  <p className="text-2xl md:text-3xl font-heading font-bold text-[#0A2E76]">17+</p>
-                  <p className="text-sm text-[hsl(215,15%,45%)] mt-1">Anos de Experiência</p>
-                </div>
-                <div data-testid="stat-articles">
-                  <p className="text-2xl md:text-3xl font-heading font-bold text-[#0A2E76]">60+</p>
-                  <p className="text-sm text-[hsl(215,15%,45%)] mt-1">Artigos Publicados</p>
-                </div>
-                <div data-testid="stat-citations">
-                  <p className="text-2xl md:text-3xl font-heading font-bold text-[#0A2E76]">5.200+</p>
-                  <p className="text-sm text-[hsl(215,15%,45%)] mt-1">Citações</p>
-                </div>
-                <div data-testid="stat-students">
-                  <p className="text-2xl md:text-3xl font-heading font-bold text-[#0A2E76]">2.000+</p>
-                  <p className="text-sm text-[hsl(215,15%,45%)] mt-1">Alunos Formados</p>
-                </div>
+              <div className="flex flex-wrap gap-3 mt-10">
+                <a
+                  href="http://lattes.cnpq.br/9348355553706528"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-lattes"
+                >
+                  <Button variant="outline" className="border-[#0A2E76] text-[#0A2E76] font-semibold gap-2">
+                    Ver Curriculo Lattes
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+                <a
+                  href="https://scholar.google.com/citations?user=SUdWgSEAAAAJ&hl=pt-BR"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-google-scholar"
+                >
+                  <Button variant="outline" className="border-[#0A2E76] text-[#0A2E76] font-semibold gap-2">
+                    Ver Google Scholar
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
               </div>
             </motion.div>
 
@@ -311,7 +317,7 @@ export default function Sobre() {
                 <img
                   src={founderPhoto}
                   alt="Bruno Figueiredo Damásio - Fundador da Psicometria Online Academy"
-                  className="w-full h-full object-cover object-[center_15%]"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
             </motion.div>
