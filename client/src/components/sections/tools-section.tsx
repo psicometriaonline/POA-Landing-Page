@@ -71,7 +71,7 @@ export function ToolsSection() {
             <p className="text-body-lg text-[hsl(215,15%,45%)] leading-relaxed">
               Cada ferramenta resolve um problema específico da sua pesquisa e, juntas, impulsionam o seu desenvolvimento acadêmico.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="hidden lg:flex flex-wrap gap-3">
               <Button
                 size="lg"
                 data-testid="button-tools-start"
@@ -146,6 +146,25 @@ export function ToolsSection() {
               data-testid="img-tools-collab"
             />
           </motion.div>
+        </div>
+
+        <div className="flex lg:hidden flex-wrap gap-3 mt-8 justify-center">
+          <Button
+            size="lg"
+            data-testid="button-tools-start-mobile"
+            className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold px-6"
+          >
+            Comece gratuitamente
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            data-testid="button-tools-plans-mobile"
+            className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
+          >
+            Ver planos
+          </Button>
         </div>
       </div>
 

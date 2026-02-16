@@ -210,15 +210,35 @@ export function CertificateSection() {
                     <div className="absolute bottom-[-60px] right-4 text-[300px] md:text-[380px] leading-none pointer-events-none select-none" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "rgba(255,255,255,0.06)" }} aria-hidden="true">
                       &rdquo;
                     </div>
-                    <div className="flex-shrink-0 flex flex-col items-center md:items-start relative z-10">
-                      <img
-                        src={current.image}
-                        alt={current.name}
-                        className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
-                        data-testid={`img-testimonial-${currentIndex}`}
-                      />
-                      <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
-                      <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
+                    <div className="flex-shrink-0 flex flex-row md:flex-col items-center gap-3 md:gap-0 md:items-start relative z-10">
+                      <button
+                        onClick={goPrev}
+                        disabled={currentIndex === 0}
+                        className="flex md:hidden w-9 h-9 rounded-full bg-white/25 border border-white/35 items-center justify-center text-white transition-opacity disabled:opacity-30 shrink-0"
+                        data-testid="button-testimonial-prev-mobile"
+                        aria-label="Depoimento anterior"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <div className="flex flex-col items-center md:items-start">
+                        <img
+                          src={current.image}
+                          alt={current.name}
+                          className="w-28 h-40 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
+                          data-testid={`img-testimonial-${currentIndex}`}
+                        />
+                        <h4 className="text-white font-heading font-bold text-sm mt-4">{current.name}</h4>
+                        <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
+                      </div>
+                      <button
+                        onClick={goNext}
+                        disabled={currentIndex >= maxIndex}
+                        className="flex md:hidden w-9 h-9 rounded-full bg-white/25 border border-white/35 items-center justify-center text-white transition-opacity disabled:opacity-30 shrink-0"
+                        data-testid="button-testimonial-next-mobile"
+                        aria-label="Próximo depoimento"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
                     <div className="flex-1 flex items-center relative z-10">
                       <p className="text-white/80 text-base leading-relaxed">
@@ -256,25 +276,6 @@ export function CertificateSection() {
                 disabled={currentIndex >= maxIndex}
                 className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/25 border border-white/35 items-center justify-center text-white transition-opacity disabled:opacity-30"
                 data-testid="button-testimonial-next"
-                aria-label="Próximo depoimento"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="flex md:hidden items-center justify-center gap-4 mt-6">
-              <button
-                onClick={goPrev}
-                disabled={currentIndex === 0}
-                className="w-10 h-10 rounded-full bg-white/25 border border-white/35 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
-                aria-label="Depoimento anterior"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={goNext}
-                disabled={currentIndex >= maxIndex}
-                className="w-10 h-10 rounded-full bg-white/25 border border-white/35 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
                 aria-label="Próximo depoimento"
               >
                 <ChevronRight className="w-5 h-5" />

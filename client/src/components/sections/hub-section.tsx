@@ -825,15 +825,15 @@ export function HubSection() {
           <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
             Tenha acesso a maior formação em Psicometria e Análise Quantitativa de Dados da América Latina e desenvolva todas as principais competências acadêmicas.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
             {competencies.map((comp) => (
               <div
                 key={comp.label}
-                className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-md px-4 py-2 border border-white/20"
+                className="flex items-center gap-1.5 md:gap-2 bg-white/15 backdrop-blur-sm rounded-md px-2.5 md:px-4 py-1.5 md:py-2 border border-white/20"
                 data-testid={`badge-competency-${comp.label.toLowerCase().replace(/ /g, "-")}`}
               >
-                <comp.icon className="w-4 h-4 text-white" />
-                <span className="text-sm font-medium text-white">{comp.label}</span>
+                <comp.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
+                <span className="text-xs md:text-sm font-medium text-white">{comp.label}</span>
               </div>
             ))}
           </div>
@@ -1171,24 +1171,6 @@ export function HubSection() {
                             })}
                           </div>
 
-                          <div className="mt-5 flex flex-col gap-2">
-                            <Button
-                              size="lg"
-                              data-testid="button-hub-start-mobile"
-                              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
-                            >
-                              Comece gratuitamente
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                            <Button
-                              size="lg"
-                              variant="outline"
-                              data-testid="button-hub-plans-mobile"
-                              className="font-semibold w-full border-[#0A2E76] text-[#0A2E76]"
-                            >
-                              Ver planos
-                            </Button>
-                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -1196,6 +1178,25 @@ export function HubSection() {
                 </div>
               );
             })}
+
+            <div className="mt-6 flex flex-col gap-2">
+              <Button
+                size="lg"
+                data-testid="button-hub-start-mobile"
+                className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
+              >
+                Comece gratuitamente
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                data-testid="button-hub-plans-mobile"
+                className="font-semibold w-full border-white text-white"
+              >
+                Ver planos
+              </Button>
+            </div>
           </div>
         </motion.div>
       </div>
