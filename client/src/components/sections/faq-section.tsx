@@ -132,7 +132,7 @@ export function FaqSection() {
           className="text-center mb-12"
         >
           <h2
-            className="text-[1.75rem] md:text-display-sm font-heading font-bold text-[#0A2E76] leading-[1.15] mb-4"
+            className="text-[1.75rem] md:text-display-sm font-heading font-bold text-[#0A2E76] mb-4"
             data-testid="text-faq-title"
           >
             Perguntas Frequentes
