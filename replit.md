@@ -26,5 +26,14 @@ Site institucional (landing page) para a plataforma Psicometria Online Academy (
 - Idioma: Português (BR)
 - Referências visuais: Zoom, Trello, Monday
 
+## Performance
+- Imagens convertidas para WebP (~95% redução) em attached_assets/optimized/
+- loading="lazy" em todas imagens below-the-fold, fetchPriority="high" no hero
+- Fontes Google otimizadas (apenas pesos 400/500/600/700 Inter, 500/600/700 DM Sans)
+- Páginas secundárias com React.lazy + Suspense (Sobre, Planos, Termos, Privacidade)
+- Preload da imagem LCP do Hero no index.html
+- Script de conversão WebP: scripts/optimize-images.sh (requer cwebp/libwebp)
+
 ## Recent Changes
+- 2026-02-16: Performance - WebP images, lazy loading, font optimization, code splitting, LCP preload
 - 2026-02-12: Setup inicial - Design system, Header, Footer, Hero Section
