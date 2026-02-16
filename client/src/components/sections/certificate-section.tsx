@@ -156,7 +156,7 @@ export function CertificateSection() {
             className="text-center mb-14"
           >
             <Badge
-              className="bg-white text-[#0A2E76] font-semibold mb-4 no-default-hover-elevate no-default-active-elevate"
+              className="bg-white text-[#0A2E76] font-semibold mb-4 text-sm px-4 py-1 no-default-hover-elevate no-default-active-elevate"
               data-testid="badge-testimonials"
             >
               Depoimentos
