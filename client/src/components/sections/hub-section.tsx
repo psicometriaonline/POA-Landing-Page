@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -801,14 +801,28 @@ export function HubSection() {
   const mobileSubcategoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const currentBlock = activeBlock >= 0 ? blocks[activeBlock] : blocks[0];
 
-  const scrollToElement = (el: HTMLElement | null) => {
+  const scrollTimerRef = useRef<number | null>(null);
+
+  const scrollToElement = useCallback((el: HTMLElement | null) => {
     if (!el) return;
-    requestAnimationFrame(() => {
-      const headerHeight = 96;
-      const absTop = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo(0, absTop - headerHeight);
-    });
-  };
+    if (scrollTimerRef.current) cancelAnimationFrame(scrollTimerRef.current);
+    const headerHeight = 96;
+    let stableFrames = 0;
+    const check = () => {
+      const top = el.getBoundingClientRect().top;
+      const diff = top - headerHeight;
+      if (Math.abs(diff) > 1) {
+        window.scrollBy(0, diff);
+        stableFrames = 0;
+      } else {
+        stableFrames++;
+      }
+      if (stableFrames < 10) {
+        scrollTimerRef.current = requestAnimationFrame(check);
+      }
+    };
+    scrollTimerRef.current = requestAnimationFrame(check);
+  }, []);
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
   return (

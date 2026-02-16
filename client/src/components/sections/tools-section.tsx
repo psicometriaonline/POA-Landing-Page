@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -136,25 +136,39 @@ export function ToolsSection() {
   }, [selectedTool]);
 
   const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollTimerRef = useRef<number | null>(null);
+
+  const scrollToCard = useCallback((idx: number) => {
+    if (scrollTimerRef.current) cancelAnimationFrame(scrollTimerRef.current);
+    const ref = mobileCardRefs.current[idx];
+    if (!ref) return;
+    const headerHeight = 96;
+    let lastTop = -1;
+    let stableFrames = 0;
+    const check = () => {
+      const top = ref.getBoundingClientRect().top;
+      const target = headerHeight;
+      const diff = top - target;
+      if (Math.abs(diff) > 1) {
+        window.scrollBy(0, diff);
+        stableFrames = 0;
+      } else {
+        stableFrames++;
+      }
+      if (stableFrames < 10) {
+        scrollTimerRef.current = requestAnimationFrame(check);
+      }
+    };
+    scrollTimerRef.current = requestAnimationFrame(check);
+  }, []);
 
   const handleSelect = (idx: number) => {
     const newVal = selectedTool === idx ? null : idx;
-
+    setSelectedTool(newVal);
     const isMobile = window.innerWidth < 1024;
     if (isMobile && newVal !== null) {
-      const ref = mobileCardRefs.current[newVal];
-      if (ref) {
-        const prevTop = ref.getBoundingClientRect().top + window.scrollY;
-        setSelectedTool(newVal);
-        requestAnimationFrame(() => {
-          const headerHeight = 96;
-          const newAbsTop = ref.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo(0, newAbsTop - headerHeight);
-        });
-        return;
-      }
+      scrollToCard(newVal);
     }
-    setSelectedTool(newVal);
   };
 
   return (
