@@ -188,7 +188,7 @@ export function CertificateSection() {
               <button
                 onClick={goPrev}
                 disabled={currentIndex === 0}
-                className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
+                className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/25 border border-white/35 items-center justify-center text-white transition-opacity disabled:opacity-30"
                 data-testid="button-testimonial-prev"
                 aria-label="Depoimento anterior"
               >
@@ -221,7 +221,7 @@ export function CertificateSection() {
                       <p className="text-white/50 text-xs mt-0.5">{current.role}</p>
                     </div>
                     <div className="flex-1 flex items-center relative z-10">
-                      <p className="text-white/80 text-sm leading-relaxed">
+                      <p className="text-white/80 text-base leading-relaxed">
                         "{current.text}"
                       </p>
                     </div>
@@ -254,7 +254,7 @@ export function CertificateSection() {
               <button
                 onClick={goNext}
                 disabled={currentIndex >= maxIndex}
-                className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white transition-opacity disabled:opacity-30"
+                className="hidden md:flex flex-shrink-0 w-11 h-11 rounded-full bg-white/25 border border-white/35 items-center justify-center text-white transition-opacity disabled:opacity-30"
                 data-testid="button-testimonial-next"
                 aria-label="Próximo depoimento"
               >
@@ -266,7 +266,7 @@ export function CertificateSection() {
               <button
                 onClick={goPrev}
                 disabled={currentIndex === 0}
-                className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+                className="w-10 h-10 rounded-full bg-white/25 border border-white/35 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
                 aria-label="Depoimento anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -274,7 +274,7 @@ export function CertificateSection() {
               <button
                 onClick={goNext}
                 disabled={currentIndex >= maxIndex}
-                className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
+                className="w-10 h-10 rounded-full bg-white/25 border border-white/35 flex items-center justify-center text-white transition-opacity disabled:opacity-30"
                 aria-label="Próximo depoimento"
               >
                 <ChevronRight className="w-5 h-5" />
