@@ -801,13 +801,11 @@ export function HubSection() {
   const mobileSubcategoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const currentBlock = activeBlock >= 0 ? blocks[activeBlock] : blocks[0];
 
-  const scrollToElement = (el: HTMLElement | null) => {
+  const scrollToRef = (el: HTMLElement | null) => {
     if (!el) return;
-    setTimeout(() => {
-      const headerHeight = 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: y });
-    }, 320);
+    const headerHeight = 80;
+    const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+    window.scrollTo({ top: y });
   };
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
@@ -1052,10 +1050,21 @@ export function HubSection() {
                     onClick={() => {
                       if (isMobileActive) {
                         setActiveBlock(-1);
+                      } else if (activeBlock >= 0) {
+                        setActiveBlock(-1);
+                        setTimeout(() => {
+                          scrollToRef(mobileBlockRefs.current[idx]);
+                          setTimeout(() => {
+                            setActiveBlock(idx);
+                            setOpenSubcategory(0);
+                          }, 50);
+                        }, 320);
                       } else {
-                        setActiveBlock(idx);
-                        setOpenSubcategory(0);
-                        scrollToElement(mobileBlockRefs.current[idx]);
+                        scrollToRef(mobileBlockRefs.current[idx]);
+                        setTimeout(() => {
+                          setActiveBlock(idx);
+                          setOpenSubcategory(0);
+                        }, 50);
                       }
                     }}
                     className={`w-full text-left px-5 py-4 rounded-xl transition-all duration-200 ${
@@ -1103,10 +1112,21 @@ export function HubSection() {
                                   {mobileHasMultipleSubs && (
                                     <button
                                       onClick={() => {
-                                        const newVal = isSubOpen ? -1 : subIdx;
-                                        setOpenSubcategory(newVal);
-                                        if (newVal >= 0) {
-                                          scrollToElement(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
+                                        if (isSubOpen) {
+                                          setOpenSubcategory(-1);
+                                        } else if (openSubcategory >= 0) {
+                                          setOpenSubcategory(-1);
+                                          setTimeout(() => {
+                                            scrollToRef(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
+                                            setTimeout(() => {
+                                              setOpenSubcategory(subIdx);
+                                            }, 50);
+                                          }, 270);
+                                        } else {
+                                          scrollToRef(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
+                                          setTimeout(() => {
+                                            setOpenSubcategory(subIdx);
+                                          }, 50);
                                         }
                                       }}
                                       className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 ${

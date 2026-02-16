@@ -139,17 +139,38 @@ export function ToolsSection() {
 
   const handleSelect = (idx: number) => {
     const newVal = selectedTool === idx ? null : idx;
-    setSelectedTool(newVal);
-    if (window.innerWidth < 1024 && newVal !== null) {
-      const ref = mobileCardRefs.current[newVal];
-      if (ref) {
-        setTimeout(() => {
+    const isMobile = window.innerWidth < 1024;
+
+    if (isMobile && newVal !== null && selectedTool !== null && selectedTool !== idx) {
+      setSelectedTool(null);
+      setTimeout(() => {
+        const ref = mobileCardRefs.current[newVal];
+        if (ref) {
           const headerHeight = 80;
           const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
           window.scrollTo({ top: y });
-        }, 320);
-      }
+        }
+        setTimeout(() => {
+          setSelectedTool(newVal);
+        }, 50);
+      }, 320);
+      return;
     }
+
+    if (isMobile && newVal !== null && selectedTool === null) {
+      const ref = mobileCardRefs.current[newVal];
+      if (ref) {
+        const headerHeight = 80;
+        const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: y });
+      }
+      setTimeout(() => {
+        setSelectedTool(newVal);
+      }, 50);
+      return;
+    }
+
+    setSelectedTool(newVal);
   };
 
   return (
