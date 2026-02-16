@@ -88,8 +88,8 @@ export function ToolsSection() {
           </motion.p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10 items-stretch">
-          <div className="flex flex-col gap-3 lg:w-[45%] shrink-0">
+        <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+          <div className="flex flex-col gap-3 lg:w-1/2 shrink-0">
             {tools.map((tool, idx) => (
               <motion.div
                 key={tool.title}
