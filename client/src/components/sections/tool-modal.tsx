@@ -3,6 +3,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import logoImg from "@assets/optimized/Academy_colorful_1770925025438.webp";
+import imgTamanhoAmostral from "@assets/optimized/Tamanho_Amostral_1771268936173.webp";
+import imgTamanhoEfeito from "@assets/optimized/Tamanho_de_Efeito_1771268936175.webp";
+import imgClassificador from "@assets/optimized/Classificador_de_Análise_1771268936176.webp";
+import imgGlossario from "@assets/optimized/Glossário_1771268936178.webp";
+import imgGeradorSintaxe from "@assets/optimized/Gerador_de_Sintaxe_1771268936177.webp";
+import imgBiblioteca from "@assets/optimized/Biblioteca_Eletrônica_1771268936178.webp";
 
 interface ToolFeature {
   title: string;
@@ -20,7 +26,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Calculadora de Tamanho Amostral",
     shortTitle: "Calcule o N ideal para sua pesquisa",
-    previewImage: "/images/tool-preview-1.webp",
+    previewImage: imgTamanhoAmostral,
     features: [
       {
         title: "Cálculo para diferentes delineamentos",
@@ -39,7 +45,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Calculadoras de Tamanho de Efeito",
     shortTitle: "Quantifique a magnitude dos seus resultados",
-    previewImage: "/images/tool-preview-2.webp",
+    previewImage: imgTamanhoEfeito,
     features: [
       {
         title: "Múltiplas métricas de efeito",
@@ -58,7 +64,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Classificador de Análise de Dados",
     shortTitle: "Descubra a análise correta com IA",
-    previewImage: "/images/tool-preview-3.webp",
+    previewImage: imgClassificador,
     features: [
       {
         title: "Classificação inteligente",
@@ -77,7 +83,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Glossário de Termos Psicométricos e Estatísticos",
     shortTitle: "Consulte definições rápidas e objetivas",
-    previewImage: "/images/tool-preview-4.webp",
+    previewImage: imgGlossario,
     features: [
       {
         title: "Busca instantânea",
@@ -96,7 +102,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Gerador de Sintaxe em R",
     shortTitle: "Gere sintaxes prontas para rodar",
-    previewImage: "/images/tool-preview-5.webp",
+    previewImage: imgGeradorSintaxe,
     features: [
       {
         title: "Sintaxes comentadas linha a linha",
@@ -115,7 +121,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Biblioteca Eletrônica",
     shortTitle: "Encontre artigos que resolvem seus desafios metodológicos",
-    previewImage: "/images/tool-preview-6.webp",
+    previewImage: imgBiblioteca,
     features: [
       {
         title: "Centenas de artigos científicos",
@@ -232,13 +238,25 @@ export function ToolModal({ toolIndex, onClose }: ToolModalProps) {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center justify-center p-4 pt-0">
-            <div className="w-full rounded-xl overflow-hidden bg-gradient-to-br from-[#0A2E76] to-[#0065FF] p-4">
+          <div className="hidden md:flex items-center justify-center p-6 pt-0 pb-8">
+            <div className="w-full rounded-xl overflow-hidden shadow-2xl">
+              <div className="bg-[#E8ECEF] px-3 py-2 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
+                </div>
+                <div className="flex-1 mx-2">
+                  <div className="bg-white rounded-md px-3 py-0.5 text-[10px] text-[hsl(215,10%,55%)] text-center truncate">
+                    psicometriaonline.com.br
+                  </div>
+                </div>
+              </div>
               <img
                 src={tool.previewImage}
                 alt={`Preview ${tool.title}`}
                 loading="lazy"
-                className="w-full h-auto rounded-lg shadow-xl"
+                className="w-full h-auto block"
                 data-testid="img-modal-preview"
               />
             </div>
