@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import founderPhoto from "@assets/Bruno_Figueiredo_Damásio_(Grande)_1771213158543.JPG";
+import founderPhoto from "@assets/optimized/Bruno_Figueiredo_Damásio_(Grande)_1771213158543.webp";
 import prof1 from "@assets/optimized/Douglas_2_1771009276690.webp";
 import prof2 from "@assets/optimized/Alex_França_1771008596696.webp";
 import prof3 from "@assets/optimized/Érica_Midori_Ikegami_2_1771009641365.webp";

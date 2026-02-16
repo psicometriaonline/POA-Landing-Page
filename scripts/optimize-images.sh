@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+shopt -s nullglob
 
 INPUT_DIR="${1:-attached_assets}"
 OUTPUT_DIR="${INPUT_DIR}/optimized"
@@ -12,7 +13,7 @@ fi
 mkdir -p "$OUTPUT_DIR"
 
 count=0
-for img in "$INPUT_DIR"/*.{png,jpg,jpeg,PNG,JPG,JPEG} 2>/dev/null; do
+for img in "$INPUT_DIR"/*.png "$INPUT_DIR"/*.jpg "$INPUT_DIR"/*.jpeg "$INPUT_DIR"/*.PNG "$INPUT_DIR"/*.JPG "$INPUT_DIR"/*.JPEG; do
   [ -f "$img" ] || continue
 
   filename=$(basename "$img")
@@ -37,7 +38,7 @@ fi
 
 echo ""
 echo "Original sizes:"
-du -sh "$INPUT_DIR"/*.{png,jpg,jpeg,PNG,JPG,JPEG} 2>/dev/null | head -20 || echo "  (none)"
+du -sh "$INPUT_DIR"/*.png "$INPUT_DIR"/*.jpg "$INPUT_DIR"/*.jpeg "$INPUT_DIR"/*.PNG "$INPUT_DIR"/*.JPG "$INPUT_DIR"/*.JPEG 2>/dev/null | head -20 || echo "  (none)"
 echo ""
 echo "Optimized sizes:"
 du -sh "$OUTPUT_DIR"/*.webp 2>/dev/null | head -20 || echo "  (none)"
