@@ -1,9 +1,14 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Users, Calculator, Sparkles, BookOpen, Code, BarChart3 } from "lucide-react";
 import { ToolModal } from "./tool-modal";
+import toolImg1 from "@assets/calculo-poder-1_1771224703306.png";
+import toolImg2 from "@assets/calculo-poder-2_1771224703305.png";
+import toolImg3 from "@assets/calculo-poder-3_1771224703305.png";
+
+const toolImages = [toolImg1, toolImg2, toolImg3];
 
 const tools = [
   {
@@ -40,6 +45,14 @@ const tools = [
 
 export function ToolsSection() {
   const [selectedTool, setSelectedTool] = useState<number | null>(null);
+  const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % toolImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -137,15 +150,22 @@ export function ToolsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden lg:block rounded-2xl overflow-hidden"
+            className="hidden lg:block rounded-2xl overflow-hidden relative"
+            data-testid="img-tools-slideshow"
           >
-            <img
-              src="/images/tools-collab.webp"
-              alt="Equipe colaborando em pesquisa acadêmica"
-              loading="lazy"
-              className="w-full h-full object-cover"
-              data-testid="img-tools-collab"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImg}
+                src={toolImages[currentImg]}
+                alt={`Calculadora de Poder Estatístico - Tela ${currentImg + 1}`}
+                loading="lazy"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
           </motion.div>
         </div>
 
