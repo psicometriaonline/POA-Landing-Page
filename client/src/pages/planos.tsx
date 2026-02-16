@@ -516,6 +516,40 @@ export default function Planos() {
       <DetailedBreakdown />
 
       <TrustCarousel />
+
+      <section className="pb-20 md:pb-28 border-t border-[#E2E5EA]" style={{ backgroundColor: "#F4F5F7" }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center pt-16 md:pt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2
+              className="text-[1.75rem] md:text-display-sm font-heading font-bold text-[#0A2E76] mb-3"
+              data-testid="text-planos-final-cta-title"
+            >
+              Comece a usar a Psicometria Online Academy hoje mesmo
+            </h2>
+            <p className="text-sm md:text-base text-[hsl(215,15%,45%)] mb-8">
+              Experimente agora gratuitamente / Não é necessário cartão de crédito
+            </p>
+            <a
+              href="https://psicometriaonline.com.br/academy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-planos-final-cta"
+            >
+              <Button
+                className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
+              >
+                Começar
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }
