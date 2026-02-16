@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/foto_hero_academy_1771223173250.jpg";
+import heroImg from "@assets/hero-academy_(2)_1771223484350.png";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -106,7 +106,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden lg:block flex-1 relative min-h-[480px] ml-8"
+          className="hidden lg:block flex-1 relative min-h-[480px] ml-16"
         >
           <div className="absolute inset-0 top-[-1rem] rounded-l-[3rem] overflow-hidden shadow-2xl">
             <img
