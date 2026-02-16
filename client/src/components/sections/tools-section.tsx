@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -136,38 +136,19 @@ export function ToolsSection() {
   }, [selectedTool]);
 
   const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const scrollTimerRef = useRef<number | null>(null);
-
-  const scrollToCard = useCallback((idx: number) => {
-    if (scrollTimerRef.current) cancelAnimationFrame(scrollTimerRef.current);
-    const ref = mobileCardRefs.current[idx];
-    if (!ref) return;
-    const headerHeight = 96;
-    let lastTop = -1;
-    let stableFrames = 0;
-    const check = () => {
-      const top = ref.getBoundingClientRect().top;
-      const target = headerHeight;
-      const diff = top - target;
-      if (Math.abs(diff) > 1) {
-        window.scrollBy(0, diff);
-        stableFrames = 0;
-      } else {
-        stableFrames++;
-      }
-      if (stableFrames < 10) {
-        scrollTimerRef.current = requestAnimationFrame(check);
-      }
-    };
-    scrollTimerRef.current = requestAnimationFrame(check);
-  }, []);
 
   const handleSelect = (idx: number) => {
     const newVal = selectedTool === idx ? null : idx;
     setSelectedTool(newVal);
-    const isMobile = window.innerWidth < 1024;
-    if (isMobile && newVal !== null) {
-      scrollToCard(newVal);
+    if (window.innerWidth < 1024 && newVal !== null) {
+      const ref = mobileCardRefs.current[newVal];
+      if (ref) {
+        setTimeout(() => {
+          const headerHeight = 80;
+          const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: y });
+        }, 320);
+      }
     }
   };
 
@@ -270,7 +251,7 @@ export function ToolsSection() {
         </div>
 
         {/* Mobile layout */}
-        <div className="flex flex-col gap-3 lg:hidden" style={{ overflowAnchor: "none" }}>
+        <div className="flex flex-col gap-3 lg:hidden">
           {tools.map((tool, idx) => (
             <div key={tool.title} ref={(el) => { mobileCardRefs.current[idx] = el; }}>
               <motion.div
