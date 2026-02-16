@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -7,11 +7,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Home from "@/pages/home";
-import Sobre from "@/pages/sobre";
-import Planos from "@/pages/planos";
-import Termos from "@/pages/termos";
-import Privacidade from "@/pages/privacidade";
-import NotFound from "@/pages/not-found";
+
+const Sobre = lazy(() => import("@/pages/sobre"));
+const Planos = lazy(() => import("@/pages/planos"));
+const Termos = lazy(() => import("@/pages/termos"));
+const Privacidade = lazy(() => import("@/pages/privacidade"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -25,14 +26,16 @@ function ScrollToTop() {
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/sobre" component={Sobre} />
-      <Route path="/planos" component={Planos} />
-      <Route path="/legal/termos" component={Termos} />
-      <Route path="/legal/privacidade" component={Privacidade} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/sobre" component={Sobre} />
+        <Route path="/planos" component={Planos} />
+        <Route path="/legal/termos" component={Termos} />
+        <Route path="/legal/privacidade" component={Privacidade} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

@@ -121,6 +121,7 @@ export function TestimonialsSection() {
                     <img
                       src={current.image}
                       alt={current.name}
+                      loading="lazy"
                       className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
                       data-testid={`img-testimonial-${currentIndex}`}
                     />
@@ -149,6 +150,7 @@ export function TestimonialsSection() {
                     <img
                       src={peek.image}
                       alt={peek.name}
+                      loading="lazy"
                       className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
                     />
                     <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>

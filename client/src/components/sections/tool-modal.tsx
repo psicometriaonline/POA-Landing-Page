@@ -20,7 +20,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Calculadora de Tamanho Amostral",
     shortTitle: "Calcule o N ideal para sua pesquisa",
-    previewImage: "/images/tool-preview-1.png",
+    previewImage: "/images/tool-preview-1.webp",
     features: [
       {
         title: "Cálculo para diferentes delineamentos",
@@ -39,7 +39,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Calculadoras de Tamanho de Efeito",
     shortTitle: "Quantifique a magnitude dos seus resultados",
-    previewImage: "/images/tool-preview-2.png",
+    previewImage: "/images/tool-preview-2.webp",
     features: [
       {
         title: "Múltiplas métricas de efeito",
@@ -58,7 +58,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Classificador de Análise de Dados",
     shortTitle: "Descubra a análise correta com IA",
-    previewImage: "/images/tool-preview-3.png",
+    previewImage: "/images/tool-preview-3.webp",
     features: [
       {
         title: "Classificação inteligente",
@@ -77,7 +77,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Glossário de Termos Psicométricos e Estatísticos",
     shortTitle: "Consulte definições rápidas e objetivas",
-    previewImage: "/images/tool-preview-4.png",
+    previewImage: "/images/tool-preview-4.webp",
     features: [
       {
         title: "Busca instantânea",
@@ -96,7 +96,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Gerador de Sintaxe em R",
     shortTitle: "Gere sintaxes prontas para rodar",
-    previewImage: "/images/tool-preview-5.png",
+    previewImage: "/images/tool-preview-5.webp",
     features: [
       {
         title: "Sintaxes comentadas linha a linha",
@@ -115,7 +115,7 @@ const toolModalData: ToolModalData[] = [
   {
     title: "Calculadora de Tamanho de Amostra para Surveys",
     shortTitle: "Determine o N ideal para sua pesquisa survey",
-    previewImage: "/images/tool-preview-6.png",
+    previewImage: "/images/tool-preview-6.webp",
     features: [
       {
         title: "Margem de erro controlada",
@@ -164,6 +164,7 @@ export function ToolModal({ toolIndex, onClose }: ToolModalProps) {
             <img
               src={logoImg}
               alt="Psicometria Online Academy"
+              loading="lazy"
               className="h-7 object-contain"
               data-testid="img-modal-logo"
             />
@@ -236,6 +237,7 @@ export function ToolModal({ toolIndex, onClose }: ToolModalProps) {
               <img
                 src={tool.previewImage}
                 alt={`Preview ${tool.title}`}
+                loading="lazy"
                 className="w-full h-auto rounded-lg shadow-xl"
                 data-testid="img-modal-preview"
               />

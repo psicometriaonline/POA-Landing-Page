@@ -140,8 +140,9 @@ export function ToolsSection() {
             className="hidden lg:block rounded-2xl overflow-hidden"
           >
             <img
-              src="/images/tools-collab.jpg"
+              src="/images/tools-collab.webp"
               alt="Equipe colaborando em pesquisa acadêmica"
+              loading="lazy"
               className="w-full h-full object-cover"
               data-testid="img-tools-collab"
             />

@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Award, ChevronRight, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
-import imgVanessa from "@assets/Vanessa_Cesnik_1771207282488.png";
-import imgGustavo from "@assets/Gustavo_Pfister_Pirola_1771207282488.jpg";
-import imgFrancine from "@assets/Francine-Alves_1771207282487.webp";
-import imgWalquiria from "@assets/Walquiria_de_Andrade_1771207282485.jpg";
-import imgMarcio from "@assets/Márcio_Miranda_Leitão_1771207282487.png";
-import imgMatheus from "@assets/Matheus_Felix_1771207282486.png";
-import imgKaline from "@assets/Kaline_Lima_1771207282489.jpg";
-import imgLuis from "@assets/Luis_Felipe_1771207282489.jpg";
-import imgMiriam from "@assets/Miriam-Strelhow-2_1771207282488.webp";
+import imgVanessa from "@assets/optimized/Vanessa_Cesnik_1771207282488.webp";
+import imgGustavo from "@assets/optimized/Gustavo_Pfister_Pirola_1771207282488.webp";
+import imgFrancine from "@assets/optimized/Francine-Alves_1771207282487.webp";
+import imgWalquiria from "@assets/optimized/Walquiria_de_Andrade_1771207282485.webp";
+import imgMarcio from "@assets/optimized/Márcio_Miranda_Leitão_1771207282487.webp";
+import imgMatheus from "@assets/optimized/Matheus_Felix_1771207282486.webp";
+import imgKaline from "@assets/optimized/Kaline_Lima_1771207282489.webp";
+import imgLuis from "@assets/optimized/Luis_Felipe_1771207282489.webp";
+import imgMiriam from "@assets/optimized/Miriam-Strelhow-2_1771207282488.webp";
 
 const testimonials = [
   {
@@ -148,6 +148,7 @@ export function CertificateSection() {
               <img
                 src={certificateImg}
                 alt="Certificados da Psicometria Online Academy"
+                loading="lazy"
                 className="w-full max-w-md lg:max-w-lg object-contain drop-shadow-xl"
                 data-testid="img-certificate"
               />
@@ -214,6 +215,7 @@ export function CertificateSection() {
                       <img
                         src={current.image}
                         alt={current.name}
+                        loading="lazy"
                         className="w-32 h-44 md:w-44 md:h-56 rounded-xl object-cover shadow-lg"
                         data-testid={`img-testimonial-${currentIndex}`}
                       />
@@ -260,6 +262,7 @@ export function CertificateSection() {
                       <img
                         src={peek.image}
                         alt={peek.name}
+                        loading="lazy"
                         className="w-32 h-40 rounded-xl object-cover mb-4 shadow-lg relative z-10"
                       />
                       <h4 className="text-white font-heading font-bold text-sm relative z-10">{peek.name}</h4>

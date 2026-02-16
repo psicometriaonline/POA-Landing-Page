@@ -296,6 +296,7 @@ export function CtaSection() {
                     key={i}
                     src={src}
                     alt=""
+                    loading="lazy"
                     className="w-11 h-11 rounded-full border-2 border-[#F4F5F7] object-cover"
                     style={{ animation: `avatarPulse 4s ease-in-out infinite`, animationDelay: `${i * 0.07}s` }}
                     data-testid={`avatar-cta-${i}`}

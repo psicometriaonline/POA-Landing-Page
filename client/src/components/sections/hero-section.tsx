@@ -109,8 +109,9 @@ export function HeroSection() {
           >
             <div className="w-full h-full min-h-[500px] bg-slate-200 rounded-2xl overflow-hidden shadow-2xl relative">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=75&w=800"
                 alt="Plataforma POA"
+                fetchPriority="high"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E76]/20 to-transparent" />
