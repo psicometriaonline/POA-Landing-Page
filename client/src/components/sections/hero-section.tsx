@@ -106,17 +106,16 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden lg:block flex-1 relative min-h-[480px]"
+          className="hidden lg:flex flex-1 relative items-start"
         >
-          <div className="absolute inset-0 rounded-tl-[3rem] overflow-hidden shadow-2xl">
+          <div className="w-full rounded-tl-[3rem] overflow-hidden shadow-2xl">
             <img
               src={heroImg}
               alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
               fetchPriority="high"
               width={800}
               height={533}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: "left top" }}
+              className="w-full h-auto block"
             />
           </div>
         </motion.div>
