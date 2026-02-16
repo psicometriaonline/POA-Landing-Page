@@ -88,8 +88,8 @@ export function ToolsSection() {
           </motion.p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-          <div className="flex flex-col gap-3 lg:w-1/2 shrink-0">
+        <div className="flex flex-col lg:flex-row gap-10 items-stretch">
+          <div className="flex flex-col gap-3 lg:w-[45%] shrink-0">
             {tools.map((tool, idx) => (
               <motion.div
                 key={tool.title}
@@ -141,7 +141,7 @@ export function ToolsSection() {
             ))}
           </div>
 
-          <div className="lg:w-1/2 flex flex-col" ref={previewRef}>
+          <div className="flex-1 flex flex-col" ref={previewRef}>
             <AnimatePresence mode="wait">
               {selectedTool !== null ? (
                 <motion.div
@@ -150,11 +150,11 @@ export function ToolsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.3 }}
-                  className="flex flex-col gap-5 sticky top-24 z-[9999]"
+                  className="sticky top-24 z-[9999] bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 flex flex-col gap-5"
                 >
-                  <div>
+                  <div className="text-center">
                     <h3
-                      className="text-lg font-heading font-bold text-[#0A2E76] mb-1"
+                      className="text-lg font-heading font-bold text-[#0A2E76] mb-2"
                       data-testid="text-tool-preview-title"
                     >
                       {tools[selectedTool].title}
@@ -167,7 +167,7 @@ export function ToolsSection() {
                     </p>
                   </div>
 
-                  <div className="w-full rounded-xl overflow-hidden shadow-2xl">
+                  <div className="w-full rounded-xl overflow-hidden shadow-md">
                     <div className="bg-[#E8ECEF] px-3 py-2 flex items-center gap-2">
                       <div className="flex gap-1.5">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
