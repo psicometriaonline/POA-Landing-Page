@@ -92,7 +92,7 @@ export function ToolsSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 items-stretch" style={{ alignItems: "stretch" }}>
           <div className="flex flex-col gap-3">
             {tools.map((tool, idx) => (
               <motion.div
@@ -118,7 +118,14 @@ export function ToolsSection() {
                       {tool.description}
                     </p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#0A2E76] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0" />
+                  <Button
+                    size="sm"
+                    className="bg-[#0A2E76] text-white border-[#0A2E76] font-semibold shrink-0 text-[12px] px-3"
+                    data-testid={`button-tool-saiba-mais-${idx}`}
+                    onClick={(e) => { e.stopPropagation(); setSelectedTool(idx); }}
+                  >
+                    Saiba mais
+                  </Button>
                 </Card>
               </motion.div>
             ))}
@@ -129,7 +136,7 @@ export function ToolsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden lg:block rounded-2xl overflow-hidden"
+            className="hidden lg:block rounded-2xl overflow-hidden self-stretch"
           >
             <img
               src="/images/tools-collab.webp"
