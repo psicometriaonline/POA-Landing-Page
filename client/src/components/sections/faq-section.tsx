@@ -16,12 +16,12 @@ const faqs = [
   {
     question: "Para quais áreas a formação se aplica?",
     answer:
-      "Na Academy temos alunos dos mais diversos cursos, como: direito, administração, enfermagem, educação física, agronomia, gastronomia, marketing, bioquímica, odontologia, etc. Se você trabalha com pesquisa quantitativa, a formação te serve, independente da sua área.",
+      "Temos alunos dos mais diversos cursos, como: psicologia, enfermagem, educação física, medicina, odontologia, epidemiologia, fonoaudiologia, nutrição, economia, ciências agrárias, bioquímica. Focamos mais em pesquisas na área da saúde e com seres humanos, mas temos cursos que são úteis para pesquisadores das mais diversas áreas.",
   },
   {
     question: "Não sou da Psicologia. Isso é um problema?",
     answer:
-      "De forma alguma. Na Academy, temos alunos dos mais diversos cursos, como: direito, administração, enfermagem, educação física, agronomia, gastronomia, marketing, bioquímica, odontologia, etc. Se você trabalha com pesquisa quantitativa, a formação te serve, independente da sua área.",
+      "De forma alguma. Temos alunos dos mais diversos cursos, como: psicologia, enfermagem, educação física, medicina, odontologia, epidemiologia, fonoaudiologia, nutrição, economia, ciências agrárias, bioquímica. Focamos mais em pesquisas na área da saúde e com seres humanos, mas temos cursos que são úteis para pesquisadores das mais diversas áreas.",
   },
   {
     question: "Terei os resultados mencionados?",
