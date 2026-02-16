@@ -143,15 +143,23 @@ export function ToolsSection() {
 
     const isMobile = window.innerWidth < 1024;
     if (isMobile && newVal !== null) {
-      setTimeout(() => {
-        const ref = mobileCardRefs.current[newVal];
-        if (ref) {
-          const headerHeight = 96;
+      const ref = mobileCardRefs.current[newVal];
+      if (ref) {
+        const headerHeight = 96;
+        const start = performance.now();
+        const duration = 400;
+        const pin = () => {
           const rect = ref.getBoundingClientRect();
-          const top = window.scrollY + rect.top - headerHeight;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      }, 350);
+          const offset = rect.top - headerHeight;
+          if (Math.abs(offset) > 1) {
+            window.scrollBy(0, offset);
+          }
+          if (performance.now() - start < duration) {
+            requestAnimationFrame(pin);
+          }
+        };
+        requestAnimationFrame(pin);
+      }
     }
   };
 

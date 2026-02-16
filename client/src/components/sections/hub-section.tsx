@@ -803,12 +803,20 @@ export function HubSection() {
 
   const scrollToElement = (el: HTMLElement | null) => {
     if (!el) return;
-    setTimeout(() => {
-      const headerHeight = 96;
+    const headerHeight = 96;
+    const start = performance.now();
+    const duration = 400;
+    const pin = () => {
       const rect = el.getBoundingClientRect();
-      const top = window.scrollY + rect.top - headerHeight;
-      window.scrollTo({ top, behavior: "smooth" });
-    }, 350);
+      const offset = rect.top - headerHeight;
+      if (Math.abs(offset) > 1) {
+        window.scrollBy(0, offset);
+      }
+      if (performance.now() - start < duration) {
+        requestAnimationFrame(pin);
+      }
+    };
+    requestAnimationFrame(pin);
   };
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
