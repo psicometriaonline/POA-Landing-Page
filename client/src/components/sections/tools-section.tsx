@@ -33,8 +33,8 @@ const tools = [
   },
   {
     icon: BarChart3,
-    title: "Calculadora de Amostra para Surveys",
-    description: "Determine o tamanho ideal da sua amostra para pesquisas com margem de erro controlada.",
+    title: "Biblioteca Eletrônica",
+    description: "Acesse centenas de artigos científicos que resolvem problemas metodológicos da sua pesquisa.",
   },
 ];
 
