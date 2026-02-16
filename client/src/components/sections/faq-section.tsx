@@ -39,6 +39,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.35, delay: index * 0.06 }}
+      className="bg-white rounded-xl border border-[#E2E5EA] px-6"
     >
       <button
         onClick={() => setOpen(!open)}
@@ -67,7 +68,6 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
           {answer}
         </p>
       </div>
-      <div className="border-b border-[#E2E5EA]" />
     </motion.div>
   );
 }
@@ -102,8 +102,7 @@ export function FaqSection() {
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="border-t border-[#E2E5EA]" />
+        <div className="max-w-3xl mx-auto flex flex-col gap-4">
           {faqs.map((faq, i) => (
             <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
           ))}
