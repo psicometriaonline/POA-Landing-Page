@@ -797,7 +797,19 @@ export function HubSection() {
   const [syllabusModal, setSyllabusModal] = useState<Course | null>(null);
   const [openSubcategory, setOpenSubcategory] = useState(0);
   const contentPanelRef = useRef<HTMLDivElement>(null);
+  const mobileBlockRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileSubcategoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const currentBlock = activeBlock >= 0 ? blocks[activeBlock] : blocks[0];
+
+  const scrollToElement = (el: HTMLElement | null) => {
+    if (!el) return;
+    setTimeout(() => {
+      const headerHeight = 96;
+      const rect = el.getBoundingClientRect();
+      const top = window.scrollY + rect.top - headerHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 350);
+  };
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
   return (
@@ -1036,7 +1048,7 @@ export function HubSection() {
               const mobileBlock = blocks[idx];
               const mobileHasMultipleSubs = mobileBlock.subcategories.length > 1;
               return (
-                <div key={block.id} className="rounded-xl overflow-hidden">
+                <div key={block.id} ref={(el) => { mobileBlockRefs.current[idx] = el; }} className="rounded-xl overflow-hidden">
                   <button
                     onClick={() => {
                       if (isMobileActive) {
@@ -1044,6 +1056,7 @@ export function HubSection() {
                       } else {
                         setActiveBlock(idx);
                         setOpenSubcategory(0);
+                        scrollToElement(mobileBlockRefs.current[idx]);
                       }
                     }}
                     className={`w-full text-left px-5 py-4 rounded-xl transition-all duration-200 ${
@@ -1087,10 +1100,16 @@ export function HubSection() {
                             {mobileBlock.subcategories.map((sub, subIdx) => {
                               const isSubOpen = mobileHasMultipleSubs ? openSubcategory === subIdx : true;
                               return (
-                                <div key={sub.name} className="rounded-xl border border-[#E2E5EA] bg-white overflow-hidden">
+                                <div key={sub.name} ref={(el) => { mobileSubcategoryRefs.current[`${idx}-${subIdx}`] = el; }} className="rounded-xl border border-[#E2E5EA] bg-white overflow-hidden">
                                   {mobileHasMultipleSubs && (
                                     <button
-                                      onClick={() => setOpenSubcategory(isSubOpen ? -1 : subIdx)}
+                                      onClick={() => {
+                                        const newVal = isSubOpen ? -1 : subIdx;
+                                        setOpenSubcategory(newVal);
+                                        if (newVal >= 0) {
+                                          scrollToElement(mobileSubcategoryRefs.current[`${idx}-${subIdx}`]);
+                                        }
+                                      }}
                                       className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 ${
                                         isSubOpen ? "bg-[#0A2E76]" : "bg-white"
                                       }`}
