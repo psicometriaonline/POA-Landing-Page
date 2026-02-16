@@ -116,6 +116,7 @@ function ToolPreview({ toolIndex, onClose }: { toolIndex: number; onClose: () =>
 
 export function ToolsSection() {
   const [selectedTool, setSelectedTool] = useState<number | null>(0);
+  const [mobileOpenTools, setMobileOpenTools] = useState<Set<number>>(new Set([0]));
   const previewRef = useRef<HTMLDivElement>(null);
   const mobilePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -137,35 +138,25 @@ export function ToolsSection() {
 
   const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleSelect = (idx: number) => {
-    const newVal = selectedTool === idx ? null : idx;
-    const isMobile = window.innerWidth < 1024;
+  const handleSelectDesktop = (idx: number) => {
+    setSelectedTool(selectedTool === idx ? null : idx);
+  };
 
-    if (!isMobile || newVal === null) {
-      setSelectedTool(newVal);
-      return;
-    }
-
-    const ref = mobileCardRefs.current[newVal];
-    if (!ref) { setSelectedTool(newVal); return; }
-
-    const headerHeight = 80;
-    const scrollToCard = () => {
-      const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: y });
-    };
-
-    scrollToCard();
-
-    if (selectedTool !== null && selectedTool !== idx) {
-      setSelectedTool(null);
-      setTimeout(() => {
-        scrollToCard();
-        setTimeout(() => setSelectedTool(newVal), 50);
-      }, 320);
+  const handleSelectMobile = (idx: number) => {
+    const isOpen = mobileOpenTools.has(idx);
+    const next = new Set(mobileOpenTools);
+    if (isOpen) {
+      next.delete(idx);
     } else {
-      setTimeout(() => setSelectedTool(newVal), 50);
+      next.add(idx);
+      const ref = mobileCardRefs.current[idx];
+      if (ref) {
+        const headerHeight = 80;
+        const y = ref.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: y });
+      }
     }
+    setMobileOpenTools(next);
   };
 
   return (
@@ -214,7 +205,7 @@ export function ToolsSection() {
                   className={`p-4 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-row items-center gap-4 ${
                     selectedTool === idx ? "ring-2 ring-[#0065FF] border-[#0065FF]" : ""
                   }`}
-                  onClick={() => handleSelect(idx)}
+                  onClick={() => handleSelectDesktop(idx)}
                   data-testid={`card-tool-${idx}`}
                 >
                   <div className={`w-10 h-10 min-w-[2.5rem] rounded-lg flex items-center justify-center transition-colors duration-300 ${
@@ -242,7 +233,7 @@ export function ToolsSection() {
                         : "bg-[#0A2E76] text-white border-[#0A2E76]"
                     }`}
                     data-testid={`button-tool-saiba-mais-${idx}`}
-                    onClick={(e) => { e.stopPropagation(); handleSelect(idx); }}
+                    onClick={(e) => { e.stopPropagation(); handleSelectDesktop(idx); }}
                   >
                     {selectedTool === idx ? "Fechar" : "Saiba mais"}
                   </Button>
@@ -268,73 +259,76 @@ export function ToolsSection() {
 
         {/* Mobile layout */}
         <div className="flex flex-col gap-3 lg:hidden">
-          {tools.map((tool, idx) => (
-            <div key={tool.title} ref={(el) => { mobileCardRefs.current[idx] = el; }}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-              >
-                <Card
-                  className={`p-4 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-row items-center gap-4 ${
-                    selectedTool === idx ? "ring-2 ring-[#0065FF] border-[#0065FF]" : ""
-                  }`}
-                  onClick={() => handleSelect(idx)}
-                  data-testid={`card-tool-mobile-${idx}`}
+          {tools.map((tool, idx) => {
+            const isOpen = mobileOpenTools.has(idx);
+            return (
+              <div key={tool.title} ref={(el) => { mobileCardRefs.current[idx] = el; }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.06 }}
                 >
-                  <div className={`w-10 h-10 min-w-[2.5rem] rounded-lg flex items-center justify-center transition-colors duration-300 ${
-                    selectedTool === idx
-                      ? "bg-[#0A2E76] border-[#0A2E76]"
-                      : "bg-[#F4F5F7] border border-[#E2E5EA]"
-                  }`}>
-                    <tool.icon className={`w-4 h-4 transition-colors duration-300 ${
-                      selectedTool === idx ? "text-white" : "text-[#0A2E76]"
-                    }`} />
-                  </div>
-                  <div className="flex flex-col flex-1 min-w-0">
-                    <h3 className="text-[14px] font-bold text-[#0A2E76] font-heading leading-snug">
-                      {tool.title}
-                    </h3>
-                    <p className="text-[13px] text-[hsl(215,15%,45%)] leading-snug">
-                      {tool.description}
-                    </p>
-                  </div>
-                  <Button
-                    size="sm"
-                    className={`font-semibold shrink-0 text-[12px] px-3 ${
-                      selectedTool === idx
-                        ? "bg-[#0065FF] text-white border-[#0065FF]"
-                        : "bg-[#0A2E76] text-white border-[#0A2E76]"
+                  <Card
+                    className={`p-4 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-row items-center gap-4 ${
+                      isOpen ? "ring-2 ring-[#0065FF] border-[#0065FF]" : ""
                     }`}
-                    data-testid={`button-tool-mobile-saiba-mais-${idx}`}
-                    onClick={(e) => { e.stopPropagation(); handleSelect(idx); }}
+                    onClick={() => handleSelectMobile(idx)}
+                    data-testid={`card-tool-mobile-${idx}`}
                   >
-                    {selectedTool === idx ? "Fechar" : "Saiba mais"}
-                  </Button>
-                </Card>
-              </motion.div>
-
-              <div ref={(el) => { mobilePreviewRefs.current[idx] = el; }}>
-                <AnimatePresence mode="wait">
-                  {selectedTool === idx && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden mt-3"
+                    <div className={`w-10 h-10 min-w-[2.5rem] rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                      isOpen
+                        ? "bg-[#0A2E76] border-[#0A2E76]"
+                        : "bg-[#F4F5F7] border border-[#E2E5EA]"
+                    }`}>
+                      <tool.icon className={`w-4 h-4 transition-colors duration-300 ${
+                        isOpen ? "text-white" : "text-[#0A2E76]"
+                      }`} />
+                    </div>
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <h3 className="text-[14px] font-bold text-[#0A2E76] font-heading leading-snug">
+                        {tool.title}
+                      </h3>
+                      <p className="text-[13px] text-[hsl(215,15%,45%)] leading-snug">
+                        {tool.description}
+                      </p>
+                    </div>
+                    <Button
+                      size="sm"
+                      className={`font-semibold shrink-0 text-[12px] px-3 ${
+                        isOpen
+                          ? "bg-[#0065FF] text-white border-[#0065FF]"
+                          : "bg-[#0A2E76] text-white border-[#0A2E76]"
+                      }`}
+                      data-testid={`button-tool-mobile-saiba-mais-${idx}`}
+                      onClick={(e) => { e.stopPropagation(); handleSelectMobile(idx); }}
                     >
-                      <ToolPreview
-                        toolIndex={idx}
-                        onClose={() => setSelectedTool(null)}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      {isOpen ? "Fechar" : "Saiba mais"}
+                    </Button>
+                  </Card>
+                </motion.div>
+
+                <div ref={(el) => { mobilePreviewRefs.current[idx] = el; }}>
+                  <AnimatePresence mode="wait">
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden mt-3"
+                      >
+                        <ToolPreview
+                          toolIndex={idx}
+                          onClose={() => handleSelectMobile(idx)}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

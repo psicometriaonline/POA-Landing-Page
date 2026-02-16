@@ -801,12 +801,41 @@ export function HubSection() {
   const mobileSubcategoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const currentBlock = activeBlock >= 0 ? blocks[activeBlock] : blocks[0];
 
+  const [mobileOpenBlocks, setMobileOpenBlocks] = useState<Set<number>>(new Set([0]));
+  const [mobileOpenSubs, setMobileOpenSubs] = useState<Set<string>>(new Set(["0-0"]));
+
   const scrollToRef = (el: HTMLElement | null) => {
     if (!el) return;
     const headerHeight = 80;
     const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
     window.scrollTo({ top: y });
   };
+
+  const toggleMobileBlock = (idx: number) => {
+    const next = new Set(mobileOpenBlocks);
+    if (next.has(idx)) {
+      next.delete(idx);
+    } else {
+      next.add(idx);
+      const ref = mobileBlockRefs.current[idx];
+      if (ref) scrollToRef(ref);
+    }
+    setMobileOpenBlocks(next);
+  };
+
+  const toggleMobileSub = (blockIdx: number, subIdx: number) => {
+    const key = `${blockIdx}-${subIdx}`;
+    const next = new Set(mobileOpenSubs);
+    if (next.has(key)) {
+      next.delete(key);
+    } else {
+      next.add(key);
+      const ref = mobileSubcategoryRefs.current[key];
+      if (ref) scrollToRef(ref);
+    }
+    setMobileOpenSubs(next);
+  };
+
   const hasMultipleSubcategories = currentBlock.subcategories.length > 1;
 
   return (
@@ -1041,35 +1070,13 @@ export function HubSection() {
           {/* Mobile: accordion - conteúdo aparece logo abaixo de cada aba */}
           <div className="lg:hidden space-y-3">
             {blocks.map((block, idx) => {
-              const isMobileActive = activeBlock === idx;
+              const isMobileActive = mobileOpenBlocks.has(idx);
               const mobileBlock = blocks[idx];
               const mobileHasMultipleSubs = mobileBlock.subcategories.length > 1;
               return (
                 <div key={block.id} ref={(el) => { mobileBlockRefs.current[idx] = el; }} className="rounded-xl overflow-hidden">
                   <button
-                    onClick={() => {
-                      if (isMobileActive) {
-                        setActiveBlock(-1);
-                        return;
-                      }
-                      const ref = mobileBlockRefs.current[idx];
-                      if (ref) scrollToRef(ref);
-                      if (activeBlock >= 0) {
-                        setActiveBlock(-1);
-                        setTimeout(() => {
-                          if (ref) scrollToRef(ref);
-                          setTimeout(() => {
-                            setActiveBlock(idx);
-                            setOpenSubcategory(0);
-                          }, 50);
-                        }, 320);
-                      } else {
-                        setTimeout(() => {
-                          setActiveBlock(idx);
-                          setOpenSubcategory(0);
-                        }, 50);
-                      }
-                    }}
+                    onClick={() => toggleMobileBlock(idx)}
                     className={`w-full text-left px-5 py-4 rounded-xl transition-all duration-200 ${
                       isMobileActive
                         ? "bg-[#0A2E76] shadow-lg rounded-b-none"
@@ -1109,28 +1116,12 @@ export function HubSection() {
 
                           <div className="space-y-3">
                             {mobileBlock.subcategories.map((sub, subIdx) => {
-                              const isSubOpen = mobileHasMultipleSubs ? openSubcategory === subIdx : true;
+                              const isSubOpen = mobileHasMultipleSubs ? mobileOpenSubs.has(`${idx}-${subIdx}`) : true;
                               return (
                                 <div key={sub.name} ref={(el) => { mobileSubcategoryRefs.current[`${idx}-${subIdx}`] = el; }} className="rounded-xl border border-[#E2E5EA] bg-white overflow-hidden">
                                   {mobileHasMultipleSubs && (
                                     <button
-                                      onClick={() => {
-                                        if (isSubOpen) {
-                                          setOpenSubcategory(-1);
-                                          return;
-                                        }
-                                        const subRef = mobileSubcategoryRefs.current[`${idx}-${subIdx}`];
-                                        if (subRef) scrollToRef(subRef);
-                                        if (openSubcategory >= 0) {
-                                          setOpenSubcategory(-1);
-                                          setTimeout(() => {
-                                            if (subRef) scrollToRef(subRef);
-                                            setTimeout(() => setOpenSubcategory(subIdx), 50);
-                                          }, 270);
-                                        } else {
-                                          setTimeout(() => setOpenSubcategory(subIdx), 50);
-                                        }
-                                      }}
+                                      onClick={() => toggleMobileSub(idx, subIdx)}
                                       className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 ${
                                         isSubOpen ? "bg-[#0A2E76]" : "bg-white"
                                       }`}
