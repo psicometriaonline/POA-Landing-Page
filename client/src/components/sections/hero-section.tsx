@@ -25,12 +25,12 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative flex items-center pt-16 md:pt-20 overflow-hidden"
+      className="relative pt-16 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="container-narrow relative z-10 py-8 md:py-10 pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
-          <div className="flex flex-col justify-center text-left py-2 pb-8 md:pb-10">
+      <div className="relative z-10 flex flex-col lg:flex-row items-stretch">
+        <div className="flex-1 flex items-center">
+          <div className="w-full max-w-[700px] ml-auto px-6 md:px-10 lg:pl-[max(2rem,calc((100vw-1200px)/2))] lg:pr-12 py-8 md:py-10 pb-8 md:pb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -101,23 +101,22 @@ export function HeroSection() {
               <span>Assistir vídeo</span>
             </motion.button>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:flex items-end justify-end self-stretch"
-          >
-            <img
-              src={heroImg}
-              alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
-              fetchPriority="high"
-              width={800}
-              height={533}
-              className="w-full h-full object-cover object-left rounded-tl-3xl"
-            />
-          </motion.div>
         </div>
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="hidden lg:block flex-1 relative min-h-[480px]"
+        >
+          <img
+            src={heroImg}
+            alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
+            fetchPriority="high"
+            width={800}
+            height={533}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </motion.div>
       </div>
 
       {/* Video Modal */}
