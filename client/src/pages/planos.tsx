@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, X as XIcon, ArrowRight, Plus, Minus } from "lucide-react";
+import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
 
 type BillingPeriod = "mensal" | "anual";
 
@@ -729,6 +729,7 @@ function DetailedPlanIcon({ value }: { value: boolean | string }) {
 }
 
 function DetailedBreakdown() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const planNames = ["Master", "Pro", "Premium"];
 
   return (
@@ -747,18 +748,31 @@ function DetailedBreakdown() {
           >
             Detalhe de Cursos por Plano
           </h2>
-          <p className="text-sm text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-6">
             Veja exatamente quais cursos, ferramentas e recursos estão incluídos em cada plano.
           </p>
+
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-[#0A2E76] text-white hover:bg-[#0A2E76]/90 shadow-md"
+            data-testid="button-toggle-detailed"
+          >
+            {isExpanded ? "Ocultar detalhes" : "Ver todos os cursos por plano"}
+            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+          </button>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <>
+              <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
             <div className="grid grid-cols-[1fr_120px_120px_120px] border-b border-[#E2E5EA] bg-[#0A2E76]">
               <div className="px-5 py-4">
                 <span className="text-sm font-semibold text-white/80">Cursos e Recursos</span>
@@ -911,7 +925,10 @@ function DetailedBreakdown() {
               </div>
             ))}
           </div>
-        </motion.div>
+              </>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
