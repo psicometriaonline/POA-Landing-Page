@@ -44,22 +44,114 @@ const tools = [
   },
 ];
 
+function ToolPreview({ toolIndex, onClose }: { toolIndex: number; onClose: () => void }) {
+  const tool = tools[toolIndex];
+  return (
+    <motion.div
+      key={toolIndex}
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.97 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-5 md:p-6 flex flex-col gap-4"
+    >
+      <div className="text-center">
+        <h3
+          className="text-lg font-heading font-bold text-[#0A2E76] mb-2"
+          data-testid="text-tool-preview-title"
+        >
+          {tool.title}
+        </h3>
+        <p
+          className="text-sm text-[hsl(215,15%,45%)] leading-relaxed"
+          data-testid="text-tool-preview-detail"
+        >
+          {tool.detail}
+        </p>
+      </div>
+
+      <div className="w-full rounded-xl overflow-hidden shadow-md">
+        <div className="bg-[#E8ECEF] px-3 py-2 flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
+          </div>
+          <div className="flex-1 mx-2">
+            <div className="bg-white rounded-md px-3 py-0.5 text-[10px] text-[hsl(215,10%,55%)] text-center truncate">
+              psicometriaonline.com.br
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-5 h-5 flex items-center justify-center rounded-full text-[hsl(215,10%,45%)] transition-colors"
+            data-testid="button-close-preview"
+            aria-label="Fechar preview"
+          >
+            <X className="w-3 h-3" />
+          </button>
+        </div>
+        <img
+          src={toolImages[toolIndex]}
+          alt={`Preview ${tool.title}`}
+          loading="lazy"
+          className="w-full h-auto block"
+          data-testid="img-tool-preview"
+        />
+      </div>
+
+      <div className="flex justify-center">
+        <Button
+          size="lg"
+          data-testid="button-tool-cta"
+          className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8"
+        >
+          Quero testar gratuitamente
+          <ArrowRight className="w-4 h-4 ml-2" />
+        </Button>
+      </div>
+    </motion.div>
+  );
+}
+
 export function ToolsSection() {
-  const [selectedTool, setSelectedTool] = useState<number | null>(null);
+  const [selectedTool, setSelectedTool] = useState<number>(0);
   const previewRef = useRef<HTMLDivElement>(null);
+  const mobilePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (selectedTool !== null && previewRef.current) {
-      const headerHeight = 96;
-      const rect = previewRef.current.getBoundingClientRect();
-      const isAboveViewport = rect.top < headerHeight;
-      const isBelowViewport = rect.top > window.innerHeight * 0.6;
-      if (isAboveViewport || isBelowViewport) {
-        const top = window.scrollY + rect.top - headerHeight - 8;
-        window.scrollTo({ top, behavior: "smooth" });
+      const isDesktop = window.innerWidth >= 1024;
+      if (isDesktop) {
+        const headerHeight = 96;
+        const rect = previewRef.current.getBoundingClientRect();
+        const isAboveViewport = rect.top < headerHeight;
+        const isBelowViewport = rect.top > window.innerHeight * 0.6;
+        if (isAboveViewport || isBelowViewport) {
+          const top = window.scrollY + rect.top - headerHeight - 8;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
       }
     }
   }, [selectedTool]);
+
+  const handleSelect = (idx: number) => {
+    const newVal = selectedTool === idx ? 0 : idx;
+    setSelectedTool(newVal);
+
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) {
+      setTimeout(() => {
+        const ref = mobilePreviewRefs.current[newVal];
+        if (ref) {
+          const headerHeight = 96;
+          const rect = ref.getBoundingClientRect();
+          const top = window.scrollY + rect.top - headerHeight - 8;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 50);
+    }
+  };
 
   return (
     <section
@@ -92,7 +184,8 @@ export function ToolsSection() {
           </motion.p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+        {/* Desktop layout */}
+        <div className="hidden lg:flex flex-row gap-12 items-start">
           <div className="flex flex-col gap-3 lg:w-1/2 shrink-0">
             {tools.map((tool, idx) => (
               <motion.div
@@ -106,7 +199,7 @@ export function ToolsSection() {
                   className={`p-4 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-row items-center gap-4 ${
                     selectedTool === idx ? "ring-2 ring-[#0065FF] border-[#0065FF]" : ""
                   }`}
-                  onClick={() => setSelectedTool(selectedTool === idx ? null : idx)}
+                  onClick={() => handleSelect(idx)}
                   data-testid={`card-tool-${idx}`}
                 >
                   <div className={`w-10 h-10 min-w-[2.5rem] rounded-lg flex items-center justify-center transition-colors duration-300 ${
@@ -115,9 +208,7 @@ export function ToolsSection() {
                       : "bg-[#F4F5F7] border border-[#E2E5EA]"
                   }`}>
                     <tool.icon className={`w-4 h-4 transition-colors duration-300 ${
-                      selectedTool === idx
-                        ? "text-white"
-                        : "text-[#0A2E76]"
+                      selectedTool === idx ? "text-white" : "text-[#0A2E76]"
                     }`} />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
@@ -136,7 +227,7 @@ export function ToolsSection() {
                         : "bg-[#0A2E76] text-white border-[#0A2E76]"
                     }`}
                     data-testid={`button-tool-saiba-mais-${idx}`}
-                    onClick={(e) => { e.stopPropagation(); setSelectedTool(selectedTool === idx ? null : idx); }}
+                    onClick={(e) => { e.stopPropagation(); handleSelect(idx); }}
                   >
                     {selectedTool === idx ? "Fechar" : "Saiba mais"}
                   </Button>
@@ -146,92 +237,75 @@ export function ToolsSection() {
           </div>
 
           <div className="flex-1 flex flex-col" ref={previewRef}>
-            <AnimatePresence mode="wait">
-              {selectedTool !== null ? (
-                <motion.div
+            <div className="sticky top-24 z-40">
+              <AnimatePresence mode="wait">
+                <ToolPreview
                   key={selectedTool}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.3 }}
-                  className="sticky top-24 z-40 bg-white rounded-2xl border border-[#E2E5EA] shadow-lg p-6 flex flex-col gap-5"
+                  toolIndex={selectedTool}
+                  onClose={() => setSelectedTool(0)}
+                />
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="flex flex-col gap-3 lg:hidden">
+          {tools.map((tool, idx) => (
+            <div key={tool.title}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+              >
+                <Card
+                  className={`p-4 bg-white border-[#E2E5EA] hover-elevate cursor-pointer transition-all duration-300 group flex flex-row items-center gap-4 ${
+                    selectedTool === idx ? "ring-2 ring-[#0065FF] border-[#0065FF]" : ""
+                  }`}
+                  onClick={() => handleSelect(idx)}
+                  data-testid={`card-tool-mobile-${idx}`}
                 >
-                  <div className="text-center">
-                    <h3
-                      className="text-lg font-heading font-bold text-[#0A2E76] mb-2"
-                      data-testid="text-tool-preview-title"
-                    >
-                      {tools[selectedTool].title}
+                  <div className={`w-10 h-10 min-w-[2.5rem] rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                    selectedTool === idx
+                      ? "bg-[#0A2E76] border-[#0A2E76]"
+                      : "bg-[#F4F5F7] border border-[#E2E5EA]"
+                  }`}>
+                    <tool.icon className={`w-4 h-4 transition-colors duration-300 ${
+                      selectedTool === idx ? "text-white" : "text-[#0A2E76]"
+                    }`} />
+                  </div>
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <h3 className="text-[14px] font-bold text-[#0A2E76] font-heading leading-snug">
+                      {tool.title}
                     </h3>
-                    <p
-                      className="text-sm text-[hsl(215,15%,45%)] leading-relaxed"
-                      data-testid="text-tool-preview-detail"
-                    >
-                      {tools[selectedTool].detail}
+                    <p className="text-[13px] text-[hsl(215,15%,45%)] leading-snug">
+                      {tool.description}
                     </p>
                   </div>
+                </Card>
+              </motion.div>
 
-                  <div className="w-full rounded-xl overflow-hidden shadow-md">
-                    <div className="bg-[#E8ECEF] px-3 py-2 flex items-center gap-2">
-                      <div className="flex gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-                      </div>
-                      <div className="flex-1 mx-2">
-                        <div className="bg-white rounded-md px-3 py-0.5 text-[10px] text-[hsl(215,10%,55%)] text-center truncate">
-                          psicometriaonline.com.br
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => setSelectedTool(null)}
-                        className="w-5 h-5 flex items-center justify-center rounded-full text-[hsl(215,10%,45%)] transition-colors"
-                        data-testid="button-close-preview"
-                        aria-label="Fechar preview"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </div>
-                    <img
-                      src={toolImages[selectedTool]}
-                      alt={`Preview ${tools[selectedTool].title}`}
-                      loading="lazy"
-                      className="w-full h-auto block"
-                      data-testid="img-tool-preview"
-                    />
-                  </div>
-
-                  <div className="flex justify-center">
-                    <Button
-                      size="lg"
-                      data-testid="button-tool-cta"
-                      className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8"
+              <div ref={(el) => { mobilePreviewRefs.current[idx] = el; }}>
+                <AnimatePresence mode="wait">
+                  {selectedTool === idx && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden mt-3"
                     >
-                      Quero testar gratuitamente
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="placeholder"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="hidden lg:block rounded-2xl overflow-hidden h-full"
-                >
-                  <img
-                    src="/images/tools-collab.webp"
-                    alt="Equipe colaborando em pesquisa acadêmica"
-                    loading="lazy"
-                    className="w-full h-full object-cover rounded-2xl"
-                    data-testid="img-tools-collab"
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                      <ToolPreview
+                        toolIndex={idx}
+                        onClose={() => setSelectedTool(0)}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
