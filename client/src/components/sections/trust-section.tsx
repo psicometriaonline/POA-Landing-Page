@@ -32,9 +32,9 @@ export function TrustSection() {
         </motion.h2>
       </div>
 
-      <div className="relative flex">
+      <div className="hidden md:flex relative">
         <motion.div
-          className="flex gap-12 md:gap-20 items-center whitespace-nowrap px-6"
+          className="flex gap-20 items-center whitespace-nowrap px-6"
           animate={{
             x: ["0%", "-33.33%"],
           }}
@@ -54,11 +54,31 @@ export function TrustSection() {
                 alt={uni.name}
                 width={56}
                 height={56}
-                className="h-12 md:h-14 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
             </div>
           ))}
         </motion.div>
+      </div>
+
+      <div className="md:hidden px-6">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6">
+          {universities.map((uni) => (
+            <div
+              key={uni.name}
+              className="flex items-center justify-center"
+            >
+              <img
+                src={uni.logo}
+                alt={uni.name}
+                width={48}
+                height={48}
+                className="h-11 w-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
