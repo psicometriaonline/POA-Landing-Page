@@ -40,7 +40,7 @@ interface Block {
 const blocks: Block[] = [
   {
     id: 1,
-    name: "Ciclo da Autonomia",
+    name: "Formação Básica em Pesquisa Científica",
     subtitle: "Construa as bases para a independência acadêmica",
     description: "Domine os três pilares fundamentais da pesquisa científica: método, análise de dados e escrita científica.",
     icon: GraduationCap,
@@ -202,7 +202,7 @@ const blocks: Block[] = [
   },
   {
     id: 2,
-    name: "Aprofundamento Estratégico",
+    name: "Formação Avançada em Psicometria e Análise de Dados",
     subtitle: "Domine técnicas avançadas de análise e pesquisa",
     description: "Passe a ser reconhecido como um expert na sua área específica de conhecimento.",
     icon: Brain,
@@ -521,7 +521,7 @@ const blocks: Block[] = [
   },
   {
     id: 3,
-    name: "Análises de Dados com o R",
+    name: "Formação Completa em Análise de Dados com R",
     subtitle: "Domine a linguagem R para análise estatística",
     description: "Uma formação inteira em R para você que deseja aprofundar ainda mais o seu conhecimento.",
     icon: Code,
