@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, ChevronRight, ChevronLeft } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import certificateImg from "@assets/Im-2-copiar_1770941008351.webp";
 import avatar1 from "@assets/19_1771128693704.png";
 import avatar2 from "@assets/36_1771128693705.png";
@@ -154,6 +155,12 @@ export function CertificateSection() {
             transition={{ duration: 0.5 }}
             className="text-center mb-14"
           >
+            <Badge
+              className="bg-white text-[#0A2E76] font-semibold mb-4 no-default-hover-elevate no-default-active-elevate"
+              data-testid="badge-testimonials"
+            >
+              Depoimentos
+            </Badge>
             <h2
               className="text-3xl md:text-5xl font-heading font-bold text-white"
               data-testid="text-testimonials-title"
