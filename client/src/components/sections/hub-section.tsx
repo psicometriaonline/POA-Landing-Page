@@ -1202,11 +1202,11 @@ export function HubSection() {
       </div>
 
       <Dialog open={syllabusModal !== null} onOpenChange={(open) => { if (!open) setSyllabusModal(null); }}>
-        <DialogContent className="max-w-lg p-0 gap-0 overflow-hidden" data-testid="dialog-syllabus">
+        <DialogContent className="max-w-lg p-0 gap-0 max-h-[85vh] flex flex-col overflow-hidden" data-testid="dialog-syllabus">
           {syllabusModal && (
-            <div className="flex flex-col">
-              <div className="p-6 pb-4">
-                <div className="flex items-center gap-3 mb-4">
+            <>
+              <div className="p-6 pb-4 shrink-0 border-b border-[#E2E5EA]">
+                <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0">
                     <BookOpen className="w-4 h-4 text-[#0065FF]" />
                   </div>
@@ -1214,6 +1214,8 @@ export function HubSection() {
                     {syllabusModal.name}
                   </h3>
                 </div>
+              </div>
+              <div className="flex-1 overflow-y-auto p-6 pt-4">
                 <p className="text-base text-[hsl(215,15%,45%)] mb-5 leading-relaxed">
                   {syllabusModal.description}
                 </p>
@@ -1229,7 +1231,7 @@ export function HubSection() {
                   ))}
                 </ul>
               </div>
-              <div className="p-6 pt-4 border-t border-[#E2E5EA] bg-[#F9FAFB]">
+              <div className="p-6 pt-4 shrink-0 border-t border-[#E2E5EA] bg-[#F9FAFB]">
                 <Button
                   size="lg"
                   data-testid="button-syllabus-cta"
@@ -1239,7 +1241,7 @@ export function HubSection() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
-            </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
