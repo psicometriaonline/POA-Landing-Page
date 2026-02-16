@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown, ChevronRight } from "lucide-react";
+import { Check, X as XIcon, ArrowRight, Plus, Minus } from "lucide-react";
 
 type BillingPeriod = "mensal" | "anual";
 
@@ -729,19 +729,6 @@ function DetailedPlanIcon({ value }: { value: boolean | string }) {
 }
 
 function DetailedBreakdown() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [openBlocks, setOpenBlocks] = useState<Set<number>>(new Set([0]));
-
-  const toggleBlock = (idx: number) => {
-    const next = new Set(openBlocks);
-    if (next.has(idx)) {
-      next.delete(idx);
-    } else {
-      next.add(idx);
-    }
-    setOpenBlocks(next);
-  };
-
   const planNames = ["Master", "Pro", "Premium"];
 
   return (
@@ -752,7 +739,7 @@ function DetailedBreakdown() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
           <h2
             className="text-2xl sm:text-3xl font-heading font-bold text-[#0A2E76] mb-3"
@@ -760,126 +747,59 @@ function DetailedBreakdown() {
           >
             Detalhe de Cursos por Plano
           </h2>
-          <p className="text-sm text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-6">
+          <p className="text-sm text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed">
             Veja exatamente quais cursos, ferramentas e recursos estão incluídos em cada plano.
           </p>
-
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-[#0A2E76] text-white hover:bg-[#0A2E76]/90 shadow-md"
-            data-testid="button-toggle-detailed"
-          >
-            {isExpanded ? "Ocultar detalhes" : "Ver todos os cursos por plano"}
-            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
-          </button>
         </motion.div>
 
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
-                <div className="grid grid-cols-[1fr_120px_120px_120px] border-b border-[#E2E5EA] bg-[#0A2E76]">
-                  <div className="px-5 py-4">
-                    <span className="text-sm font-semibold text-white/80">Cursos e Recursos</span>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="hidden md:block bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
+            <div className="grid grid-cols-[1fr_120px_120px_120px] border-b border-[#E2E5EA] bg-[#0A2E76]">
+              <div className="px-5 py-4">
+                <span className="text-sm font-semibold text-white/80">Cursos e Recursos</span>
+              </div>
+              {planNames.map((name) => (
+                <div key={name} className="px-3 py-4 text-center">
+                  <span className="text-sm font-bold text-white">{name}</span>
+                </div>
+              ))}
+            </div>
+
+            {detailedCourses.map((block, bi) => (
+              <div key={bi}>
+                <div className="grid grid-cols-[1fr_120px_120px_120px] bg-[#0A2E76]/[0.08]">
+                  <div className="px-5 py-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                      {block.name}
+                    </span>
                   </div>
-                  {planNames.map((name) => (
-                    <div key={name} className="px-3 py-4 text-center">
-                      <span className="text-sm font-bold text-white">{name}</span>
-                    </div>
-                  ))}
+                  <div /><div /><div />
                 </div>
 
-                {detailedCourses.map((block, bi) => (
-                  <div key={bi}>
-                    <button
-                      onClick={() => toggleBlock(bi)}
-                      className="w-full grid grid-cols-[1fr_120px_120px_120px] bg-[#0A2E76]/[0.08] hover:bg-[#0A2E76]/[0.12] transition-colors"
-                      data-testid={`button-detail-block-${bi}`}
-                    >
-                      <div className="px-5 py-3 flex items-center gap-2 text-left">
-                        {openBlocks.has(bi) ? (
-                          <ChevronDown className="w-4 h-4 text-[#0A2E76] flex-shrink-0" />
-                        ) : (
-                          <ChevronRight className="w-4 h-4 text-[#0A2E76] flex-shrink-0" />
-                        )}
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
-                          {block.name}
-                        </span>
-                      </div>
-                      <div className="px-3 py-3" />
-                      <div className="px-3 py-3" />
-                      <div className="px-3 py-3" />
-                    </button>
-
-                    <AnimatePresence>
-                      {openBlocks.has(bi) && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden"
-                        >
-                          {block.subcategories.map((sub, si) => (
-                            <div key={si}>
-                              <div className="grid grid-cols-[1fr_120px_120px_120px] bg-[#F8F9FB]">
-                                <div className="px-5 py-2 pl-11">
-                                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0A2E76]/60">
-                                    {sub.name}
-                                  </span>
-                                </div>
-                                <div /><div /><div />
-                              </div>
-                              {sub.courses.map((course, ci) => (
-                                <div
-                                  key={ci}
-                                  className={`grid grid-cols-[1fr_120px_120px_120px] border-b border-[#F4F5F7] ${ci % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
-                                >
-                                  <div className="px-5 py-3 pl-11">
-                                    <span className="text-sm text-[hsl(215,15%,30%)]">{course.name}</span>
-                                  </div>
-                                  {course.plans.map((val, vi) => (
-                                    <div key={vi} className="px-3 py-3 flex items-center justify-center">
-                                      <DetailedPlanIcon value={val} />
-                                    </div>
-                                  ))}
-                                </div>
-                              ))}
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-
-                <div className="border-t-2 border-[#E2E5EA]" />
-
-                {detailedResources.map((group, gi) => (
-                  <div key={gi}>
-                    <div className="grid grid-cols-[1fr_120px_120px_120px] bg-[#0A2E76]/[0.08]">
-                      <div className="px-5 py-3">
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
-                          {group.category}
+                {block.subcategories.map((sub, si) => (
+                  <div key={si}>
+                    <div className="grid grid-cols-[1fr_120px_120px_120px] bg-[#F8F9FB]">
+                      <div className="px-5 py-2 pl-9">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0A2E76]/60">
+                          {sub.name}
                         </span>
                       </div>
                       <div /><div /><div />
                     </div>
-                    {group.rows.map((row, ri) => (
+                    {sub.courses.map((course, ci) => (
                       <div
-                        key={ri}
-                        className={`grid grid-cols-[1fr_120px_120px_120px] border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
+                        key={ci}
+                        className={`grid grid-cols-[1fr_120px_120px_120px] border-b border-[#F4F5F7] ${ci % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
                       >
-                        <div className="px-5 py-3">
-                          <span className="text-sm text-[hsl(215,15%,30%)]">{row.name}</span>
+                        <div className="px-5 py-3 pl-9">
+                          <span className="text-sm text-[hsl(215,15%,30%)]">{course.name}</span>
                         </div>
-                        {row.plans.map((val, vi) => (
+                        {course.plans.map((val, vi) => (
                           <div key={vi} className="px-3 py-3 flex items-center justify-center">
                             <DetailedPlanIcon value={val} />
                           </div>
@@ -889,92 +809,70 @@ function DetailedBreakdown() {
                   </div>
                 ))}
               </div>
+            ))}
 
-              <div className="md:hidden space-y-3">
-                {detailedCourses.map((block, bi) => (
-                  <div key={bi} className="bg-white rounded-xl border border-[#E2E5EA] shadow-sm overflow-hidden">
-                    <button
-                      onClick={() => toggleBlock(bi)}
-                      className="w-full flex items-center justify-between px-4 py-3 bg-[#0A2E76]/[0.06]"
-                      data-testid={`mobile-detail-block-${bi}`}
-                    >
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76] text-left">
-                        {block.name}
-                      </span>
-                      {openBlocks.has(bi) ? (
-                        <Minus className="w-4 h-4 text-[#0A2E76] flex-shrink-0 ml-2" />
-                      ) : (
-                        <Plus className="w-4 h-4 text-[#0A2E76] flex-shrink-0 ml-2" />
-                      )}
-                    </button>
+            <div className="border-t-2 border-[#E2E5EA]" />
 
-                    <AnimatePresence>
-                      {openBlocks.has(bi) && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="grid grid-cols-3 border-b border-[#E2E5EA] bg-[#0A2E76]">
-                            {planNames.map((name) => (
-                              <div key={name} className="py-2 text-center">
-                                <span className="text-[11px] font-bold text-white">{name}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {block.subcategories.map((sub, si) => (
-                            <div key={si}>
-                              <div className="px-4 py-2 bg-[#F8F9FB]">
-                                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0A2E76]/60">
-                                  {sub.name}
-                                </span>
-                              </div>
-                              {sub.courses.map((course, ci) => (
-                                <div key={ci} className={`border-b border-[#F4F5F7] ${ci % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}>
-                                  <div className="px-4 py-2">
-                                    <span className="text-xs text-[hsl(215,15%,30%)]">{course.name}</span>
-                                  </div>
-                                  <div className="grid grid-cols-3 pb-2.5">
-                                    {course.plans.map((val, vi) => (
-                                      <div key={vi} className="flex justify-center">
-                                        <DetailedPlanIcon value={val} />
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+            {detailedResources.map((group, gi) => (
+              <div key={gi}>
+                <div className="grid grid-cols-[1fr_120px_120px_120px] bg-[#0A2E76]/[0.08]">
+                  <div className="px-5 py-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                      {group.category}
+                    </span>
+                  </div>
+                  <div /><div /><div />
+                </div>
+                {group.rows.map((row, ri) => (
+                  <div
+                    key={ri}
+                    className={`grid grid-cols-[1fr_120px_120px_120px] border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
+                  >
+                    <div className="px-5 py-3">
+                      <span className="text-sm text-[hsl(215,15%,30%)]">{row.name}</span>
+                    </div>
+                    {row.plans.map((val, vi) => (
+                      <div key={vi} className="px-3 py-3 flex items-center justify-center">
+                        <DetailedPlanIcon value={val} />
+                      </div>
+                    ))}
                   </div>
                 ))}
+              </div>
+            ))}
+          </div>
 
-                {detailedResources.map((group, gi) => (
-                  <div key={gi} className="bg-white rounded-xl border border-[#E2E5EA] shadow-sm overflow-hidden">
-                    <div className="px-4 py-3 bg-[#0A2E76]/[0.06]">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
-                        {group.category}
+          <div className="md:hidden bg-white rounded-2xl border border-[#E2E5EA] shadow-sm overflow-hidden">
+            <div className="sticky top-[88px] z-30 grid grid-cols-[1fr_1fr_1fr] border-b border-[#E2E5EA] bg-[#0A2E76]">
+              {planNames.map((name) => (
+                <div key={name} className="py-3 text-center">
+                  <span className="text-[11px] font-bold text-white">{name}</span>
+                </div>
+              ))}
+            </div>
+
+            {detailedCourses.map((block, bi) => (
+              <div key={bi}>
+                <div className="px-4 py-3 bg-[#0A2E76]/[0.06]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                    {block.name}
+                  </span>
+                </div>
+
+                {block.subcategories.map((sub, si) => (
+                  <div key={si}>
+                    <div className="px-4 py-2 bg-[#F8F9FB]">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0A2E76]/60">
+                        {sub.name}
                       </span>
                     </div>
-                    <div className="grid grid-cols-3 border-b border-[#E2E5EA] bg-[#0A2E76]">
-                      {planNames.map((name) => (
-                        <div key={name} className="py-2 text-center">
-                          <span className="text-[11px] font-bold text-white">{name}</span>
-                        </div>
-                      ))}
-                    </div>
-                    {group.rows.map((row, ri) => (
-                      <div key={ri} className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}>
+                    {sub.courses.map((course, ci) => (
+                      <div key={ci} className={`border-b border-[#F4F5F7] ${ci % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}>
                         <div className="px-4 py-2">
-                          <span className="text-xs text-[hsl(215,15%,30%)]">{row.name}</span>
+                          <span className="text-xs text-[hsl(215,15%,30%)]">{course.name}</span>
                         </div>
                         <div className="grid grid-cols-3 pb-2.5">
-                          {row.plans.map((val, vi) => (
+                          {course.plans.map((val, vi) => (
                             <div key={vi} className="flex justify-center">
                               <DetailedPlanIcon value={val} />
                             </div>
@@ -985,10 +883,35 @@ function DetailedBreakdown() {
                   </div>
                 ))}
               </div>
+            ))}
 
-            </motion.div>
-          )}
-        </AnimatePresence>
+            <div className="border-t-2 border-[#E2E5EA]" />
+
+            {detailedResources.map((group, gi) => (
+              <div key={gi}>
+                <div className="px-4 py-3 bg-[#0A2E76]/[0.06]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                    {group.category}
+                  </span>
+                </div>
+                {group.rows.map((row, ri) => (
+                  <div key={ri} className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}>
+                    <div className="px-4 py-2">
+                      <span className="text-xs text-[hsl(215,15%,30%)]">{row.name}</span>
+                    </div>
+                    <div className="grid grid-cols-3 pb-2.5">
+                      {row.plans.map((val, vi) => (
+                        <div key={vi} className="flex justify-center">
+                          <DetailedPlanIcon value={val} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
