@@ -850,7 +850,7 @@ export function HubSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="text-center mb-10">
+          <div className="text-center lg:text-center text-left mb-10">
             <h3 className="text-heading-1 md:text-display-sm font-heading font-bold text-[#0A2E76] mb-3">
               Uma estrutura hierárquica de aprendizado
             </h3>
@@ -1087,11 +1087,11 @@ export function HubSection() {
                             {mobileBlock.subcategories.map((sub, subIdx) => {
                               const isSubOpen = mobileHasMultipleSubs ? openSubcategory === subIdx : true;
                               return (
-                                <div key={sub.name} className="rounded-xl overflow-hidden">
+                                <div key={sub.name} className="rounded-xl border border-[#E2E5EA] bg-white overflow-hidden">
                                   {mobileHasMultipleSubs && (
                                     <button
                                       onClick={() => setOpenSubcategory(isSubOpen ? -1 : subIdx)}
-                                      className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 rounded-lg ${
+                                      className={`w-full flex items-center gap-2 px-4 py-3 transition-colors duration-200 ${
                                         isSubOpen ? "bg-[#0A2E76]" : "bg-white"
                                       }`}
                                       data-testid={`accordion-subcategory-mobile-${mobileBlock.id}-${subIdx}`}
@@ -1101,7 +1101,7 @@ export function HubSection() {
                                       ) : (
                                         <ChevronRight className="w-4 h-4 text-[#0065FF] shrink-0" />
                                       )}
-                                      <h5 className={`text-sm font-heading font-semibold ${isSubOpen ? "text-white" : "text-[#0A2E76]"}`}>
+                                      <h5 className={`text-sm font-heading font-semibold text-left ${isSubOpen ? "text-white" : "text-[#0A2E76]"}`}>
                                         {sub.name}
                                       </h5>
                                       <span className={`text-xs font-semibold ml-auto shrink-0 ${
@@ -1112,12 +1112,12 @@ export function HubSection() {
                                     </button>
                                   )}
                                   {!mobileHasMultipleSubs && (
-                                    <div className="flex items-center gap-2 mb-2">
+                                    <div className="flex items-center gap-2 px-4 py-3">
                                       <ChevronRight className="w-4 h-4 text-[#0065FF]" />
                                       <h5 className="text-sm font-heading font-semibold text-[#0A2E76]">
                                         {sub.name}
                                       </h5>
-                                      <span className="text-xs text-[hsl(215,15%,55%)] bg-white px-2 py-0.5 rounded-full">
+                                      <span className="text-xs text-[hsl(215,15%,55%)] bg-[#F4F5F7] px-2 py-0.5 rounded-full">
                                         {sub.courses.length} {sub.courses.length === 1 ? "curso" : "cursos"}
                                       </span>
                                     </div>
@@ -1131,35 +1131,37 @@ export function HubSection() {
                                         transition={{ duration: 0.25, ease: "easeInOut" }}
                                         className="overflow-hidden"
                                       >
-                                        <div className={`space-y-2 ${mobileHasMultipleSubs ? "pt-3" : ""}`}>
-                                          {sub.courses.map((course, courseIdx) => (
-                                            <button
-                                              key={course.name}
-                                              onClick={() => setSyllabusModal(course)}
-                                              className="w-full text-left bg-white rounded-lg px-4 py-3 flex items-start justify-between gap-3 cursor-pointer group"
-                                              data-testid={`course-item-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
-                                            >
-                                              <div className="flex items-start gap-2.5 min-w-0">
-                                                <div className="w-7 h-7 rounded-md bg-[#F4F5F7] border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
-                                                  <BookOpen className="w-3 h-3 text-[#0065FF]" />
-                                                </div>
-                                                <div className="min-w-0">
-                                                  <p className="text-sm font-semibold text-[#0A2E76] leading-snug">
-                                                    {course.name}
-                                                  </p>
-                                                  <p className="text-xs text-[hsl(215,15%,50%)] mt-1 leading-relaxed line-clamp-2">
-                                                    {course.description}
-                                                  </p>
-                                                </div>
-                                              </div>
-                                              <span
-                                                className="text-xs font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1 bg-[#E8F0FE] px-2.5 py-1 rounded-md"
-                                                data-testid={`button-syllabus-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
+                                        <div className="border-t border-[#E2E5EA]">
+                                          <div className="space-y-0 divide-y divide-[#F0F1F3]">
+                                            {sub.courses.map((course, courseIdx) => (
+                                              <button
+                                                key={course.name}
+                                                onClick={() => setSyllabusModal(course)}
+                                                className="w-full text-left px-4 py-3 flex items-start justify-between gap-3 cursor-pointer group bg-[#FAFBFC]"
+                                                data-testid={`course-item-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
                                               >
-                                                Ementa
-                                              </span>
-                                            </button>
-                                          ))}
+                                                <div className="flex items-start gap-2.5 min-w-0">
+                                                  <div className="w-7 h-7 rounded-md bg-white border border-[#E2E5EA] flex items-center justify-center shrink-0 mt-0.5">
+                                                    <BookOpen className="w-3 h-3 text-[#0065FF]" />
+                                                  </div>
+                                                  <div className="min-w-0">
+                                                    <p className="text-sm font-semibold text-[#0A2E76] leading-snug text-left">
+                                                      {course.name}
+                                                    </p>
+                                                    <p className="text-xs text-[hsl(215,15%,50%)] mt-1 leading-relaxed line-clamp-2 text-left">
+                                                      {course.description}
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                                <span
+                                                  className="text-xs font-semibold text-[#0065FF] whitespace-nowrap shrink-0 mt-1 bg-[#E8F0FE] px-2.5 py-1 rounded-md"
+                                                  data-testid={`button-syllabus-mobile-${mobileBlock.id}-${subIdx}-${courseIdx}`}
+                                                >
+                                                  Ementa
+                                                </span>
+                                              </button>
+                                            ))}
+                                          </div>
                                         </div>
                                       </motion.div>
                                     )}
