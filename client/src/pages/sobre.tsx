@@ -143,7 +143,7 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
       onClick={onClick}
       data-testid={`card-professor-${professor.id}`}
     >
-      <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4">
+      <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 relative">
         <img
           src={professor.photo}
           alt={professor.name}
@@ -153,6 +153,11 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
             ...(professor.photoScale ? { transform: `scale(${professor.photoScale})` } : {}),
           }}
         />
+        <div className="absolute bottom-0 left-0 right-0 sm:hidden">
+          <div className="bg-[#0065FF] text-white text-sm font-semibold text-center py-2.5 rounded-t-xl">
+            Saiba Mais
+          </div>
+        </div>
       </div>
       <h3 className="text-base font-heading font-bold text-[#0A2E76]">{professor.name}</h3>
       <p className="text-sm text-[hsl(215,15%,45%)] mt-0.5">{professor.institution}</p>
