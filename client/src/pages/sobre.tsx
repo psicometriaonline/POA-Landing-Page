@@ -4,7 +4,7 @@ import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import founderPhoto from "@assets/optimized/Bruno_Figueiredo_Damásio_(Grande)_1771213158543.webp";
 import prof1 from "@assets/optimized/Douglas_2_1771009276690.webp";
-import prof2 from "@assets/optimized/Alex_França_1771008596696.webp";
+import prof2 from "@assets/optimized/Alex__1771362609282.webp";
 import prof3 from "@assets/optimized/Érica_Midori_Ikegami_2_1771009641365.webp";
 import prof4 from "@assets/optimized/Vinicius_Coscioni_1771008596701.webp";
 import prof5 from "@assets/optimized/Nelson_Carvas_Junior_1771008596706.webp";
