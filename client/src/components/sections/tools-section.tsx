@@ -25,16 +25,16 @@ const tools = [
     detail: "Responda perguntas sobre seus dados e objetivos de pesquisa, e nossa inteligência artificial recomenda a técnica estatística mais adequada, com justificativa metodológica completa para sua dissertação ou artigo.",
   },
   {
-    icon: BookOpen,
-    title: "Glossário de Termos Psicométricos e Estatísticos",
-    description: "Definições rápidas e objetivas para consultas no momento em que surgem dúvidas conceituais.",
-    detail: "Encontre rapidamente definições precisas de centenas de termos como validade, fidedignidade e análise fatorial. Cada definição foi escrita com linguagem acessível e acompanhada de exemplos práticos de aplicação em pesquisas reais.",
-  },
-  {
     icon: Code,
     title: "Gerador de Sintaxe em R",
     description: "Crie sintaxes em R prontas para rodar, respondendo apenas algumas perguntas.",
     detail: "Responda perguntas simples sobre suas variáveis e delineamento, e receba a sintaxe completa em R pronta para copiar e executar no RStudio, com comentários explicativos linha a linha para que você aprenda enquanto analisa.",
+  },
+  {
+    icon: BookOpen,
+    title: "Glossário de Termos Psicométricos e Estatísticos",
+    description: "Definições rápidas e objetivas para consultas no momento em que surgem dúvidas conceituais.",
+    detail: "Encontre rapidamente definições precisas de centenas de termos como validade, fidedignidade e análise fatorial. Cada definição foi escrita com linguagem acessível e acompanhada de exemplos práticos de aplicação em pesquisas reais.",
   },
   {
     icon: BarChart3,
