@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -167,14 +167,30 @@ function ProfessorCard({ professor, onClick }: { professor: Professor; onClick: 
 }
 
 function ProfessorModal({ professor, onClose }: { professor: Professor; onClose: () => void }) {
+  useEffect(() => {
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden touch-none"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
-      onTouchMove={(e) => e.preventDefault()}
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
       <motion.div
@@ -182,9 +198,8 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3 }}
-        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto overscroll-contain touch-auto"
+        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto overscroll-contain"
         onClick={(e) => e.stopPropagation()}
-        onTouchMove={(e) => e.stopPropagation()}
         data-testid={`modal-professor-${professor.id}`}
       >
         <button
