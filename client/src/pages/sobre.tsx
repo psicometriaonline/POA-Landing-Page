@@ -302,6 +302,20 @@ export default function Sobre() {
                   </Button>
                 </a>
               </div>
+
+              <div className="mt-8">
+                <a
+                  href="https://psicometriaonline.com.br/academy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-sobre-cta-1"
+                >
+                  <Button className="bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2 px-8">
+                    Quero ser aluno(a)
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </div>
             </motion.div>
 
             <motion.div
@@ -362,6 +376,20 @@ export default function Sobre() {
                 onClick={() => setSelectedProfessor(professor)}
               />
             ))}
+          </div>
+
+          <div className="flex justify-center mt-14">
+            <a
+              href="https://psicometriaonline.com.br/academy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-sobre-cta-2"
+            >
+              <Button className="bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2 px-8">
+                Começar agora
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
