@@ -172,8 +172,9 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden touch-none"
       onClick={onClose}
+      onTouchMove={(e) => e.preventDefault()}
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
       <motion.div
@@ -181,16 +182,17 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3 }}
-        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto overscroll-contain touch-auto"
         onClick={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
         data-testid={`modal-professor-${professor.id}`}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm text-[#0A2E76] hover:bg-white transition-colors"
+          className="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#0065FF] text-white shadow-lg hover:bg-[#0050CC] transition-colors"
           data-testid="button-close-professor-modal"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5 stroke-[2.5px]" />
         </button>
 
         <div className="p-6 pb-0 flex justify-center">
