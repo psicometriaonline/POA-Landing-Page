@@ -64,7 +64,7 @@ const testimonials = [
   },
   {
     name: "Dra. Miriam Raquel Strelhow",
-    role: "Professora do Departamento de Psicologia (PUC-SP)",
+    role: "Prof. Departamento de Psicologia (PUC-SP)",
     image: imgMiriam,
     text: "Desde de que entrei na Academy, desenvolvi novos e importantes conhecimentos. Fiz todas as minhas análises do pós-doc e passei a auxiliar com mais convicção os grupos de pesquisa dos quais faço parte na USP. Fiz consultorias de análises para colegas. Melhorei meus conhecimentos em Metodologia de Pesquisa e já ministrei aulas sobre isso desde então. Me sinto segura, pois sei que quando preciso, posso recorrer à Academy.",
   },
