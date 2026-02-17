@@ -9,7 +9,7 @@ export const toolImages: string[] = [
   imgTamanhoAmostral,
   imgTamanhoEfeito,
   imgClassificador,
-  imgGlossario,
   imgGeradorSintaxe,
+  imgGlossario,
   imgBiblioteca,
 ];
