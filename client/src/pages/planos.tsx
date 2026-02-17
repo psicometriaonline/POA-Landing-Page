@@ -231,22 +231,19 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
           </div>
         ))}
 
-        <div className="grid grid-cols-3 gap-2 p-3 border-t-2 border-[#E2E5EA]">
-          {planHeaders.map((plan) => (
-            <a
-              key={plan.id}
-              href="https://psicometriaonline.com.br/academy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid={`mobile-cta-${plan.id}`}
+        <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
+          <a
+            href="https://psicometriaonline.com.br/academy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="mobile-cta-main"
+          >
+            <Button
+              className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8"
             >
-              <Button
-                className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] text-[11px] px-2"
-              >
-                Começar Grátis
-              </Button>
-            </a>
-          ))}
+              Começar Grátis
+            </Button>
+          </a>
         </div>
       </div>
     </div>
