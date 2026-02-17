@@ -22,7 +22,9 @@ export function TrustSection() {
           className="text-[1.375rem] md:text-display-sm font-heading font-bold text-[#0A2E76] text-center"
           data-testid="text-home-trust-title"
         >
-          Pesquisadores das melhores universidades do Brasil e do Mundo confiam na Psicometria Online Academy
+          Pesquisadores das melhores universidades do Brasil e do Mundo confiam na{" "}
+          <br className="hidden md:inline" />
+          Psicometria Online Academy
         </h2>
       </div>
 
