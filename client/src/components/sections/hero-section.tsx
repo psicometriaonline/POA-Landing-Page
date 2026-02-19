@@ -28,8 +28,8 @@ export function HeroSection() {
       style={{ backgroundColor: "#F4F5F7" }}
     >
       <div
-        className="hidden lg:block absolute top-0 bottom-0 right-0 animate-fade-in-right"
-        style={{ left: "45%", animationDelay: "200ms" }}
+        className="hidden lg:block absolute bottom-0 right-0 overflow-hidden rounded-l-[3rem] animate-fade-in-right"
+        style={{ left: "45%", top: "5rem", animationDelay: "200ms" }}
       >
         <img
           src={heroImg}
