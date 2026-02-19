@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/optimized/hero-academy_(2)_1771223484350.webp";
+import heroImg from "@assets/optimized/Subcabeçalho_1771532266933.webp";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -27,6 +27,8 @@ export function HeroSection() {
       className="relative pt-20 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
+      <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%] xl:w-[55%] bg-[#0A2E76]" />
+
       <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-stretch">
         <div className="lg:w-[50%] xl:w-[45%] flex items-center">
           <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-8 md:py-10 pb-8 md:pb-10">
@@ -93,17 +95,14 @@ export function HeroSection() {
           className="hidden lg:block lg:w-[50%] xl:w-[55%] relative min-h-[480px] animate-fade-in-right"
           style={{ animationDelay: "200ms" }}
         >
-          <div className="absolute inset-0 top-[-1rem] rounded-l-[3rem] overflow-hidden shadow-2xl">
-            <img
-              src={heroImg}
-              alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
-              fetchPriority="high"
-              width={800}
-              height={533}
-              className="w-full h-[calc(100%+1rem)] object-cover"
-              style={{ objectPosition: "center top" }}
-            />
-          </div>
+          <img
+            src={heroImg}
+            alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
+            fetchPriority="high"
+            width={4200}
+            height={1800}
+            className="absolute inset-0 w-full h-full object-cover object-left"
+          />
         </div>
       </div>
 
