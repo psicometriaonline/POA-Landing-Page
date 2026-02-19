@@ -29,7 +29,7 @@ export function HeroSection() {
     >
       <div
         className="hidden lg:block absolute bottom-0 right-0 overflow-hidden rounded-l-[3rem] animate-fade-in-right"
-        style={{ left: "48%", top: "5rem", animationDelay: "200ms" }}
+        style={{ left: "51%", top: "5rem", animationDelay: "200ms" }}
       >
         <img
           src={heroImg}
