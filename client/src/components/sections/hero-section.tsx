@@ -27,7 +27,19 @@ export function HeroSection() {
       className="relative pt-20 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%] xl:w-[55%] bg-[#0A2E76]" />
+      <div
+        className="hidden lg:block absolute top-0 bottom-0 right-0 animate-fade-in-right"
+        style={{ left: "45%", animationDelay: "200ms" }}
+      >
+        <img
+          src={heroImg}
+          alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
+          fetchPriority="high"
+          width={4200}
+          height={1800}
+          className="w-full h-full object-cover object-left"
+        />
+      </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-stretch">
         <div className="lg:w-[50%] xl:w-[45%] flex items-center">
@@ -91,19 +103,7 @@ export function HeroSection() {
             </button>
           </div>
         </div>
-        <div
-          className="hidden lg:block lg:w-[50%] xl:w-[55%] relative min-h-[480px] animate-fade-in-right"
-          style={{ animationDelay: "200ms" }}
-        >
-          <img
-            src={heroImg}
-            alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
-            fetchPriority="high"
-            width={4200}
-            height={1800}
-            className="absolute inset-0 w-full h-full object-cover object-left"
-          />
-        </div>
+        <div className="hidden lg:block lg:w-[50%] xl:w-[55%] relative min-h-[480px]" />
       </div>
 
       {isVideoOpen && (
