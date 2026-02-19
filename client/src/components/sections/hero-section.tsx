@@ -27,9 +27,9 @@ export function HeroSection() {
       className="relative pt-20 md:pt-20 overflow-hidden"
       style={{ backgroundColor: "#F4F5F7" }}
     >
-      <div className="relative z-10 flex flex-col lg:flex-row items-stretch">
-        <div className="flex-1 flex items-center">
-          <div className="w-full max-w-[700px] ml-auto px-6 md:px-10 lg:pl-[max(2rem,calc((100vw-1200px)/2))] lg:pr-12 py-8 md:py-10 pb-8 md:pb-10">
+      <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-stretch">
+        <div className="lg:w-[50%] xl:w-[45%] flex items-center">
+          <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-8 md:py-10 pb-8 md:pb-10">
             <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
                 <span className="relative flex h-3 w-3">
@@ -90,7 +90,7 @@ export function HeroSection() {
           </div>
         </div>
         <div
-          className="hidden lg:block flex-1 relative min-h-[480px] ml-32 animate-fade-in-right"
+          className="hidden lg:block lg:w-[50%] xl:w-[55%] relative min-h-[480px] animate-fade-in-right"
           style={{ animationDelay: "200ms" }}
         >
           <div className="absolute inset-0 top-[-1rem] rounded-l-[3rem] overflow-hidden shadow-2xl">
@@ -101,7 +101,7 @@ export function HeroSection() {
               width={800}
               height={533}
               className="w-full h-[calc(100%+1rem)] object-cover"
-              style={{ objectPosition: "left top" }}
+              style={{ objectPosition: "center top" }}
             />
           </div>
         </div>
