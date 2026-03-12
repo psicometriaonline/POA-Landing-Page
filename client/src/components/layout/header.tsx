@@ -105,12 +105,18 @@ export function Header() {
                 Entrar
               </span>
             </Link>
-            <Button
-              data-testid="button-signup"
-              className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
+            <a
+              href="https://membros.psicometriaonline.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Cadastre-se Gratuitamente
-            </Button>
+              <Button
+                data-testid="button-signup"
+                className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
+              >
+                Cadastre-se Gratuitamente
+              </Button>
+            </a>
           </div>
 
           <button
@@ -166,12 +172,18 @@ export function Header() {
                 Entrar
               </span>
             </Link>
-            <Button
-              className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
-              data-testid="button-mobile-signup"
+            <a
+              href="https://membros.psicometriaonline.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Cadastre-se Gratuitamente
-            </Button>
+              <Button
+                className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
+                data-testid="button-mobile-signup"
+              >
+                Cadastre-se Gratuitamente
+              </Button>
+            </a>
           </div>
         </div>
       </div>

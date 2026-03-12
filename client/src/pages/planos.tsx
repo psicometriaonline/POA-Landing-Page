@@ -233,7 +233,7 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 
         <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
           <a
-            href="https://psicometriaonline.com.br/academy/"
+            href="https://membros.psicometriaonline.com.br"
             target="_blank"
             rel="noopener noreferrer"
             data-testid="mobile-cta-main"
@@ -343,7 +343,7 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
                 <a
-                  href="https://psicometriaonline.com.br/academy/"
+                  href="https://membros.psicometriaonline.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`button-plan-cta-${plan.id}`}
@@ -412,7 +412,7 @@ export default function Planos() {
               </p>
 
               <a
-                href="https://psicometriaonline.com.br/academy/"
+                href="https://membros.psicometriaonline.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="button-hero-signup"
@@ -532,7 +532,7 @@ export default function Planos() {
               Experimente agora gratuitamente / Não é necessário cartão de crédito
             </p>
             <a
-              href="https://psicometriaonline.com.br/academy/"
+              href="https://membros.psicometriaonline.com.br"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-planos-final-cta"
@@ -958,7 +958,7 @@ function DetailedBreakdown() {
 
               <div className="flex justify-center mt-10">
                 <a
-                  href="https://psicometriaonline.com.br/academy/"
+                  href="https://membros.psicometriaonline.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-detailed-cta"

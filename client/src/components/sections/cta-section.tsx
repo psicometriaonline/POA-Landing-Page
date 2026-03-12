@@ -343,7 +343,7 @@ export function CtaSection() {
                 className="mt-10"
               >
                 <a
-                  href="https://psicometriaonline.com.br/academy/"
+                  href="https://membros.psicometriaonline.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-cta-start"

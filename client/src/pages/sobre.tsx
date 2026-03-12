@@ -241,7 +241,7 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
             );
           })()}
           <a
-            href="https://psicometriaonline.com.br/academy/"
+            href="https://membros.psicometriaonline.com.br"
             target="_blank"
             rel="noopener noreferrer"
             data-testid="button-professor-signup"
@@ -327,7 +327,7 @@ export default function Sobre() {
 
               <div className="mt-8">
                 <a
-                  href="https://psicometriaonline.com.br/academy/"
+                  href="https://membros.psicometriaonline.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="link-sobre-cta-1"
@@ -402,7 +402,7 @@ export default function Sobre() {
 
           <div className="flex justify-center mt-14">
             <a
-              href="https://psicometriaonline.com.br/academy/"
+              href="https://membros.psicometriaonline.com.br"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="link-sobre-cta-2"

@@ -79,13 +79,19 @@ export function HeroSection() {
                   placeholder="Seu melhor e-mail"
                   className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
                 />
-                <Button
-                  size="lg"
-                  data-testid="button-hero-cta"
-                  className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
+                <a
+                  href="https://membros.psicometriaonline.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Cadastre-se. É grátis!
-                </Button>
+                  <Button
+                    size="lg"
+                    data-testid="button-hero-cta"
+                    className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
+                  >
+                    Cadastre-se. É grátis!
+                  </Button>
+                </a>
               </div>
               <p className="text-body-sm text-[hsl(215,15%,55%)]">
                 Ao se cadastrar, você concorda com nossos{" "}

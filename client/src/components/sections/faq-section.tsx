@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
-const ACADEMY_URL = "https://psicometriaonline.com.br/academy/";
-const PLANS_URL = "https://psicometriaonline.com.br/academy/#planos";
+const ACADEMY_URL = "https://membros.psicometriaonline.com.br";
+const PLANS_URL = "https://membros.psicometriaonline.com.br";
 
 const faqs: { question: string; answer: ReactNode }[] = [
   {
