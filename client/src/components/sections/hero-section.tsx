@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/optimized/Subcabeçalho_1771532266933.webp";
+import heroImg from "@assets/Banner-pic_1773321920920.jpg";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -33,7 +33,7 @@ export function HeroSection() {
       >
         <img
           src={heroImg}
-          alt="Pesquisadores da Psicometria Online Academy - In Science We Trust"
+          alt="Pesquisadores da Psicometria Online Academy - Pesquisa, Publicação e Currículo forte"
           fetchPriority="high"
           width={4200}
           height={1800}
