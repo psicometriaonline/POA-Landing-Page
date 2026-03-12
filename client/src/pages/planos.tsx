@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
+import { RegistrationLink } from "@/components/ui/registration-link";
 
 type BillingPeriod = "mensal" | "anual";
 
@@ -232,18 +233,13 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
         ))}
 
         <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
-          <a
-            href="https://membros.psicometriaonline.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="mobile-cta-main"
-          >
+          <RegistrationLink data-testid="mobile-cta-main">
             <Button
               className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8"
             >
               Começar Grátis
             </Button>
-          </a>
+          </RegistrationLink>
         </div>
       </div>
     </div>
@@ -342,19 +338,14 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             <td className="p-5" />
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
-                <a
-                  href="https://membros.psicometriaonline.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid={`button-plan-cta-${plan.id}`}
-                >
+                <RegistrationLink data-testid={`button-plan-cta-${plan.id}`}>
                   <Button
                     className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
                   >
                     {plan.cta}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </a>
+                </RegistrationLink>
               </td>
             ))}
           </tr>
@@ -411,19 +402,14 @@ export default function Planos() {
                 Ferramentas Estatísticas &bull; Cursos de Análise de Dados &bull; Suporte
               </p>
 
-              <a
-                href="https://membros.psicometriaonline.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="button-hero-signup"
-              >
+              <RegistrationLink data-testid="button-hero-signup">
                 <Button
                   className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
                 >
                   Cadastre-se Gratuitamente
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-              </a>
+              </RegistrationLink>
 
               <div className="mt-5">
                 <p
@@ -531,19 +517,14 @@ export default function Planos() {
             <p className="text-sm md:text-base text-[hsl(215,15%,45%)] mb-8">
               Experimente agora gratuitamente / Não é necessário cartão de crédito
             </p>
-            <a
-              href="https://membros.psicometriaonline.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="button-planos-final-cta"
-            >
+            <RegistrationLink data-testid="button-planos-final-cta">
               <Button
                 className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
               >
                 Começar
                 <ArrowRight className="w-4 h-4" />
               </Button>
-            </a>
+            </RegistrationLink>
           </motion.div>
         </div>
       </section>
@@ -957,19 +938,14 @@ function DetailedBreakdown() {
           </div>
 
               <div className="flex justify-center mt-10">
-                <a
-                  href="https://membros.psicometriaonline.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="button-detailed-cta"
-                >
+                <RegistrationLink data-testid="button-detailed-cta">
                   <Button
                     className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
                   >
                     Começar Já
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </a>
+                </RegistrationLink>
               </div>
               </>
             </motion.div>

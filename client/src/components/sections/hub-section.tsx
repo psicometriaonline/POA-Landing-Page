@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { RegistrationLink } from "@/components/ui/registration-link";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   ArrowRight,
@@ -1263,20 +1264,15 @@ export function HubSection() {
                 </ul>
               </div>
               <div className="p-6 pt-4 shrink-0 border-t border-[#E2E5EA] bg-[#F9FAFB]">
-                <a
-                  href="https://membros.psicometriaonline.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <RegistrationLink data-testid="button-syllabus-cta">
                   <Button
                     size="lg"
-                    data-testid="button-syllabus-cta"
                     className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
                   >
                     Cadastrar gratuitamente
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                </a>
+                </RegistrationLink>
               </div>
             </>
           )}

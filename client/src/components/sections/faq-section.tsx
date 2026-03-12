@@ -2,9 +2,8 @@ import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { RegistrationLink, buildRegistrationUrl } from "@/components/ui/registration-link";
 
-const ACADEMY_URL = "https://membros.psicometriaonline.com.br";
-const PLANS_URL = "https://membros.psicometriaonline.com.br";
 
 const faqs: { question: string; answer: ReactNode }[] = [
   {
@@ -42,7 +41,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
     answer: (
       <>
         Oferecemos diferentes planos para se adequar à sua necessidade. Cada plano dá acesso à nossa plataforma de cursos, ferramentas de análise e diferentes estruturas de suporte.{" "}
-        <a href={PLANS_URL} target="_blank" rel="noopener noreferrer" className="text-[#0065FF] font-semibold underline underline-offset-2">
+        <a href="#" onClick={(e) => { e.preventDefault(); window.open(buildRegistrationUrl(), "_blank", "noopener,noreferrer"); }} className="text-[#0065FF] font-semibold underline underline-offset-2">
           Acesse nossa página de planos
         </a>{" "}
         para conferir os detalhes e valores atualizados.
@@ -158,19 +157,14 @@ export function FaqSection() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="flex justify-center mt-10"
         >
-          <a
-            href={ACADEMY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="button-faq-cta"
-          >
+          <RegistrationLink data-testid="button-faq-cta">
             <Button
               className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
             >
               Começar grátis
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </a>
+          </RegistrationLink>
         </motion.div>
       </div>
     </section>

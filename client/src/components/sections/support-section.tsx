@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Users, Video, ArrowRight } from "lucide-react";
+import { RegistrationLink } from "@/components/ui/registration-link";
 
 const channels = [
   {
@@ -98,19 +99,14 @@ export function SupportSection() {
           transition={{ duration: 0.4, delay: 0.4 }}
           className="flex justify-center mt-8 md:mt-10"
         >
-          <a
-            href="https://membros.psicometriaonline.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="button-support-cta"
-          >
+          <RegistrationLink data-testid="button-support-cta">
             <Button
               className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
             >
               Comece agora
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </a>
+          </RegistrationLink>
         </motion.div>
       </div>
     </section>

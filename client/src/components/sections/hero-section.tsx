@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
 import heroImg from "@assets/Banner-pic_1773321920920.jpg";
+import { RegistrationLink } from "@/components/ui/registration-link";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -79,19 +80,14 @@ export function HeroSection() {
                   placeholder="Seu melhor e-mail"
                   className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
                 />
-                <a
-                  href="https://membros.psicometriaonline.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <RegistrationLink data-testid="button-hero-cta">
                   <Button
                     size="lg"
-                    data-testid="button-hero-cta"
                     className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
                   >
                     Cadastre-se. É grátis!
                   </Button>
-                </a>
+                </RegistrationLink>
               </div>
               <p className="text-body-sm text-[hsl(215,15%,55%)]">
                 Ao se cadastrar, você concorda com nossos{" "}

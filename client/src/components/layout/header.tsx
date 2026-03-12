@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { RegistrationLink } from "@/components/ui/registration-link";
 import logoPath from "@assets/optimized/image_1770909567089.webp";
 
 const navItems = [
@@ -105,18 +106,13 @@ export function Header() {
                 Entrar
               </span>
             </Link>
-            <a
-              href="https://membros.psicometriaonline.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <RegistrationLink data-testid="button-signup">
               <Button
-                data-testid="button-signup"
                 className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
               >
                 Cadastre-se Gratuitamente
               </Button>
-            </a>
+            </RegistrationLink>
           </div>
 
           <button
@@ -172,18 +168,13 @@ export function Header() {
                 Entrar
               </span>
             </Link>
-            <a
-              href="https://membros.psicometriaonline.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <RegistrationLink data-testid="button-mobile-signup">
               <Button
                 className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
-                data-testid="button-mobile-signup"
               >
                 Cadastre-se Gratuitamente
               </Button>
-            </a>
+            </RegistrationLink>
           </div>
         </div>
       </div>

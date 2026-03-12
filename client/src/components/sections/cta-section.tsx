@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RegistrationLink } from "@/components/ui/registration-link";
 import { useEffect, useRef, useState, useCallback } from "react";
 import avatar1 from "@assets/optimized/19_1771128693704.webp";
 import avatar2 from "@assets/optimized/36_1771128693705.webp";
@@ -342,19 +343,14 @@ export function CtaSection() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-10"
               >
-                <a
-                  href="https://membros.psicometriaonline.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="button-cta-start"
-                >
+                <RegistrationLink data-testid="button-cta-start">
                   <Button
                     className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
                   >
                     Começar
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </a>
+                </RegistrationLink>
               </motion.div>
             </motion.div>
           </div>
