@@ -25,11 +25,11 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative pt-20 md:pt-20 flex flex-col lg:flex-row min-h-[520px]"
+      className="relative flex flex-col lg:flex-row min-h-[520px]"
     >
       {/* Left panel */}
       <div
-        className="flex-1 flex items-center"
+        className="flex-1 flex items-center pt-20"
         style={{ backgroundColor: "#F4F5F7" }}
       >
         <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
@@ -96,14 +96,14 @@ export function HeroSection() {
 
       {/* Right panel — independent section with solid background */}
       <div
-        className="hidden lg:flex flex-1 items-end justify-center overflow-hidden animate-fade-in-right"
+        className="hidden lg:flex flex-1 overflow-hidden animate-fade-in-right pt-20"
         style={{ backgroundColor: "#05248F", animationDelay: "200ms" }}
       >
         <img
           src={heroImg}
           alt="Pesquisadores da Psicometria Online Academy - Pesquisa, Publicação e Currículo forte"
           fetchPriority="high"
-          className="w-full max-w-lg xl:max-w-xl object-contain object-bottom"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 
