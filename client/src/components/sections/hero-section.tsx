@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/Banner-pic_1773321920920.jpg";
+import heroImg from "@assets/Hero_-_Landing_Page_(Academy_2.0)_1773519006511.png";
 import { RegistrationLink } from "@/components/ui/registration-link";
 
 export function HeroSection() {
@@ -25,91 +25,86 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative pt-20 md:pt-20 overflow-hidden"
-      style={{ backgroundColor: "#F4F5F7" }}
+      className="relative pt-20 md:pt-20 flex flex-col lg:flex-row min-h-[520px]"
     >
+      {/* Left panel */}
       <div
-        className="hidden lg:block absolute bottom-0 right-0 overflow-hidden rounded-l-[3rem] animate-fade-in-right"
-        style={{ left: "51%", top: "5rem", animationDelay: "200ms" }}
+        className="flex-1 flex items-center"
+        style={{ backgroundColor: "#F4F5F7" }}
       >
-        <div
-          className="absolute inset-y-0 left-0 w-32 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #F4F5F7 0%, transparent 100%)" }}
-        />
+        <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
+          <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              <span className="font-medium">{onlineUsers} pesquisadores online agora</span>
+            </div>
+          </div>
+
+          <h1
+            className="animate-fade-up text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-4 leading-[1.1]"
+            style={{ animationDelay: "100ms" }}
+          >
+            A maior plataforma de pesquisa quantitativa da{" "}
+            <span className="text-[#0065FF]">América Latina.</span>
+          </h1>
+
+          <p
+            className="animate-fade-up text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-6 leading-relaxed"
+            style={{ animationDelay: "200ms" }}
+          >
+            Cadastre-se gratuitamente e tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
+          </p>
+
+          <div
+            className="animate-fade-up flex flex-col gap-2 mb-4"
+            style={{ animationDelay: "300ms" }}
+          >
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
+              <Input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
+              />
+              <RegistrationLink data-testid="button-hero-cta">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
+                >
+                  Cadastre-se. É grátis!
+                </Button>
+              </RegistrationLink>
+            </div>
+            <p className="text-body-sm text-[hsl(215,15%,55%)]">
+              Ao se cadastrar, você concorda com nossos{" "}
+              <a href="#" className="underline hover:text-[#0065FF] transition-colors">Termos de Privacidade</a>.
+            </p>
+          </div>
+
+          <button
+            onClick={() => setIsVideoOpen(true)}
+            className="animate-fade-up flex items-center gap-2 text-[#0A2E76] font-medium hover:text-[#0065FF] transition-colors w-fit"
+            style={{ animationDelay: "400ms" }}
+          >
+            <PlayCircle className="w-5 h-5" />
+            <span>Assistir vídeo</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Right panel — independent section with solid background */}
+      <div
+        className="hidden lg:flex flex-1 items-end justify-center overflow-hidden animate-fade-in-right"
+        style={{ backgroundColor: "#05248F", animationDelay: "200ms" }}
+      >
         <img
           src={heroImg}
           alt="Pesquisadores da Psicometria Online Academy - Pesquisa, Publicação e Currículo forte"
           fetchPriority="high"
-          width={4200}
-          height={1800}
-          className="w-full h-full object-cover object-center lg:object-[55%_center] xl:object-[40%_center] 2xl:object-[25%_center]"
+          className="w-full max-w-lg xl:max-w-xl object-contain object-bottom"
         />
-      </div>
-
-      <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-stretch">
-        <div className="lg:w-[50%] xl:w-[45%] flex items-center">
-          <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-8 md:py-10 pb-8 md:pb-10">
-            <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                </span>
-                <span className="font-medium">{onlineUsers} pesquisadores online agora</span>
-              </div>
-            </div>
-
-            <h1
-              className="animate-fade-up text-display-sm md:text-display text-[#0A2E76] font-heading text-balance mb-4 leading-[1.1]"
-              style={{ animationDelay: "100ms" }}
-            >
-              A maior plataforma de pesquisa quantitativa da{" "}
-              <span className="text-[#0065FF]">América Latina.</span>
-            </h1>
-
-            <p
-              className="animate-fade-up text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-6 leading-relaxed"
-              style={{ animationDelay: "200ms" }}
-            >
-              Cadastre-se gratuitamente e tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
-            </p>
-
-            <div
-              className="animate-fade-up flex flex-col gap-2 mb-4"
-              style={{ animationDelay: "300ms" }}
-            >
-              <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
-                <Input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
-                />
-                <RegistrationLink data-testid="button-hero-cta">
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
-                  >
-                    Cadastre-se. É grátis!
-                  </Button>
-                </RegistrationLink>
-              </div>
-              <p className="text-body-sm text-[hsl(215,15%,55%)]">
-                Ao se cadastrar, você concorda com nossos{" "}
-                <a href="#" className="underline hover:text-[#0065FF] transition-colors">Termos de Privacidade</a>.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setIsVideoOpen(true)}
-              className="animate-fade-up flex items-center gap-2 text-[#0A2E76] font-medium hover:text-[#0065FF] transition-colors w-fit"
-              style={{ animationDelay: "400ms" }}
-            >
-              <PlayCircle className="w-5 h-5" />
-              <span>Assistir vídeo</span>
-            </button>
-          </div>
-        </div>
-        <div className="hidden lg:block lg:w-[50%] xl:w-[55%] relative min-h-[480px]" />
       </div>
 
       {isVideoOpen && (
