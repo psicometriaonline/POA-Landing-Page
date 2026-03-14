@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
-import heroImg from "@assets/Hero_-_Landing_Page_(Academy_2.0)_1773519006511.png";
+import heroImg from "@assets/Hero_Landing_Page_Final.webp";
 import { RegistrationLink } from "@/components/ui/registration-link";
 
 export function HeroSection() {
