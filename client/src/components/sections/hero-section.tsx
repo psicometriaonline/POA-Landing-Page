@@ -32,13 +32,17 @@ export function HeroSection() {
         className="hidden lg:block absolute bottom-0 right-0 overflow-hidden rounded-l-[3rem] animate-fade-in-right"
         style={{ left: "51%", top: "5rem", animationDelay: "200ms" }}
       >
+        <div
+          className="absolute inset-y-0 left-0 w-32 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(to right, #F4F5F7 0%, transparent 100%)" }}
+        />
         <img
           src={heroImg}
           alt="Pesquisadores da Psicometria Online Academy - Pesquisa, Publicação e Currículo forte"
           fetchPriority="high"
           width={4200}
           height={1800}
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-center lg:object-[55%_center] xl:object-[40%_center] 2xl:object-[25%_center]"
         />
       </div>
 

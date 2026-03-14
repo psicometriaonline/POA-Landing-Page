@@ -58,7 +58,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
     answer: (
       <>
         Sim, você tem 14 dias para testar todas as funcionalidades da plataforma. Basta{" "}
-        <a href={ACADEMY_URL} target="_blank" rel="noopener noreferrer" className="text-[#0065FF] font-semibold underline underline-offset-2">
+        <a href="#" onClick={(e) => { e.preventDefault(); window.open(buildRegistrationUrl(), "_blank", "noopener,noreferrer"); }} className="text-[#0065FF] font-semibold underline underline-offset-2">
           clicar aqui
         </a>{" "}
         e começar agora, sem necessidade de inserir seus dados de cartão.
