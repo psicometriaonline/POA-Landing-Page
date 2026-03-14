@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "cKrcj9xfcUmVlAJKD1AvU"
+uri = "file://attached_assets/image_1770910768711.png"
+type = "image"
+title = "Mockup hero antigo (celular)"
