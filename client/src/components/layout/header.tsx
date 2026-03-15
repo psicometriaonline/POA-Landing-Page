@@ -98,14 +98,13 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/entrar">
+            <RegistrationLink data-testid="button-login">
               <span
-                data-testid="button-login"
                 className="px-5 py-2 rounded-full text-body-sm font-medium text-[#0A2E76] bg-white border border-[#0A2E76] transition-all cursor-pointer hover:bg-[#F4F5F7] hover:text-[#0065FF] hover:border-[#0065FF]"
               >
                 Entrar
               </span>
-            </Link>
+            </RegistrationLink>
             <RegistrationLink data-testid="button-signup">
               <Button
                 className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
@@ -160,14 +159,13 @@ export function Header() {
             )
           )}
           <div className="flex flex-col gap-2 pt-3 border-t border-white/10 mt-2">
-            <Link href="/entrar">
+            <RegistrationLink data-testid="button-mobile-login">
               <span
-                data-testid="button-mobile-login"
                 className="block px-4 py-3 rounded-md text-body font-medium text-white/60 cursor-pointer text-center"
               >
                 Entrar
               </span>
-            </Link>
+            </RegistrationLink>
             <RegistrationLink data-testid="button-mobile-signup">
               <Button
                 className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
