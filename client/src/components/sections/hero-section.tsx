@@ -29,7 +29,7 @@ export function HeroSection() {
     >
       {/* Left panel */}
       <div
-        className="flex-1 lg:flex-[3] flex items-center pt-20"
+        className="flex-1 flex items-center pt-20"
         style={{ backgroundColor: "#f1f1f1" }}
       >
         <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 lg:max-w-[620px] lg:ml-auto">
@@ -96,7 +96,7 @@ export function HeroSection() {
 
       {/* Right panel — phone mockup */}
       <div
-        className="hidden lg:block lg:flex-[2] relative animate-fade-in-right"
+        className="hidden lg:block flex-1 relative animate-fade-in-right"
         style={{ backgroundColor: "#f1f1f1", animationDelay: "200ms" }}
       >
         <img
