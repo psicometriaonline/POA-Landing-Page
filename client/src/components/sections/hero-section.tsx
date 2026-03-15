@@ -32,7 +32,7 @@ export function HeroSection() {
         className="flex-1 lg:flex-[3] flex items-center pt-20"
         style={{ backgroundColor: "#f1f1f1" }}
       >
-        <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 lg:max-w-[620px] lg:ml-auto">
+        <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12">
           <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
               <span className="relative flex h-3 w-3">
