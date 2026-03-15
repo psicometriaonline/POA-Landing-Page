@@ -1,80 +1,97 @@
-# Referência Completa: Seção "Planos e Preços"
+# Pricing Section Reference — Psicometria Online Academy
 
-Este documento contém todo o código-fonte, dados, tipos, dependências e contexto de layout necessários para replicar fielmente a seção de **Planos e Preços** em qualquer aplicação React + Tailwind CSS.
-
----
-
-## Imagem de Referência do Layout
-
-![Planos e Preços - Layout Desktop](attached_assets/image_1772039303341.png)
+Arquivo de referência para replicar a página de Planos e Preços em outra aplicação.
 
 ---
 
-## Visão Geral do Elemento
+## Descrição geral
 
-A seção é composta por:
+A página `/planos` é composta por quatro seções independentes:
 
-1. **Título e subtítulo** centralizados com animação de entrada (fade-in + slide-up)
-2. **Toggle Mensal / Anual** — botão pill que alterna entre os dois períodos de cobrança, com badge "até -27%" no botão anual
-3. **Tabela Desktop** (`hidden` em mobile, `block` em `md:`) — tabela comparativa de 3 planos (Master, Pro, Premium) com cabeçalho sticky, categorias de features agrupadas, ícones de check/x, e CTAs por plano
-4. **Accordion Mobile** (`block` em mobile, `hidden` em `md:`) — versão compacta com cabeçalho sticky dos planos e categorias colapsáveis com animação
+1. **Hero (banner azul escuro)** — título, subtítulo, CTA principal e social proof
+2. **Tabela de planos** (`DesktopTable` + `MobileAccordion`) — toggle mensal/anual, comparativo de recursos
+3. **Detalhamento de cursos** (`DetailedBreakdown`) — accordion expansível com todos os cursos por plano
+4. **Carrossel de universidades** (`TrustCarousel`) — logos em scroll infinito
 
-A seção inteira usa fundo `#F4F5F7` e está contida em um `max-w-5xl` centralizado.
+### Comportamentos interativos
+- **Toggle Mensal/Anual**: alterna os preços exibidos na tabela e no accordion mobile; desconto anual calculado dinamicamente
+- **Tabela desktop**: cabeçalho sticky com `top-[96px]` (altura do header); badge "Mais acessado" no plano Pro
+- **Accordion mobile**: cabeçalho dos planos sticky com `top-[88px]`; cada categoria de recurso abre/fecha individualmente com Framer Motion
+- **DetailedBreakdown**: seção colapsável; expande/recolhe com AnimatePresence
 
 ---
 
-## Dependências Externas
+## Dependências externas
 
 ```json
 {
-  "react": "^18.x",
-  "framer-motion": "^10.x ou ^11.x",
-  "tailwindcss": "^3.x",
-  "lucide-react": "^0.x (qualquer versão recente)",
+  "react": "^18",
+  "framer-motion": "^10",
+  "lucide-react": "latest",
+  "tailwindcss": "^3",
   "@shadcn/ui": "Button component"
 }
 ```
 
 ### Imports necessários
-
 ```tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button"; // shadcn Button
-import { Check, X as XIcon, ArrowRight, Plus, Minus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
+import { RegistrationLink } from "@/components/ui/registration-link";
+```
+
+`RegistrationLink` é um wrapper de `<a>` que lê parâmetros UTM da URL atual e os repassa ao destino (`https://membros.psicometriaonline.com.br`). Substitua por `<a href="https://membros.psicometriaonline.com.br">` em outros projetos.
+
+---
+
+## Paleta de cores e tokens
+
+| Token | Valor | Uso |
+|---|---|---|
+| Azul escuro | `#0A2E76` | Títulos, cabeçalho tabela, badges, categorias |
+| Azul CTA | `#0065FF` | Botões principais, preço anual highlight |
+| Azul hover | `#0050CC` | Hover de botões |
+| Azul claro | `#4D9FFF` | Destaque no título do hero |
+| Vermelho ausente | `#F34266` | Ícone de "não incluído" |
+| Fundo geral | `#F4F5F7` | Background da página e seções |
+| Fundo linhas alt | `#FAFBFC` | Linhas ímpares da tabela |
+| Fundo sub-header | `#F8F9FB` | Linha de subcategoria no breakdown |
+| Borda | `#E2E5EA` | Bordas de tabelas e cards |
+| Texto secundário | `hsl(215, 15%, 45%)` | Parágrafos e labels secundários |
+| Texto muted | `hsl(215, 15%, 55%)` | Labels menores e preço/mês |
+| Texto corpo | `hsl(215, 15%, 30%)` | Linhas de features na tabela |
+
+### Gradiente do hero
+```css
+background: linear-gradient(135deg, #0A2E76 0%, #001A4D 50%, #0A2E76 100%);
+```
+
+### Pattern de pontos do hero
+```css
+background-image:
+  radial-gradient(circle at 20% 50%, #0065FF 1px, transparent 1px),
+  radial-gradient(circle at 80% 20%, #0065FF 1px, transparent 1px),
+  radial-gradient(circle at 50% 80%, #0065FF 1px, transparent 1px);
+background-size: 60px 60px, 80px 80px, 70px 70px;
+opacity: 0.07;
 ```
 
 ---
 
-## Paleta de Cores e Tokens de Design
+## Referência visual
 
-| Token | Valor | Uso |
-|---|---|---|
-| Azul primário | `#0A2E76` | Títulos, headers de tabela, textos de destaque |
-| Azul CTA | `#0065FF` | Botões de ação, links de economia |
-| Azul CTA hover | `#0050CC` | Hover dos botões |
-| Vermelho erro | `#F34266` | Ícone X (feature indisponível) |
-| Azul check | `#0050CC` | Ícone check (feature disponível) |
-| Verde badge | `green-500` (Tailwind) | Badge de desconto no toggle anual |
-| Fundo seção | `#F4F5F7` | Background da seção inteira |
-| Fundo alternado | `#FAFBFC` | Linhas alternadas da tabela |
-| Borda clara | `#E2E5EA` | Bordas da tabela e divisores |
-| Borda sutil | `#F4F5F7` | Bordas entre linhas de feature |
-| Texto secundário | `hsl(215, 15%, 45%)` | Subtítulos, descrições |
-| Texto corpo | `hsl(215, 15%, 30%)` | Labels de features |
-| Texto terciário | `hsl(215, 15%, 55%)` | Sub-labels, sufixos de preço |
-| Fundo categoria | `#0A2E76` com 6% opacidade | Linhas de categoria na tabela |
-| Sombra CTA | `#0065FF/30` | Shadow do botão principal |
-
-### Fonte heading
-A classe `font-heading` é usada nos títulos e preços. Configure no Tailwind como uma font-family customizada (ex: Inter, Poppins, ou a fonte do seu projeto).
+Imagem de layout: `attached_assets/image_1772039303341.png`
 
 ---
 
-## Tipos TypeScript
+## Tipos e dados
 
 ```tsx
 type BillingPeriod = "mensal" | "anual";
+type CellValue = boolean | string;
+type PlanAvailability = [boolean, boolean, boolean];
 
 interface PlanHeader {
   id: string;
@@ -86,8 +103,6 @@ interface PlanHeader {
   cta: string;
 }
 
-type CellValue = boolean | string;
-
 interface FeatureRow {
   label: string;
   sub?: string;
@@ -98,11 +113,34 @@ interface CategoryGroup {
   category: string;
   rows: FeatureRow[];
 }
+
+interface DetailedCourse {
+  name: string;
+  plans: PlanAvailability;
+}
+
+interface DetailedSubcategory {
+  name: string;
+  courses: DetailedCourse[];
+}
+
+interface DetailedBlock {
+  name: string;
+  subcategories: DetailedSubcategory[];
+}
+
+interface DetailedResourceRow {
+  name: string;
+  plans: PlanAvailability | [string, string, string];
+}
+
+interface DetailedResourceGroup {
+  category: string;
+  rows: DetailedResourceRow[];
+}
 ```
 
----
-
-## Dados dos Planos
+### Dados dos planos
 
 ```tsx
 const planHeaders: PlanHeader[] = [
@@ -134,9 +172,7 @@ const planHeaders: PlanHeader[] = [
 ];
 ```
 
----
-
-## Dados da Tabela de Features
+### Tabela de recursos (featureTable)
 
 ```tsx
 const featureTable: CategoryGroup[] = [
@@ -192,9 +228,180 @@ const featureTable: CategoryGroup[] = [
 ];
 ```
 
+### Dados dos cursos detalhados (detailedCourses)
+
+```tsx
+const detailedCourses: DetailedBlock[] = [
+  {
+    name: "Formação Básica em Pesquisa Científica",
+    subcategories: [
+      {
+        name: "Competências Essenciais",
+        courses: [
+          { name: "Introdução à Metodologia Científica", plans: [true, true, true] },
+          { name: "Análise Bi e Multivariadas (SPSS e JASP)", plans: [true, true, true] },
+          { name: "Escrita Científica de Alto Impacto", plans: [true, true, true] },
+          { name: "Cálculo de Tamanho Amostral", plans: [true, true, true] },
+        ],
+      },
+      {
+        name: "Gerenciadores de Referências",
+        courses: [
+          { name: "Zotero", plans: [true, true, true] },
+          { name: "Mendeley", plans: [true, true, true] },
+          { name: "EndNote", plans: [true, true, true] },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Formação Avançada em Psicometria e Análise de Dados",
+    subcategories: [
+      {
+        name: "Modelos Mistos e Hierárquicos",
+        courses: [
+          { name: "Modelos Lineares Generalizados (GLM)", plans: [false, true, true] },
+          { name: "Equações de Estimativas Generalizadas (GEE)", plans: [false, true, true] },
+          { name: "Modelos Multinível", plans: [false, true, true] },
+          { name: "Análise de Mediação e Moderação", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Revisões da Literatura e Metanálise",
+        courses: [
+          { name: "Revisões da Literatura (Narrativa, Escopo e Sistemática)", plans: [false, true, true] },
+          { name: "Metanálise", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Análise de Dados Textuais",
+        courses: [
+          { name: "IRAMUTEQ", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Psicometria Básica e Avançada",
+        courses: [
+          { name: "Construção, Adaptação & Validação de Instrumentos", plans: [false, true, true] },
+          { name: "Análise Fatorial Exploratória e Confirmatória", plans: [false, true, true] },
+          { name: "Modelagem por Equações Estruturais", plans: [false, true, true] },
+          { name: "Teoria de Resposta ao Item (TRI)", plans: [false, true, true] },
+          { name: "Análise de Redes: Teoria e Prática", plans: [false, true, true] },
+          { name: "Análise de Classes e Perfis Latentes (LCA/LPA)", plans: [false, true, true] },
+          { name: "Controle de Aquiescência", plans: [false, true, true] },
+          { name: "Controle de Desejabilidade Social", plans: [false, true, true] },
+          { name: "Métodos de Escolha Forçada", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Estudos Epidemiológicos e Populacionais",
+        courses: [
+          { name: "Análise de Dados de Estudos Epidemiológicos", plans: [false, true, true] },
+          { name: "Séries Temporais", plans: [false, true, true] },
+          { name: "Pesquisa com Dados Abertos", plans: [false, true, true] },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Formação Completa em Análise de Dados com R",
+    subcategories: [
+      {
+        name: "Fundamentos do R",
+        courses: [
+          { name: "R: Linguagem, Scripts e Funções", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Análises Estatísticas e Psicométricas",
+        courses: [
+          { name: "R: Análises Bi & Multivariadas", plans: [false, true, true] },
+          { name: "R: Análise Fatorial e MEE", plans: [false, true, true] },
+          { name: "R: Testes Não Paramétricos para Delineamentos Complexos", plans: [false, true, true] },
+          { name: "R: Teoria de Resposta ao Item", plans: [false, true, true] },
+        ],
+      },
+      {
+        name: "Manipulação e Visualização de Dados",
+        courses: [
+          { name: "R: ggplot2", plans: [false, true, true] },
+          { name: "R: Tidyverse", plans: [false, true, true] },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Inteligência Artificial Aplicada a Pesquisas Científicas",
+    subcategories: [
+      {
+        name: "Machine Learning e IA",
+        courses: [
+          { name: "Machine Learning Aplicado à Pesquisa Científica", plans: [false, false, true] },
+          { name: "Processamento de Linguagem Natural", plans: [false, false, true] },
+          { name: "Probabilistic Graph Models", plans: [false, false, true] },
+          { name: "Redes Neurais Artificiais", plans: [false, false, true] },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Desenvolvimento Profissional",
+    subcategories: [
+      {
+        name: "Carreira Acadêmica e Mercado",
+        courses: [
+          { name: "Curso de Preparação para Concursos", plans: [false, false, true] },
+          { name: "Viver de Análise de Dados", plans: [false, false, true] },
+        ],
+      },
+    ],
+  },
+];
+```
+
+### Recursos detalhados (detailedResources)
+
+```tsx
+const detailedResources: DetailedResourceGroup[] = [
+  {
+    category: "Ferramentas Estatísticas",
+    rows: [
+      { name: "Calculadora de Tamanho Amostral", plans: [true, true, true] },
+      { name: "Calculadora de Tamanho de Efeito", plans: [true, true, true] },
+      { name: "Classificador de Análises Estatísticas", plans: [true, true, true] },
+      { name: "Gerador de Sintaxe em R", plans: [true, true, true] },
+    ],
+  },
+  {
+    category: "Recursos Didáticos",
+    rows: [
+      { name: "Biblioteca Eletrônica", plans: [true, true, true] },
+      { name: "Glossário Acadêmico", plans: [true, true, true] },
+      { name: "Livros Metodológicos", plans: [true, true, true] },
+      { name: "Certificados de conclusão", plans: [true, true, true] },
+    ],
+  },
+  {
+    category: "Suporte",
+    rows: [
+      { name: "Chatbot", plans: [true, true, true] },
+      { name: "Comunidade de alunos", plans: [true, true, true] },
+      { name: "Suporte por email", plans: [false, true, true] },
+      { name: "Suporte direto pela plataforma", plans: [false, true, true] },
+    ],
+  },
+  {
+    category: "Inteligência Artificial",
+    rows: [
+      { name: "Tokens incluídos por mês", plans: ["100.000", "300.000", "500.000"] },
+    ],
+  },
+];
+```
+
 ---
 
-## Funções Auxiliares
+## Funções auxiliares
 
 ```tsx
 function formatPrice(price: number) {
@@ -222,127 +429,21 @@ function CellIcon({ value }: { value: CellValue }) {
     </div>
   );
 }
-```
 
----
-
-## Componente: MobileAccordion
-
-Versão mobile da tabela de planos. Visível apenas em telas menores que `md` (< 768px). Usa accordion com animação para expandir/colapsar categorias.
-
-```tsx
-function MobileAccordion({ billing }: { billing: BillingPeriod }) {
-  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
-
-  const toggle = (index: number) => {
-    setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
-
+function DetailedPlanIcon({ value }: { value: boolean | string }) {
+  if (typeof value === "string") {
+    return <span className="font-bold text-[#0A2E76] text-xs">{value}</span>;
+  }
+  if (value) {
+    return (
+      <div className="w-5 h-5 rounded-full bg-[#0050CC]/10 flex items-center justify-center mx-auto">
+        <Check className="w-3 h-3 text-[#0050CC]" />
+      </div>
+    );
+  }
   return (
-    <div className="md:hidden">
-      <div className="sticky top-[88px] z-30" style={{ backgroundColor: "#F4F5F7" }}>
-        <div className="bg-white rounded-t-2xl border border-[#E2E5EA] shadow-sm">
-          <div className="grid grid-cols-3 divide-x divide-[#E2E5EA]">
-            {planHeaders.map((plan) => {
-              const price = billing === "mensal" ? plan.monthlyPrice : plan.yearlyPrice;
-              return (
-                <div key={plan.id} className="p-2 text-center relative" data-testid={`mobile-th-${plan.id}`}>
-                  {plan.badge && (
-                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 inline-block px-3 py-1 rounded-t-lg text-[8px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white whitespace-nowrap">
-                      {plan.badge}
-                    </span>
-                  )}
-                  <div className="font-heading font-bold text-xs text-[#0A2E76]">{plan.name}</div>
-                  {billing === "mensal" ? (
-                    <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
-                      {formatPrice(plan.monthlyPrice)}
-                      <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
-                        {formatPrice(plan.yearlyTotal)}
-                        <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/ano</span>
-                      </div>
-                      <p className="text-[8px] text-[#0065FF] font-semibold mt-0.5 leading-tight">
-                        -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
-                      </p>
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-b-2xl border-x border-b border-[#E2E5EA] shadow-sm">
-        {featureTable.map((group, gi) => (
-          <div key={gi}>
-            <button
-              onClick={() => toggle(gi)}
-              className="w-full flex items-center justify-between px-4 py-3 bg-[#0A2E76]/[0.06]"
-              data-testid={`mobile-toggle-${gi}`}
-            >
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
-                {group.category}
-              </span>
-              {expanded[gi] ? (
-                <Minus className="w-4 h-4 text-[#0A2E76]" />
-              ) : (
-                <Plus className="w-4 h-4 text-[#0A2E76]" />
-              )}
-            </button>
-            <AnimatePresence>
-              {expanded[gi] && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="overflow-hidden"
-                >
-                  {group.rows.map((row, ri) => (
-                    <div
-                      key={ri}
-                      className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
-                    >
-                      <div className="px-4 py-2.5">
-                        <span className="text-xs text-[hsl(215,15%,30%)]">{row.label}</span>
-                        {row.sub && (
-                          <span className="block text-[10px] text-[hsl(215,15%,55%)] mt-0.5">{row.sub}</span>
-                        )}
-                      </div>
-                      <div className="grid grid-cols-3 pb-3">
-                        {row.values.map((val, vi) => (
-                          <div key={vi} className="flex justify-center">
-                            <CellIcon value={val} />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
-
-        <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
-          <a
-            href="https://psicometriaonline.com.br/academy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="mobile-cta-main"
-          >
-            <Button
-              className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8"
-            >
-              Começar Grátis
-            </Button>
-          </a>
-        </div>
-      </div>
+    <div className="w-5 h-5 rounded-full bg-[#F34266]/10 flex items-center justify-center mx-auto">
+      <XIcon className="w-3 h-3 text-[#F34266]" />
     </div>
   );
 }
@@ -350,15 +451,17 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 
 ---
 
-## Componente: DesktopTable
+## Componente DesktopTable
 
-Versão desktop da tabela comparativa. Visível apenas em telas `md:` e maiores (>= 768px). Usa `<table>` HTML com cabeçalho sticky.
+Visível apenas em `md:` e acima. Usa `<table>` com `table-fixed`. Cabeçalho sticky com `top-[96px]`.
+
+Proporções das colunas: 40% label / 20% Master / 20% Pro / 20% Premium.
 
 ```tsx
 function DesktopTable({ billing }: { billing: BillingPeriod }) {
   return (
     <div className="hidden md:block relative bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
-      <table className="w-full border-collapse table-fixed" data-testid="table-plans">
+      <table className="w-full border-collapse table-fixed">
         <colgroup>
           <col className="w-[40%]" />
           <col className="w-[20%]" />
@@ -372,10 +475,7 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
                 {planHeaders.map((plan) => (
                   <div key={plan.id} className="flex-1 flex justify-center">
                     {plan.badge && (
-                      <span
-                        className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white"
-                        data-testid={`badge-plan-${plan.id}`}
-                      >
+                      <span className="inline-block px-5 py-2 rounded-t-lg text-[11px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white">
                         {plan.badge}
                       </span>
                     )}
@@ -391,7 +491,7 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
               </span>
             </th>
             {planHeaders.map((plan) => (
-              <th key={plan.id} className="p-5 text-center align-middle font-normal" data-testid={`th-plan-${plan.id}`}>
+              <th key={plan.id} className="p-5 text-center align-middle font-normal">
                 <div className="font-heading font-bold text-lg text-[#0A2E76]">{plan.name}</div>
                 {billing === "mensal" ? (
                   <div className="text-2xl font-heading font-bold text-[#0A2E76] mt-1">
@@ -447,15 +547,8 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             <td className="p-5" />
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
-                <a
-                  href="https://psicometriaonline.com.br/academy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid={`button-plan-cta-${plan.id}`}
-                >
-                  <Button
-                    className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
-                  >
+                <a href="https://membros.psicometriaonline.com.br">
+                  <Button className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2">
                     {plan.cta}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -472,125 +565,220 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
 
 ---
 
-## Seção Wrapper Completa (componente pai)
+## Componente MobileAccordion
 
-Este é o componente completo que une tudo: título, subtítulo, toggle de billing e as duas variantes (desktop/mobile). Para usar, basta renderizar `<PricingSection />` dentro de qualquer página.
+Visível apenas abaixo de `md:`. Cabeçalho sticky com `top-[88px]`. Cada categoria é um accordion independente.
 
 ```tsx
-function PricingSection() {
-  const [billing, setBilling] = useState<BillingPeriod>("anual");
+function MobileAccordion({ billing }: { billing: BillingPeriod }) {
+  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+  const toggle = (index: number) =>
+    setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
 
   return (
-    <section className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2
-            className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4"
-            data-testid="text-planos-pricing-title"
-          >
-            Planos e Preços
-          </h2>
-          <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-8">
-            Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
-          </p>
-
-          <div className="flex justify-center">
-            <div
-              className="inline-flex items-center p-1 rounded-full bg-[#0A2E76]/5 border border-[#0A2E76]/10"
-              data-testid="toggle-billing"
-            >
-              <button
-                onClick={() => setBilling("mensal")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  billing === "mensal"
-                    ? "bg-[#0A2E76] text-white shadow-md"
-                    : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
-                }`}
-                data-testid="button-billing-mensal"
-              >
-                Mensal
-              </button>
-              <button
-                onClick={() => setBilling("anual")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative ${
-                  billing === "anual"
-                    ? "bg-[#0A2E76] text-white shadow-md"
-                    : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
-                }`}
-                data-testid="button-billing-anual"
-              >
-                Anual
-                <span className="absolute -top-2.5 -right-6 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none whitespace-nowrap">
-                  até -27%
-                </span>
-              </button>
-            </div>
+    <div className="md:hidden">
+      <div className="sticky top-[88px] z-30" style={{ backgroundColor: "#F4F5F7" }}>
+        <div className="bg-white rounded-t-2xl border border-[#E2E5EA] shadow-sm">
+          <div className="grid grid-cols-3 divide-x divide-[#E2E5EA]">
+            {planHeaders.map((plan) => (
+              <div key={plan.id} className="p-2 text-center relative">
+                {plan.badge && (
+                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 inline-block px-3 py-1 rounded-t-lg text-[8px] font-bold uppercase tracking-wider bg-[#0A2E76] text-white whitespace-nowrap">
+                    {plan.badge}
+                  </span>
+                )}
+                <div className="font-heading font-bold text-xs text-[#0A2E76]">{plan.name}</div>
+                {billing === "mensal" ? (
+                  <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
+                    {formatPrice(plan.monthlyPrice)}
+                    <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/mês</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-sm font-heading font-bold text-[#0A2E76] mt-0.5">
+                      {formatPrice(plan.yearlyTotal)}
+                      <span className="text-[9px] font-normal text-[hsl(215,15%,55%)]">/ano</span>
+                    </div>
+                    <p className="text-[8px] text-[#0065FF] font-semibold mt-0.5 leading-tight">
+                      -{Math.round(((plan.monthlyPrice * 12 - plan.yearlyTotal) / (plan.monthlyPrice * 12)) * 100)}%
+                    </p>
+                  </>
+                )}
+              </div>
+            ))}
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
-          <DesktopTable billing={billing} />
-          <MobileAccordion billing={billing} />
-        </motion.div>
-
+        </div>
       </div>
-    </section>
+
+      <div className="bg-white rounded-b-2xl border-x border-b border-[#E2E5EA] shadow-sm">
+        {featureTable.map((group, gi) => (
+          <div key={gi}>
+            <button
+              onClick={() => toggle(gi)}
+              className="w-full flex items-center justify-between px-4 py-3 bg-[#0A2E76]/[0.06]"
+            >
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0A2E76]">
+                {group.category}
+              </span>
+              {expanded[gi] ? (
+                <Minus className="w-4 h-4 text-[#0A2E76]" />
+              ) : (
+                <Plus className="w-4 h-4 text-[#0A2E76]" />
+              )}
+            </button>
+            <AnimatePresence>
+              {expanded[gi] && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden"
+                >
+                  {group.rows.map((row, ri) => (
+                    <div
+                      key={ri}
+                      className={`border-b border-[#F4F5F7] ${ri % 2 === 1 ? "bg-[#FAFBFC]" : ""}`}
+                    >
+                      <div className="px-4 py-2.5">
+                        <span className="text-xs text-[hsl(215,15%,30%)]">{row.label}</span>
+                        {row.sub && (
+                          <span className="block text-[10px] text-[hsl(215,15%,55%)] mt-0.5">{row.sub}</span>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-3 pb-3">
+                        {row.values.map((val, vi) => (
+                          <div key={vi} className="flex justify-center">
+                            <CellIcon value={val} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+        <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
+          <a href="https://membros.psicometriaonline.com.br">
+            <Button className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8">
+              Começar Grátis
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 ```
 
 ---
 
-## Comportamento e Interações
+## Seção wrapper principal (toggle + título + hero)
 
-### Toggle Mensal/Anual
-- Estado padrão: **Anual** selecionado
-- Ao clicar em "Mensal": exibe preço mensal (ex: `R$ 75,90/mês`)
-- Ao clicar em "Anual": exibe preço anual total (ex: `R$ 697,00/ano`) com economia calculada automaticamente
-- A economia é calculada como: `(monthlyPrice * 12 - yearlyTotal)` e o percentual como `((monthlyPrice * 12 - yearlyTotal) / (monthlyPrice * 12)) * 100`
+```tsx
+export default function Planos() {
+  const [billing, setBilling] = useState<BillingPeriod>("anual");
 
-### Tabela Desktop
-- Cabeçalho fica **sticky** no topo (`top-[96px]`, ajustar conforme altura do header da aplicação)
-- Badge "MAIS ACESSADO" aparece acima do plano Pro
-- Linhas alternadas com fundo `#FAFBFC` para melhor legibilidade
-- Categorias com fundo `#0A2E76` a 6% de opacidade
-- CTAs de "Começar Grátis" com seta no rodapé de cada coluna
+  return (
+    <main className="min-h-screen" style={{ backgroundColor: "#F4F5F7" }}>
 
-### Accordion Mobile
-- Cabeçalho dos planos fica **sticky** (`top-[88px]`, ajustar conforme header)
-- Categorias começam colapsadas
-- Clique expande/colapsa com animação suave (framer-motion)
-- Ícones Plus/Minus indicam estado
-- CTA único centralizado no rodapé
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(135deg, #0A2E76 0%, #001A4D 50%, #0A2E76 100%)" }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: "radial-gradient(circle at 20% 50%, #0065FF 1px, transparent 1px), radial-gradient(circle at 80% 20%, #0065FF 1px, transparent 1px), radial-gradient(circle at 50% 80%, #0065FF 1px, transparent 1px)",
+            backgroundSize: "60px 60px, 80px 80px, 70px 70px",
+          }}
+        />
+        <div className="relative pt-32 md:pt-40 pb-16 md:pb-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-5">
+                Impulsione a sua carreira{" "}
+                <span className="text-[#4D9FFF]">acadêmica</span>
+              </h1>
+              <p className="text-lg text-white/75 max-w-2xl mx-auto leading-relaxed mb-3">
+                Acesse gratuitamente por 14 dias a maior plataforma de pesquisa quantitativa da América Latina.
+              </p>
+              <p className="text-sm text-white/50 tracking-wide mb-8">
+                Ferramentas Estatísticas &bull; Cursos de Análise de Dados &bull; Suporte
+              </p>
+              <a href="https://membros.psicometriaonline.com.br">
+                <Button className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30">
+                  Cadastre-se Gratuitamente
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+              <div className="mt-5">
+                <p className="text-[13px] text-white/55">Nenhum cartão de crédito requerido.</p>
+                <p className="text-[13px] text-white/45 mt-0.5">Experimente todos os recursos antes de escolher seu plano.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-### Ícones de Feature
-- `true` → círculo azul claro com check azul
-- `false` → círculo rosa claro com X vermelho
-- `string` → texto bold azul (usado para valores como tokens)
+      {/* ── Planos e Preços ── */}
+      <section className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4">
+              Planos e Preços
+            </h2>
+            <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-8">
+              Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
+            </p>
+
+            {/* Toggle mensal/anual */}
+            <div className="flex justify-center">
+              <div className="inline-flex items-center p-1 rounded-full bg-[#0A2E76]/5 border border-[#0A2E76]/10">
+                <button
+                  onClick={() => setBilling("mensal")}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                    billing === "mensal" ? "bg-[#0A2E76] text-white shadow-md" : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
+                  }`}
+                >
+                  Mensal
+                </button>
+                <button
+                  onClick={() => setBilling("anual")}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative ${
+                    billing === "anual" ? "bg-[#0A2E76] text-white shadow-md" : "text-[#0A2E76]/60 hover:text-[#0A2E76]"
+                  }`}
+                >
+                  Anual
+                  <span className="absolute -top-2.5 -right-6 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500 text-white leading-none whitespace-nowrap">
+                    até -27%
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <DesktopTable billing={billing} />
+          <MobileAccordion billing={billing} />
+        </div>
+      </section>
+
+    </main>
+  );
+}
+```
 
 ---
 
-## Notas para Implementação
+## Notas de implementação
 
-1. **Ajustar `top` do sticky**: Os valores `top-[96px]` (desktop) e `top-[88px]` (mobile) dependem da altura do header/navbar da sua aplicação. Ajuste conforme necessário.
-
-2. **Link do CTA**: Todos os botões apontam para `https://psicometriaonline.com.br/academy/`. Substitua pela URL desejada.
-
-3. **`font-heading`**: Certifique-se de configurar essa classe no seu `tailwind.config.ts` ou substitua por `font-sans` / outra família de fontes.
-
-4. **`data-testid`**: Atributos de teste estão incluídos em todos os elementos interativos e informativos. Mantenha-os para facilitar testes automatizados.
-
-5. **Sem animação (fallback)**: Se não quiser usar `framer-motion`, substitua `motion.div` por `div` e remova as props `initial`, `animate`, `whileInView`, `viewport`, `transition`, `exit`. Para o accordion, use CSS transitions ou renderização condicional simples.
-
-6. **shadcn Button**: Se não estiver usando shadcn, substitua `<Button>` por um `<button>` nativo com as mesmas classes Tailwind.
+- O header da aplicação tem altura `96px` (desktop) e `88px` (mobile) — por isso os `top-[96px]` e `top-[88px]` nos elementos sticky
+- A badge "até -27%" usa `absolute -top-2.5 -right-6` com `position: relative` no botão pai
+- O desconto percentual anual é calculado dinamicamente: `Math.round(((monthlyPrice * 12 - yearlyTotal) / (monthlyPrice * 12)) * 100)`
+- `font-heading` refere-se à fonte DM Sans configurada no `tailwind.config.ts`; substitua por qualquer fonte sans-serif bold
+- Os botões CTA usam `RegistrationLink` no projeto original (encaminha UTMs); substituído por `<a href="...">` neste documento para uso genérico
+- Logos das universidades são servidos de `/logos/*.webp` (arquivos na pasta `public/logos/`)
