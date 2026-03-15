@@ -25,7 +25,7 @@ export function HeroSection() {
   return (
     <section
       data-testid="section-hero"
-      className="relative flex flex-col lg:flex-row min-h-[520px]"
+      className="relative flex flex-col lg:flex-row min-h-[520px] overflow-hidden"
     >
       {/* Left panel */}
       <div
@@ -96,14 +96,14 @@ export function HeroSection() {
 
       {/* Right panel — phone mockup */}
       <div
-        className="hidden lg:flex flex-1 overflow-hidden items-end justify-center animate-fade-in-right"
+        className="hidden lg:block flex-1 relative animate-fade-in-right"
         style={{ backgroundColor: "#f1f1f1", animationDelay: "200ms" }}
       >
         <img
           src={heroImg}
           alt="Plataforma Psicometria Online Academy no celular com cursos de análise de dados"
           fetchPriority="high"
-          className="h-full w-auto object-contain object-bottom"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto object-contain object-bottom"
         />
       </div>
 
