@@ -32,7 +32,7 @@ export function HeroSection() {
         className="flex-1 flex items-center pt-20"
         style={{ backgroundColor: "#f1f1f1" }}
       >
-        <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 lg:max-w-[760px] lg:ml-auto">
+        <div className="w-full px-6 md:px-10 lg:pl-10 xl:pl-16 lg:pr-10 py-10 md:py-12 lg:max-w-[620px] lg:ml-auto">
           <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E5EA] text-[#0A2E76] text-body-sm mb-5 shadow-sm">
               <span className="relative flex h-3 w-3">
@@ -103,7 +103,7 @@ export function HeroSection() {
           src={heroImg}
           alt="Plataforma Psicometria Online Academy no celular com cursos de análise de dados"
           fetchPriority="high"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto object-contain object-bottom"
+          className="absolute bottom-0 left-0 h-full w-auto object-contain object-bottom"
         />
       </div>
 
