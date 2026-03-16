@@ -28,8 +28,8 @@ export function TrustSection() {
         </h2>
       </div>
 
-      <div className="hidden md:flex relative">
-        <div className="flex gap-20 items-center whitespace-nowrap px-6 animate-scroll-marquee">
+      <div className="overflow-hidden">
+        <div className="flex gap-10 md:gap-20 items-center whitespace-nowrap px-6 animate-scroll-marquee">
           {scrollItems.map((uni, idx) => (
             <div
               key={`${uni.name}-${idx}`}
@@ -40,26 +40,7 @@ export function TrustSection() {
                 alt={uni.name}
                 width={56}
                 height={56}
-                className="h-14 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="md:hidden overflow-hidden">
-        <div className="flex gap-10 items-center whitespace-nowrap animate-scroll-marquee-mobile">
-          {scrollItems.map((uni, idx) => (
-            <div
-              key={`mobile-${uni.name}-${idx}`}
-              className="flex-shrink-0 flex items-center justify-center"
-            >
-              <img
-                src={uni.logo}
-                alt={uni.name}
-                width={48}
-                height={48}
-                className="h-10 w-auto object-contain"
+                className="h-10 md:h-14 w-auto object-contain"
                 loading="lazy"
               />
             </div>
