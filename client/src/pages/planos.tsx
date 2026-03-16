@@ -1014,11 +1014,11 @@ function TrustCarousel() {
       </div>
 
       {/* Mobile carousel */}
-      <div className="md:hidden relative overflow-hidden">
+      <div className="md:hidden w-full overflow-hidden">
         <motion.div
-          className="flex gap-8 items-center whitespace-nowrap px-4"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
+          className="flex gap-8 items-center whitespace-nowrap"
+          animate={{ x: ["0px", "-1000px"] }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
         >
           {[...trustUniversities, ...trustUniversities].map((uni, idx) => (
             <div
