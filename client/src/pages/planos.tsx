@@ -988,7 +988,8 @@ function TrustCarousel() {
         </motion.h2>
       </div>
 
-      <div className="relative flex">
+      {/* Desktop carousel */}
+      <div className="hidden md:flex relative overflow-hidden">
         <motion.div
           className="flex gap-12 md:gap-20 items-center whitespace-nowrap px-6"
           animate={{ x: ["0%", "-33.33%"] }}
@@ -1006,6 +1007,31 @@ function TrustCarousel() {
                 height={56}
                 loading="lazy"
                 className="h-12 md:h-14 w-auto object-contain"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Mobile carousel */}
+      <div className="md:hidden relative overflow-hidden">
+        <motion.div
+          className="flex gap-8 items-center whitespace-nowrap px-4"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
+        >
+          {[...trustUniversities, ...trustUniversities].map((uni, idx) => (
+            <div
+              key={`${uni.name}-mobile-${idx}`}
+              className="flex-shrink-0 flex items-center justify-center"
+            >
+              <img
+                src={uni.logo}
+                alt={uni.name}
+                width={40}
+                height={40}
+                loading="lazy"
+                className="h-10 w-auto object-contain"
               />
             </div>
           ))}

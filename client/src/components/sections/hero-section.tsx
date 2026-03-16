@@ -85,7 +85,7 @@ export function HeroSection() {
 
           <button
             onClick={() => setIsVideoOpen(true)}
-            className="animate-fade-up flex items-center gap-2 text-[#0A2E76] font-medium hover:text-[#0065FF] transition-colors w-fit"
+            className="hidden animate-fade-up flex items-center gap-2 text-[#0A2E76] font-medium hover:text-[#0065FF] transition-colors w-fit"
             style={{ animationDelay: "400ms" }}
           >
             <PlayCircle className="w-5 h-5" />
