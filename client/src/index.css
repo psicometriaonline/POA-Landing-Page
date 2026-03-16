@@ -302,3 +302,7 @@
 .animate-scroll-marquee {
   animation: scrollMarquee 30s linear infinite;
 }
+
+.animate-scroll-marquee-mobile {
+  animation: scrollMarquee 20s linear infinite;
+}

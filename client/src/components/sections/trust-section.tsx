@@ -47,19 +47,19 @@ export function TrustSection() {
         </div>
       </div>
 
-      <div className="md:hidden px-6">
-        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6">
-          {universities.map((uni) => (
+      <div className="md:hidden overflow-hidden">
+        <div className="flex gap-10 items-center whitespace-nowrap animate-scroll-marquee-mobile">
+          {scrollItems.map((uni, idx) => (
             <div
-              key={uni.name}
-              className="flex items-center justify-center"
+              key={`mobile-${uni.name}-${idx}`}
+              className="flex-shrink-0 flex items-center justify-center"
             >
               <img
                 src={uni.logo}
                 alt={uni.name}
                 width={48}
                 height={48}
-                className="h-11 w-auto object-contain"
+                className="h-10 w-auto object-contain"
                 loading="lazy"
               />
             </div>
