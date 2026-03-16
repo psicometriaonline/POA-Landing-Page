@@ -303,6 +303,12 @@
   animation: scrollMarquee 30s linear infinite;
 }
 
+@media (max-width: 767px) {
+  .animate-scroll-marquee {
+    animation-duration: 18s;
+  }
+}
+
 .animate-scroll-marquee-mobile {
   animation: scrollMarquee 12s linear infinite;
 }
