@@ -1,4 +1,4 @@
-const BASE_URL = "https://membros.psicometriaonline.com.br";
+const BASE_URL = "https://membros.psicometriaonline.com.br/cadastro";
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
