@@ -97,7 +97,7 @@ const featureTable: CategoryGroup[] = [
     rows: [
       { label: "Chatbot", values: [true, true, true] },
       { label: "Comunidade de alunos", values: [true, true, true] },
-      { label: "Suporte direto pela plataforma", values: [false, true, true] },
+      { label: "Suporte direto pela plataforma", values: [true, true, true] },
       { label: "Suporte por email", values: [false, true, true] },
       { label: "Suporte Ao Vivo (Academeeting)", values: [false, true, true] },
     ],
@@ -711,7 +711,7 @@ const detailedResources: DetailedResourceGroup[] = [
     rows: [
       { name: "Chatbot", plans: [true, true, true] },
       { name: "Comunidade de alunos", plans: [true, true, true] },
-      { name: "Suporte direto pela plataforma", plans: [false, true, true] },
+      { name: "Suporte direto pela plataforma", plans: [true, true, true] },
       { name: "Suporte por email", plans: [false, true, true] },
       { name: "Suporte Ao Vivo (Academeeting)", plans: [false, true, true] },
     ],
