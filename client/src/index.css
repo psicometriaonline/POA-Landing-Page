@@ -312,3 +312,12 @@
 .animate-scroll-marquee-mobile {
   animation: scrollMarquee 12s linear infinite;
 }
+
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+}
+
+.animate-whatsapp-pulse {
+  animation: whatsappPulse 2s ease-in-out infinite;
+}

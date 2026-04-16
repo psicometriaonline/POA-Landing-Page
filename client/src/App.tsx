@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import Home from "@/pages/home";
 
 const Sobre = lazy(() => import("@/pages/sobre"));
@@ -47,6 +48,7 @@ function App() {
         <Header />
         <Router />
         <Footer />
+        <WhatsAppButton />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
