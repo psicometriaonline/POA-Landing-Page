@@ -1,0 +1,131 @@
+# Psicometria Online Academy
+
+## About
+Psicometria Online Academy (POA) é a maior plataforma de formação em pesquisa quantitativa da América Latina. Fundada em 2020 por Bruno Figueiredo Damásio — psicólogo, mestre e doutor em Psicologia (UFRGS, conceito CAPES 7), ex-chefe do Departamento de Psicometria da UFRJ e ex-editor-chefe da Trends in Psychology, revista da Sociedade Brasileira de Psicologia — a Academy oferece cursos, ferramentas estatísticas e suporte dedicado para pesquisadores de todas as áreas. Acesso via assinatura mensal ou anual. Cadastro gratuito com 14 dias de teste, sem necessidade de cartão de crédito.
+
+## Planos e Preços
+
+- **Master** — R$ 75,90/mês | R$ 697,00/ano (R$ 58,08/mês)
+  - Formação Básica em Pesquisa Científica (7 cursos)
+  - 4 ferramentas estatísticas incluídas
+  - Chatbot, comunidade de alunos, suporte direto pela plataforma
+  - 100.000 tokens de IA por mês
+
+- **Pro** — R$ 109,90/mês | R$ 997,00/ano (R$ 83,08/mês) *(Mais acessado)*
+  - Tudo do Master +
+  - Formação Avançada em Psicometria, Revisão da Literatura, Metanálise, ANálise de Dados para Estudos Epidemiológicos, Análise de Dados Textuais (19 cursos)
+  - Formação Completa em Análise de Dados com R
+  - Suporte por e-mail e Suporte Ao Vivo (Academeeting)
+  - 300.000 tokens de IA por mês
+
+- **Premium** — R$ 169,90/mês | R$ 1.497,00/ano (R$ 124,75/mês)
+  - Tudo do Pro +
+  - Formação Especial: Preparação para Concursos
+  - Formação Especial: Viver de Análise de Dados
+  - Inteligência Artificial Aplicada a Pesquisas Científicas
+  - 500.000 tokens de IA por mês
+
+- **Teste gratuito** — 14 dias, sem cartão de crédito, acesso completo à plataforma.
+
+## Cursos e Formações
+
+**Formação Básica em Pesquisa Científica** (disponível em todos os planos):
+- Introdução à Metodologia Científica
+- Análise Bi e Multivariadas (SPSS e JASP)
+- Escrita Científica de Alto Impacto
+- Cálculo de Tamanho Amostral
+- Zotero, Mendeley e EndNote
+
+**Formação Avançada em Psicometria e Análise de Dados** (Pro e Premium):
+- Modelos Lineares Generalizados (GLM) e Equações de Estimativas Generalizadas (GEE)
+- Modelos Multinível, Mediação e Moderação
+- Revisões da Literatura e Metanálise
+- IRAMUTEQ (análise de dados textuais)
+- Construção, Adaptação e Validação de Instrumentos
+- Análise Fatorial Exploratória e Confirmatória
+- Modelagem por Equações Estruturais (MEE)
+- Teoria de Resposta ao Item (TRI)
+- Análise de Redes, Classes e Perfis Latentes (LCA/LPA)
+- Controle de Aquiescência, Desejabilidade Social e Escolha Forçada
+- Estudos Epidemiológicos, Séries Temporais e Pesquisa com Dados Abertos
+
+**Formação Completa em Análise de Dados com R** (Pro e Premium)
+
+**Formações Especiais** (Premium apenas):
+- Preparação para Concursos
+- Viver de Análise de Dados
+- Inteligência Artificial Aplicada a Pesquisas Científicas
+
+## Softwares Utilizados
+SPSS, JASP, FACTOR, Mplus, R (RStudio), IRAMUTEQ, Joinpoint, DATASUS/Tabwin, JAMOVI
+
+## Ferramentas Estatísticas Incluídas
+- Calculadora de Tamanho Amostral
+- Calculadora de Tamanho de Efeito (d de Cohen, eta-quadrado, r de Pearson)
+- Classificador de Análises Estatísticas com IA
+- Gerador de Sintaxe em R
+- Glossário de Termos Psicométricos e Estatísticos
+- Biblioteca Eletrônica com centenas de artigos científicos
+
+## Suporte
+4 canais de suporte disponíveis (varia por plano):
+- Comentários diretos na plataforma de aulas (todos os planos)
+- Comunidade de alunos (todos os planos)
+- Suporte por e-mail — pessoa dedicada exclusiva (Pro e Premium)
+- Suporte Ao Vivo — Academeeting semanal no Zoom (Pro e Premium)
+
+## Certificados
+Certificados emitidos em todos os cursos concluídos. Mais de 300 horas certificadas no total. Válidos como formação complementar em currículos, processos seletivos e pós-graduações. Utilizados por professores de universidades brasileiras e europeias.
+
+## Contato
+- WhatsApp: +55 (83) 99157-5688
+- Site: https://psicometriaonline.com.br
+- Cadastro e assinatura: https://membros.psicometriaonline.com.br/cadastro
+
+## Público-Alvo
+- Estudantes de mestrado e doutorado
+- Pesquisadores e professores universitários
+- Profissionais das áreas de saúde, psicologia, enfermagem, medicina, educação física, odontologia, nutrição, epidemiologia, fonoaudiologia, economia, ciências agrárias
+- Qualquer pessoa que precise conduzir pesquisa quantitativa
+
+## Localização
+Brasil — plataforma 100% online, acessível de qualquer lugar do país e do exterior.
+
+## Fatos e Credenciais
+- Fundada em 2020 por Bruno Figueiredo Damásio (doutor, UFRGS CAPES 7)
+- Mais de 8 mil alunos;
+- 15 professores (mestres e doutores) no corpo docente
+- Alunos de todas as regiões do Brasil e do exterior
+- Professores afiliados a: UFRJ, UFRGS, Utrecht University (Holanda), Universidade de Oslo (Noruega), UNIFESP (Cochrane Brasil), UFC, UNIFOR, entre outras.
+- Certificados aceitos em currículos Lattes e processos seletivos de pós-graduação
+- Acesso pelo celular, tablet ou computador (plataforma responsiva)
+- Cancelamento a qualquer momento, sem burocracia
+
+## O Que Nos Diferencia
+A Academy reúne professores doutores de universidades brasileiras e internacionais em uma única plataforma estruturada e progressiva. O corpo docente inclui pesquisadores afiliados a Utrecht University, UFC, Cochrane Brasil, entre outras. O conteúdo cobre desde o básico absoluto até técnicas avançadas como TRI, MEE, análise de redes e metanálise — tudo com suporte ativo e comunidade viva. Alunos relatam aprovação com elogios em bancas de mestrado e doutorado, publicações em periódicos internacionais e aprovação em concursos para professor universitário.
+
+## Perguntas Frequentes
+
+**Preciso ter conhecimento prévio em estatística?**
+Não. A formação parte do zero e avança progressivamente. Os cursos introdutórios são acessíveis para quem nunca fez uma análise estatística.
+
+**Não sou da Psicologia. Posso me inscrever?**
+Sim. A Academy tem alunos de psicologia, medicina, enfermagem, educação física, odontologia, epidemiologia, nutrição, economia, ciências agrárias e muitas outras áreas.
+
+**Quais softwares são utilizados?**
+SPSS e JASP para análises bi e multivariadas; FACTOR para análise fatorial exploratória; Mplus para modelagem por equações estruturais; R (RStudio) para todas as análises; IRAMUTEQ para análise textual; Joinpoint para séries temporais.
+
+**Existe período de teste gratuito?**
+Sim. 14 dias de acesso completo, sem necessidade de cadastrar cartão de crédito.
+
+**Posso cancelar quando quiser?**
+Sim. Cancelamento direto na plataforma, sem burocracia. O acesso continua até o fim do período já pago.
+
+**Quanto custa?**
+Master: R$ 75,90/mês (ou R$ 697/ano). Pro: R$ 109,90/mês (ou R$ 997/ano). Premium: R$ 169,90/mês (ou R$ 1.497/ano).
+
+**Os certificados têm validade?**
+Sim. São emitidos por curso concluído, somam mais de 300 horas e são utilizados em currículos, processos seletivos e como formação complementar na pós-graduação.
+
+**Posso acessar pelo celular?**
+Sim. A plataforma é responsiva e funciona em celular, tablet e computador.
