@@ -12,3 +12,9 @@ id = "sMUsAR8dndodV1aADKxAR"
 uri = "file://pricing-section-reference.md"
 type = "text"
 title = "Referência: Planos e Preços"
+
+[[outputs]]
+id = "XlDu4vOSNbMrCAwHVM0AJ"
+uri = "file://poa-seo-files.zip"
+type = "unspecified"
+title = "POA — Arquivos SEO/AI (11 arquivos)"
