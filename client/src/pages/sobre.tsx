@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -258,6 +259,13 @@ export default function Sobre() {
 
   return (
     <main data-testid="page-sobre" className="pt-20">
+      <Helmet>
+        <title>Sobre o Fundador — Psicometria Online Academy</title>
+        <meta name="description" content="Conheça Bruno Figueiredo Damásio, doutor em Psicologia pela UFRGS, e os 15 professores doutores por trás da maior plataforma de pesquisa quantitativa da América Latina." />
+        <meta property="og:title" content="Sobre o Fundador — Psicometria Online Academy" />
+        <meta property="og:description" content="Conheça a equipe de 15 professores doutores que formam pesquisadores em toda a América Latina." />
+        <meta property="og:url" content="https://academy-po.psicometriaonline.com.br/sobre" />
+      </Helmet>
       <section
         className="section-padding"
         style={{ backgroundColor: "#FFFFFF" }}

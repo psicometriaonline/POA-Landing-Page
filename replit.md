@@ -40,7 +40,18 @@ Site institucional (landing page) para a plataforma Psicometria Online Academy (
 - Mobile menu usa CSS transitions (não AnimatePresence)
 - Script de conversão WebP: scripts/optimize-images.sh (requer cwebp/libwebp)
 
+## SEO / AI Visibility
+- Domínio: `https://academy-po.psicometriaonline.com.br`
+- `client/public/robots.txt` — libera todos os bots (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot)
+- `client/public/sitemap.xml` — 5 URLs com prioridades e lastmod
+- `client/index.html` — Schema JSON-LD: EducationalOrganization + FAQPage (8 perguntas)
+- `react-helmet-async` — meta title/description por página: home, planos, sobre
+- `vite.config.ts` — `dedupe: ["react", "react-dom"]` para evitar React duplicado
+- `llms.txt` — arquivo de contexto para LLMs na raiz do projeto
+- `pricing-section-reference.md` — referência completa para replicar seção de planos em outro app
+
 ## Recent Changes
+- 2026-05-06: SEO/AI visibility - robots.txt, sitemap.xml, JSON-LD schema, react-helmet-async, pricing-section-reference.md
 - 2026-02-16: Deep mobile perf - Self-hosted fonts (WOFF2), Framer Motion removido do bundle inicial, CSS animations puras para hero/header/trust
 - 2026-02-16: Mobile performance - Non-blocking fonts, lazy sections, conditional preload, explicit dimensions
 - 2026-02-16: Performance - WebP images, lazy loading, font optimization, code splitting, LCP preload

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
@@ -361,6 +362,13 @@ export default function Planos() {
 
   return (
     <main data-testid="page-planos" className="min-h-screen" style={{ backgroundColor: "#F4F5F7" }}>
+      <Helmet>
+        <title>Planos e Preços — Psicometria Online Academy</title>
+        <meta name="description" content="Master (R$ 75,90/mês), Pro (R$ 109,90/mês) ou Premium (R$ 169,90/mês). 14 dias grátis, sem cartão de crédito. Acesse a maior plataforma de pesquisa quantitativa da América Latina." />
+        <meta property="og:title" content="Planos e Preços — Psicometria Online Academy" />
+        <meta property="og:description" content="Escolha o plano ideal para sua carreira acadêmica. 14 dias grátis, sem cartão." />
+        <meta property="og:url" content="https://academy-po.psicometriaonline.com.br/planos" />
+      </Helmet>
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0"

@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Helmet } from "react-helmet-async";
 import { HeroSection } from "@/components/sections/hero-section";
 
 const TrustSection = lazy(() => import("@/components/sections/trust-section").then(m => ({ default: m.TrustSection })));
@@ -12,6 +13,13 @@ const FaqSection = lazy(() => import("@/components/sections/faq-section"));
 export default function Home() {
   return (
     <main data-testid="page-home">
+      <Helmet>
+        <title>Psicometria Online Academy — Plataforma de Pesquisa Quantitativa</title>
+        <meta name="description" content="A maior plataforma de formação em pesquisa quantitativa da América Latina. Cursos, ferramentas estatísticas e suporte para pesquisadores." />
+        <meta property="og:title" content="Psicometria Online Academy — Plataforma de Pesquisa Quantitativa" />
+        <meta property="og:description" content="A maior plataforma de formação em pesquisa quantitativa da América Latina. Cursos, ferramentas estatísticas e suporte para pesquisadores." />
+        <meta property="og:url" content="https://academy-po.psicometriaonline.com.br/" />
+      </Helmet>
       <HeroSection />
       <Suspense fallback={<div className="min-h-[200px]" />}>
         <TrustSection />
