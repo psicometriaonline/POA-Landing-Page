@@ -98,13 +98,15 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <RegistrationLink data-testid="button-login">
-              <span
-                className="px-5 py-2 rounded-full text-body-sm font-medium text-[#0A2E76] bg-white border border-[#0A2E76] transition-all cursor-pointer hover:bg-[#F4F5F7] hover:text-[#0065FF] hover:border-[#0065FF]"
-              >
-                Entrar
-              </span>
-            </RegistrationLink>
+            <a
+              href="https://membros.psicometriaonline.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-login"
+              className="px-5 py-2 rounded-full text-body-sm font-medium text-[#0A2E76] bg-white border border-[#0A2E76] transition-all hover:bg-[#F4F5F7] hover:text-[#0065FF] hover:border-[#0065FF]"
+            >
+              Entrar
+            </a>
             <RegistrationLink data-testid="button-signup">
               <Button
                 className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
@@ -159,13 +161,15 @@ export function Header() {
             )
           )}
           <div className="flex flex-col gap-2 pt-3 border-t border-white/10 mt-2">
-            <RegistrationLink data-testid="button-mobile-login">
-              <span
-                className="block px-4 py-3 rounded-md text-body font-medium text-white/60 cursor-pointer text-center"
-              >
-                Entrar
-              </span>
-            </RegistrationLink>
+            <a
+              href="https://membros.psicometriaonline.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-mobile-login"
+              className="block px-4 py-3 rounded-md text-body font-medium text-white/60 text-center"
+            >
+              Entrar
+            </a>
             <RegistrationLink data-testid="button-mobile-signup">
               <Button
                 className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
