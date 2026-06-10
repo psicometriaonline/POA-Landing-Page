@@ -1,5 +1,5 @@
 export function WhatsAppButton() {
-  const phone = "5583991771120";
+  const phone = "5583991575688";
   const message = encodeURIComponent(
     "Olá, pessoal! Estou no site da Psicometria Online Academy e gostaria de mais informações sobre a formação."
   );
