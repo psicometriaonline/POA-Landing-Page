@@ -42,7 +42,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 75.90,
     yearlyPrice: 58.08,
     yearlyTotal: 697.00,
-    cta: "Quero a minha vaga",
+    cta: "Assinar o Master",
   },
   {
     id: "pro",
@@ -51,7 +51,7 @@ const planHeaders: PlanHeader[] = [
     yearlyPrice: 83.08,
     yearlyTotal: 997.00,
     badge: "Mais acessado",
-    cta: "Quero a minha vaga",
+    cta: "Assinar o Pro",
   },
   {
     id: "premium",
@@ -59,7 +59,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 169.90,
     yearlyPrice: 124.75,
     yearlyTotal: 1497.00,
-    cta: "Quero a minha vaga",
+    cta: "Assinar Premium",
   },
 ];
 
@@ -262,10 +262,9 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
               data-testid={`mobile-plan-cta-${plan.id}`}
             >
               <Button
-                className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+                className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC]"
               >
-                Assinar {plan.name}
-                <ArrowRight className="w-4 h-4" />
+                {plan.cta}
               </Button>
             </a>
           ))}
@@ -374,10 +373,9 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
                   data-testid={`button-plan-cta-${plan.id}`}
                 >
                   <Button
-                    className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+                    className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] text-sm px-2 whitespace-nowrap"
                   >
                     {plan.cta}
-                    <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
               </td>
