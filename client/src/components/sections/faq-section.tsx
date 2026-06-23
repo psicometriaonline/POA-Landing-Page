@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { RegistrationLink, buildRegistrationUrl } from "@/components/ui/registration-link";
+import { PlansLink } from "@/components/ui/plans-link";
 
 
 const faqs: { question: string; answer: ReactNode }[] = [
@@ -41,9 +41,9 @@ const faqs: { question: string; answer: ReactNode }[] = [
     answer: (
       <>
         Oferecemos diferentes planos para se adequar à sua necessidade. Cada plano dá acesso à nossa plataforma de cursos, ferramentas de análise e diferentes estruturas de suporte.{" "}
-        <a href="#" onClick={(e) => { e.preventDefault(); window.open(buildRegistrationUrl(), "_blank", "noopener,noreferrer"); }} className="text-[#0065FF] font-semibold underline underline-offset-2">
+        <PlansLink className="text-[#0065FF] font-semibold underline underline-offset-2">
           Acesse nossa página de planos
-        </a>{" "}
+        </PlansLink>{" "}
         para conferir os detalhes e valores atualizados.
       </>
     ),
@@ -58,9 +58,9 @@ const faqs: { question: string; answer: ReactNode }[] = [
     answer: (
       <>
         Oferecemos planos acessíveis para você ter acesso agora mesmo a toda a plataforma. Basta{" "}
-        <a href="#" onClick={(e) => { e.preventDefault(); window.open(buildRegistrationUrl(), "_blank", "noopener,noreferrer"); }} className="text-[#0065FF] font-semibold underline underline-offset-2">
+        <PlansLink className="text-[#0065FF] font-semibold underline underline-offset-2">
           clicar aqui
-        </a>{" "}
+        </PlansLink>{" "}
         e escolher o plano ideal para o seu momento.
       </>
     ),
@@ -157,14 +157,14 @@ export function FaqSection() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="flex justify-center mt-10"
         >
-          <RegistrationLink data-testid="button-faq-cta">
+          <PlansLink data-testid="button-faq-cta">
             <Button
               className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
             >
               Quero entrar para a Academy
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </RegistrationLink>
+          </PlansLink>
         </motion.div>
       </div>
     </section>

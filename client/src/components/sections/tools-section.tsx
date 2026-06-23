@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Users, Calculator, Sparkles, BookOpen, Code, BarChart3, X } from "lucide-react";
 import { toolImages } from "./tool-modal";
+import { PlansLink } from "@/components/ui/plans-link";
 
 const tools = [
   {
@@ -101,14 +102,16 @@ function ToolPreview({ toolIndex, onClose }: { toolIndex: number; onClose: () =>
       </div>
 
       <div className="flex justify-center">
-        <Button
-          size="lg"
-          data-testid="button-tool-cta"
-          className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8"
-        >
-          Começar agora
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
+        <PlansLink>
+          <Button
+            size="lg"
+            data-testid="button-tool-cta"
+            className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8"
+          >
+            Começar agora
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </PlansLink>
       </div>
     </motion.div>
   );

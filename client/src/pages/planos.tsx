@@ -3,9 +3,27 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
-import { RegistrationLink } from "@/components/ui/registration-link";
 
 type BillingPeriod = "mensal" | "anual";
+
+const CHECKOUT_BASE = "https://pay.hotmart.com/K70625495G";
+
+const CHECKOUT_OFFERS: Record<string, Record<BillingPeriod, string>> = {
+  master: { mensal: "qo0nxh5o", anual: "0jqbbxpi" },
+  pro: { mensal: "sagl0t2g", anual: "xt6tt3j3" },
+  premium: { mensal: "h5p99vuc", anual: "o16u9wgw" },
+};
+
+function checkoutUrl(planId: string, billing: BillingPeriod): string {
+  const off = CHECKOUT_OFFERS[planId]?.[billing];
+  return off ? `${CHECKOUT_BASE}?off=${off}` : CHECKOUT_BASE;
+}
+
+function scrollToPricing() {
+  document
+    .getElementById("planos-precos")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 interface PlanHeader {
   id: string;
@@ -234,14 +252,23 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
           </div>
         ))}
 
-        <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
-          <RegistrationLink data-testid="mobile-cta-main">
-            <Button
-              className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8"
+        <div className="flex flex-col gap-2 p-4 border-t-2 border-[#E2E5EA]">
+          {planHeaders.map((plan) => (
+            <a
+              key={plan.id}
+              href={checkoutUrl(plan.id, billing)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid={`mobile-plan-cta-${plan.id}`}
             >
-              Quero a minha vaga
-            </Button>
-          </RegistrationLink>
+              <Button
+                className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
+              >
+                Assinar {plan.name}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -340,14 +367,19 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             <td className="p-5" />
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
-                <RegistrationLink data-testid={`button-plan-cta-${plan.id}`}>
+                <a
+                  href={checkoutUrl(plan.id, billing)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid={`button-plan-cta-${plan.id}`}
+                >
                   <Button
                     className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2"
                   >
                     {plan.cta}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </RegistrationLink>
+                </a>
               </td>
             ))}
           </tr>
@@ -411,14 +443,14 @@ export default function Planos() {
                 Ferramentas Estatísticas &bull; Cursos de Análise de Dados &bull; Suporte
               </p>
 
-              <RegistrationLink data-testid="button-hero-signup">
-                <Button
-                  className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
-                >
-                  Garantir minha vaga
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </RegistrationLink>
+              <Button
+                onClick={scrollToPricing}
+                data-testid="button-hero-signup"
+                className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
+              >
+                Garantir minha vaga
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
 
               <div className="mt-5">
                 <p
@@ -439,7 +471,7 @@ export default function Planos() {
         </div>
       </section>
 
-      <section className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
+      <section id="planos-precos" className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -526,14 +558,14 @@ export default function Planos() {
             <p className="text-sm md:text-base text-[hsl(215,15%,45%)] mb-8">
               Planos acessíveis para você ter acesso agora mesmo
             </p>
-            <RegistrationLink data-testid="button-planos-final-cta">
-              <Button
-                className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
-              >
-                Começar
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </RegistrationLink>
+            <Button
+              onClick={scrollToPricing}
+              data-testid="button-planos-final-cta"
+              className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
+            >
+              Começar
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -948,14 +980,14 @@ function DetailedBreakdown() {
           </div>
 
               <div className="flex justify-center mt-10">
-                <RegistrationLink data-testid="button-detailed-cta">
-                  <Button
-                    className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
-                  >
-                    Começar Já
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </RegistrationLink>
+                <Button
+                  onClick={scrollToPricing}
+                  data-testid="button-detailed-cta"
+                  className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30 gap-2"
+                >
+                  Começar Já
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
               </div>
               </>
             </motion.div>

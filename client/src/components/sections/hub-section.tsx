@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { RegistrationLink } from "@/components/ui/registration-link";
+import { PlansLink } from "@/components/ui/plans-link";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   ArrowRight,
@@ -1046,22 +1046,26 @@ export function HubSection() {
                   </div>
 
                   <div className="mt-8 flex flex-wrap gap-3">
-                    <Button
-                      size="lg"
-                      data-testid="button-hub-start"
-                      className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
-                    >
-                      Entrar para a Formação
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      data-testid="button-hub-plans"
-                      className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
-                    >
-                      Ver planos
-                    </Button>
+                    <PlansLink>
+                      <Button
+                        size="lg"
+                        data-testid="button-hub-start"
+                        className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
+                      >
+                        Entrar para a Formação
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </PlansLink>
+                    <PlansLink>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        data-testid="button-hub-plans"
+                        className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
+                      >
+                        Ver planos
+                      </Button>
+                    </PlansLink>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -1212,22 +1216,26 @@ export function HubSection() {
             })}
 
             <div className="mt-6 flex flex-col gap-2">
-              <Button
-                size="lg"
-                data-testid="button-hub-start-mobile"
-                className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
-              >
-                Entrar para a Formação
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                data-testid="button-hub-plans-mobile"
-                className="font-semibold w-full border-white text-white"
-              >
-                Ver planos
-              </Button>
+              <PlansLink>
+                <Button
+                  size="lg"
+                  data-testid="button-hub-start-mobile"
+                  className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
+                >
+                  Entrar para a Formação
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </PlansLink>
+              <PlansLink>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  data-testid="button-hub-plans-mobile"
+                  className="font-semibold w-full border-white text-white"
+                >
+                  Ver planos
+                </Button>
+              </PlansLink>
             </div>
           </div>
         </motion.div>
@@ -1264,7 +1272,7 @@ export function HubSection() {
                 </ul>
               </div>
               <div className="p-6 pt-4 shrink-0 border-t border-[#E2E5EA] bg-[#F9FAFB]">
-                <RegistrationLink data-testid="button-syllabus-cta">
+                <PlansLink data-testid="button-syllabus-cta">
                   <Button
                     size="lg"
                     className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
@@ -1272,7 +1280,7 @@ export function HubSection() {
                     Garantir minha vaga
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                </RegistrationLink>
+                </PlansLink>
               </div>
             </>
           )}

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
 import heroImg from "@assets/optimized/Hero_1773535655024.webp";
-import { RegistrationLink } from "@/components/ui/registration-link";
+import { PlansLink } from "@/components/ui/plans-link";
 
 export function HeroSection() {
   const [onlineUsers, setOnlineUsers] = useState(783);
@@ -68,14 +68,14 @@ export function HeroSection() {
                 placeholder="Seu melhor e-mail"
                 className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
               />
-              <RegistrationLink data-testid="button-hero-cta">
+              <PlansLink data-testid="button-hero-cta">
                 <Button
                   size="lg"
                   className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
                 >
                   Quero entrar para a Academy
                 </Button>
-              </RegistrationLink>
+              </PlansLink>
             </div>
             <p className="text-body-sm text-[hsl(215,15%,55%)]">
               Ao se cadastrar, você concorda com nossos{" "}

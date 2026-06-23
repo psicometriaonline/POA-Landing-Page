@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { RegistrationLink } from "@/components/ui/registration-link";
+import { PlansLink } from "@/components/ui/plans-link";
 import founderPhoto from "@assets/optimized/Bruno_Figueiredo_Damásio_(Grande)_1771213158543.webp";
 import prof1 from "@assets/optimized/Douglas_2_1771009276690.webp";
 import prof2 from "@assets/optimized/Alex__1771362609282.webp";
@@ -242,12 +242,12 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
               </>
             );
           })()}
-          <RegistrationLink data-testid="button-professor-signup">
+          <PlansLink data-testid="button-professor-signup">
             <Button className="w-full bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2">
               Entrar para a Formação
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </RegistrationLink>
+          </PlansLink>
         </div>
       </motion.div>
     </motion.div>
@@ -330,12 +330,12 @@ export default function Sobre() {
               </div>
 
               <div className="mt-8">
-                <RegistrationLink data-testid="link-sobre-cta-1">
+                <PlansLink data-testid="link-sobre-cta-1">
                   <Button className="bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2 px-8">
                     Quero ser aluno(a)
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </RegistrationLink>
+                </PlansLink>
               </div>
             </motion.div>
 
@@ -400,12 +400,12 @@ export default function Sobre() {
           </div>
 
           <div className="flex justify-center mt-14">
-            <RegistrationLink data-testid="link-sobre-cta-2">
+            <PlansLink data-testid="link-sobre-cta-2">
               <Button className="bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2 px-8">
                 Começar agora
                 <ArrowRight className="w-4 h-4" />
               </Button>
-            </RegistrationLink>
+            </PlansLink>
           </div>
         </div>
       </section>
