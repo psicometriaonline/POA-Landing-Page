@@ -399,77 +399,7 @@ export default function Planos() {
         <meta property="og:description" content="Escolha o plano ideal para sua carreira acadêmica. Planos acessíveis com acesso imediato." />
         <meta property="og:url" content="https://academy-po.psicometriaonline.com.br/planos" />
       </Helmet>
-      <section className="relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(135deg, #0A2E76 0%, #001A4D 50%, #0A2E76 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage: "radial-gradient(circle at 20% 50%, #0065FF 1px, transparent 1px), radial-gradient(circle at 80% 20%, #0065FF 1px, transparent 1px), radial-gradient(circle at 50% 80%, #0065FF 1px, transparent 1px)",
-            backgroundSize: "60px 60px, 80px 80px, 70px 70px",
-          }}
-        />
-
-        <div className="relative pt-32 md:pt-40 pb-16 md:pb-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-5"
-                data-testid="text-planos-title"
-              >
-                Impulsione a sua carreira{" "}
-                <span className="text-[#4D9FFF]">acadêmica</span>
-              </h1>
-              <p
-                className="text-lg text-white/75 max-w-2xl mx-auto leading-relaxed mb-3"
-                data-testid="text-planos-subtitle"
-              >
-                Acesse agora mesmo a maior plataforma de pesquisa quantitativa da América Latina.
-              </p>
-              <p
-                className="text-sm text-white/50 tracking-wide mb-8"
-                data-testid="text-planos-pillars"
-              >
-                Ferramentas Estatísticas &bull; Cursos de Análise de Dados &bull; Suporte
-              </p>
-
-              <Button
-                onClick={scrollToPricing}
-                data-testid="button-hero-signup"
-                className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
-              >
-                Garantir minha vaga
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-
-              <div className="mt-5">
-                <p
-                  className="text-[13px] text-white/55"
-                  data-testid="text-plan-note-line1"
-                >
-                  Planos acessíveis para todos os perfis.
-                </p>
-                <p
-                  className="text-[13px] text-white/45 mt-0.5"
-                  data-testid="text-plan-note-line2"
-                >
-                  Escolha o plano ideal e tenha acesso agora mesmo.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section id="planos-precos" className="pt-16 md:pt-20 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
+      <section id="planos-precos" className="pt-28 md:pt-36 pb-20 md:pb-28" style={{ backgroundColor: "#F4F5F7" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
