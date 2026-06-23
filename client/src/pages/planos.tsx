@@ -24,7 +24,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 75.90,
     yearlyPrice: 58.08,
     yearlyTotal: 697.00,
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
   {
     id: "pro",
@@ -33,7 +33,7 @@ const planHeaders: PlanHeader[] = [
     yearlyPrice: 83.08,
     yearlyTotal: 997.00,
     badge: "Mais acessado",
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
   {
     id: "premium",
@@ -41,7 +41,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 169.90,
     yearlyPrice: 124.75,
     yearlyTotal: 1497.00,
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
 ];
 
@@ -239,7 +239,7 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
             <Button
               className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8"
             >
-              Começar Grátis
+              Quero a minha vaga
             </Button>
           </RegistrationLink>
         </div>
@@ -364,9 +364,9 @@ export default function Planos() {
     <main data-testid="page-planos" className="min-h-screen" style={{ backgroundColor: "#F4F5F7" }}>
       <Helmet>
         <title>Planos e Preços — Psicometria Online Academy</title>
-        <meta name="description" content="Master (R$ 75,90/mês), Pro (R$ 109,90/mês) ou Premium (R$ 169,90/mês). 14 dias grátis, sem cartão de crédito. Acesse a maior plataforma de pesquisa quantitativa da América Latina." />
+        <meta name="description" content="Master (R$ 75,90/mês), Pro (R$ 109,90/mês) ou Premium (R$ 169,90/mês). Planos acessíveis para você ter acesso agora mesmo à maior plataforma de pesquisa quantitativa da América Latina." />
         <meta property="og:title" content="Planos e Preços — Psicometria Online Academy" />
-        <meta property="og:description" content="Escolha o plano ideal para sua carreira acadêmica. 14 dias grátis, sem cartão." />
+        <meta property="og:description" content="Escolha o plano ideal para sua carreira acadêmica. Planos acessíveis com acesso imediato." />
         <meta property="og:url" content="https://academy-po.psicometriaonline.com.br/planos" />
       </Helmet>
       <section className="relative overflow-hidden">
@@ -402,7 +402,7 @@ export default function Planos() {
                 className="text-lg text-white/75 max-w-2xl mx-auto leading-relaxed mb-3"
                 data-testid="text-planos-subtitle"
               >
-                Acesse gratuitamente por 14 dias a maior plataforma de pesquisa quantitativa da América Latina.
+                Acesse agora mesmo a maior plataforma de pesquisa quantitativa da América Latina.
               </p>
               <p
                 className="text-sm text-white/50 tracking-wide mb-8"
@@ -415,7 +415,7 @@ export default function Planos() {
                 <Button
                   className="bg-[#0065FF] text-white font-semibold rounded-full px-10 py-6 text-base hover:bg-[#0050CC] shadow-lg shadow-[#0065FF]/30"
                 >
-                  Cadastre-se Gratuitamente
+                  Garantir minha vaga
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </RegistrationLink>
@@ -423,15 +423,15 @@ export default function Planos() {
               <div className="mt-5">
                 <p
                   className="text-[13px] text-white/55"
-                  data-testid="text-free-trial-line1"
+                  data-testid="text-plan-note-line1"
                 >
-                  Nenhum cartão de crédito requerido.
+                  Planos acessíveis para todos os perfis.
                 </p>
                 <p
                   className="text-[13px] text-white/45 mt-0.5"
-                  data-testid="text-free-trial-line2"
+                  data-testid="text-plan-note-line2"
                 >
-                  Experimente todos os recursos antes de escolher seu plano.
+                  Escolha o plano ideal e tenha acesso agora mesmo.
                 </p>
               </div>
             </motion.div>
@@ -455,7 +455,7 @@ export default function Planos() {
               Planos e Preços
             </h2>
             <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-8">
-              Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
+              Escolha o plano que acompanhará o seu ritmo de crescimento e tenha acesso completo agora mesmo.
             </p>
 
             <div className="flex justify-center">
@@ -524,7 +524,7 @@ export default function Planos() {
               Comece a usar a Psicometria Online Academy hoje mesmo
             </h2>
             <p className="text-sm md:text-base text-[hsl(215,15%,45%)] mb-8">
-              Experimente agora gratuitamente / Não é necessário cartão de crédito
+              Planos acessíveis para você ter acesso agora mesmo
             </p>
             <RegistrationLink data-testid="button-planos-final-cta">
               <Button

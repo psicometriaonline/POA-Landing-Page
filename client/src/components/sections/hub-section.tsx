@@ -1051,7 +1051,7 @@ export function HubSection() {
                       data-testid="button-hub-start"
                       className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
                     >
-                      Comece gratuitamente
+                      Entrar para a Formação
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                     <Button
@@ -1217,7 +1217,7 @@ export function HubSection() {
                 data-testid="button-hub-start-mobile"
                 className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
               >
-                Comece gratuitamente
+                Entrar para a Formação
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button
@@ -1269,7 +1269,7 @@ export function HubSection() {
                     size="lg"
                     className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
                   >
-                    Cadastrar gratuitamente
+                    Garantir minha vaga
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </RegistrationLink>

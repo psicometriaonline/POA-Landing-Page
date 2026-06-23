@@ -244,7 +244,7 @@ function ProfessorModal({ professor, onClose }: { professor: Professor; onClose:
           })()}
           <RegistrationLink data-testid="button-professor-signup">
             <Button className="w-full bg-[#0065FF] hover:bg-[#0050CC] text-white font-semibold gap-2">
-              Cadastre-se Gratuitamente
+              Entrar para a Formação
               <ArrowRight className="w-4 h-4" />
             </Button>
           </RegistrationLink>

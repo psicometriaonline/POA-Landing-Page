@@ -347,7 +347,7 @@ export function CtaSection() {
                   <Button
                     className="bg-white text-[#0A2E76] font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
                   >
-                    Começar
+                    Quero a minha vaga
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </RegistrationLink>

@@ -55,7 +55,7 @@ export function HeroSection() {
             className="animate-fade-up text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-6 leading-relaxed"
             style={{ animationDelay: "200ms" }}
           >
-            Cadastre-se gratuitamente e tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
+            Tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
           </p>
 
           <div
@@ -73,7 +73,7 @@ export function HeroSection() {
                   size="lg"
                   className="w-full sm:w-auto h-12 bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8 whitespace-nowrap"
                 >
-                  Cadastre-se. É grátis!
+                  Quero entrar para a Academy
                 </Button>
               </RegistrationLink>
             </div>

@@ -111,7 +111,7 @@ export function Header() {
               <Button
                 className="bg-[#0065FF] text-white border-[#0065FF] font-semibold rounded-full px-6 hover:bg-[#0065FF]/90 transition-all"
               >
-                Cadastre-se Gratuitamente
+                Quero a minha vaga
               </Button>
             </RegistrationLink>
           </div>
@@ -174,7 +174,7 @@ export function Header() {
               <Button
                 className="w-full bg-[#0065FF] text-white border-[#0065FF] font-semibold"
               >
-                Cadastre-se Gratuitamente
+                Quero a minha vaga
               </Button>
             </RegistrationLink>
           </div>

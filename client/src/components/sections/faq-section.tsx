@@ -54,14 +54,14 @@ const faqs: { question: string; answer: ReactNode }[] = [
       "Sim! Você pode cancelar sua assinatura quando quiser, sem burocracia. O cancelamento pode ser feito diretamente na plataforma. Após o cancelamento, você continua com acesso até o final do período já pago.",
   },
   {
-    question: "Existe algum plano gratuito ou período de teste?",
+    question: "Como funciona o acesso aos planos?",
     answer: (
       <>
-        Sim, você tem 14 dias para testar todas as funcionalidades da plataforma. Basta{" "}
+        Oferecemos planos acessíveis para você ter acesso agora mesmo a toda a plataforma. Basta{" "}
         <a href="#" onClick={(e) => { e.preventDefault(); window.open(buildRegistrationUrl(), "_blank", "noopener,noreferrer"); }} className="text-[#0065FF] font-semibold underline underline-offset-2">
           clicar aqui
         </a>{" "}
-        e começar agora, sem necessidade de inserir seus dados de cartão.
+        e escolher o plano ideal para o seu momento.
       </>
     ),
   },
@@ -161,7 +161,7 @@ export function FaqSection() {
             <Button
               className="bg-[#0065FF] text-white font-semibold px-8 rounded-full border border-[#0065FF] gap-2 text-base"
             >
-              Começar grátis
+              Quero entrar para a Academy
               <ArrowRight className="w-4 h-4" />
             </Button>
           </RegistrationLink>

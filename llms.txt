@@ -1,7 +1,7 @@
 # Psicometria Online Academy
 
 ## About
-Psicometria Online Academy (POA) é a maior plataforma de formação em pesquisa quantitativa da América Latina. Fundada em 2020 por Bruno Figueiredo Damásio — psicólogo, mestre e doutor em Psicologia (UFRGS, conceito CAPES 7), ex-chefe do Departamento de Psicometria da UFRJ e ex-editor-chefe da Trends in Psychology, revista da Sociedade Brasileira de Psicologia — a Academy oferece cursos, ferramentas estatísticas e suporte dedicado para pesquisadores de todas as áreas. Acesso via assinatura mensal ou anual. Cadastro gratuito com 14 dias de teste, sem necessidade de cartão de crédito.
+Psicometria Online Academy (POA) é a maior plataforma de formação em pesquisa quantitativa da América Latina. Fundada em 2020 por Bruno Figueiredo Damásio — psicólogo, mestre e doutor em Psicologia (UFRGS, conceito CAPES 7), ex-chefe do Departamento de Psicometria da UFRJ e ex-editor-chefe da Trends in Psychology, revista da Sociedade Brasileira de Psicologia — a Academy oferece cursos, ferramentas estatísticas e suporte dedicado para pesquisadores de todas as áreas. Acesso via assinatura mensal ou anual. Planos acessíveis para você ter acesso agora mesmo a toda a plataforma.
 
 ## Planos e Preços
 
@@ -25,7 +25,7 @@ Psicometria Online Academy (POA) é a maior plataforma de formação em pesquisa
   - Inteligência Artificial Aplicada a Pesquisas Científicas
   - 500.000 tokens de IA por mês
 
-- **Teste gratuito** — 14 dias, sem cartão de crédito, acesso completo à plataforma.
+- **Acesso imediato** — planos acessíveis com acesso completo à plataforma assim que você assina.
 
 ## Cursos e Formações
 
@@ -115,8 +115,8 @@ Sim. A Academy tem alunos de psicologia, medicina, enfermagem, educação físic
 **Quais softwares são utilizados?**
 SPSS e JASP para análises bi e multivariadas; FACTOR para análise fatorial exploratória; Mplus para modelagem por equações estruturais; R (RStudio) para todas as análises; IRAMUTEQ para análise textual; Joinpoint para séries temporais.
 
-**Existe período de teste gratuito?**
-Sim. 14 dias de acesso completo, sem necessidade de cadastrar cartão de crédito.
+**Como funciona o acesso aos planos?**
+Oferecemos planos acessíveis para você ter acesso agora mesmo a toda a plataforma. Basta escolher o plano ideal para o seu momento.
 
 **Posso cancelar quando quiser?**
 Sim. Cancelamento direto na plataforma, sem burocracia. O acesso continua até o fim do período já pago.
