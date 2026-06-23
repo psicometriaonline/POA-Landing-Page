@@ -1,10 +1,12 @@
 # Referência: Seção "Planos e Preços" — Psicometria Online Academy
 
+> Documento de referência para replicar fielmente a subseção **Planos e Preços** (toggle Mensal/Anual + tabela comparativa desktop + accordion mobile) em outra aplicação. Todo o código abaixo reflete o estado atual da página `/planos`.
+
 ## Visão Geral
 
 A página `/planos` é composta por três seções principais:
 
-1. **Hero** — fundo escuro com gradiente azul, título, subtítulo e CTA de cadastro
+1. **Hero** — fundo escuro com gradiente azul, título, subtítulo e CTA
 2. **Planos e Preços** — toggle mensal/anual + tabela comparativa (desktop) / accordion (mobile)
 3. **Detalhamento de Cursos** — expansível via botão, tabela completa por plano + recursos
 
@@ -14,10 +16,11 @@ O foco deste documento é a subseção **Planos e Preços**: o toggle de períod
 
 ## Comportamento Interativo
 
-- **Toggle Mensal/Anual**: estado `billing: BillingPeriod` ("mensal" | "anual"). Ao mudar, todos os preços atualizam instantaneamente.
-- **Tabela Desktop** (`hidden md:block`): header sticky com nome e preço de cada plano; linhas agrupadas por categoria; botões CTA por coluna no rodapé.
-- **Accordion Mobile** (`md:hidden`): header sticky com nome e preço; linhas de features colapsadas por categoria com `+`/`-`; um único botão CTA no rodapé.
+- **Toggle Mensal/Anual**: estado `billing: BillingPeriod` ("mensal" | "anual"), padrão `"anual"`. Ao mudar, todos os preços e cálculos de economia atualizam instantaneamente.
+- **Tabela Desktop** (`hidden md:block`): header sticky com badge, nome e preço de cada plano; linhas agrupadas por categoria; botões CTA por coluna no rodapé.
+- **Accordion Mobile** (`md:hidden`): header sticky com nome e preço; linhas de features colapsadas por categoria com ícones `+`/`-` (Plus/Minus) e animação de altura via framer-motion; um botão CTA no rodapé.
 - **Desconto anual**: calculado dinamicamente como `Math.round(((monthlyPrice * 12 - yearlyTotal) / (monthlyPrice * 12)) * 100)`.
+- **Economia anual (R$)**: `formatPrice(monthlyPrice * 12 - yearlyTotal)`.
 
 ---
 
@@ -28,13 +31,17 @@ O foco deste documento é a subseção **Planos e Preços**: o toggle de períod
   "react": "^18",
   "framer-motion": "^11",
   "lucide-react": "latest",
-  "@shadcn/ui Button": "local component"
+  "@shadcn/ui Button": "componente local"
 }
 ```
 
-Tailwind CSS com as seguintes classes customizadas usadas via tokens inline (não há config custom necessária além do Tailwind padrão):
-- `font-heading` → DM Sans (deve ser configurada no `tailwind.config` como `fontFamily.heading`)
-- `section-padding`, `container-narrow` → utilitários locais (não usados nesta subseção específica)
+Ícones usados de `lucide-react`: `Check`, `X` (importado como `XIcon`), `ArrowRight`, `Plus`, `Minus`.
+
+Tailwind CSS (configuração padrão é suficiente). Tokens de fonte usados:
+- `font-heading` → DM Sans (configurar em `tailwind.config` como `fontFamily.heading`)
+- Fonte de corpo padrão → Inter
+
+Não há dependência de banco de dados nem de estado global; tudo é estático + `useState` local.
 
 ---
 
@@ -42,16 +49,18 @@ Tailwind CSS com as seguintes classes customizadas usadas via tokens inline (nã
 
 | Token | Valor | Uso |
 |---|---|---|
-| Azul escuro | `#0A2E76` | Títulos, cabeçalhos de tabela, badges de categoria |
+| Azul escuro | `#0A2E76` | Títulos, cabeçalhos de tabela, badges de categoria, toggle ativo |
 | Azul principal | `#0065FF` | Botões CTA primários, textos de desconto |
-| Azul hover | `#0050CC` | Hover dos botões |
-| Azul check | `#0050CC` com 10% opacity bg | Ícone de "incluído" |
-| Vermelho X | `#F34266` com 10% opacity bg | Ícone de "não incluído" |
+| Azul hover | `#0050CC` | Hover dos botões, ícone de "incluído" |
+| Azul check (bg) | `#0050CC` a 10% opacidade | Fundo do ícone de "incluído" |
+| Vermelho X | `#F34266` | Ícone de "não incluído" |
+| Vermelho X (bg) | `#F34266` a 10% opacidade | Fundo do ícone de "não incluído" |
 | Texto corpo | `hsl(215, 15%, 30%)` | Labels de feature |
-| Texto auxiliar | `hsl(215, 15%, 55%)` | Sub-labels, preços menores |
-| Fundo página | `#F4F5F7` | Background da seção |
+| Texto auxiliar | `hsl(215, 15%, 45%)` | Subtítulo da seção |
+| Texto auxiliar 2 | `hsl(215, 15%, 55%)` | Sub-labels, sufixos de preço (/mês, /ano) |
+| Fundo página | `#F4F5F7` | Background da seção e do header sticky |
 | Fundo tabela | `#FFFFFF` | Card da tabela |
-| Fundo categoria | `#0A2E76` a 6% opacidade | Linhas de grupo |
+| Fundo categoria | `#0A2E76` a 6% opacidade (`bg-[#0A2E76]/[0.06]`) | Linhas de grupo |
 | Fundo linha alt | `#FAFBFC` | Linhas pares (zebra) |
 | Borda | `#E2E5EA` | Bordas da tabela e separadores |
 | Borda linha | `#F4F5F7` | Bordas entre linhas |
@@ -64,7 +73,6 @@ Tailwind CSS com as seguintes classes customizadas usadas via tokens inline (nã
 ```typescript
 type BillingPeriod = "mensal" | "anual";
 type CellValue = boolean | string;
-type PlanAvailability = [boolean, boolean, boolean];
 
 interface PlanHeader {
   id: string;
@@ -100,7 +108,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 75.90,
     yearlyPrice: 58.08,
     yearlyTotal: 697.00,
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
   {
     id: "pro",
@@ -109,7 +117,7 @@ const planHeaders: PlanHeader[] = [
     yearlyPrice: 83.08,
     yearlyTotal: 997.00,
     badge: "Mais acessado",
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
   {
     id: "premium",
@@ -117,7 +125,7 @@ const planHeaders: PlanHeader[] = [
     monthlyPrice: 169.90,
     yearlyPrice: 124.75,
     yearlyTotal: 1497.00,
-    cta: "Começar Grátis",
+    cta: "Quero a minha vaga",
   },
 ];
 ```
@@ -197,7 +205,7 @@ const featureTable: CategoryGroup[] = [
 
 ## Funções Auxiliares
 
-```typescript
+```tsx
 function formatPrice(price: number): string {
   return price.toLocaleString("pt-BR", {
     style: "currency",
@@ -224,6 +232,19 @@ function CellIcon({ value }: { value: CellValue }) {
   );
 }
 ```
+
+---
+
+## Imports necessários
+
+```tsx
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, X as XIcon, ArrowRight, Plus, Minus } from "lucide-react";
+import { Button } from "@/components/ui/button"; // shadcn Button
+```
+
+> **Nota sobre os CTAs:** na aplicação original os botões são envolvidos por um wrapper de link. Nos exemplos abaixo eles aparecem como `<a>` + `<button>` genéricos — substitua o `href` pelo destino desejado (ex.: checkout, página de cadastro ou rota interna).
 
 ---
 
@@ -322,13 +343,13 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
               ))}
             </>
           ))}
-          {/* Linha de CTAs */}
+          {/* Linha de CTAs (um por coluna de plano) */}
           <tr className="border-t-2 border-[#E2E5EA]">
             <td className="p-5" />
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
-                {/* RegistrationLink é um wrapper <a href="URL_DE_CADASTRO"> */}
-                <a href="https://membros.psicometriaonline.com.br/cadastro" target="_blank" rel="noopener noreferrer" data-testid={`button-plan-cta-${plan.id}`}>
+                {/* Substitua href pelo destino desejado (checkout do plano, etc.) */}
+                <a href="#" data-testid={`button-plan-cta-${plan.id}`}>
                   <button className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] gap-2 px-4 py-2 rounded-md flex items-center justify-center">
                     {plan.cta}
                     <ArrowRight className="w-4 h-4" />
@@ -450,9 +471,10 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 
         {/* CTA final */}
         <div className="flex justify-center p-4 border-t-2 border-[#E2E5EA]">
-          <a href="https://membros.psicometriaonline.com.br/cadastro" target="_blank" rel="noopener noreferrer" data-testid="mobile-cta-main">
+          {/* Substitua href pelo destino desejado */}
+          <a href="#" data-testid="mobile-cta-main">
             <button className="bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] px-8 py-2 rounded-md">
-              Começar Grátis
+              Quero a minha vaga
             </button>
           </a>
         </div>
@@ -476,11 +498,14 @@ export default function PlanosSection() {
 
         {/* Título, subtítulo e toggle */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4">
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A2E76] mb-4"
+            data-testid="text-planos-pricing-title"
+          >
             Planos e Preços
           </h2>
           <p className="text-base text-[hsl(215,15%,45%)] max-w-2xl mx-auto leading-relaxed mb-8">
-            Comece com acesso completo por 14 dias e escolha o plano que acompanhará o seu ritmo de crescimento.
+            Escolha o plano que acompanhará o seu ritmo de crescimento e tenha acesso completo agora mesmo.
           </p>
 
           {/* Toggle Mensal / Anual */}
@@ -535,11 +560,12 @@ export default function PlanosSection() {
 
 - **Página toda**: `background: #F4F5F7`
 - **Card da tabela**: `bg-white rounded-2xl border border-[#E2E5EA] shadow-sm`
-- **Header sticky**: `top-[96px]` no desktop (altura do header fixo = 96px); `top-[88px]` no mobile
-- **Coluna de features**: 40% da largura; colunas de plano: 20% cada
-- **Badge "Mais acessado"**: posicionado acima do header, alinhado à coluna "Pro", fundo `#0A2E76`, texto branco, `rounded-t-lg`
+- **Header sticky**: `top-[96px]` no desktop (altura do header fixo = 96px); `top-[88px]` no mobile — **ajuste estes offsets conforme a altura do header da aplicação de destino**
+- **Coluna de features**: 40% da largura; colunas de plano: 20% cada (via `<colgroup>` + `table-fixed`)
+- **Badge "Mais acessado"**: posicionado acima do header, alinhado à coluna "Pro" (`paddingLeft: 40%` + flex), fundo `#0A2E76`, texto branco, `rounded-t-lg`
 - **Zebra stripes**: linhas com índice ímpar recebem `bg-[#FAFBFC]`
-- **Link de cadastro**: `https://membros.psicometriaonline.com.br/cadastro`
+- **Accordion mobile**: cada categoria abre/fecha com animação `height` do framer-motion; ícones `Plus`/`Minus`
+- **Largura máxima do container**: `max-w-5xl mx-auto`
 
 ---
 
@@ -549,6 +575,7 @@ Layout disponível em: `attached_assets/image_1772039303341.png`
 
 A imagem mostra o estado padrão (anual selecionado), com:
 - Badge "Mais acessado" acima da coluna Pro
-- Preços anuais exibidos com economia calculada
-- Tabela desktop com 4 colunas (Recursos + 3 planos)
-- Ícones de check azul e X vermelho por feature
+- Preços anuais exibidos com economia calculada (R$ + percentual)
+- Tabela desktop com 4 colunas (Recursos + 3 planos: Master, Pro, Premium)
+- Ícones de check azul (incluído) e X vermelho (não incluído) por feature
+- Linha de tokens de IA exibindo valores em texto ("100.000", "300.000", "500.000")
