@@ -11,10 +11,6 @@ const footerLinks = {
     { label: "Planos", href: "/planos" },
     { label: "Sobre Nós", href: "/sobre" },
   ],
-  legal: [
-    { label: "Termos de Uso", href: "/legal/termos" },
-    { label: "Política de Privacidade", href: "/legal/privacidade" },
-  ],
 };
 
 function scrollToHash(hash: string) {
@@ -38,7 +34,7 @@ export function Footer() {
   return (
     <footer className="text-white/80" style={{ background: "linear-gradient(90deg, hsl(213,80%,8%) 0%, #0A2E76 100%)" }} data-testid="footer">
       <div className="container-narrow py-8 lg:py-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-3">
               <img

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { PlayCircle, X } from "lucide-react";
 import heroImg from "@assets/optimized/Hero_1773535655024.webp";
 import { PlansLink } from "@/components/ui/plans-link";
@@ -62,12 +61,7 @@ export function HeroSection() {
             className="animate-fade-up flex flex-col gap-2 mb-4"
             style={{ animationDelay: "300ms" }}
           >
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
-              <Input
-                type="email"
-                placeholder="Seu melhor e-mail"
-                className="h-12 bg-white border-[#E2E5EA] rounded-md focus:ring-[#0065FF]"
-              />
+            <div className="flex w-full max-w-lg">
               <PlansLink data-testid="button-hero-cta">
                 <Button
                   size="lg"
