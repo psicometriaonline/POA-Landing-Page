@@ -71,10 +71,6 @@ export function HeroSection() {
                 </Button>
               </PlansLink>
             </div>
-            <p className="text-body-sm text-[hsl(215,15%,55%)]">
-              Ao se cadastrar, você concorda com nossos{" "}
-              <a href="#" className="underline hover:text-[#0065FF] transition-colors">Termos de Privacidade</a>.
-            </p>
           </div>
 
           <button
