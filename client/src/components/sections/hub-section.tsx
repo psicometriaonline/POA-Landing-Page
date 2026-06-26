@@ -866,8 +866,11 @@ export function HubSection() {
           >
             CURSOS
           </h2>
+          <p className="text-white font-semibold text-xl md:text-2xl leading-snug max-w-3xl mx-auto mb-5">
+            Você não precisa de nenhum conhecimento prévio.
+          </p>
           <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
-            Tenha acesso a maior formação em Psicometria e Análise Quantitativa de Dados da América Latina e desenvolva todas as principais competências acadêmicas.
+            Iremos te ajudar a desenvolver o mais alto nível de todas as principais competências acadêmicas.
           </p>
           <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
             {competencies.map((comp) => (
@@ -882,9 +885,7 @@ export function HubSection() {
             ))}
           </div>
           <p className="text-body-md text-white/70 leading-relaxed max-w-2xl mx-auto">
-            Nossos cursos vão te levar do absoluto zero até o avançado em análise de dados.
-            <br />
-            <span className="text-white font-semibold">Você não precisa de nenhum conhecimento prévio.</span>
+            Nossos cursos vão te levar do absoluto zero até o avançado em método e pesquisa quantitativa.
           </p>
         </motion.div>
 
