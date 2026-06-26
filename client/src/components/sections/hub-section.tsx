@@ -866,7 +866,7 @@ export function HubSection() {
           >
             CURSOS
           </h2>
-          <p className="text-white font-semibold text-xl md:text-2xl leading-snug max-w-3xl mx-auto mb-5">
+          <p className="text-body-md text-white font-semibold leading-relaxed max-w-2xl mx-auto mb-5">
             Você não precisa de nenhum conhecimento prévio.
           </p>
           <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
