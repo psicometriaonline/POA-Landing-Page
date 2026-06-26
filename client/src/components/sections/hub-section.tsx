@@ -856,8 +856,9 @@ export function HubSection() {
           style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
         >
           <h2
-            className="text-5xl md:text-8xl font-heading font-extrabold leading-[1] mb-6 tracking-tight"
+            className="text-6xl md:text-[10rem] leading-[1] mb-6 tracking-wide"
             style={{
+              fontFamily: "'Anton', sans-serif",
               color: "transparent",
               WebkitTextStroke: "2px rgba(255,255,255,0.9)",
             }}
