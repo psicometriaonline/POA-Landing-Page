@@ -856,10 +856,14 @@ export function HubSection() {
           style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
         >
           <h2
-            className="text-[1.75rem] md:text-display-md font-heading font-bold text-white leading-[1.1] mb-6 tracking-tight"
+            className="text-5xl md:text-8xl font-heading font-extrabold leading-[1] mb-6 tracking-tight"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "2px rgba(255,255,255,0.9)",
+            }}
             data-testid="text-hub-label"
           >
-            Hub Educacional
+            CURSOS
           </h2>
           <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
             Tenha acesso a maior formação em Psicometria e Análise Quantitativa de Dados da América Latina e desenvolva todas as principais competências acadêmicas.
