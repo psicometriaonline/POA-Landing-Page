@@ -852,7 +852,7 @@ export function HubSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl px-8 py-14 md:px-16 md:py-20 mb-12 text-center"
+          className="rounded-2xl px-8 py-8 md:px-16 md:py-12 mb-12 text-center"
           style={{ background: "linear-gradient(135deg, #0A2E76 0%, #0045B5 100%)" }}
         >
           <h2
@@ -872,7 +872,7 @@ export function HubSection() {
           <p className="text-body-lg md:text-xl text-white/85 leading-relaxed max-w-3xl mx-auto mb-8">
             Iremos te ajudar a desenvolver o mais alto nível de todas as principais competências acadêmicas.
           </p>
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {competencies.map((comp) => (
               <div
                 key={comp.label}
@@ -884,9 +884,6 @@ export function HubSection() {
               </div>
             ))}
           </div>
-          <p className="text-body-md text-white/70 leading-relaxed max-w-2xl mx-auto">
-            Nossos cursos vão te levar do absoluto zero até o avançado em método e pesquisa quantitativa.
-          </p>
         </motion.div>
 
         <motion.div
