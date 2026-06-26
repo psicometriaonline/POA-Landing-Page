@@ -46,15 +46,16 @@ export function HeroSection() {
             className="animate-fade-up text-display-sm md:text-display text-[#0A2E76] font-heading mb-4 leading-[1.1]"
             style={{ animationDelay: "100ms" }}
           >
-            A maior plataforma de pesquisa quantitativa da{" "}
-            <span className="text-[#0065FF]">América Latina.</span>
+            Aprenda análise de dados e{" "}
+            <span className="text-[#0065FF]">nunca mais dependa dos outros</span>{" "}
+            para rodar as suas análises.
           </h1>
 
           <p
             className="animate-fade-up text-body-lg text-[hsl(215,15%,45%)] max-w-xl mb-6 leading-relaxed"
             style={{ animationDelay: "200ms" }}
           >
-            Tenha acesso a várias ferramentas estatísticas e dezenas de cursos para te tornar um pesquisador de excelência.
+            Criamos a maior formação da América Latina para você desenvolver total autonomia e ser capaz de publicar nas melhores revistas da sua área.
           </p>
 
           <div
