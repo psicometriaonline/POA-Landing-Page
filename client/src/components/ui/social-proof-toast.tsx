@@ -55,7 +55,7 @@ export function SocialProofToast() {
           if (cancelled) return;
           setVisible(false);
           schedule(randomInterval());
-        }, 3000);
+        }, 4000);
         timers.push(hideT);
       }, delay);
       timers.push(t);
@@ -72,10 +72,10 @@ export function SocialProofToast() {
   return (
     <div
       aria-live="polite"
-      className={`fixed bottom-5 left-5 z-50 transition-all duration-500 ease-out ${
+      className={`fixed bottom-5 left-5 z-50 transition-all duration-700 ease-in-out ${
         visible
           ? "translate-x-0 opacity-100"
-          : "-translate-x-[130%] opacity-0 pointer-events-none"
+          : "-translate-x-24 opacity-0 pointer-events-none"
       }`}
       data-testid="toast-social-proof"
     >
