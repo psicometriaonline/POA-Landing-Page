@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { SocialProofToast } from "@/components/ui/social-proof-toast";
 import Home from "@/pages/home";
 
 const Sobre = lazy(() => import("@/pages/sobre"));
@@ -49,6 +50,7 @@ function App() {
         <Router />
         <Footer />
         <WhatsAppButton />
+        <SocialProofToast />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
