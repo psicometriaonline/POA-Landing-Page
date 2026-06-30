@@ -1052,21 +1052,11 @@ export function HubSection() {
                     <PlansLink>
                       <Button
                         size="lg"
-                        data-testid="button-hub-start"
+                        data-testid="button-hub-plans"
                         className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-6"
                       >
-                        Entrar para a Formação
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </PlansLink>
-                    <PlansLink>
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        data-testid="button-hub-plans"
-                        className="font-semibold px-6 border-[#0A2E76] text-[#0A2E76]"
-                      >
                         Ver planos
+                        <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </PlansLink>
                   </div>
@@ -1222,21 +1212,11 @@ export function HubSection() {
               <PlansLink>
                 <Button
                   size="lg"
-                  data-testid="button-hub-start-mobile"
+                  data-testid="button-hub-plans-mobile"
                   className="bg-[#0065FF] text-white border-[#0065FF] font-semibold w-full"
                 >
-                  Entrar para a Formação
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </PlansLink>
-              <PlansLink>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  data-testid="button-hub-plans-mobile"
-                  className="font-semibold w-full border-white text-white"
-                >
                   Ver planos
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </PlansLink>
             </div>

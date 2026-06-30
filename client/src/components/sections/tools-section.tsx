@@ -108,7 +108,7 @@ function ToolPreview({ toolIndex, onClose }: { toolIndex: number; onClose: () =>
             data-testid="button-tool-cta"
             className="bg-[#0065FF] text-white border-[#0065FF] font-semibold px-8"
           >
-            Começar agora
+            Ver planos
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </PlansLink>
