@@ -3,21 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, X as XIcon, ArrowRight, Plus, Minus, ChevronDown } from "lucide-react";
-
-type BillingPeriod = "mensal" | "anual";
-
-const CHECKOUT_BASE = "https://pay.hotmart.com/K70625495G";
-
-const CHECKOUT_OFFERS: Record<string, Record<BillingPeriod, string>> = {
-  master: { mensal: "qo0nxh5o", anual: "0jqbbxpi" },
-  pro: { mensal: "sagl0t2g", anual: "xt6tt3j3" },
-  premium: { mensal: "h5p99vuc", anual: "o16u9wgw" },
-};
-
-function checkoutUrl(planId: string, billing: BillingPeriod): string {
-  const off = CHECKOUT_OFFERS[planId]?.[billing];
-  return off ? `${CHECKOUT_BASE}?off=${off}` : CHECKOUT_BASE;
-}
+import { useCheckout } from "@/components/checkout/checkout-provider";
+import type { BillingPeriod, PlanId } from "@shared/lead-schema";
 
 function scrollToPricing() {
   document
@@ -26,7 +13,7 @@ function scrollToPricing() {
 }
 
 interface PlanHeader {
-  id: string;
+  id: PlanId;
   name: string;
   monthlyPrice: number;
   yearlyPrice: number;
@@ -157,6 +144,7 @@ function CellIcon({ value }: { value: CellValue }) {
 
 function MobileAccordion({ billing }: { billing: BillingPeriod }) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+  const { openCheckout } = useCheckout();
 
   const toggle = (index: number) => {
     setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -254,19 +242,14 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 
         <div className="flex flex-col gap-2 p-4 border-t-2 border-[#E2E5EA]">
           {planHeaders.map((plan) => (
-            <a
+            <Button
               key={plan.id}
-              href={checkoutUrl(plan.id, billing)}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => openCheckout(plan.id, billing)}
+              className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC]"
               data-testid={`mobile-plan-cta-${plan.id}`}
             >
-              <Button
-                className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC]"
-              >
-                {plan.cta}
-              </Button>
-            </a>
+              {plan.cta}
+            </Button>
           ))}
         </div>
       </div>
@@ -275,6 +258,8 @@ function MobileAccordion({ billing }: { billing: BillingPeriod }) {
 }
 
 function DesktopTable({ billing }: { billing: BillingPeriod }) {
+  const { openCheckout } = useCheckout();
+
   return (
     <div className="hidden md:block relative bg-white rounded-2xl border border-[#E2E5EA] shadow-sm">
       <table className="w-full border-collapse table-fixed" data-testid="table-plans">
@@ -366,18 +351,13 @@ function DesktopTable({ billing }: { billing: BillingPeriod }) {
             <td className="p-5" />
             {planHeaders.map((plan) => (
               <td key={plan.id} className="p-5 text-center">
-                <a
-                  href={checkoutUrl(plan.id, billing)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Button
+                  onClick={() => openCheckout(plan.id, billing)}
+                  className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] text-sm px-2 whitespace-nowrap"
                   data-testid={`button-plan-cta-${plan.id}`}
                 >
-                  <Button
-                    className="w-full bg-[#0065FF] text-white font-semibold hover:bg-[#0050CC] text-sm px-2 whitespace-nowrap"
-                  >
-                    {plan.cta}
-                  </Button>
-                </a>
+                  {plan.cta}
+                </Button>
               </td>
             ))}
           </tr>

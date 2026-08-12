@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { SocialProofToast } from "@/components/ui/social-proof-toast";
+import { CheckoutProvider } from "@/components/checkout/checkout-provider";
 import Home from "@/pages/home";
 
 const Sobre = lazy(() => import("@/pages/sobre"));
@@ -45,13 +46,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <ScrollToTop />
-        <Header />
-        <Router />
-        <Footer />
-        <WhatsAppButton />
-        <SocialProofToast />
-        <Toaster />
+        <CheckoutProvider>
+          <ScrollToTop />
+          <Header />
+          <Router />
+          <Footer />
+          <WhatsAppButton />
+          <SocialProofToast />
+          <Toaster />
+        </CheckoutProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
